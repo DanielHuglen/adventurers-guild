@@ -1,0 +1,26 @@
+.app-header {
+  padding: 12px;
+  background-color: var(--secondary);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+
+  a {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: min-content;
+    margin: 0 auto;
+    text-decoration: none;
+
+    img {
+      display: block;
+      width: 50px;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: var(--primary);
+    }
+  }
+}

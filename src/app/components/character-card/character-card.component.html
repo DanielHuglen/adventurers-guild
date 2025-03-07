@@ -1,0 +1,25 @@
+@if (!!character()) {
+<button [routerLink]="['/members/' + character().id]">
+  <img
+    [src]="character().imageUrl"
+    alt="Character image"
+    [style.view-transition-name]="'character-image-' + character().id"
+  />
+  <div>
+    <span class="name">
+      {{ character().name }}
+    </span>
+    <span
+      class="availability"
+      [ngStyle]="{ 'background-color': availability }"
+    ></span>
+  </div>
+  <div class="details">
+    <span>{{ character().class | classGroup }}</span>
+    |
+    <span>Level&nbsp;{{ character().experience | level }}</span>
+  </div>
+</button>
+} @else {
+<div>No character data</div>
+}

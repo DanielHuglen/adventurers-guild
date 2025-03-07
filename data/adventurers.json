@@ -1,0 +1,178 @@
+[
+  {
+    "id": 1,
+    "name": "Aragorn",
+    "description": "Son of Arathorn, Heir of Isildur, King of Gondor",
+    "age": 87,
+    "imageUrl": "https://i.pinimg.com/736x/66/39/e1/6639e11efd466e9e824ff94e5b4e14fa.jpg",
+    "class": "Ranger",
+    "race": "Dunedain",
+    "experience": 42,
+    "abilityScores": {
+      "strength": 18,
+      "dexterity": 16,
+      "constitution": 14,
+      "intelligence": 14,
+      "wisdom": 14,
+      "charisma": 16
+    },
+    "isAlive": true,
+    "hasBonus": true,
+    "activeMission": null,
+    "completedMissions": [1, 2, 3]
+  },
+  {
+    "id": 2,
+    "name": "Gimli",
+    "description": "Son of Gloin, Dwarf of Erebor",
+    "age": 139,
+    "imageUrl": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2023/11/gimli-s-wearing-the-helmet-given-by-groin-his-father.jpg?q=50&fit=crop&w=1140&h=&dpr=1.5",
+    "class": "Barbarian",
+    "race": "Dwarf",
+    "experience": 38,
+    "abilityScores": {
+      "strength": 20,
+      "dexterity": 12,
+      "constitution": 18,
+      "intelligence": 10,
+      "wisdom": 12,
+      "charisma": 8
+    },
+    "isAlive": true,
+    "hasBonus": false,
+    "activeMission": null,
+    "completedMissions": [1, 2]
+  },
+  {
+    "id": 3,
+    "name": "Legolas",
+    "description": "Son of Thranduil, Prince of Mirkwood",
+    "age": 2931,
+    "imageUrl": "https://platform.polygon.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22704532/lotr3_movie_screencaps.com_25312.jpg?quality=90&strip=all&crop=18.90625%2C0%2C62.1875%2C100&w=1200",
+    "class": "Fighter",
+    "race": "Elf",
+    "experience": 42,
+    "abilityScores": {
+      "strength": 14,
+      "dexterity": 20,
+      "constitution": 14,
+      "intelligence": 12,
+      "wisdom": 16,
+      "charisma": 14
+    },
+    "isAlive": true,
+    "hasBonus": true,
+    "activeMission": null,
+    "completedMissions": [1, 2, 3]
+  },
+  {
+    "id": 4,
+    "name": "Gandalf",
+    "description": "The Grey, The White",
+    "age": 2019,
+    "imageUrl": "https://static.wikia.nocookie.net/d5e9a2b5-14a9-469b-9872-6c20ac89532e/smart/width/236/height/236",
+    "class": "Wizard",
+    "race": "Maiar",
+    "experience": 50,
+    "abilityScores": {
+      "strength": 10,
+      "dexterity": 12,
+      "constitution": 14,
+      "intelligence": 20,
+      "wisdom": 18,
+      "charisma": 16
+    },
+    "isAlive": true,
+    "hasBonus": true,
+    "activeMission": {},
+    "completedMissions": [1, 2, 3]
+  },
+  {
+    "id": 5,
+    "name": "Frodo",
+    "description": "Son of Drogo, Ring-bearer",
+    "age": 51,
+    "imageUrl": "https://www.tribute.ca/news/wp-content/uploads/2014/12/frodo-650x487.jpg",
+    "class": "Rogue",
+    "race": "Halfling",
+    "experience": 20,
+    "abilityScores": {
+      "strength": 8,
+      "dexterity": 18,
+      "constitution": 12,
+      "intelligence": 14,
+      "wisdom": 14,
+      "charisma": 16
+    },
+    "isAlive": true,
+    "hasBonus": false,
+    "activeMission": null,
+    "completedMissions": [1, 2, 3]
+  },
+  {
+    "id": 6,
+    "name": "Arwen",
+    "description": "Daughter of Elrond, Evenstar",
+    "age": 2920,
+    "imageUrl": "https://static1.cbrimages.com/wordpress/wp-content/uploads/2021/08/arwenvision-Cropped.jpg?q=50&fit=crop&w=1140&h=&dpr=1.5",
+    "class": "Cleric",
+    "race": "Elf",
+    "experience": 40,
+    "abilityScores": {
+      "strength": 12,
+      "dexterity": 16,
+      "constitution": 14,
+      "intelligence": 14,
+      "wisdom": 18,
+      "charisma": 18
+    },
+    "isAlive": true,
+    "hasBonus": true,
+    "activeMission": null,
+    "completedMissions": [1, 2, 3]
+  },
+  {
+    "id": 7,
+    "name": "Boromir",
+    "description": "Son of Denethor, Steward of Gondor",
+    "age": 41,
+    "imageUrl": "https://www.giantbomb.com/a/uploads/scale_small/2/27024/857251-boromir6.jpg",
+    "class": "Paladin",
+    "race": "Human",
+    "experience": 30,
+    "abilityScores": {
+      "strength": 18,
+      "dexterity": 12,
+      "constitution": 16,
+      "intelligence": 12,
+      "wisdom": 12,
+      "charisma": 16
+    },
+    "isAlive": false,
+    "hasBonus": false,
+    "activeMission": null,
+    "completedMissions": [1, 2, 3]
+  },
+  {
+    "id": 8,
+    "name": "Samwise",
+    "description": "Son of Hamfast, Gardener",
+    "age": 38,
+    "imageUrl": "https://www.theonering.net/torwp/wp-content/uploads/2013/05/samwise-gamgee.jpg",
+    "class": "Druid",
+    "race": "Halfling",
+    "experience": 20,
+    "abilityScores": {
+      "strength": 12,
+      "dexterity": 14,
+      "constitution": 16,
+      "intelligence": 14,
+      "wisdom": 16,
+      "charisma": 14
+    },
+    "isAlive": true,
+    "hasBonus": false,
+    "activeMission": null,
+    "completedMissions": [1, 2, 3]
+  }
+]

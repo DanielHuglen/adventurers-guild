@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--white);
+  width: 100vw;
+  min-width: 350px;
+  height: 100vh;
+  margin: 0;
+  color: var(--secondary-dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+:root {
+  // Colors
+  --white: #f5f5f5ff;
+  --grey: #c0c0c0ff;
+  --grey-dark: #808080ff;
+  --grey-light: #e0e0e0ff;
+  --black: #070304ff;
+
+  --success: #4caf50;
+  --error: #f44336;
+  --warning: #ff9800;
+
+  --primary: #ffe6a7;
+  --primary-dark: #f7d488;
+  --primary-light: #fff3c4;
+
+  --secondary: #38292c;
+  --secondary-dark: #2b1d20;
+  --secondary-light: #4f3b3f;
+
+  --complimentary: #833d3b;
+  --complimentary-dark: #6a3331;
+  --complimentary-light: #9e4b48;
+}

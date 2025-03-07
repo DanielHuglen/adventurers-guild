@@ -1,0 +1,52 @@
+button {
+  border: 2px solid var(--secondary);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+
+  background-repeat: no-repeat;
+  background-size: 100% 75px;
+  background-image: linear-gradient(var(--secondary), var(--secondary));
+  background-position: 100% 0%;
+
+  transition: background-size 0.2s;
+
+  &:hover {
+    background-size: 100% 85px;
+
+    img {
+      width: 120px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+img {
+  display: block;
+  width: 100px;
+  margin: 0 auto 20px;
+  border: 6px solid var(--secondary);
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
+  transition: width 0.2s, margin-bottom 0.2s;
+}
+
+.name {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.availability {
+  content: "";
+  width: 5px;
+  height: 5px;
+  display: inline-block;
+  margin-left: 4px;
+  border-radius: 100%;
+  padding: 5px;
+  background-color: orange;
+}
