@@ -5,7 +5,13 @@ import { CharacterClass, ClassGroup } from './character-models';
   name: 'classGroup',
 })
 export class ClassGroupPipe implements PipeTransform {
-  transform(characterClass: CharacterClass): ClassGroup {
+  transform(
+    characterClass: CharacterClass | undefined
+  ): ClassGroup | 'Unknown' {
+    if (!characterClass) {
+      return 'Unknown';
+    }
+
     switch (characterClass) {
       case 'Ranger':
       case 'Fighter':

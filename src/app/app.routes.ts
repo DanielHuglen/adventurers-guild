@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { MembersDeckComponent } from './components/members-deck/members-deck.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { MemberDetailsComponent } from './components/character-details/member-details.component';
+import { MemberDetailsComponent } from './components/member-details/member-details.component';
 
 export const routes: Routes = [
   {

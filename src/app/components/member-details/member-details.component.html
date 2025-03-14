@@ -1,0 +1,80 @@
+<div class="member-details-container">
+  <div class="member-header">
+    <img
+      [src]="member?.imageUrl"
+      alt="Member image"
+      [style.view-transition-name]="'character-image-' + memberId"
+    />
+    <span class="member-header-info">
+      <div class="class-level">
+        <span>{{ member?.class | classGroup }}</span>
+        |
+        <span>Level&nbsp;{{ member?.experience ?? 0 | level }}</span>
+      </div>
+      <h2>{{ member?.name ?? "Adventurer" }}</h2>
+      <p>{{ member?.description ?? "" }}</p>
+    </span>
+  </div>
+
+  <div class="member-stats">
+    @if (member?.abilityScores; as scores) {
+    <span class="ability-scores">
+      <span class="score">
+        <div>{{ scores.strength }}</div>
+        <div>STR</div>
+      </span>
+      <span class="score">
+        <div>{{ scores.dexterity }}</div>
+        <div>DEX</div>
+      </span>
+      <span class="score">
+        <div>{{ scores.constitution }}</div>
+        <div>CON</div>
+      </span>
+      <span class="score">
+        <div>{{ scores.intelligence }}</div>
+        <div>INT</div>
+      </span>
+      <span class="score">
+        <div>{{ scores.wisdom }}</div>
+        <div>WIS</div>
+      </span>
+      <span class="score">
+        <div>{{ scores.charisma }}</div>
+        <div>CHA</div>
+      </span>
+    </span>
+    }
+
+    <span class="stats">
+      <span class="stat">
+        <span>{{ member?.hitPoints ?? 0 }}</span>
+        <span>HP</span>
+      </span>
+      <span class="stat">
+        <span>{{ member?.armorClass ?? 0 }}</span>
+        <span>AC</span>
+      </span>
+      <span class="stat">
+        <span>{{ member?.experience ?? 0 }}</span>
+        <span>XP</span>
+      </span>
+      <span class="stat">
+        <span>{{ member?.speed ?? 0 }}</span>
+        <span>Speed</span>
+      </span>
+    </span>
+
+    <span class="knowledge">
+      <div>
+        <h3>Languages</h3>
+        {{ separatedLanguages }}
+      </div>
+
+      <div>
+        <h3>Features</h3>
+        {{ separatedFeatures }}
+      </div>
+    </span>
+  </div>
+</div>
