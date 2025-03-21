@@ -19,30 +19,15 @@
     "armorClass": 18,
     "hitPoints": 84,
     "speed": 30,
-    "savingThrows": [
-      "Strength",
-      "Constitution",
-      "Wisdom",
-      "Charisma"
-    ],
-    "languages": [
-      "Common",
-      "Elvish"
-    ],
-    "features": [
-      "Extra Attack",
-      "Improved Critical"
-    ],
+    "savingThrows": ["Strength", "Constitution", "Wisdom", "Charisma"],
+    "languages": ["Common", "Elvish"],
+    "features": ["Extra Attack", "Improved Critical"],
     "isAlive": true,
     "hasBonus": true,
-    "bonusDescription": "Anduril, sword of kings",
-    "debt": "0",
+    "bonusDescription": "Anduril, the sword of kings",
+    "debt": 0,
     "activeMission": null,
-    "completedMissions": [
-      1,
-      2,
-      3
-    ]
+    "completedMissions": [1, 2, 3]
   },
   {
     "id": 2,
@@ -64,27 +49,15 @@
     "armorClass": 20,
     "hitPoints": 120,
     "speed": 25,
-    "savingThrows": [
-      "Strength",
-      "Constitution"
-    ],
-    "languages": [
-      "Common",
-      "Dwarvish"
-    ],
-    "features": [
-      "Extra Attack",
-      "Rage"
-    ],
+    "savingThrows": ["Strength", "Constitution"],
+    "languages": ["Common", "Dwarvish"],
+    "features": ["Extra Attack", "Rage"],
     "isAlive": true,
-    "hasBonus": true,
-    "bonusDescription": "Axe af",
+    "hasBonus": false,
+    "bonusDescription": "",
     "debt": 10,
     "activeMission": null,
-    "completedMissions": [
-      1,
-      2
-    ]
+    "completedMissions": [1, 2]
   },
   {
     "id": 3,
@@ -106,29 +79,15 @@
     "armorClass": 17,
     "hitPoints": 79,
     "speed": 35,
-    "savingThrows": [
-      "Dexterity",
-      "Wisdom"
-    ],
-    "languages": [
-      "Common",
-      "Dwarvish"
-    ],
-    "features": [
-      "Extra Attack",
-      "Improved Critical",
-      "Action Surge"
-    ],
+    "savingThrows": ["Dexterity", "Wisdom"],
+    "languages": ["Common", "Dwarvish"],
+    "features": ["Extra Attack", "Improved Critical", "Action Surge"],
     "isAlive": true,
     "hasBonus": true,
     "bonusDescription": "Cool bow",
     "debt": 20,
     "activeMission": null,
-    "completedMissions": [
-      1,
-      2,
-      3
-    ]
+    "completedMissions": [1, 2, 3]
   },
   {
     "id": 4,
@@ -150,30 +109,15 @@
     "armorClass": 14,
     "hitPoints": 65,
     "speed": 30,
-    "savingThrows": [
-      "Intelligence",
-      "Wisdom",
-      "Charisma"
-    ],
-    "languages": [
-      "Common",
-      "Elvish",
-      "Dwarvish",
-      "Celestial"
-    ],
-    "features": [
-      "Spellcasting"
-    ],
+    "savingThrows": ["Intelligence", "Wisdom", "Charisma"],
+    "languages": ["Common", "Elvish", "Dwarvish", "Celestial"],
+    "features": ["Spellcasting"],
     "isAlive": true,
     "hasBonus": true,
     "bonusDescription": "Staff of power",
     "debt": 666,
     "activeMission": {},
-    "completedMissions": [
-      1,
-      2,
-      3
-    ]
+    "completedMissions": [1, 2, 3]
   },
   {
     "id": 5,
@@ -195,28 +139,15 @@
     "armorClass": 15,
     "hitPoints": 70,
     "speed": 30,
-    "savingThrows": [
-      "Dexterity",
-      "Charisma"
-    ],
-    "languages": [
-      "Common",
-      "Halfling"
-    ],
-    "features": [
-      "Sneak Attack",
-      "Evasion"
-    ],
+    "savingThrows": ["Dexterity", "Charisma"],
+    "languages": ["Common", "Halfling"],
+    "features": ["Sneak Attack", "Evasion"],
     "isAlive": true,
     "hasBonus": false,
     "bonusDescription": "Big sword!",
     "debt": 0,
     "activeMission": null,
-    "completedMissions": [
-      1,
-      2,
-      3
-    ]
+    "completedMissions": [1, 2, 3]
   },
   {
     "id": 6,
@@ -238,28 +169,15 @@
     "armorClass": 13,
     "hitPoints": 98,
     "speed": 30,
-    "savingThrows": [
-      "Wisdom",
-      "Charisma"
-    ],
-    "languages": [
-      "Common",
-      "Elvish"
-    ],
-    "features": [
-      "Spellcasting",
-      "Channel Divinity"
-    ],
+    "savingThrows": ["Wisdom", "Charisma"],
+    "languages": ["Common", "Elvish"],
+    "features": ["Spellcasting", "Channel Divinity"],
     "isAlive": true,
     "hasBonus": true,
     "bonusDescription": "Big sword!",
     "debt": 0,
     "activeMission": null,
-    "completedMissions": [
-      1,
-      2,
-      3
-    ]
+    "completedMissions": [1, 2, 3]
   },
   {
     "id": 7,
@@ -281,27 +199,15 @@
     "armorClass": 19,
     "hitPoints": 111,
     "speed": 30,
-    "savingThrows": [
-      "Strength",
-      "Charisma"
-    ],
-    "languages": [
-      "Common"
-    ],
-    "features": [
-      "Lay on hands",
-      "Divine Smite"
-    ],
+    "savingThrows": ["Strength", "Charisma"],
+    "languages": ["Common"],
+    "features": ["Lay on hands", "Divine Smite"],
     "isAlive": false,
-    "hasBonus": true,
-    "bonusDescription": "Horny",
-    "debt": "9996",
+    "hasBonus": false,
+    "bonusDescription": "Big sword!",
+    "debt": 0,
     "activeMission": null,
-    "completedMissions": [
-      1,
-      2,
-      3
-    ]
+    "completedMissions": [1, 2, 3]
   },
   {
     "id": 8,
@@ -323,27 +229,14 @@
     "armorClass": 16,
     "hitPoints": 77,
     "speed": 30,
-    "savingThrows": [
-      "Constitution",
-      "Dexterity"
-    ],
-    "languages": [
-      "Common",
-      "Halfling"
-    ],
-    "features": [
-      "Spellcasting",
-      "Wild Shape"
-    ],
+    "savingThrows": ["Constitution", "Dexterity"],
+    "languages": ["Common", "Halfling"],
+    "features": ["Spellcasting", "Wild Shape"],
     "isAlive": true,
     "hasBonus": false,
     "bonusDescription": "Big sword!",
     "debt": 0,
     "activeMission": null,
-    "completedMissions": [
-      1,
-      2,
-      3
-    ]
+    "completedMissions": [1, 2, 3]
   }
 ]

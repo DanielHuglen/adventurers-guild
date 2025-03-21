@@ -1,7 +1,7 @@
 :host {
   margin: 32px;
   display: block;
-  container-type: size;
+  container-type: inline-size;
 
   @media screen and (max-width: 768px) {
     margin: 16px;
@@ -43,7 +43,9 @@
         text-transform: uppercase;
       }
       h2 {
+        width: fit-content;
         font-size: 5rem;
+        cursor: crosshair;
         color: var(--primary);
         text-shadow: 0 0 0 var(--complimentary-light),
           0 0 0 var(--complimentary-dark);
@@ -141,6 +143,72 @@
         margin-bottom: 8px;
         color: var(--white);
       }
+    }
+  }
+}
+
+.controls {
+  width: fit-content;
+  margin: 32px auto;
+  border: 2px solid var(--complimentary-dark);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: var(--complimentary-dark);
+  accent-color: var(--complimentary-dark);
+
+  span {
+    display: flex;
+    align-items: center;
+
+    &:has(input[type="checkbox"]):hover {
+      cursor: pointer;
+    }
+
+    label {
+      height: 100%;
+      padding-right: 8px; // Using padding instead of margin to keep the checkbox clickable
+      font-size: 1.2rem;
+
+      &:has(+ input[type="checkbox"]) {
+        cursor: pointer;
+      }
+    }
+
+    input {
+      display: inline-block;
+      height: 1.5rem;
+
+      &[type="checkbox"] {
+        width: 1.5rem;
+        cursor: pointer;
+      }
+    }
+
+    &:last-of-type input {
+      width: 5rem;
+    }
+  }
+
+  button {
+    padding: 4px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--complimentary);
+    color: var(--white);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: var(--complimentary-light);
+    }
+    &:active {
+      background-color: var(--complimentary-dark);
     }
   }
 }

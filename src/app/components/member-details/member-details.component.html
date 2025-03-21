@@ -78,3 +78,22 @@
     </span>
   </div>
 </div>
+<form class="controls" [formGroup]="memberForm" (ngSubmit)="submit()">
+  <span>
+    <label for="bonus">Bonus</label>
+    <input type="checkbox" id="bonus" formControlName="hasBonusControl" />
+  </span>
+  <span>
+    <label for="description">Bonus description</label>
+    <input
+      id="description"
+      maxlength="32"
+      formControlName="bonusDescriptionControl"
+    />
+  </span>
+  <span>
+    <label for="debt">Debt</label>
+    <input type="text" id="debt" maxlength="4" formControlName="debtControl" />
+  </span>
+  <button type="submit">Submit</button>
+</form>

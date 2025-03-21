@@ -46,7 +46,9 @@ export interface Character {
   languages: Languages[];
   features: Feature[];
   isAlive: boolean;
-  hasBonus: boolean; // TODO: Expand with bonus interface
+  hasBonus: boolean;
+  bonusDescription?: string;
+  debt?: number;
   activeMission?: Mission | null;
   completedMissions: number[];
 }

@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Character } from '../shared/character-models';
+import {
+  CharacterBonusUpdateRequest,
+  CharacterBonusUpdateResponse,
+} from '../shared/api-models';
 
 @Injectable({
   providedIn: 'root',
@@ -19,5 +23,15 @@ export class CharacterService {
 
   getMember(id: number): Observable<Character> {
     return this.http.get<Character>(`/api/members/${id}`);
+  }
+
+  updateMemberBonus(
+    id: number,
+    updateRequest: CharacterBonusUpdateRequest
+  ): Observable<CharacterBonusUpdateResponse> {
+    return this.http.put<CharacterBonusUpdateResponse>(
+      `/api/members/${id}/bonus`,
+      updateRequest
+    );
   }
 }

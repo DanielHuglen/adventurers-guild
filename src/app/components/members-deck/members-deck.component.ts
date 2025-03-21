@@ -11,32 +11,10 @@ import { take } from 'rxjs';
   styleUrl: './members-deck.component.scss',
 })
 export class MembersDeckComponent implements OnInit {
-  members: Character[] = [
-    {
-      ...new GhostCharacter(),
-      id: 1,
-    },
-    {
-      ...new GhostCharacter(),
-      id: 2,
-    },
-    {
-      ...new GhostCharacter(),
-      id: 3,
-    },
-    {
-      ...new GhostCharacter(),
-      id: 4,
-    },
-    {
-      ...new GhostCharacter(),
-      id: 5,
-    },
-    {
-      ...new GhostCharacter(),
-      id: 6,
-    },
-  ];
+  members: Character[] = Array.from({ length: 6 }, (_, index) => ({
+    ...new GhostCharacter(),
+    id: index + 1,
+  }));
 
   constructor(private characterService: CharacterService) {}
 
