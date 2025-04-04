@@ -29,6 +29,7 @@ const fs = require('fs');
  * });
  * ```
  */
+// Members API
 app.get('/api/members', (req, res) => {
   res.sendFile(resolve('data', 'adventurers.json'));
 });
@@ -66,6 +67,11 @@ app.put('/api/members/:id/bonus', express.json(), (req, res) => {
   res.status(200).json({
     message: 'Member updated successfully',
   } as CharacterBonusUpdateResponse);
+});
+
+// Missions API
+app.get('/api/missions', (req, res) => {
+  res.sendFile(resolve('data', 'missions.json'));
 });
 
 /**

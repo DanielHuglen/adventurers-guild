@@ -1,3 +1,5 @@
+@use "styles.scss" as *;
+
 button {
   border: 2px solid var(--secondary);
   border-radius: 16px;
@@ -41,12 +43,5 @@ img {
 }
 
 .availability {
-  content: "";
-  width: 5px;
-  height: 5px;
-  display: inline-block;
-  margin-left: 4px;
-  border-radius: 100%;
-  padding: 5px;
-  background-color: orange;
+  @include color-circle;
 }

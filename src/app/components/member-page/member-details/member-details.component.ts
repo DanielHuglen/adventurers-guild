@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Character } from '../../shared/character-models';
-import { CharacterService } from '../../services/character.service';
-import { ClassGroupPipe } from '../../shared/class-group.pipe';
-import { LevelPipe } from '../../shared/level.pipe';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { take } from 'rxjs';
-import { CharacterBonusUpdateRequest } from '../../shared/api-models';
+import { CharacterService } from '../../../services/character.service';
+import { CharacterBonusUpdateRequest } from '../../../shared/api-models';
+import { Character } from '../../../shared/character-models';
+import { ClassGroupPipe } from '../../../shared/class-group.pipe';
+import { LevelPipe } from '../../../shared/level.pipe';
 
 @Component({
   selector: 'app-member-details',

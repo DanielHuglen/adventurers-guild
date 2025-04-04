@@ -1,11 +1,16 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { first, Observable } from 'rxjs';
 import { Character } from '../shared/character-models';
 import {
   CharacterBonusUpdateRequest,
   CharacterBonusUpdateResponse,
 } from '../shared/api-models';
+import {
+  ActivatedRouteSnapshot,
+  ResolveFn,
+  RouterStateSnapshot,
+} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -35,3 +40,10 @@ export class CharacterService {
     );
   }
 }
+
+export const charactersResolver: ResolveFn<Character[]> = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+) => {
+  return inject(CharacterService).getMembers().pipe(first());
+};

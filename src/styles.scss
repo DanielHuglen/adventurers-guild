@@ -43,3 +43,15 @@ input {
   --complimentary-dark: #6a3331;
   --complimentary-light: #9e4b48;
 }
+
+// Mixins
+@mixin color-circle {
+  content: "";
+  width: 5px;
+  height: 5px;
+  display: inline-block;
+  margin-left: 4px;
+  border-radius: 100%;
+  padding: 5px;
+  background-color: rebeccapurple;
+}

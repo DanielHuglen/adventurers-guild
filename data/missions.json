@@ -1,0 +1,200 @@
+[
+  {
+    "id": 1,
+    "title": "Find a Hiding Mimic",
+    "description": "Located in Waterdeep. A small mimic has taken up residence in Odsel Murnig's antique shop, the White Elephant. While it's kept the rats under control, it has been growing and has started to bite people. It's time for it to leave.",
+    "location": "Waterdeep",
+    "level": 2,
+    "recommendedComposition": ["Tank"],
+    "potentialOutcomes": [
+      {
+        "tier": "Critical Success",
+        "description": "A bond is formed between the mimic and the lead agent. Your guild now has a young mimic.",
+        "reward": { "gold": 0, "reputation": 5 }
+      },
+      {
+        "tier": "Success",
+        "description": "The beast is found and dispatched. Odsel will happily perform cheap appraisals of antiques for the guild.",
+        "reward": { "gold": 300, "reputation": 3 }
+      },
+      {
+        "tier": "Mixed",
+        "description": "The mimic is killed but many rare teapots are shattered in the fight.",
+        "reward": { "gold": 50, "reputation": -2 }
+      },
+      {
+        "tier": "Failure",
+        "description": "Lots of rare items were broken, but no mimic was found.",
+        "reward": { "gold": -400, "reputation": -8 }
+      },
+      {
+        "tier": "Critical Failure",
+        "description": "As Failure, the mimic got away. A week later people start disappearing in the shop.",
+        "reward": { "gold": -400, "reputation": -10 }
+      }
+    ],
+    "diceRoll": 0,
+    "finalComposition": ["Tank"],
+    "finalOutcome": null
+  },
+  {
+    "id": 2,
+    "title": "Escort the Merchant Caravan",
+    "description": "A merchant caravan traveling from Baldur's Gate to Waterdeep has requested protection from bandits and monsters along the road.",
+    "location": "Waterdeep",
+    "level": 3,
+    "recommendedComposition": ["Tank", "Healer"],
+    "potentialOutcomes": [
+      {
+        "tier": "Critical Success",
+        "description": "The caravan arrives safely, and the merchants offer a rare magical item as a bonus reward.",
+        "reward": { "gold": 500, "reputation": 10 }
+      },
+      {
+        "tier": "Success",
+        "description": "The caravan arrives safely.",
+        "reward": { "gold": 500, "reputation": 5 }
+      },
+      {
+        "tier": "Mixed",
+        "description": "The caravan arrives, but some goods were lost to bandits.",
+        "reward": { "gold": 300, "reputation": -1 }
+      },
+      {
+        "tier": "Failure",
+        "description": "The caravan is attacked, and most goods are lost.",
+        "reward": { "gold": -200, "reputation": -5 }
+      },
+      {
+        "tier": "Critical Failure",
+        "description": "The caravan is destroyed, and the guild's reputation suffers.",
+        "reward": { "gold": 0, "reputation": -10 }
+      }
+    ],
+    "diceRoll": 0,
+    "finalComposition": [],
+    "finalOutcome": null
+  },
+  {
+    "id": 3,
+    "title": "Rescue the Captured Noble",
+    "description": "A noble from Neverwinter has been kidnapped by a group of bandits and is being held in a nearby forest. The guild has been hired to rescue them.",
+    "location": "Neverwinter",
+    "level": 4,
+    "recommendedComposition": ["Martial", "Martial"],
+    "potentialOutcomes": [
+      {
+        "tier": "Critical Success",
+        "description": "The noble is rescued without a scratch, and the guild is handsomely rewarded.",
+        "reward": { "gold": 800, "reputation": 8 }
+      },
+      {
+        "tier": "Success",
+        "description": "The noble is rescued, but they suffered minor injuries.",
+        "reward": { "gold": 600, "reputation": 5 }
+      },
+      {
+        "tier": "Mixed",
+        "description": "The noble is rescued, but the bandits escaped with some of their belongings.",
+        "reward": { "gold": 400, "reputation": -2 }
+      },
+      {
+        "tier": "Failure",
+        "description": "The noble is injured during the rescue, and the guild's reputation takes a hit.",
+        "reward": { "gold": -300, "reputation": -5 }
+      },
+      {
+        "tier": "Critical Failure",
+        "description": "The noble is killed during the rescue attempt.",
+        "reward": { "gold": 0, "reputation": -10 }
+      }
+    ],
+    "diceRoll": 100,
+    "finalComposition": ["Tank", "Magic", "Martial", "Healer", "Healer"],
+    "finalOutcome": {
+      "tier": "Critical Success",
+      "description": "The noble is rescued without a scratch, and the guild is handsomely rewarded.",
+      "reward": { "gold": 800, "reputation": 8 }
+    }
+  },
+  {
+    "id": 4,
+    "title": "Investigate the Haunted Manor",
+    "description": "A manor on the outskirts of Mirabar has been reported to be haunted. Strange noises and ghostly apparitions have scared away the residents.",
+    "location": "Mirabar",
+    "level": 5,
+    "recommendedComposition": ["Healer", "Magic"],
+    "potentialOutcomes": [
+      {
+        "tier": "Critical Success",
+        "description": "The spirits are laid to rest, and the manor's owner rewards the guild with a valuable artifact.",
+        "reward": { "gold": 1000, "reputation": 12 }
+      },
+      {
+        "tier": "Success",
+        "description": "The spirits are banished, and the guild is paid handsomely.",
+        "reward": { "gold": 1000, "reputation": 10 }
+      },
+      {
+        "tier": "Mixed",
+        "description": "The spirits are banished, but some damage was done to the manor.",
+        "reward": { "gold": 700, "reputation": -3 }
+      },
+      {
+        "tier": "Failure",
+        "description": "The spirits remain, and the guild's reputation suffers.",
+        "reward": { "gold": -500, "reputation": -8 }
+      },
+      {
+        "tier": "Critical Failure",
+        "description": "The spirits grow stronger, and the guild is forced to retreat.",
+        "reward": { "gold": 0, "reputation": -12 }
+      }
+    ],
+    "diceRoll": 45,
+    "finalComposition": ["Magic", "Magic", "Magic"],
+    "finalOutcome": null
+  },
+  {
+    "id": 5,
+    "title": "Retrieve the Stolen Artifact",
+    "description": "A priceless artifact was stolen from the temple of Lathander in Luskan. The guild has been tasked with retrieving it from the thieves.",
+    "location": "Luskan",
+    "level": 3,
+    "recommendedComposition": ["Martial", "Martial"],
+    "potentialOutcomes": [
+      {
+        "tier": "Critical Success",
+        "description": "The artifact is retrieved without alerting the thieves, and the guild is rewarded with a blessing from the temple.",
+        "reward": { "gold": 600, "reputation": 10 }
+      },
+      {
+        "tier": "Success",
+        "description": "The artifact is retrieved, and the guild is paid.",
+        "reward": { "gold": 600, "reputation": 6 }
+      },
+      {
+        "tier": "Mixed",
+        "description": "The artifact is retrieved, but the thieves escaped.",
+        "reward": { "gold": 400, "reputation": -2 }
+      },
+      {
+        "tier": "Failure",
+        "description": "The artifact is damaged during the retrieval, and the guild's reputation suffers.",
+        "reward": { "gold": -300, "reputation": -6 }
+      },
+      {
+        "tier": "Critical Failure",
+        "description": "The artifact is lost, and the guild is blamed for the failure.",
+        "reward": { "gold": 0, "reputation": -10 }
+      }
+    ],
+    "diceRoll": 87,
+    "finalComposition": ["Healer", "Tank", "Tank"],
+    "finalOutcome": {
+      "tier": "Success",
+      "description": "The artifact is retrieved, and the guild is paid.",
+      "reward": { "gold": 600, "reputation": 6 }
+    }
+  }
+]

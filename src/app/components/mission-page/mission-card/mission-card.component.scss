@@ -1,0 +1,42 @@
+@use "styles.scss" as *;
+
+:host {
+  border: 2px solid var(--secondary);
+  border-radius: 16px;
+  padding: 12px 16px;
+}
+
+.mission-header {
+  position: relative;
+  margin-bottom: 8px;
+  border-bottom: 4px solid var(--secondary);
+  padding-bottom: 4px;
+
+  h2 {
+    font-size: 1.25rem;
+    margin-right: 32px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .status {
+    @include color-circle;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.roles {
+  text-align: center;
+}
+
+.mission-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  font-size: 12px;
+  color: var(--grey-dark);
+  font-weight: 600;
+}

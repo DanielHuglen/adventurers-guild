@@ -1,7 +1,10 @@
 import { Routes } from '@angular/router';
-import { MembersDeckComponent } from './components/members-deck/members-deck.component';
+import { MembersDeckComponent } from './components/member-page/members-deck/members-deck.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { MemberDetailsComponent } from './components/member-details/member-details.component';
+import { MemberDetailsComponent } from './components/member-page/member-details/member-details.component';
+import { charactersResolver } from './services/character.service';
+import { MissionsDeckComponent } from './components/mission-page/missions-deck/missions-deck.component';
+import { missionsResolver } from './services/mission.service';
 
 export const routes: Routes = [
   {
@@ -11,6 +14,9 @@ export const routes: Routes = [
   {
     path: 'members',
     component: MembersDeckComponent,
+    resolve: {
+      members: charactersResolver,
+    },
   },
   {
     path: 'members/:id',
@@ -18,7 +24,10 @@ export const routes: Routes = [
   },
   {
     path: 'missions',
-    redirectTo: '',
+    component: MissionsDeckComponent,
+    resolve: {
+      missions: missionsResolver,
+    },
   },
   {
     path: 'employees',
