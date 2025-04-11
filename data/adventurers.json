@@ -166,8 +166,8 @@
     ],
     "isAlive": true,
     "hasBonus": true,
-    "bonusDescription": "Staff of power",
-    "debt": 666,
+    "bonusDescription": "Staff of Power",
+    "debt": "666",
     "activeMission": {},
     "completedMissions": [
       1,

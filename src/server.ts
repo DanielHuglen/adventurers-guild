@@ -66,6 +66,7 @@ app.put('/api/members/:id/bonus', express.json(), (req, res) => {
 
   res.status(200).json({
     message: 'Member updated successfully',
+    character: member,
   } as CharacterBonusUpdateResponse);
 });
 

@@ -78,13 +78,29 @@
     </span>
   </div>
 </div>
+
+@if (!isEditing) {
+<div class="controls">
+  @if (member?.hasBonus) {
+  <span>
+    <span class="control-title">Equipment:</span>
+    <span class="control-value">{{ member?.bonusDescription }}</span>
+  </span>
+  }
+  <span>
+    <span class="control-title">Debt:</span>
+    <span class="control-value">{{ member?.debt }}g</span>
+  </span>
+  <button (click)="isEditing = !isEditing">Edit</button>
+</div>
+} @else {
 <form class="controls" [formGroup]="memberForm" (ngSubmit)="submit()">
   <span>
-    <label for="bonus">Bonus</label>
+    <label for="bonus">Has equipment</label>
     <input type="checkbox" id="bonus" formControlName="hasBonusControl" />
   </span>
   <span>
-    <label for="description">Bonus description</label>
+    <label for="description">Equipment description</label>
     <input
       id="description"
       maxlength="32"
@@ -95,5 +111,6 @@
     <label for="debt">Debt</label>
     <input type="text" id="debt" maxlength="4" formControlName="debtControl" />
   </span>
-  <button type="submit">Submit</button>
+  <button type="submit" [disabled]="isLoading">Submit</button>
 </form>
+}

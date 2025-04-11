@@ -30,8 +30,8 @@ export class MissionCardComponent {
     return 'var(--success)';
   }
 
-  get duration(): string {
-    return this.mission().level * 3 + ' Days';
+  get level(): string {
+    return `Level  ${this.mission().level.toString()}`;
   }
   get gold(): string {
     let goldReward = 0;
@@ -41,15 +41,6 @@ export class MissionCardComponent {
       goldReward = this.successOutcome.reward.gold;
     }
     return `${goldReward.toString()} Gold`;
-  }
-  get reputation(): string {
-    let reputationReward = 0;
-    if (!!this.finalOutcome) {
-      reputationReward = this.finalOutcome.reward.reputation;
-    } else if (!!this.successOutcome) {
-      reputationReward = this.successOutcome.reward.reputation;
-    }
-    return `${reputationReward.toString()} Reputation`;
   }
 
   get recommendationText(): string {

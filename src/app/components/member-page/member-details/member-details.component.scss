@@ -169,7 +169,8 @@
       cursor: pointer;
     }
 
-    label {
+    label,
+    .control-title {
       height: 100%;
       padding-right: 8px; // Using padding instead of margin to keep the checkbox clickable
       font-size: 1.2rem;
@@ -177,6 +178,11 @@
       &:has(+ input[type="checkbox"]) {
         cursor: pointer;
       }
+    }
+
+    .control-value {
+      font-weight: bold;
+      font-size: 1.2rem;
     }
 
     input {
@@ -209,6 +215,10 @@
     }
     &:active {
       background-color: var(--complimentary-dark);
+    }
+    &:disabled {
+      background-color: var(--grey-dark);
+      cursor: not-allowed;
     }
   }
 }

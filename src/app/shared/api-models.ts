@@ -1,3 +1,5 @@
+import { Character } from './character-models';
+
 export interface CharacterBonusUpdateRequest {
   hasBonus: boolean;
   bonusDescription: string;
@@ -6,4 +8,5 @@ export interface CharacterBonusUpdateRequest {
 
 export interface CharacterBonusUpdateResponse {
   message: string;
+  character: Character;
 }

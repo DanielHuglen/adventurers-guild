@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { take } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 import { CharacterService } from '../../../services/character.service';
 import { CharacterBonusUpdateRequest } from '../../../shared/api-models';
 import { Character } from '../../../shared/character-models';
@@ -14,9 +14,11 @@ import { LevelPipe } from '../../../shared/level.pipe';
   templateUrl: './member-details.component.html',
   styleUrl: './member-details.component.scss',
 })
-export class MemberDetailsComponent {
+export class MemberDetailsComponent implements OnInit, OnDestroy {
   member: Character | undefined;
   memberId = 0;
+  isEditing = false;
+  isLoading = false;
 
   memberForm = new FormGroup({
     hasBonusControl: new FormControl(false),
@@ -33,6 +35,8 @@ export class MemberDetailsComponent {
     return this.memberForm.get('debtControl') as FormControl;
   }
 
+  subscription: Subscription = new Subscription();
+
   constructor(
     private route: ActivatedRoute,
     private characterService: CharacterService
@@ -41,7 +45,6 @@ export class MemberDetailsComponent {
     if (!!queryParameter && !isNaN(+queryParameter)) {
       this.memberId = +queryParameter;
 
-      // TODO: Unsubscribe
       this.characterService.getMember(this.memberId).subscribe((member) => {
         this.member = member;
         this.prefillForm();
@@ -64,6 +67,7 @@ export class MemberDetailsComponent {
 
     const { hasBonus, bonusDescription, debt } = this.member;
     this.hasBonusControl.setValue(hasBonus);
+    if (hasBonus) this.bonusDescriptionControl.enable();
     this.bonusDescriptionControl.setValue(bonusDescription);
     this.debtControl.setValue(debt);
   }
@@ -89,6 +93,8 @@ export class MemberDetailsComponent {
   }
 
   submit(): void {
+    this.isLoading = true;
+
     const updateRequest = {
       hasBonus: this.hasBonus,
       bonusDescription: this.bonusDescriptionControl.value,
@@ -98,6 +104,14 @@ export class MemberDetailsComponent {
     this.characterService
       .updateMemberBonus(this.memberId, updateRequest)
       .pipe(take(1))
-      .subscribe();
+      .subscribe((response) => {
+        this.member = response.character;
+        this.isEditing = false;
+        this.isLoading = false;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
