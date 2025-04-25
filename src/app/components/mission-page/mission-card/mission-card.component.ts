@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Mission } from '../../../shared/mission-model';
+import { getMissionAvailability, Mission } from '../../../shared/mission-model';
 import { NgStyle } from '@angular/common';
 import { ClassGroup } from 'app/shared/character-models';
 
@@ -21,13 +21,18 @@ export class MissionCardComponent {
   }
 
   get status(): string {
-    if (!!this.mission().finalOutcome) {
-      return 'var(--grey-dark)';
-    } else if (!!this.mission().diceRoll) {
-      return 'var(--warning)';
-    }
+    const availability = getMissionAvailability(this.mission());
 
-    return 'var(--success)';
+    switch (availability) {
+      case 'Available':
+        return 'var(--success)';
+      case 'Active':
+        return 'var(--warning)';
+      case 'Completed':
+        return 'var(--grey-dark)';
+      default:
+        return 'var(--error)';
+    }
   }
 
   get level(): string {

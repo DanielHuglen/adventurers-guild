@@ -14,6 +14,10 @@ import { RouterModule } from '@angular/router';
 export class CharacterCardComponent {
   character = input.required<Character>();
 
+  get characterName(): string {
+    return this.character().name.split(' ')[0];
+  }
+
   get availability(): string {
     if (!!this.character().activeMission) {
       return 'var(--warning)';

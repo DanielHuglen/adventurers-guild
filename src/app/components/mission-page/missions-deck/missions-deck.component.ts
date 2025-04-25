@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Mission } from '../../../shared/mission-model';
+import { getMissionAvailability, Mission } from '../../../shared/mission-model';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs';
 import { MissionCardComponent } from '../mission-card/mission-card.component';
@@ -15,7 +15,33 @@ export class MissionsDeckComponent {
 
   constructor(private route: ActivatedRoute) {
     this.route.data.pipe(take(1)).subscribe((data) => {
-      this.missions = data['missions'] as Mission[];
+      const missions = data['missions'] as Mission[];
+      if (!missions) {
+        return;
+      }
+
+      const sortedMissions = missions.sort((a, b) => {
+        const aAvailability = getMissionAvailability(a);
+        const bAvailability = getMissionAvailability(b);
+
+        // If availability is the same, sort by level
+        if (aAvailability === bAvailability) {
+          return a.level - b.level;
+        }
+
+        // Sort by availability order
+        const availabilityOrder = {
+          Available: 0,
+          Active: 1,
+          Completed: 2,
+        };
+
+        return (
+          availabilityOrder[aAvailability] - availabilityOrder[bAvailability]
+        );
+      });
+
+      this.missions = sortedMissions;
     });
   }
 }

@@ -43,3 +43,17 @@ export type City =
   | 'Mirabar'
   | 'Silverymoon'
   | 'Piltover';
+
+export type MissionAvailability = 'Available' | 'Active' | 'Completed';
+
+export function getMissionAvailability(mission: Mission): MissionAvailability {
+  const { finalOutcome, diceRoll } = mission;
+
+  if (!!finalOutcome) {
+    return 'Completed';
+  } else if (!!diceRoll) {
+    return 'Active';
+  } else {
+    return 'Available';
+  }
+}

@@ -10,7 +10,7 @@
       {
         "tier": "Critical Success",
         "description": "A bond is formed between the mimic and the lead agent. Your guild now has a young mimic.",
-        "reward": { "gold": 0, "reputation": 5 }
+        "reward": { "gold": 300, "reputation": 5 }
       },
       {
         "tier": "Success",
@@ -33,168 +33,347 @@
         "reward": { "gold": -400, "reputation": -10 }
       }
     ],
-    "diceRoll": 0,
-    "finalComposition": ["Tank"],
-    "finalOutcome": null
+    "diceRoll": 84,
+    "finalComposition": ["Martial"],
+    "finalOutcome": null,
+    "dispatchDate": "1497-03-08"
   },
   {
     "id": 2,
-    "title": "Escort the Merchant Caravan",
-    "description": "A merchant caravan traveling from Baldur's Gate to Waterdeep has requested protection from bandits and monsters along the road.",
-    "location": "Waterdeep",
+    "title": "Investigate Kraken Rumours",
+    "description": "The Silverwind Trading Company has been losing ships on a previously prosperous route. They'd like to evaluate rumours of undersea beasts in the area before they update their charts.",
+    "location": "Neverwinter",
     "level": 3,
-    "recommendedComposition": ["Tank", "Healer"],
+    "recommendedComposition": ["Healer", "Martial", "Magic"],
     "potentialOutcomes": [
       {
         "tier": "Critical Success",
-        "description": "The caravan arrives safely, and the merchants offer a rare magical item as a bonus reward.",
-        "reward": { "gold": 500, "reputation": 10 }
+        "description": "The Kraken is found and defeated. The guild is now known for its prowess in the sea.",
+        "reward": { "gold": 2000, "reputation": 10 }
       },
       {
         "tier": "Success",
-        "description": "The caravan arrives safely.",
-        "reward": { "gold": 500, "reputation": 5 }
+        "description": "The Kraken is found and defeated, but its remains are too damaged to be useful, even as proof it was a kraken.",
+        "reward": { "gold": 1850, "reputation": 7 }
       },
       {
         "tier": "Mixed",
-        "description": "The caravan arrives, but some goods were lost to bandits.",
-        "reward": { "gold": 300, "reputation": -1 }
+        "description": "The Kraken is found and defeated, but the guild's ship is damaged in the process. It will take an extra week and 200 gold to repair.",
+        "reward": { "gold": 1650, "reputation": 2 }
       },
       {
         "tier": "Failure",
-        "description": "The caravan is attacked, and most goods are lost.",
-        "reward": { "gold": -200, "reputation": -5 }
+        "description": "The Kraken is found, but the guild's ship is damaged and the kraken escapes. It will take an extra week and 200 gold to repair.",
+        "reward": { "gold": -200, "reputation": -2 }
       },
       {
         "tier": "Critical Failure",
-        "description": "The caravan is destroyed, and the guild's reputation suffers.",
-        "reward": { "gold": 0, "reputation": -10 }
+        "description": "The Kraken is found, but the guild's ship is sunk and the crew must be rescued or take two weeks to return. The guild will lose 700 gold for the ship and 10 reputation.",
+        "reward": { "gold": -700, "reputation": -10 }
       }
     ],
-    "diceRoll": 0,
-    "finalComposition": [],
-    "finalOutcome": null
+    "diceRoll": 35,
+    "finalComposition": ["Martial", "Healer", "Healer"],
+    "finalOutcome": null,
+    "dispatchDate": "1497-03-01"
   },
   {
     "id": 3,
-    "title": "Rescue the Captured Noble",
-    "description": "A noble from Neverwinter has been kidnapped by a group of bandits and is being held in a nearby forest. The guild has been hired to rescue them.",
-    "location": "Neverwinter",
-    "level": 4,
-    "recommendedComposition": ["Martial", "Martial"],
+    "title": "Keep the Peace at a Tavern",
+    "description": "The Second bell, a local city tavern, has been having trouble with rowdy sports fans and hunters. Folk involved with the mob have been seen, and the owner Jon Blythe wants a strong lawful presence to bring a sense of calm to the place.",
+    "location": "Mirabar",
+    "level": 1,
+    "recommendedComposition": ["Healer", "Tank"],
     "potentialOutcomes": [
       {
         "tier": "Critical Success",
-        "description": "The noble is rescued without a scratch, and the guild is handsomely rewarded.",
-        "reward": { "gold": 800, "reputation": 8 }
+        "description": "Jon's daughter, Robyn Blythe, was so impressed that she takes the opportunity to apply with your guild as a level 2 sorcerer.",
+        "reward": { "gold": 400, "reputation": 7 }
       },
       {
         "tier": "Success",
-        "description": "The noble is rescued, but they suffered minor injuries.",
-        "reward": { "gold": 600, "reputation": 5 }
+        "description": "The pub has turned itself around.",
+        "reward": { "gold": 325, "reputation": 5 }
       },
       {
         "tier": "Mixed",
-        "description": "The noble is rescued, but the bandits escaped with some of their belongings.",
-        "reward": { "gold": 400, "reputation": -2 }
+        "description": "The rowdiest of the clientele now drink elsewhere, but sales have taken a hit.",
+        "reward": { "gold": 150, "reputation": 1 }
       },
       {
         "tier": "Failure",
-        "description": "The noble is injured during the rescue, and the guild's reputation takes a hit.",
-        "reward": { "gold": -300, "reputation": -5 }
+        "description": "The atmosphere in the pub has not improved, and Jon has decided to sell up",
+        "reward": { "gold": -250, "reputation": -4 }
       },
       {
         "tier": "Critical Failure",
-        "description": "The noble is killed during the rescue attempt.",
-        "reward": { "gold": 0, "reputation": -10 }
+        "description": "Your agents have managed to offend Pebbles, a huge dwarven criminal. He vows to return to the pub with his boys to demolish it, before heading to the guild to take revenge.",
+        "reward": { "gold": -300, "reputation": -7 }
       }
     ],
-    "diceRoll": 100,
-    "finalComposition": ["Tank", "Magic", "Martial", "Healer", "Healer"],
+    "diceRoll": 35,
+    "finalComposition": ["Tank", "Healer"],
+    "finalOutcome": null,
+    "dispatchDate": "1497-03-08"
+  },
+  {
+    "id": 3,
+    "title": "Deliver an Ultimatum",
+    "description": "Tiefling woman Rieta Wist is having trouble with an ex-boyfriend, Sharius Faith, who will not leave her alone. She feels threatened and wants him scared away.",
+    "location": "Neverwinter",
+    "level": 1,
+    "recommendedComposition": ["Tank"],
+    "potentialOutcomes": [
+      {
+        "tier": "Critical Success",
+        "description": "Sharius is scared off permanently, and Rieta spreads word of your guild's effectiveness.",
+        "reward": { "gold": 800, "reputation": 5 }
+      },
+      {
+        "tier": "Success",
+        "description": "Sharius is scared off, but Rieta remains cautious.",
+        "reward": { "gold": 750, "reputation": 3 }
+      },
+      {
+        "tier": "Mixed",
+        "description": "Sharius leaves but vows revenge.",
+        "reward": { "gold": 500, "reputation": 0 }
+      },
+      {
+        "tier": "Failure",
+        "description": "Sharius refuses to leave and escalates the situation.",
+        "reward": { "gold": 0, "reputation": -2 }
+      },
+      {
+        "tier": "Critical Failure",
+        "description": "Sharius retaliates violently, causing damage to the guild's reputation and agents.",
+        "reward": { "gold": 0, "reputation": -5 }
+      }
+    ],
+    "diceRoll": 75,
+    "finalComposition": ["Tank"],
     "finalOutcome": {
-      "tier": "Critical Success",
-      "description": "The noble is rescued without a scratch, and the guild is handsomely rewarded.",
-      "reward": { "gold": 800, "reputation": 8 }
-    }
+      "tier": "Success",
+      "description": "Sharius is scared off, but Rieta remains cautious.",
+      "reward": { "gold": 750, "reputation": 3 }
+    },
+    "dispatchDate": "1497-03-01",
+    "completionDate": "1497-03-04"
   },
   {
     "id": 4,
-    "title": "Investigate the Haunted Manor",
-    "description": "A manor on the outskirts of Mirabar has been reported to be haunted. Strange noises and ghostly apparitions have scared away the residents.",
-    "location": "Mirabar",
-    "level": 5,
-    "recommendedComposition": ["Healer", "Magic"],
+    "title": "Find a Kidnapped Construct",
+    "description": "Clanky the construct has been kidnapped by a rival artificer and Rufus Frummagem needs help retrieving him.",
+    "location": "Piltover",
+    "level": 2,
+    "recommendedComposition": ["Tank", "Martial", "Magic"],
     "potentialOutcomes": [
       {
         "tier": "Critical Success",
-        "description": "The spirits are laid to rest, and the manor's owner rewards the guild with a valuable artifact.",
-        "reward": { "gold": 1000, "reputation": 12 }
+        "description": "Clanky is retrieved unharmed, and Rufus rewards you handsomely.",
+        "reward": { "gold": 1000, "reputation": 5 }
       },
       {
         "tier": "Success",
-        "description": "The spirits are banished, and the guild is paid handsomely.",
-        "reward": { "gold": 1000, "reputation": 10 }
+        "description": "Clanky is retrieved, but with minor damage.",
+        "reward": { "gold": 850, "reputation": 3 }
       },
       {
         "tier": "Mixed",
-        "description": "The spirits are banished, but some damage was done to the manor.",
-        "reward": { "gold": 700, "reputation": -3 }
+        "description": "Clanky is retrieved, but the rival artificer placed a scrying device on it.",
+        "reward": { "gold": 600, "reputation": 1 }
       },
       {
         "tier": "Failure",
-        "description": "The spirits remain, and the guild's reputation suffers.",
-        "reward": { "gold": -500, "reputation": -8 }
+        "description": "Clanky is not retrieved, and Rufus is furious.",
+        "reward": { "gold": 0, "reputation": -5 }
       },
       {
         "tier": "Critical Failure",
-        "description": "The spirits grow stronger, and the guild is forced to retreat.",
-        "reward": { "gold": 0, "reputation": -12 }
+        "description": "Clanky is destroyed, and Rufus spreads word of your failure while demaning you pay for parts to replace him.",
+        "reward": { "gold": -500, "reputation": -10 }
       }
     ],
-    "diceRoll": 45,
-    "finalComposition": ["Magic", "Magic", "Magic"],
-    "finalOutcome": null
+    "diceRoll": 65,
+    "finalComposition": ["Tank", "Martial", "Magic", "Healer"],
+    "finalOutcome": {
+      "tier": "Success",
+      "description": "Clanky is retrieved, but with minor damage.",
+      "reward": { "gold": 765, "reputation": 3 }
+    },
+    "dispatchDate": "1497-03-01",
+    "completionDate": "1497-03-07"
   },
   {
     "id": 5,
-    "title": "Retrieve the Stolen Artifact",
-    "description": "A priceless artifact was stolen from the temple of Lathander in Luskan. The guild has been tasked with retrieving it from the thieves.",
-    "location": "Luskan",
-    "level": 3,
-    "recommendedComposition": ["Martial", "Martial"],
+    "title": "Deal with Unfavourable Rumours",
+    "description": "A drunkard has been terrorising the Sweetwater Tavern in a local village for weeks, spreading ill rumors of your company. The drunkard, however, is the nephew of a nearby Duke, and must be dealt with 'delicately.'",
+    "location": "Neverwinter",
+    "level": 1,
+    "recommendedComposition": ["Tank", "Martial"],
     "potentialOutcomes": [
       {
         "tier": "Critical Success",
-        "description": "The artifact is retrieved without alerting the thieves, and the guild is rewarded with a blessing from the temple.",
-        "reward": { "gold": 600, "reputation": 10 }
+        "description": "A ring worth 500gp is gifted to you by the drunkard + 5RP + The drunkard shares the scheduled stops for a supply caravan belonging to an enemy of the party.",
+        "reward": { "gold": 750, "reputation": 5 }
       },
       {
         "tier": "Success",
-        "description": "The artifact is retrieved, and the guild is paid.",
-        "reward": { "gold": 600, "reputation": 6 }
+        "description": "Your agents have successfully convinced the drunkard to keep quiet. You are gifted a silver trinket worth 250g.",
+        "reward": { "gold": 250, "reputation": 3 }
       },
       {
         "tier": "Mixed",
-        "description": "The artifact is retrieved, but the thieves escaped.",
-        "reward": { "gold": 400, "reputation": -2 }
+        "description": "50gp is taken from the drunkard.",
+        "reward": { "gold": 50, "reputation": -2 }
       },
       {
         "tier": "Failure",
-        "description": "The artifact is damaged during the retrieval, and the guild's reputation suffers.",
-        "reward": { "gold": -300, "reputation": -6 }
+        "description": "Your agents have lost their temper, publicly thrashing the drunkard.",
+        "reward": { "gold": 0, "reputation": -4 }
       },
       {
         "tier": "Critical Failure",
-        "description": "The artifact is lost, and the guild is blamed for the failure.",
-        "reward": { "gold": 0, "reputation": -10 }
+        "description": "The Duke is so offended at the way his nephew was treated that he's demanding a meeting with guild leadership!",
+        "reward": { "gold": -150, "reputation": -10 }
       }
     ],
-    "diceRoll": 87,
-    "finalComposition": ["Healer", "Tank", "Tank"],
+    "diceRoll": 43,
+    "finalComposition": ["Tank", "Martial damage"],
     "finalOutcome": {
       "tier": "Success",
-      "description": "The artifact is retrieved, and the guild is paid.",
-      "reward": { "gold": 600, "reputation": 6 }
-    }
+      "description": "Your agents have successfully convinced the drunkard to keep quiet. You are gifted a silver trinket worth 250g",
+      "reward": { "gold": 240, "reputation": 3 }
+    },
+    "dispatchDate": "1497-03-04",
+    "completionDate": "1497-03-07"
+  },
+  {
+    "id": 7,
+    "title": "Distract the City Watch",
+    "description": "Dwarf crime boss Ogilvie Understone is planning a hit at the central bank of the capital city. He is asking you to assist by drawing the attention of a number of the guards on that night.",
+    "location": "Baldur's Gate",
+    "level": 3,
+    "recommendedComposition": ["Fighter", "Rogue"],
+    "potentialOutcomes": [
+      {
+        "tier": "Critical Success",
+        "description": "Ogilvie offers you a favour in return, to be called in whenever.",
+        "reward": { "gold": 5000, "reputation": 10 }
+      },
+      {
+        "tier": "Success",
+        "description": "The Understone robbery goes off without a hitch. Ogilvie is impressed. No reputation loss is suffered.",
+        "reward": { "gold": 2500, "reputation": 5 }
+      },
+      {
+        "tier": "Mixed",
+        "description": "The Understone robbery goes off with minor trouble from the watch, but one of your Rogues is arrested! Bail will take a week and cost 500gp. Ogilvie pays you 1500gp. -8 RP",
+        "reward": { "gold": 1500, "reputation": -8 }
+      },
+      {
+        "tier": "Failure",
+        "description": "There are arrests made at the Understone robbery. 2 Rogues arrested, bail as above per Rogue, -12 RP.",
+        "reward": { "gold": 0, "reputation": -12 }
+      },
+      {
+        "tier": "Critical Failure",
+        "description": "Ogilvie holds you personally responsible, and swears to run you out of town unless your party performs the robbery as planned and delivers the money.",
+        "reward": { "gold": 0, "reputation": -20 }
+      }
+    ],
+    "diceRoll": null,
+    "finalComposition": [],
+    "finalOutcome": null,
+    "dispatchDate": null,
+    "completionDate": null
+  },
+  {
+    "id": 8,
+    "title": "Disrupt the Weather Wizards",
+    "description": "A circle of shadow druids have started brewing up storms up north, putting a shadow over the King's castle. He wishes to see the sun again, and to interrupt the druids' rituals.",
+    "location": "Luskan",
+    "level": 4,
+    "recommendedComposition": ["Magic", "Tank", "Healer"],
+    "potentialOutcomes": [
+      {
+        "tier": "Critical Success",
+        "description": "The king is mighty impressed with your work, granting you an extra 20 reputation in the kingdom! He also provides tickets for Billy Jigglepike's live show.",
+        "reward": { "gold": 2500, "reputation": 30 }
+      },
+      {
+        "tier": "Success",
+        "description": "The sun is shining once again and the druids have been driven out of the city. 2500g + 10 reputation.",
+        "reward": { "gold": 2500, "reputation": 10 }
+      },
+      {
+        "tier": "Mixed",
+        "description": "The druids are gone, but their spell still lingers. 1250g + 2 reputation.",
+        "reward": { "gold": 1250, "reputation": 2 }
+      },
+      {
+        "tier": "Failure",
+        "description": "Some of the druids managed to complete the ritual before being slain, and the king blames you for it. -10 reputation and expenses equal to 10% of initial reward.",
+        "reward": { "gold": -250, "reputation": -10 }
+      },
+      {
+        "tier": "Critical Failure",
+        "description": "One of your agents was turned into a sheep! Find a way to lift the curse.",
+        "reward": { "gold": 0, "reputation": -15 }
+      }
+    ],
+    "diceRoll": null,
+    "finalComposition": [],
+    "finalOutcome": null,
+    "dispatchDate": null,
+    "completionDate": null
+  },
+  {
+    "id": 9,
+    "title": "Quell a Cult Uprising",
+    "description": "The Cult of the Brass Orb have taken up residence in the Quartzstone Caverns and are terrorizing nearby settlements, sacrificing villagers to their god, the demon Tremchuur. Send agents to quell the cultists and rid the region of their evil.",
+    "location": "Moonshae Isles",
+    "level": 5,
+    "recommendedComposition": [
+      "Magic",
+      "Tank",
+      "Tank",
+      "Tank",
+      "Healer",
+      "Healer",
+      "Martial"
+    ],
+    "potentialOutcomes": [
+      {
+        "tier": "Critical Success",
+        "description": "During interrogation, the cultists reveal the location of the talisman of Ultimate Evil.",
+        "reward": { "gold": 2500, "reputation": 20 }
+      },
+      {
+        "tier": "Success",
+        "description": "The cultists are slain and scattered. A magic item from Table D is brought back.",
+        "reward": { "gold": 2500, "reputation": 10 }
+      },
+      {
+        "tier": "Mixed",
+        "description": "The cultists are scattered, but cells are still active. A magic item from Table B is brought back.",
+        "reward": { "gold": 1250, "reputation": 2 }
+      },
+      {
+        "tier": "Failure",
+        "description": "The cultists captured your agents and 1000g expenses must be paid to get them back. Word of the cultists is spreading, damaging the guild's reputation.",
+        "reward": { "gold": -1000, "reputation": -10 }
+      },
+      {
+        "tier": "Critical Failure",
+        "description": "The cultists have managed to summon Tremchuur, threatening to wreak havoc on the region. Four agents are held hostage as bait.",
+        "reward": { "gold": 0, "reputation": -15 }
+      }
+    ],
+    "diceRoll": null,
+    "finalComposition": [],
+    "finalOutcome": null,
+    "dispatchDate": null,
+    "completionDate": null
   }
 ]
