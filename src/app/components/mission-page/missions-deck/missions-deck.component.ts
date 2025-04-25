@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { getMissionAvailability, Mission } from '../../../shared/mission-model';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs';
@@ -10,7 +10,7 @@ import { MissionCardComponent } from '../mission-card/mission-card.component';
   templateUrl: './missions-deck.component.html',
   styleUrl: './missions-deck.component.scss',
 })
-export class MissionsDeckComponent {
+export class MissionsDeckComponent implements OnInit, OnDestroy {
   missions: Mission[] = [];
 
   constructor(private route: ActivatedRoute) {
@@ -43,5 +43,18 @@ export class MissionsDeckComponent {
 
       this.missions = sortedMissions;
     });
+  }
+
+  ngOnInit(): void {
+    window.onkeydown = (event: KeyboardEvent) => {
+      // When both Ctrl and M are pressed, print all missions to the console
+      if (event.ctrlKey && event.key === 'm') {
+        console.log(JSON.stringify(this.missions, null, 2));
+      }
+    };
+  }
+
+  ngOnDestroy(): void {
+    window.onkeydown = null;
   }
 }

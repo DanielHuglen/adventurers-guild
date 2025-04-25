@@ -117,7 +117,7 @@
     "dispatchDate": "1497-03-08"
   },
   {
-    "id": 3,
+    "id": 4,
     "title": "Deliver an Ultimatum",
     "description": "Tiefling woman Rieta Wist is having trouble with an ex-boyfriend, Sharius Faith, who will not leave her alone. She feels threatened and wants him scared away.",
     "location": "Neverwinter",
@@ -161,7 +161,7 @@
     "completionDate": "1497-03-04"
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "Find a Kidnapped Construct",
     "description": "Clanky the construct has been kidnapped by a rival artificer and Rufus Frummagem needs help retrieving him.",
     "location": "Piltover",
@@ -205,7 +205,7 @@
     "completionDate": "1497-03-07"
   },
   {
-    "id": 5,
+    "id": 6,
     "title": "Deal with Unfavourable Rumours",
     "description": "A drunkard has been terrorising the Sweetwater Tavern in a local village for weeks, spreading ill rumors of your company. The drunkard, however, is the nephew of a nearby Duke, and must be dealt with 'delicately.'",
     "location": "Neverwinter",
