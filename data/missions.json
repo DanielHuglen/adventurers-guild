@@ -254,7 +254,13 @@
     "description": "Dwarf crime boss Ogilvie Understone is planning a hit at the central bank of the capital city. He is asking you to assist by drawing the attention of a number of the guards on that night.",
     "location": "Baldur's Gate",
     "level": 3,
-    "recommendedComposition": ["Fighter", "Rogue"],
+    "recommendedComposition": [
+      "Martial",
+      "Martial",
+      "Martial",
+      "Martial",
+      "Martial"
+    ],
     "potentialOutcomes": [
       {
         "tier": "Critical Success",
