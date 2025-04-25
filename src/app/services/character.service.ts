@@ -6,11 +6,7 @@ import {
   CharacterBonusUpdateRequest,
   CharacterBonusUpdateResponse,
 } from '../shared/api-models';
-import {
-  ActivatedRouteSnapshot,
-  ResolveFn,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { ResolveFn } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -41,9 +37,6 @@ export class CharacterService {
   }
 }
 
-export const charactersResolver: ResolveFn<Character[]> = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-) => {
+export const charactersResolver: ResolveFn<Character[]> = () => {
   return inject(CharacterService).getMembers().pipe(first());
 };

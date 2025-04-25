@@ -2,11 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Mission } from '../shared/mission-model';
 import { first, Observable } from 'rxjs';
-import {
-  ActivatedRouteSnapshot,
-  ResolveFn,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { ResolveFn } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -23,9 +19,6 @@ export class MissionService {
   }
 }
 
-export const missionsResolver: ResolveFn<Mission[]> = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-) => {
+export const missionsResolver: ResolveFn<Mission[]> = () => {
   return inject(MissionService).getMissions().pipe(first());
 };

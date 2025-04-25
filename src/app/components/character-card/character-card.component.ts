@@ -19,7 +19,7 @@ export class CharacterCardComponent {
   }
 
   get availability(): string {
-    if (!!this.character().activeMission) {
+    if (this.character().activeMission) {
       return 'var(--warning)';
     } else if (this.character().isAlive) {
       return 'var(--success)';

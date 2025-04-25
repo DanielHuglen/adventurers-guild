@@ -49,9 +49,9 @@ export type MissionAvailability = 'Available' | 'Active' | 'Completed';
 export function getMissionAvailability(mission: Mission): MissionAvailability {
   const { finalOutcome, diceRoll } = mission;
 
-  if (!!finalOutcome) {
+  if (finalOutcome) {
     return 'Completed';
-  } else if (!!diceRoll) {
+  } else if (diceRoll) {
     return 'Active';
   } else {
     return 'Available';

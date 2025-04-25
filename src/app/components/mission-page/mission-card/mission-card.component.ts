@@ -40,9 +40,9 @@ export class MissionCardComponent {
   }
   get gold(): string {
     let goldReward = 0;
-    if (!!this.finalOutcome) {
+    if (this.finalOutcome) {
       goldReward = this.finalOutcome.reward.gold;
-    } else if (!!this.successOutcome) {
+    } else if (this.successOutcome) {
       goldReward = this.successOutcome.reward.gold;
     }
     return `${goldReward.toString()} Gold`;
@@ -64,7 +64,7 @@ export class MissionCardComponent {
       (rec) => rec === 'Healer'
     );
 
-    let roleRecommendationText = [];
+    const roleRecommendationText = [];
     roleRecommendationText.push(this.getRoleText(tankRecommendations, 'Tank'));
     roleRecommendationText.push(
       this.getRoleText(martialRecommendations, 'Martial')
@@ -89,7 +89,7 @@ export class MissionCardComponent {
     const finalMagic = finalComposition.filter((rec) => rec === 'Magic');
     const finalHealer = finalComposition.filter((rec) => rec === 'Healer');
 
-    let finalCompositionText = [];
+    const finalCompositionText = [];
     finalCompositionText.push(this.getRoleText(finalTank, 'Tank'));
     finalCompositionText.push(this.getRoleText(finalMartial, 'Martial'));
     finalCompositionText.push(this.getRoleText(finalMagic, 'Magic'));

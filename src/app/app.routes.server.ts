@@ -1,7 +1,4 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
-import { CharacterService } from './services/character.service';
-import { inject } from '@angular/core';
-import { first } from 'rxjs';
 
 export const serverRoutes: ServerRoute[] = [
   {

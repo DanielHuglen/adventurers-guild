@@ -54,9 +54,8 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.hasBonusControl.valueChanges.subscribe((hasBonus) => {
-      hasBonus
-        ? this.bonusDescriptionControl.enable()
-        : this.bonusDescriptionControl.disable();
+      if (hasBonus) this.bonusDescriptionControl.enable();
+      else this.bonusDescriptionControl.disable();
     });
   }
 
