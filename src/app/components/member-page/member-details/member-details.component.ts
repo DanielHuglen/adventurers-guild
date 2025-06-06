@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Subscription, take } from 'rxjs';
@@ -7,110 +7,110 @@ import { CharacterBonusUpdateRequest } from '../../../shared/api-models';
 import { Character } from '../../../shared/character-models';
 import { ClassGroupPipe } from '../../../shared/class-group.pipe';
 import { LevelPipe } from '../../../shared/level.pipe';
+import { AbilityModifierPipe } from '../../../shared/ability-modifier.pipe';
 
 @Component({
-  selector: 'app-member-details',
-  imports: [ClassGroupPipe, LevelPipe, ReactiveFormsModule],
-  templateUrl: './member-details.component.html',
-  styleUrl: './member-details.component.scss',
+	selector: 'app-member-details',
+	imports: [ClassGroupPipe, LevelPipe, ReactiveFormsModule, AbilityModifierPipe],
+	templateUrl: './member-details.component.html',
+	styleUrl: './member-details.component.scss',
 })
 export class MemberDetailsComponent implements OnInit, OnDestroy {
-  member: Character | undefined;
-  memberId = 0;
-  isEditing = false;
-  isLoading = false;
+	member: Character | undefined;
+	memberId = 0;
+	isEditing = false;
+	isLoading = false;
 
-  memberForm = new FormGroup({
-    hasBonusControl: new FormControl(false),
-    bonusDescriptionControl: new FormControl({ value: '', disabled: true }),
-    debtControl: new FormControl(0),
-  });
-  get hasBonusControl(): FormControl {
-    return this.memberForm.get('hasBonusControl') as FormControl;
-  }
-  get bonusDescriptionControl(): FormControl {
-    return this.memberForm.get('bonusDescriptionControl') as FormControl;
-  }
-  get debtControl(): FormControl {
-    return this.memberForm.get('debtControl') as FormControl;
-  }
+	isModPreferred = signal(false);
 
-  subscription: Subscription = new Subscription();
+	memberForm = new FormGroup({
+		hasBonusControl: new FormControl(false),
+		bonusDescriptionControl: new FormControl({ value: '', disabled: true }),
+		debtControl: new FormControl(0),
+	});
+	get hasBonusControl(): FormControl {
+		return this.memberForm.get('hasBonusControl') as FormControl;
+	}
+	get bonusDescriptionControl(): FormControl {
+		return this.memberForm.get('bonusDescriptionControl') as FormControl;
+	}
+	get debtControl(): FormControl {
+		return this.memberForm.get('debtControl') as FormControl;
+	}
 
-  constructor(
-    private route: ActivatedRoute,
-    private characterService: CharacterService
-  ) {
-    const queryParameter = this.route.snapshot.paramMap.get('id');
-    if (!!queryParameter && !isNaN(+queryParameter)) {
-      this.memberId = +queryParameter;
+	subscription: Subscription = new Subscription();
 
-      this.characterService.getMember(this.memberId).subscribe((member) => {
-        this.member = member;
-        this.prefillForm();
-      });
-    }
-  }
+	constructor(private route: ActivatedRoute, private characterService: CharacterService) {
+		const queryParameter = this.route.snapshot.paramMap.get('id');
+		if (!!queryParameter && !isNaN(+queryParameter)) {
+			this.memberId = +queryParameter;
 
-  ngOnInit(): void {
-    this.hasBonusControl.valueChanges.subscribe((hasBonus) => {
-      if (hasBonus) this.bonusDescriptionControl.enable();
-      else this.bonusDescriptionControl.disable();
-    });
-  }
+			this.characterService.getMember(this.memberId).subscribe((member) => {
+				this.member = member;
+				this.prefillForm();
+			});
+		}
+	}
 
-  private prefillForm(): void {
-    if (!this.member) {
-      return;
-    }
+	ngOnInit(): void {
+		this.hasBonusControl.valueChanges.subscribe((hasBonus) => {
+			if (hasBonus) this.bonusDescriptionControl.enable();
+			else this.bonusDescriptionControl.disable();
+		});
+	}
 
-    const { hasBonus, bonusDescription, debt } = this.member;
-    this.hasBonusControl.setValue(hasBonus);
-    if (hasBonus) this.bonusDescriptionControl.enable();
-    this.bonusDescriptionControl.setValue(bonusDescription);
-    this.debtControl.setValue(debt);
-  }
+	private prefillForm(): void {
+		if (!this.member) {
+			return;
+		}
 
-  get separatedLanguages(): string {
-    if (!this.member?.languages?.length) {
-      return 'None';
-    }
+		const { hasBonus, bonusDescription, debt } = this.member;
+		this.hasBonusControl.setValue(hasBonus);
+		if (hasBonus) this.bonusDescriptionControl.enable();
+		this.bonusDescriptionControl.setValue(bonusDescription);
+		this.debtControl.setValue(debt);
+	}
 
-    return [...this.member.languages].join(', ');
-  }
+	get separatedLanguages(): string {
+		if (!this.member?.languages?.length) {
+			return 'None';
+		}
 
-  get separatedFeatures(): string {
-    if (!this.member?.features?.length) {
-      return 'None';
-    }
+		return [...this.member.languages].join(', ');
+	}
 
-    return this.member.features.join(', ');
-  }
+	get separatedFeatures(): string {
+		if (!this.member?.features?.length) {
+			return 'None';
+		}
 
-  get hasBonus(): boolean {
-    return !!this.hasBonusControl.value;
-  }
+		return this.member.features.join(', ');
+	}
 
-  submit(): void {
-    this.isLoading = true;
+	get hasBonus(): boolean {
+		return !!this.hasBonusControl.value;
+	}
 
-    const updateRequest = {
-      hasBonus: this.hasBonus,
-      bonusDescription: this.bonusDescriptionControl.value,
-      debt: this.debtControl.value,
-    } as CharacterBonusUpdateRequest;
+	submit(): void {
+		this.isLoading = true;
 
-    this.characterService
-      .updateMemberBonus(this.memberId, updateRequest)
-      .pipe(take(1))
-      .subscribe((response) => {
-        this.member = response.character;
-        this.isEditing = false;
-        this.isLoading = false;
-      });
-  }
+		const updateRequest = {
+			hasBonus: this.hasBonus,
+			bonusDescription: this.bonusDescriptionControl.value,
+			debt: this.debtControl.value,
+		} as CharacterBonusUpdateRequest;
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
+		this.characterService
+			.updateMemberBonus(this.memberId, updateRequest)
+			.pipe(take(1))
+			.subscribe((response) => {
+				this.member = response.character;
+				this.isEditing = false;
+				this.isLoading = false;
+			});
+	}
+
+	ngOnDestroy(): void {
+		this.subscription.unsubscribe();
+	}
 }

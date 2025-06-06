@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "serve:ssr:adventurers-guild": "node dist/adventurers-guild/server/server.mjs"
+    "server": "node dist/adventurers-guild/server/server.mjs"
   },
   "private": true,
   "dependencies": {

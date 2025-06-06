@@ -5,6 +5,7 @@ import { MemberDetailsComponent } from './components/member-page/member-details/
 import { charactersResolver } from './services/character.service';
 import { MissionsDeckComponent } from './components/mission-page/missions-deck/missions-deck.component';
 import { missionsResolver } from './services/mission.service';
+import { MissionOverviewComponent } from './components/mission-page/mission-overview/mission-overview.component';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,10 @@ export const routes: Routes = [
     resolve: {
       missions: missionsResolver,
     },
+  },
+  {
+    path: 'missions/:id',
+    component: MissionOverviewComponent
   },
   {
     path: 'employees',

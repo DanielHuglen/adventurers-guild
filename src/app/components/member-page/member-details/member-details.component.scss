@@ -1,225 +1,227 @@
 :host {
-  margin: 32px;
-  display: block;
-  container-type: inline-size;
+	margin: 32px;
+	display: block;
+	container-type: inline-size;
 
-  @media screen and (max-width: 768px) {
-    margin: 16px;
+	@media screen and (max-width: 768px) {
+		margin: 16px;
 
-    .member-details-container {
-      padding: 16px;
-    }
-  }
+		.member-details-container {
+			padding: 16px;
+		}
+	}
 }
 
 .member-details-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  border-radius: 16px;
-  background-color: var(--secondary);
-  color: var(--white);
-  padding: 32px;
+	max-width: 1200px;
+	margin: 0 auto;
+	border-radius: 16px;
+	background-color: var(--secondary);
+	color: var(--white);
+	padding: 32px;
 
-  .member-header {
-    padding-bottom: 32px;
-    border-bottom: 8px solid var(--complimentary-dark);
+	.member-header {
+		padding-bottom: 32px;
+		border-bottom: 8px solid var(--complimentary-dark);
 
-    img {
-      view-transition-name: character-image-2;
-      width: 300px;
-      aspect-ratio: 1;
-      object-fit: cover;
-      object-position: top;
-      border: 8px solid var(--primary);
-      margin-right: 64px;
-    }
+		img {
+			view-transition-name: character-image-2;
+			width: 300px;
+			aspect-ratio: 1;
+			object-fit: cover;
+			object-position: top;
+			border: 8px solid var(--primary);
+			margin-right: 64px;
+		}
 
-    &-info {
-      display: inline-block;
-      max-width: 75ch;
-      margin-top: 16px;
+		&-info {
+			display: inline-block;
+			max-width: 75ch;
+			margin-top: 16px;
 
-      .class-level {
-        font-size: 1.2rem;
-        text-transform: uppercase;
-      }
-      h2 {
-        width: fit-content;
-        font-size: 5rem;
-        cursor: crosshair;
-        color: var(--primary);
-        text-shadow: 0 0 0 var(--complimentary-light),
-          0 0 0 var(--complimentary-dark);
-        transition: text-shadow 0.5s ease;
+			.class-level {
+				font-size: 1.2rem;
+				text-transform: uppercase;
+			}
+			h2 {
+				width: fit-content;
+				font-size: 5rem;
+				cursor: crosshair;
+				color: var(--primary);
+				text-shadow: 0 0 0 var(--complimentary-light), 0 0 0 var(--complimentary-dark);
+				transition: text-shadow 0.5s ease;
 
-        &:hover {
-          text-shadow: 5px 0 0 var(--complimentary-light),
-            10px 0 0 var(--complimentary-dark);
-        }
-      }
-      p {
-        line-height: 1.5;
-      }
-    }
-  }
+				&:hover {
+					text-shadow: 5px 0 0 var(--complimentary-light), 10px 0 0 var(--complimentary-dark);
+				}
+			}
+			p {
+				line-height: 1.5;
+			}
+		}
+	}
 
-  .member-stats {
-    display: flex;
-    gap: 32px;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 32px;
+	.member-stats {
+		display: flex;
+		gap: 32px;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		margin-top: 32px;
 
-    @container (max-width: 768px) {
-      flex-direction: column;
-    }
+		@container (max-width: 768px) {
+			flex-direction: column;
+		}
 
-    .ability-scores,
-    .stats,
-    .knowledge {
-      flex: 1;
-      max-width: 332px;
-    }
+		.ability-scores,
+		.stats,
+		.knowledge {
+			flex: 1;
+			max-width: 332px;
+		}
 
-    .ability-scores {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      gap: 16px;
-      min-width: 220px;
+		.ability-scores {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+			gap: 16px;
+			min-width: 220px;
 
-      .score {
-        border: 2px solid var(--secondary-light);
-        border-radius: 8px;
-        padding: 16px;
-        text-align: center;
-        transition: background-color 0.2s;
+			.score {
+				cursor: pointer;
+				border: 2px solid var(--secondary-light);
+				border-radius: 8px;
+				padding: 16px;
+				text-align: center;
+				transition: background-color 0.2s;
 
-        &:hover {
-          background-color: var(--secondary-dark);
-        }
+				&:hover {
+					background-color: var(--secondary-dark);
+				}
+				&:active {
+					background-color: var(--secondary);
+				}
 
-        div:first-of-type {
-          font-size: 2rem;
-          color: var(--primary);
-        }
-        div:last-of-type {
-          font-size: 0.65rem;
-          font-weight: bold;
-          text-transform: uppercase;
-          margin-left: 0.25ch;
-        }
-      }
-    }
+				div:first-of-type {
+					font-size: 2rem;
+					color: var(--primary);
+				}
+				div:last-of-type {
+					font-size: 0.65rem;
+					font-weight: bold;
+					text-transform: uppercase;
+					margin-left: 0.25ch;
+				}
+			}
+		}
 
-    .stats {
-      display: flex;
-      justify-content: space-evenly;
-      gap: 16px;
-      height: 100%;
+		.stats {
+			display: flex;
+			justify-content: space-evenly;
+			gap: 16px;
+			height: 100%;
 
-      .stat {
-        span:first-of-type {
-          font-size: 2rem;
-          color: var(--primary);
-        }
-        span:last-of-type {
-          font-size: 0.8rem;
-          text-transform: uppercase;
-          margin-left: 0.25ch;
-        }
-      }
-    }
+			.stat {
+				span:first-of-type {
+					font-size: 2rem;
+					color: var(--primary);
+				}
+				span:last-of-type {
+					font-size: 0.8rem;
+					text-transform: uppercase;
+					margin-left: 0.25ch;
+				}
+			}
+		}
 
-    .knowledge {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-      font-size: 2rem;
-      color: var(--primary);
+		.knowledge {
+			display: flex;
+			flex-direction: column;
+			gap: 32px;
+			font-size: 2rem;
+			color: var(--primary);
 
-      h3 {
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        margin-bottom: 8px;
-        color: var(--white);
-      }
-    }
-  }
+			h3 {
+				font-size: 0.8rem;
+				text-transform: uppercase;
+				margin-bottom: 8px;
+				color: var(--white);
+			}
+		}
+	}
 }
 
 .controls {
-  width: fit-content;
-  margin: 32px auto;
-  border: 2px solid var(--complimentary-dark);
-  border-radius: 16px;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  color: var(--complimentary-dark);
-  accent-color: var(--complimentary-dark);
+	width: fit-content;
+	margin: 32px auto;
+	border: 2px solid var(--complimentary-dark);
+	border-radius: 16px;
+	padding: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 16px;
+	color: var(--complimentary-dark);
+	accent-color: var(--complimentary-dark);
 
-  span {
-    display: flex;
-    align-items: center;
+	span {
+		display: flex;
+		align-items: center;
 
-    &:has(input[type="checkbox"]):hover {
-      cursor: pointer;
-    }
+		&:has(input[type="checkbox"]):hover {
+			cursor: pointer;
+		}
 
-    label,
-    .control-title {
-      height: 100%;
-      padding-right: 8px; // Using padding instead of margin to keep the checkbox clickable
-      font-size: 1.2rem;
+		label,
+		.control-title {
+			height: 100%;
+			padding-right: 8px; // Using padding instead of margin to keep the checkbox clickable
+			font-size: 1.2rem;
 
-      &:has(+ input[type="checkbox"]) {
-        cursor: pointer;
-      }
-    }
+			&:has(+ input[type="checkbox"]) {
+				cursor: pointer;
+			}
+		}
 
-    .control-value {
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
+		.control-value {
+			font-weight: bold;
+			font-size: 1.2rem;
+		}
 
-    input {
-      display: inline-block;
-      height: 1.5rem;
+		input {
+			display: inline-block;
+			height: 1.5rem;
 
-      &[type="checkbox"] {
-        width: 1.5rem;
-        cursor: pointer;
-      }
-    }
+			&[type="checkbox"] {
+				width: 1.5rem;
+				cursor: pointer;
+			}
+		}
 
-    &:last-of-type input {
-      width: 5rem;
-    }
-  }
+		&:last-of-type input {
+			width: 5rem;
+		}
+	}
 
-  button {
-    padding: 4px 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: var(--complimentary);
-    color: var(--white);
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
+	button {
+		padding: 4px 12px;
+		border: none;
+		border-radius: 4px;
+		background-color: var(--complimentary);
+		color: var(--white);
+		font-size: 1.2rem;
+		cursor: pointer;
+		transition: background-color 0.2s;
 
-    &:hover {
-      background-color: var(--complimentary-light);
-    }
-    &:active {
-      background-color: var(--complimentary-dark);
-    }
-    &:disabled {
-      background-color: var(--grey-dark);
-      cursor: not-allowed;
-    }
-  }
+		&:hover {
+			background-color: var(--complimentary-light);
+		}
+		&:active {
+			background-color: var(--complimentary-dark);
+		}
+		&:disabled {
+			background-color: var(--grey-dark);
+			cursor: not-allowed;
+		}
+	}
 }

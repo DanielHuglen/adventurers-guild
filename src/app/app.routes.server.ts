@@ -18,6 +18,10 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Server,
   },
   {
+    path: 'missions/:id',
+    renderMode: RenderMode.Server,
+  },
+  {
     path: 'employees',
     renderMode: RenderMode.Server,
   },

@@ -1,14 +1,15 @@
 import {
-  AngularNodeAppEngine,
-  createNodeRequestHandler,
-  isMainModule,
-  writeResponseToNodeResponse,
+	AngularNodeAppEngine,
+	createNodeRequestHandler,
+	isMainModule,
+	writeResponseToNodeResponse,
 } from '@angular/ssr/node';
 import express from 'express';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Character } from './app/shared/character-models';
 import { CharacterBonusUpdateResponse } from './app/shared/api-models';
+import { Mission } from 'app/shared/mission-model';
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
@@ -31,71 +32,89 @@ const fs = require('fs');
  */
 // Members API
 app.get('/api/members', (req, res) => {
-  res.sendFile(resolve('data', 'adventurers.json'));
+	res.sendFile(resolve('data', 'adventurers.json'));
 });
 
 app.get('/api/members/ids', (req, res) => {
-  const adventurers = require(resolve('data', 'adventurers.json'));
-  res.json(adventurers.map((a: Character) => a.id));
+	const adventurers = require(resolve('data', 'adventurers.json'));
+	res.json(adventurers.map((a: Character) => a.id));
 });
 
 app.get('/api/members/:id', (req, res) => {
-  const id = +req.params.id;
-  const adventurers = require(resolve('data', 'adventurers.json'));
-  res.json(adventurers.find((a: Character) => a.id === id));
+	const id = +req.params.id;
+	const adventurers = require(resolve('data', 'adventurers.json'));
+	res.json(adventurers.find((a: Character) => a.id === id));
 });
 
 app.put('/api/members/:id/bonus', express.json(), (req, res) => {
-  const id = +req.params.id;
-  const hasBonus = req.body.hasBonus;
-  const bonusDescription = req.body.bonusDescription;
-  const debt = req.body.debt;
+	const id = +req.params.id;
+	const hasBonus = req.body.hasBonus;
+	const bonusDescription = req.body.bonusDescription;
+	const debt = req.body.debt;
 
-  const log = bonusDescription ? ` with description: ${bonusDescription}` : '';
-  console.log(`Updating member ${id} with bonus: ${hasBonus}${log}`);
+	const log = bonusDescription ? ` with description: ${bonusDescription}` : '';
+	console.log(`Updating member ${id} with bonus: ${hasBonus}${log}`);
 
-  const adventurers = require(resolve('data', 'adventurers.json'));
-  const member = adventurers.find((a: Character) => a.id === id);
-  member.hasBonus = hasBonus;
-  member.bonusDescription = bonusDescription;
-  member.debt = debt;
-  fs.writeFileSync(
-    resolve('data', 'adventurers.json'),
-    JSON.stringify(adventurers, null, 2)
-  );
+	const adventurers = require(resolve('data', 'adventurers.json'));
+	const member = adventurers.find((a: Character) => a.id === id);
+	member.hasBonus = hasBonus;
+	member.bonusDescription = bonusDescription;
+	member.debt = debt;
+	fs.writeFileSync(resolve('data', 'adventurers.json'), JSON.stringify(adventurers, null, 2));
 
-  res.status(200).json({
-    message: 'Member updated successfully',
-    character: member,
-  } as CharacterBonusUpdateResponse);
+	res.status(200).json({
+		message: 'Member updated successfully',
+		character: member,
+	} as CharacterBonusUpdateResponse);
 });
 
 // Missions API
 app.get('/api/missions', (req, res) => {
-  res.sendFile(resolve('data', 'missions.json'));
+	return res.sendFile(resolve('data', 'missions.json'));
+});
+
+app.get('/api/missions/:id', (req, res) => {
+	const id = +req.params.id;
+	const missions = require(resolve('data', 'missions.json'));
+	res.json(missions.find((m: Mission) => m.id === id));
+});
+
+app.get('/api/missions/:id/dispatched-members', (req, res) => {
+	const id = +req.params.id;
+	const missions = require(resolve('data', 'missions.json'));
+
+	const mission = missions.find((m: Mission) => m.id === id);
+	if (!mission) {
+		return res.status(404).json({ error: 'Mission not found' });
+	}
+
+	const members = require(resolve('data', 'adventurers.json')) as Character[];
+	const dispatchedMembers = members.filter(
+		(member: Character) => member.activeMission === id || member.completedMissions.includes(id)
+	);
+
+	return res.status(200).json(dispatchedMembers);
 });
 
 /**
  * Serve static files from /browser
  */
 app.use(
-  express.static(browserDistFolder, {
-    maxAge: '1y',
-    index: false,
-    redirect: false,
-  })
+	express.static(browserDistFolder, {
+		maxAge: '1y',
+		index: false,
+		redirect: false,
+	})
 );
 
 /**
  * Handle all other requests by rendering the Angular application.
  */
 app.use('/**', (req, res, next) => {
-  angularApp
-    .handle(req)
-    .then((response) =>
-      response ? writeResponseToNodeResponse(response, res) : next()
-    )
-    .catch(next);
+	angularApp
+		.handle(req)
+		.then((response) => (response ? writeResponseToNodeResponse(response, res) : next()))
+		.catch(next);
 });
 
 /**
@@ -103,10 +122,10 @@ app.use('/**', (req, res, next) => {
  * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
  */
 if (isMainModule(import.meta.url)) {
-  const port = process.env['PORT'] || 4000;
-  app.listen(port, () => {
-    console.log(`Node Express server listening on http://localhost:${port}`);
-  });
+	const port = process.env['PORT'] || 4000;
+	app.listen(port, () => {
+		console.log(`Node Express server listening on http://localhost:${port}`);
+	});
 }
 
 /**

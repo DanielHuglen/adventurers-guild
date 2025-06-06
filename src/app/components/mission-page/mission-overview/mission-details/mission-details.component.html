@@ -1,0 +1,67 @@
+<h2 class="detail-section">{{ mission().title }}</h2>
+<div class="detail-section metadata">
+	<b [ngStyle]="{ color: missionStatus }">
+		{{ getMissionAvailability(mission()).toUpperCase() }}
+	</b>
+	<span>
+		Level:
+		<b>{{ mission().level }}</b>
+	</span>
+	<span>
+		Location:
+		<b>{{ mission().location }}</b>
+	</span>
+</div>
+<p class="detail-section">{{ mission().description }}</p>
+<div class="detail-section recommendation">
+	<p class="section-title">Recommended composition</p>
+	<div class="composition-text">
+		@for (classGroup of getCompositionText(mission().recommendedComposition); track classGroup) {
+		<!-- TODO: Replace with icons -->
+		<span>
+			<span class="amount">{{ getNumberOfClassInGroup(classGroup) }}</span>
+			<span class="name">{{ getClassName(classGroup) }}</span>
+		</span>
+		}
+	</div>
+</div>
+@if (mission().finalComposition.length > 0) {
+<div class="detail-section recommendation">
+	<p class="section-title">Final composition</p>
+	<div class="composition-text">
+		@for (classGroup of getCompositionText(mission().finalComposition); track classGroup) {
+		<!-- TODO: Replace with icons -->
+		<span>
+			<span class="amount">{{ getNumberOfClassInGroup(classGroup) }}</span>
+			<span class="name">{{ getClassName(classGroup) }}</span>
+		</span>
+		}
+	</div>
+</div>
+}
+<div class="detail-section">
+	<p class="section-title">Promised rewards</p>
+	<div class="rewards" title="Given a successful mission">
+		<span>{{ successOutcomeReward?.gold }} GOLD</span>
+		<span>{{ successOutcomeReward?.reputation }} REP</span>
+	</div>
+</div>
+@if (!!finalOutcomeReward) {
+<div class="detail-section">
+	<p class="section-title">Final outcome</p>
+	<div class="outcome-status">
+		<b>{{ mission().diceRoll }}/100&nbsp;</b>
+		<b [ngStyle]="{ color: finalOutcomeStatus }">
+			{{ mission().finalOutcome.tier.toUpperCase() }}
+		</b>
+	</div>
+	<div
+		class="rewards"
+		title="Calculated by gross gold reward, subtracted by a percentage equal to the total number of member levels in the final composition">
+		<span>{{ finalOutcomeReward.gold }} GOLD</span>
+		<span>{{ finalOutcomeReward.reputation }} REP</span>
+	</div>
+	<p class="reward-description">{{ mission().finalOutcome.description }}</p>
+</div>
+}
+<!-- TODO: Could we remove the section titles if we only ever show either final or other? -->
