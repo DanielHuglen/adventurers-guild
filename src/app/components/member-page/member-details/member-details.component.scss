@@ -88,6 +88,8 @@
 
 			.score {
 				cursor: pointer;
+				background-color: transparent;
+				color: var(--white);
 				border: 2px solid var(--secondary-light);
 				border-radius: 8px;
 				padding: 16px;

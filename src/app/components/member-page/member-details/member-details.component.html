@@ -15,30 +15,30 @@
 	<div class="member-stats">
 		@if (member?.abilityScores; as scores) {
 		<span class="ability-scores">
-			<span class="score" (click)="isModPreferred.set(!isModPreferred())">
+			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
 				<div>{{ isModPreferred() ? (scores.strength | abilityModifier) : scores.strength }}</div>
 				<div>STR</div>
-			</span>
-			<span class="score" (click)="isModPreferred.set(!isModPreferred())">
+			</button>
+			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
 				<div>{{ isModPreferred() ? (scores.dexterity | abilityModifier) : scores.dexterity }}</div>
 				<div>DEX</div>
-			</span>
-			<span class="score" (click)="isModPreferred.set(!isModPreferred())">
+			</button>
+			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
 				<div>{{ isModPreferred() ? (scores.constitution | abilityModifier) : scores.constitution }}</div>
 				<div>CON</div>
-			</span>
-			<span class="score" (click)="isModPreferred.set(!isModPreferred())">
+			</button>
+			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
 				<div>{{ isModPreferred() ? (scores.intelligence | abilityModifier) : scores.intelligence }}</div>
 				<div>INT</div>
-			</span>
-			<span class="score" (click)="isModPreferred.set(!isModPreferred())">
+			</button>
+			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
 				<div>{{ isModPreferred() ? (scores.wisdom | abilityModifier) : scores.wisdom }}</div>
 				<div>WIS</div>
-			</span>
-			<span class="score" (click)="isModPreferred.set(!isModPreferred())">
+			</button>
+			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
 				<div>{{ isModPreferred() ? (scores.charisma | abilityModifier) : scores.charisma }}</div>
 				<div>CHA</div>
-			</span>
+			</button>
 		</span>
 		}
 
