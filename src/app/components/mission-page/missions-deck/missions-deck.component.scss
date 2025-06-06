@@ -1,15 +1,14 @@
 :host {
-  --card-width: 375px;
+	--card-width: 320px;
 
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
-  justify-items: center;
-  gap: 32px;
-  max-width: calc((2 * var(--card-width)) + (2 * 64px));
-  margin: 64px auto;
-  padding: 0 16px 32px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
+	justify-items: center;
+	gap: 32px;
+	width: 100%;
+	max-width: calc((2 * var(--card-width)) + (2 * 64px));
 
-  app-mission-card {
-    width: var(--card-width);
-  }
+	app-mission-card {
+		width: var(--card-width);
+	}
 }

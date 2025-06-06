@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CharacterCardComponent } from '../../character-card/character-card.component';
 import { CharacterService } from '../../../services/character.service';
 import { Character } from '../../../shared/character-models';
@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 	styleUrl: './members-deck.component.scss',
 })
 export class MembersDeckComponent {
-	members: Character[] = [];
+	@Input() members: Character[] = [];
 
 	constructor(private route: ActivatedRoute) {
 		this.route.data.pipe(take(1)).subscribe((data) => {

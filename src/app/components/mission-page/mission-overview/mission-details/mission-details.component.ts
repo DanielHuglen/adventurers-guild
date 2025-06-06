@@ -1,7 +1,5 @@
 import { NgStyle } from '@angular/common';
-import { Component, input, OnInit } from '@angular/core';
-import { MissionService } from 'app/services/mission.service';
-import { Character } from 'app/shared/character-models';
+import { Component, input } from '@angular/core';
 import { getCompositionText, getMissionAvailability } from 'app/shared/mission-helper.service';
 import { Mission, OutcomeTier, Reward } from 'app/shared/mission-model';
 
@@ -11,13 +9,11 @@ import { Mission, OutcomeTier, Reward } from 'app/shared/mission-model';
 	templateUrl: './mission-details.component.html',
 	styleUrl: './mission-details.component.scss',
 })
-export class MissionDetailsComponent implements OnInit {
+export class MissionDetailsComponent {
 	mission = input.required<Mission>();
 
 	getMissionAvailability = getMissionAvailability;
 	getCompositionText = getCompositionText;
-
-	dispatchedMembers: Character[] = [];
 
 	get missionStatus(): string {
 		const availability = getMissionAvailability(this.mission());
@@ -58,16 +54,6 @@ export class MissionDetailsComponent implements OnInit {
 	}
 	get finalOutcomeReward(): Reward | undefined {
 		return this.mission().finalOutcome?.reward;
-	}
-
-	constructor(private missionService: MissionService) {}
-
-	ngOnInit(): void {
-		if (this.getMissionAvailability(this.mission()) !== 'Available') {
-			this.missionService.getDispatchedMembers(this.mission().id).subscribe((members) => {
-				this.dispatchedMembers = members;
-			});
-		}
 	}
 
 	getNumberOfClassInGroup(classGroup: string): number {

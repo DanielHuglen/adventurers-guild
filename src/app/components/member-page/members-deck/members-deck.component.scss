@@ -1,15 +1,14 @@
 :host {
-  --card-width: 180px;
+	--card-width: 180px;
 
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
-  justify-items: center;
-  gap: 16px;
-  max-width: calc((3 * var(--card-width)) + (2 * 16px));
-  margin: 32px auto;
-  padding: 0 16px 16px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
+	justify-items: center;
+	gap: 16px;
+	width: 100%;
+	max-width: calc((3 * var(--card-width)) + (2 * 16px));
 
-  app-character-card {
-    width: var(--card-width);
-  }
+	app-character-card {
+		width: var(--card-width);
+	}
 }

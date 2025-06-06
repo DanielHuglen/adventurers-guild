@@ -1,5 +1,12 @@
 :host {
 	display: flex;
-	justify-content: center;
-	margin-top: 32px;
+	gap: 32px;
+}
+
+app-mission-details {
+	display: block;
+}
+
+app-members-deck {
+	height: min-content;
 }
