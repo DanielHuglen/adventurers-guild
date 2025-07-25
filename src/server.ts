@@ -49,14 +49,10 @@ app.post('/api/login', express.json(), (req, res) => {
 
 // Add middleware to check for admin or editor access using cookies
 app.use((req, res, next) => {
-	console.log(`Received request: ${req.method} ${req.url}`);
-	console.log('Cookies:', req.cookies);
-	console.log('Admin Password:', ADMIN_PASSWORD);
-	console.log('Editor Password:', EDITOR_PASSWORD);
-
 	// Allow all GET requests without authentication
 	if (req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE') {
-		const password = req.cookies.apiPassword;
+		const password = JSON.parse(req.cookies['authInfo'] || '{}').apiPassword; // Extract password from cookie
+
 		if (password === ADMIN_PASSWORD) {
 			req.userRole = 'admin';
 			return next();
@@ -102,9 +98,6 @@ app.put('/api/members/:id/bonus', express.json(), (req, res) => {
 	const hasBonus = req.body.hasBonus;
 	const bonusDescription = req.body.bonusDescription;
 	const debt = req.body.debt;
-
-	const log = bonusDescription ? ` with description: ${bonusDescription}` : '';
-	console.log(`Updating member ${id} with bonus: ${hasBonus}${log}`);
 
 	const adventurers = require(resolve('data', 'adventurers.json'));
 	const member = adventurers.find((a: Character) => a.id === id);
