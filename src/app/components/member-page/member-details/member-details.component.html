@@ -88,7 +88,7 @@
 		<span class="control-title">Debt:</span>
 		<span class="control-value">{{ member?.debt }}g</span>
 	</span>
-	<button (click)="isEditing = !isEditing">Edit</button>
+	<button (click)="isEditing = !isEditing" appDisableIfGuest>Edit</button>
 </div>
 } @else {
 <form class="controls" [formGroup]="memberForm" (ngSubmit)="submit()">

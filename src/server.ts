@@ -5,11 +5,20 @@ import {
 	writeResponseToNodeResponse,
 } from '@angular/ssr/node';
 import express from 'express';
+
+// Extend Express Request type to include userRole
+declare module 'express-serve-static-core' {
+	interface Request {
+		userRole?: 'admin' | 'editor';
+	}
+}
+
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Character } from './app/shared/character-models';
 import { CharacterBonusUpdateResponse } from './app/shared/api-models';
 import { Mission } from 'app/shared/mission-model';
+import cookieParser from 'cookie-parser';
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
@@ -17,7 +26,49 @@ const browserDistFolder = resolve(serverDistFolder, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
+app.use(cookieParser());
+
 const fs = require('fs');
+
+require('dotenv').config();
+const ADMIN_PASSWORD = process.env['ADMIN_PASSWORD'] || 'your_admin_password';
+const EDITOR_PASSWORD = process.env['EDITOR_PASSWORD'] || 'your_editor_password';
+
+// Add endpoint to login. This should just check the password and return either success with the role or failure.
+app.post('/api/login', express.json(), (req, res) => {
+	const password = req.body.password;
+
+	if (password === ADMIN_PASSWORD) {
+		res.status(200).json({ role: 'admin' });
+	} else if (password === EDITOR_PASSWORD) {
+		res.status(200).json({ role: 'editor' });
+	} else {
+		res.status(403).json({ error: 'Forbidden' });
+	}
+});
+
+// Add middleware to check for admin or editor access using cookies
+app.use((req, res, next) => {
+	console.log(`Received request: ${req.method} ${req.url}`);
+	console.log('Cookies:', req.cookies);
+	console.log('Admin Password:', ADMIN_PASSWORD);
+	console.log('Editor Password:', EDITOR_PASSWORD);
+
+	// Allow all GET requests without authentication
+	if (req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE') {
+		const password = req.cookies.apiPassword;
+		if (password === ADMIN_PASSWORD) {
+			req.userRole = 'admin';
+			return next();
+		}
+		if (password === EDITOR_PASSWORD) {
+			req.userRole = 'editor';
+			return next();
+		}
+		return res.status(403).json({ error: 'Forbidden' });
+	}
+	return next();
+});
 
 /**
  * Example Express Rest API endpoints can be defined here.

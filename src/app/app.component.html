@@ -1,9 +1,5 @@
-<div class="app-header">
-	<a [routerLink]="['']">
-		<img src="img/logo.jpeg" alt="Eventyrerlauget logo" />
-		<h1>Eventyrerlauget</h1>
-	</a>
-</div>
-<main class="main-content">
+<app-header />
+<main>
 	<router-outlet></router-outlet>
+	<app-password-dialog />
 </main>

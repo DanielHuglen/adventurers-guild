@@ -8,10 +8,11 @@ import { Character } from '../../../shared/character-models';
 import { ClassGroupPipe } from '../../../shared/class-group.pipe';
 import { LevelPipe } from '../../../shared/level.pipe';
 import { AbilityModifierPipe } from '../../../shared/ability-modifier.pipe';
+import { DisableIfGuestDirective } from 'app/directives/disable-if-guest.directive';
 
 @Component({
 	selector: 'app-member-details',
-	imports: [ClassGroupPipe, LevelPipe, ReactiveFormsModule, AbilityModifierPipe],
+	imports: [ClassGroupPipe, LevelPipe, ReactiveFormsModule, AbilityModifierPipe, DisableIfGuestDirective],
 	templateUrl: './member-details.component.html',
 	styleUrl: './member-details.component.scss',
 })

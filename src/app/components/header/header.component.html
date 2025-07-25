@@ -1,0 +1,10 @@
+<a [routerLink]="['']">
+	<img src="img/logo.jpeg" alt="Eventyrerlauget logo" />
+	<div>
+		<h1>Eventyrerlauget</h1>
+	</div>
+</a>
+<button (click)="openPasswordPrompt()">
+	{{ (role | async)?.toUpperCase() }}
+	👤
+</button>

@@ -1,450 +1,332 @@
 [
-  {
-    "id": 1,
-    "name": "Thaniel Eldermarsh",
-    "description": "A middle aged cleric dedicated to the godess Tymora, the godess of luck. He sports a short trimmed beard, dark brown hair greyed with age, and a kind face. He is known for always seeing the bright side of things, even in the darkest of times. He entered into the adventurers guild after they slaughtered his previous party, vowing to right their morals after such a heinous act.",
-    "age": 43,
-    "imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAtZpRjm_nE7UA2xyD4Q935o50FUGPmewCGOsxLpMEDH23ETW1c9ikedBTBssIB6bLwCJs3xNfGTtRzaAn1uX2FPv5pZpBlYHIydnS9344RJH0dvEYBqHKjiIA2T2CUlXQZgGgWQEOC1k/s1600/Rokh+4-4.jpg",
-    "class": "Cleric",
-    "race": "Human",
-    "experience": 40,
-    "abilityScores": {
-      "strength": 14,
-      "dexterity": 10,
-      "constitution": 16,
-      "intelligence": 12,
-      "wisdom": 18,
-      "charisma": 14
-    },
-    "armorClass": 20,
-    "hitPoints": 64,
-    "speed": 30,
-    "savingThrows": [
-      "Constitution",
-      "Wisdom"
-    ],
-    "languages": [
-      "Common",
-      "Celestial"
-    ],
-    "features": [
-      "Spellcasting",
-      "Channel Divinity"
-    ],
-    "isAlive": true,
-    "hasBonus": false,
-    "bonusDescription": "",
-    "debt": "0",
-    "activeMission": 2,
-    "completedMissions": []
-  },
-  {
-    "id": 2,
-    "name": "Carson Hale",
-    "description": "A young half elven fighter, with formal training as a knight. He has military discipline, and never backs down from a fight. Curly golden hair falls over his broad shoulders, framing his green eyes. He joined the guild after being saved from a cult attempting to sacrifice him to a devil by burning him alive.",
-    "age": 27,
-    "imageUrl": "https://images.nightcafe.studio/jobs/NjuVlqu5AZOVVacg2Sb8/NjuVlqu5AZOVVacg2Sb8--1--45zez.jpg?tr=w-1600,c-at_max",
-    "class": "Fighter",
-    "race": "Half-Elf",
-    "experience": 40,
-    "abilityScores": {
-      "strength": 18,
-      "dexterity": 14,
-      "constitution": 18,
-      "intelligence": 10,
-      "wisdom": 12,
-      "charisma": 14
-    },
-    "armorClass": 16,
-    "hitPoints": 84,
-    "speed": 30,
-    "savingThrows": [
-      "Strength",
-      "Charisma"
-    ],
-    "languages": [
-      "Common",
-      "Elvish"
-    ],
-    "features": [
-      "Extra Attack",
-      "Action Surge",
-      "Improved Critical"
-    ],
-    "isAlive": true,
-    "hasBonus": false,
-    "bonusDescription": "",
-    "debt": "0",
-    "activeMission": 2,
-    "completedMissions": []
-  },
-  {
-    "id": 3,
-    "name": "Encantra Cadburry",
-    "description": "Preferring her stage name 'Cadence', she is a bard with a dream of becoming a famous musician. This young human is most often seen with a fiddle in hand, a smile on her face, and a yellow bandana around her head. She studied music at the bardic college in Waterdeep, before working up a name for herself around Neverwinter by performing at the guild hall.",
-    "age": 19,
-    "imageUrl": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/0aa61c185326473.6561cc9b82056.jpg",
-    "class": "Bard",
-    "race": "Human",
-    "experience": 40,
-    "abilityScores": {
-      "strength": 10,
-      "dexterity": 16,
-      "constitution": 14,
-      "intelligence": 12,
-      "wisdom": 10,
-      "charisma": 18
-    },
-    "armorClass": 15,
-    "hitPoints": 60,
-    "speed": 30,
-    "savingThrows": [
-      "Dexterity",
-      "Charisma"
-    ],
-    "languages": [
-      "Common",
-      "Elvish",
-      "Infernal"
-    ],
-    "features": [
-      "Bardic Inspiration",
-      "Spellcasting"
-    ],
-    "isAlive": true,
-    "hasBonus": false,
-    "bonusDescription": "",
-    "debt": "0",
-    "activeMission": 2,
-    "completedMissions": []
-  },
-  {
-    "id": 4,
-    "name": "Dorian",
-    "description": "Formerly known as Dorian Colydar, this druid was part of the Colydaris cove druidic circle under the leadership of Iselyn Colidar. He split from the circle after the leader moved the entire cove from Neverwinter to Silverymoon, running from justice. He then joined the guild. Onlookers might describe him as a very old human, who's thing greying beard looks to be too heavy for his neck.",
-    "age": 87,
-    "imageUrl": "https://i.pinimg.com/736x/16/45/d4/1645d44b300868354a4540ab79a1b277.jpg",
-    "class": "Druid",
-    "race": "Human",
-    "experience": 43,
-    "abilityScores": {
-      "strength": 8,
-      "dexterity": 14,
-      "constitution": 16,
-      "intelligence": 12,
-      "wisdom": 20,
-      "charisma": 8
-    },
-    "armorClass": 15,
-    "hitPoints": 60,
-    "speed": 30,
-    "savingThrows": [
-      "Wisdom",
-      "Constitution"
-    ],
-    "languages": [
-      "Common",
-      "Elvish"
-    ],
-    "features": [
-      "Spellcasting",
-      "Wild Shape"
-    ],
-    "isAlive": true,
-    "hasBonus": false,
-    "bonusDescription": "",
-    "debt": "0",
-    "activeMission": 3,
-    "completedMissions": [
-      5
-    ]
-  },
-  {
-    "id": 5,
-    "name": "Elara Stormblade",
-    "description": "Former Captain of the guard in Luskan, Elara is a Tall and imposing figure, with shimmering silver armor adorned with intricate engravings. She wields a massive, gleaming greatsword and bears a regal ari about her. Her icy blue eyees radiate determination and confidence. She used to lead her own guild, before being run bankrupt after the former queen of Neverwinter walked her cove out of the city. She, along with the rest of the Ironclad Vanguard, joined the guild after leaving their own behind.",
-    "age": 35,
-    "imageUrl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/83cb7597-d135-4881-97a1-252f448e6595/dgpcqxo-b98cc257-ed6e-4f6a-bb72-491fddab6b89.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzgzY2I3NTk3LWQxMzUtNDg4MS05N2ExLTI1MmY0NDhlNjU5NVwvZGdwY3F4by1iOThjYzI1Ny1lZDZlLTRmNmEtYmI3Mi00OTFmZGRhYjZiODkuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.0OiHo4YY0wRR2BSHC7mp2i1bOuThrqN2IL58fmgdoYU",
-    "class": "Paladin",
-    "race": "Human",
-    "experience": 24,
-    "abilityScores": {
-      "strength": 17,
-      "dexterity": 11,
-      "constitution": 16,
-      "intelligence": 12,
-      "wisdom": 13,
-      "charisma": 14
-    },
-    "armorClass": 19,
-    "hitPoints": 55,
-    "speed": 30,
-    "savingThrows": [
-      "Charisma",
-      "Strength"
-    ],
-    "languages": [
-      "Common",
-      "Dwarvish"
-    ],
-    "features": [
-      "Spellcasting",
-      "Lay on Hands",
-      "Divine Smite"
-    ],
-    "isAlive": true,
-    "hasBonus": false,
-    "bonusDescription": "",
-    "debt": "0",
-    "activeMission": 3,
-    "completedMissions": [
-      5
-    ]
-  },
-  {
-    "id": 6,
-    "name": "Thorn Shadowleaf",
-    "description": "Thorn is a lithe and graceful elven rogue with raven-black hair and emerald green eyes. He wears a dark, sleek leather outfit that allows him to blend seamlessly into the shadows. Twin daggers are always at his side. He, along with the rest of the Ironclad Vanguard, joined the guild after leaving their own behind.",
-    "age": 32,
-    "imageUrl": "https://cdnb.artstation.com/p/assets/images/images/061/118/459/large/jackson-caspersz-381-vax.jpg?1680051407",
-    "class": "Rogue",
-    "race": "Elf",
-    "experience": 24,
-    "abilityScores": {
-      "strength": 11,
-      "dexterity": 19,
-      "constitution": 13,
-      "intelligence": 14,
-      "wisdom": 13,
-      "charisma": 12
-    },
-    "armorClass": 16,
-    "hitPoints": 42,
-    "speed": 30,
-    "savingThrows": [
-      "Dexterity"
-    ],
-    "languages": [
-      "Common",
-      "Elvish",
-      "Sylvan"
-    ],
-    "features": [
-      "Sneak Attack",
-      "Evasion",
-      "Improved Critical"
-    ],
-    "isAlive": true,
-    "hasBonus": false,
-    "bonusDescription": "",
-    "debt": "0",
-    "activeMission": null,
-    "completedMissions": [
-      5
-    ]
-  },
-  {
-    "id": 7,
-    "name": "Lorelei Emberforge",
-    "description": "A stout and beared dwarf, her fiery red hair matching her fiery spirit. She dons robes adorned with intricate runes and carries a staff topped with a glowing red crystal. Known for her arcane knowledge and bespectacled face. She, along with the rest of the Ironclad Vanguard, joined the guild after leaving their own behind.",
-    "age": 42,
-    "imageUrl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5f0a725a-f4cb-40da-8b5b-e68167c5d154/da2g8wi-c835319e-a0e7-48f7-bf4c-b6c7c0014c16.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVmMGE3MjVhLWY0Y2ItNDBkYS04YjViLWU2ODE2N2M1ZDE1NFwvZGEyZzh3aS1jODM1MzE5ZS1hMGU3LTQ4ZjctYmY0Yy1iNmM3YzAwMTRjMTYuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0._Tugmvazv3CG94YJMOX3KsxhzQWqP_17tJ0ztrtPjoA",
-    "class": "Wizard",
-    "race": "Dwarf",
-    "experience": 24,
-    "abilityScores": {
-      "strength": 10,
-      "dexterity": 15,
-      "constitution": 14,
-      "intelligence": 18,
-      "wisdom": 13,
-      "charisma": 15
-    },
-    "armorClass": 12,
-    "hitPoints": 28,
-    "speed": 25,
-    "savingThrows": [
-      "Intelligence",
-      "Wisdom"
-    ],
-    "languages": [
-      "Common",
-      "Dwarvish",
-      "Gnomish"
-    ],
-    "features": [
-      "Spellcasting",
-      "Arcane Recovery"
-    ],
-    "isAlive": true,
-    "hasBonus": false,
-    "bonusDescription": "",
-    "debt": "0",
-    "activeMission": null,
-    "completedMissions": [
-      5
-    ]
-  },
-  {
-    "id": 8,
-    "name": "Grimm Stonehammer",
-    "description": "This hulking half-orc gives off a fearsome presence, with his muscular build and skin covered in tribal tattoos. He wears practically no armour, showing off his many scars, while always carrying a massive greataxe. He, along with the rest of the Ironclad Vanguard, joined the guild after leaving their own behind.",
-    "age": 25,
-    "imageUrl": "https://cdnb.artstation.com/p/assets/images/images/023/127/727/large/tommy-lee-9f5ec480-80a2-4921-96d5-603449f3ef25.jpg?1578195548",
-    "class": "Barbarian",
-    "race": "Goliath",
-    "experience": 24,
-    "abilityScores": {
-      "strength": 20,
-      "dexterity": 16,
-      "constitution": 14,
-      "intelligence": 8,
-      "wisdom": 9,
-      "charisma": 10
-    },
-    "armorClass": 17,
-    "hitPoints": 41,
-    "speed": 30,
-    "savingThrows": [
-      "Dexterity",
-      "Strength"
-    ],
-    "languages": [
-      "Common",
-      "Primordial"
-    ],
-    "features": [
-      "Rage",
-      "Extra Attack",
-      "Unarmored Defense"
-    ],
-    "isAlive": true,
-    "hasBonus": false,
-    "bonusDescription": "",
-    "debt": "0",
-    "activeMission": null,
-    "completedMissions": [
-      4,
-      6
-    ]
-  },
-  {
-    "id": 9,
-    "name": "Santino Scorch",
-    "description": "This Piltoverian ranger moved to the surface around four years ago to join the Alliance as a scout, later becoming a city guard. He has a young and handsome face, and sounds insecure about even the most simple of things. He joined the guild after the foundring members broke him out of a false imprisonment in Baldur's Gate.",
-    "age": 22,
-    "imageUrl": "https://cdna.artstation.com/p/assets/images/images/058/561/610/large/felipe-bracioli-ranger.jpg?1674471915",
-    "class": "Ranger",
-    "race": "Elf",
-    "experience": 42,
-    "abilityScores": {
-      "strength": 14,
-      "dexterity": 18,
-      "constitution": 14,
-      "intelligence": 10,
-      "wisdom": 12,
-      "charisma": 13
-    },
-    "armorClass": 16,
-    "hitPoints": 50,
-    "speed": 30,
-    "savingThrows": [
-      "Dexterity",
-      "Wisdom"
-    ],
-    "languages": [
-      "Common",
-      "Elvish",
-      "Undercommon"
-    ],
-    "features": [
-      "Extra Attack"
-    ],
-    "isAlive": true,
-    "hasBonus": true,
-    "bonusDescription": "Deer",
-    "debt": "400",
-    "activeMission": null,
-    "completedMissions": [
-      6
-    ]
-  },
-  {
-    "id": 10,
-    "name": "Bethany Wyller",
-    "description": "Hailing from a rich family, she and her sister Mathilda had a great childhood with not too strict parents. She grew up to be a rowdy party animal with a mild alcohol problem, which she turned into an advantage by becoming a drunken munk. She is known for her wild parties and her ability to drink anyone under the table. Looking like a shorter and darker Fay Wildhagen, she joined the guild after they killed the rest of her party and giving her the option to either join or die.",
-    "age": 21,
-    "imageUrl": "https://www.dndbeyond.com/avatars/10/85/636339381754406274.png?width=150&height=150&fit=crop&quality=95&auto=webp",
-    "class": "Monk",
-    "race": "Halfling",
-    "experience": 80,
-    "abilityScores": {
-      "strength": 21,
-      "dexterity": 20,
-      "constitution": 16,
-      "intelligence": 14,
-      "wisdom": 18,
-      "charisma": 14
-    },
-    "armorClass": 19,
-    "hitPoints": 94,
-    "speed": 30,
-    "savingThrows": [
-      "Dexterity",
-      "Strength"
-    ],
-    "languages": [
-      "Common",
-      "Halfling"
-    ],
-    "features": [
-      "Extra Attack",
-      "Unarmored Defense"
-    ],
-    "isAlive": true,
-    "hasBonus": true,
-    "bonusDescription": "Gauntlets of Ogre Power",
-    "debt": "0",
-    "activeMission": 1,
-    "completedMissions": []
-  },
-  {
-    "id": 11,
-    "name": "Nortak Ironfist",
-    "description": "As an experienced monk from Piltover, Nortak has honed his skills in the fighting pits of the city. Lanky and wiry, he looks faster than he is strong, with short unkempt hair and a beard that looks like it hasn't been trimmed in weeks. He joined the guild after being saved from hanging by a couple of female drow, who hunted him down after he refused to fight in the pits.",
-    "age": 87,
-    "imageUrl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4853b74f-10fa-425e-aece-5e12472bdc70/dbmdhxl-b84334f9-dd4b-41d8-9b9c-92757ec0d1e2.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQ4NTNiNzRmLTEwZmEtNDI1ZS1hZWNlLTVlMTI0NzJiZGM3MFwvZGJtZGh4bC1iODQzMzRmOS1kZDRiLTQxZDgtOWI5Yy05Mjc1N2VjMGQxZTIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.U2x759ukkMoDsnPCwxOfEsImwjze35Q9cNMXskleoJc",
-    "class": "Monk",
-    "race": "Elf",
-    "experience": 30,
-    "abilityScores": {
-      "strength": 13,
-      "dexterity": 20,
-      "constitution": 14,
-      "intelligence": 14,
-      "wisdom": 17,
-      "charisma": 15
-    },
-    "armorClass": 17,
-    "hitPoints": 57,
-    "speed": 30,
-    "savingThrows": [
-      "Dexterity",
-      "Charisma"
-    ],
-    "languages": [
-      "Common",
-      "Elvish"
-    ],
-    "features": [
-      "Extra Attack",
-      "Unarmored Defense"
-    ],
-    "isAlive": true,
-    "hasBonus": false,
-    "bonusDescription": "",
-    "debt": "20",
-    "activeMission": null,
-    "completedMissions": []
-  }
+	{
+		"id": 1,
+		"name": "Thaniel Eldermarsh",
+		"description": "A middle aged cleric dedicated to the godess Tymora, the godess of luck. He sports a short trimmed beard, dark brown hair greyed with age, and a kind face. He is known for always seeing the bright side of things, even in the darkest of times. He entered into the adventurers guild after they slaughtered his previous party, vowing to right their morals after such a heinous act.",
+		"age": 43,
+		"imageUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAtZpRjm_nE7UA2xyD4Q935o50FUGPmewCGOsxLpMEDH23ETW1c9ikedBTBssIB6bLwCJs3xNfGTtRzaAn1uX2FPv5pZpBlYHIydnS9344RJH0dvEYBqHKjiIA2T2CUlXQZgGgWQEOC1k/s1600/Rokh+4-4.jpg",
+		"class": "Cleric",
+		"race": "Human",
+		"experience": 40,
+		"abilityScores": {
+			"strength": 14,
+			"dexterity": 10,
+			"constitution": 16,
+			"intelligence": 12,
+			"wisdom": 18,
+			"charisma": 14
+		},
+		"armorClass": 20,
+		"hitPoints": 64,
+		"speed": 30,
+		"savingThrows": ["Constitution", "Wisdom"],
+		"languages": ["Common", "Celestial"],
+		"features": ["Spellcasting", "Channel Divinity"],
+		"isAlive": true,
+		"hasBonus": false,
+		"bonusDescription": "",
+		"debt": "0",
+		"activeMission": 2,
+		"completedMissions": []
+	},
+	{
+		"id": 2,
+		"name": "Carson Hale",
+		"description": "A young half elven fighter, with formal training as a knight. He has military discipline, and never backs down from a fight. Curly golden hair falls over his broad shoulders, framing his green eyes. He joined the guild after being saved from a cult attempting to sacrifice him to a devil by burning him alive.",
+		"age": 27,
+		"imageUrl": "https://images.nightcafe.studio/jobs/NjuVlqu5AZOVVacg2Sb8/NjuVlqu5AZOVVacg2Sb8--1--45zez.jpg?tr=w-1600,c-at_max",
+		"class": "Fighter",
+		"race": "Half-Elf",
+		"experience": 40,
+		"abilityScores": {
+			"strength": 18,
+			"dexterity": 14,
+			"constitution": 18,
+			"intelligence": 10,
+			"wisdom": 12,
+			"charisma": 14
+		},
+		"armorClass": 16,
+		"hitPoints": 84,
+		"speed": 30,
+		"savingThrows": ["Strength", "Charisma"],
+		"languages": ["Common", "Elvish"],
+		"features": ["Extra Attack", "Action Surge", "Improved Critical"],
+		"isAlive": true,
+		"hasBonus": false,
+		"bonusDescription": "",
+		"debt": "2",
+		"activeMission": 2,
+		"completedMissions": []
+	},
+	{
+		"id": 3,
+		"name": "Encantra Cadburry",
+		"description": "Preferring her stage name 'Cadence', she is a bard with a dream of becoming a famous musician. This young human is most often seen with a fiddle in hand, a smile on her face, and a yellow bandana around her head. She studied music at the bardic college in Waterdeep, before working up a name for herself around Neverwinter by performing at the guild hall.",
+		"age": 19,
+		"imageUrl": "https://i0.wp.com/redanianintelligence.com/wp-content/uploads/2023/06/essi-daven-2.jpg?resize=1084%2C609&ssl=1",
+		"class": "Bard",
+		"race": "Human",
+		"experience": 40,
+		"abilityScores": {
+			"strength": 10,
+			"dexterity": 16,
+			"constitution": 14,
+			"intelligence": 12,
+			"wisdom": 10,
+			"charisma": 18
+		},
+		"armorClass": 15,
+		"hitPoints": 60,
+		"speed": 30,
+		"savingThrows": ["Dexterity", "Charisma"],
+		"languages": ["Common", "Elvish", "Infernal"],
+		"features": ["Bardic Inspiration", "Spellcasting"],
+		"isAlive": true,
+		"hasBonus": false,
+		"bonusDescription": "",
+		"debt": "0",
+		"activeMission": 2,
+		"completedMissions": []
+	},
+	{
+		"id": 4,
+		"name": "Dorian",
+		"description": "Formerly known as Dorian Colydar, this druid was part of the Colydaris cove druidic circle under the leadership of Iselyn Colidar. He split from the circle after the leader moved the entire cove from Neverwinter to Silverymoon, running from justice. He then joined the guild. Onlookers might describe him as a very old human, who's thing greying beard looks to be too heavy for his neck.",
+		"age": 87,
+		"imageUrl": "https://i.pinimg.com/736x/16/45/d4/1645d44b300868354a4540ab79a1b277.jpg",
+		"class": "Druid",
+		"race": "Human",
+		"experience": 43,
+		"abilityScores": {
+			"strength": 8,
+			"dexterity": 14,
+			"constitution": 16,
+			"intelligence": 12,
+			"wisdom": 20,
+			"charisma": 8
+		},
+		"armorClass": 15,
+		"hitPoints": 60,
+		"speed": 30,
+		"savingThrows": ["Wisdom", "Constitution"],
+		"languages": ["Common", "Elvish"],
+		"features": ["Spellcasting", "Wild Shape"],
+		"isAlive": true,
+		"hasBonus": false,
+		"bonusDescription": "",
+		"debt": "0",
+		"activeMission": 3,
+		"completedMissions": [5]
+	},
+	{
+		"id": 5,
+		"name": "Elara Stormblade",
+		"description": "Former Captain of the guard in Luskan, Elara is a Tall and imposing figure, with shimmering silver armor adorned with intricate engravings. She wields a massive, gleaming greatsword and bears a regal ari about her. Her icy blue eyees radiate determination and confidence. She used to lead her own guild, before being run bankrupt after the former queen of Neverwinter walked her cove out of the city. She, along with the rest of the Ironclad Vanguard, joined the guild after leaving their own behind.",
+		"age": 35,
+		"imageUrl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/83cb7597-d135-4881-97a1-252f448e6595/dgpcqxo-b98cc257-ed6e-4f6a-bb72-491fddab6b89.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzgzY2I3NTk3LWQxMzUtNDg4MS05N2ExLTI1MmY0NDhlNjU5NVwvZGdwY3F4by1iOThjYzI1Ny1lZDZlLTRmNmEtYmI3Mi00OTFmZGRhYjZiODkuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.0OiHo4YY0wRR2BSHC7mp2i1bOuThrqN2IL58fmgdoYU",
+		"class": "Paladin",
+		"race": "Human",
+		"experience": 24,
+		"abilityScores": {
+			"strength": 17,
+			"dexterity": 11,
+			"constitution": 16,
+			"intelligence": 12,
+			"wisdom": 13,
+			"charisma": 14
+		},
+		"armorClass": 19,
+		"hitPoints": 55,
+		"speed": 30,
+		"savingThrows": ["Charisma", "Strength"],
+		"languages": ["Common", "Dwarvish"],
+		"features": ["Spellcasting", "Lay on Hands", "Divine Smite"],
+		"isAlive": true,
+		"hasBonus": true,
+		"bonusDescription": "",
+		"debt": "0",
+		"activeMission": 3,
+		"completedMissions": [5]
+	},
+	{
+		"id": 6,
+		"name": "Thorn Shadowleaf",
+		"description": "Thorn is a lithe and graceful elven rogue with raven-black hair and emerald green eyes. He wears a dark, sleek leather outfit that allows him to blend seamlessly into the shadows. Twin daggers are always at his side. He, along with the rest of the Ironclad Vanguard, joined the guild after leaving their own behind.",
+		"age": 32,
+		"imageUrl": "https://cdnb.artstation.com/p/assets/images/images/061/118/459/large/jackson-caspersz-381-vax.jpg?1680051407",
+		"class": "Rogue",
+		"race": "Elf",
+		"experience": 24,
+		"abilityScores": {
+			"strength": 11,
+			"dexterity": 19,
+			"constitution": 13,
+			"intelligence": 14,
+			"wisdom": 13,
+			"charisma": 12
+		},
+		"armorClass": 16,
+		"hitPoints": 42,
+		"speed": 30,
+		"savingThrows": ["Dexterity"],
+		"languages": ["Common", "Elvish", "Sylvan"],
+		"features": ["Sneak Attack", "Evasion", "Improved Critical"],
+		"isAlive": true,
+		"hasBonus": true,
+		"bonusDescription": "Feather Cloak",
+		"debt": "0",
+		"activeMission": null,
+		"completedMissions": [5]
+	},
+	{
+		"id": 7,
+		"name": "Lorelei Emberforge",
+		"description": "A stout and beared dwarf, her fiery red hair matching her fiery spirit. She dons robes adorned with intricate runes and carries a staff topped with a glowing red crystal. Known for her arcane knowledge and bespectacled face. She, along with the rest of the Ironclad Vanguard, joined the guild after leaving their own behind.",
+		"age": 42,
+		"imageUrl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5f0a725a-f4cb-40da-8b5b-e68167c5d154/da2g8wi-c835319e-a0e7-48f7-bf4c-b6c7c0014c16.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVmMGE3MjVhLWY0Y2ItNDBkYS04YjViLWU2ODE2N2M1ZDE1NFwvZGEyZzh3aS1jODM1MzE5ZS1hMGU3LTQ4ZjctYmY0Yy1iNmM3YzAwMTRjMTYuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0._Tugmvazv3CG94YJMOX3KsxhzQWqP_17tJ0ztrtPjoA",
+		"class": "Wizard",
+		"race": "Dwarf",
+		"experience": 24,
+		"abilityScores": {
+			"strength": 10,
+			"dexterity": 15,
+			"constitution": 14,
+			"intelligence": 18,
+			"wisdom": 13,
+			"charisma": 15
+		},
+		"armorClass": 12,
+		"hitPoints": 28,
+		"speed": 25,
+		"savingThrows": ["Intelligence", "Wisdom"],
+		"languages": ["Common", "Dwarvish", "Gnomish"],
+		"features": ["Spellcasting", "Arcane Recovery"],
+		"isAlive": true,
+		"hasBonus": false,
+		"bonusDescription": "",
+		"debt": "0",
+		"activeMission": null,
+		"completedMissions": [5]
+	},
+	{
+		"id": 8,
+		"name": "Grimm Stonehammer",
+		"description": "This hulking half-orc gives off a fearsome presence, with his muscular build and skin covered in tribal tattoos. He wears practically no armour, showing off his many scars, while always carrying a massive greataxe. He, along with the rest of the Ironclad Vanguard, joined the guild after leaving their own behind.",
+		"age": 25,
+		"imageUrl": "https://cdnb.artstation.com/p/assets/images/images/023/127/727/large/tommy-lee-9f5ec480-80a2-4921-96d5-603449f3ef25.jpg?1578195548",
+		"class": "Barbarian",
+		"race": "Goliath",
+		"experience": 24,
+		"abilityScores": {
+			"strength": 20,
+			"dexterity": 16,
+			"constitution": 14,
+			"intelligence": 8,
+			"wisdom": 9,
+			"charisma": 10
+		},
+		"armorClass": 17,
+		"hitPoints": 41,
+		"speed": 30,
+		"savingThrows": ["Dexterity", "Strength"],
+		"languages": ["Common", "Primordial"],
+		"features": ["Rage", "Extra Attack", "Unarmored Defense"],
+		"isAlive": true,
+		"hasBonus": false,
+		"bonusDescription": "",
+		"debt": "0",
+		"activeMission": null,
+		"completedMissions": [4, 6]
+	},
+	{
+		"id": 9,
+		"name": "Santino Scorch",
+		"description": "This Piltoverian ranger moved to the surface around four years ago to join the Alliance as a scout, later becoming a city guard. He has a young and handsome face, and sounds insecure about even the most simple of things. He joined the guild after the foundring members broke him out of a false imprisonment in Baldur's Gate.",
+		"age": 22,
+		"imageUrl": "https://cdna.artstation.com/p/assets/images/images/058/561/610/large/felipe-bracioli-ranger.jpg?1674471915",
+		"class": "Ranger",
+		"race": "Elf",
+		"experience": 42,
+		"abilityScores": {
+			"strength": 14,
+			"dexterity": 18,
+			"constitution": 14,
+			"intelligence": 10,
+			"wisdom": 12,
+			"charisma": 13
+		},
+		"armorClass": 16,
+		"hitPoints": 50,
+		"speed": 30,
+		"savingThrows": ["Dexterity", "Wisdom"],
+		"languages": ["Common", "Elvish", "Undercommon"],
+		"features": ["Extra Attack"],
+		"isAlive": true,
+		"hasBonus": true,
+		"bonusDescription": "Deer",
+		"debt": "400",
+		"activeMission": null,
+		"completedMissions": [6]
+	},
+	{
+		"id": 10,
+		"name": "Bethany Wyller",
+		"description": "Hailing from a rich family, she and her sister Mathilda had a great childhood with not too strict parents. She grew up to be a rowdy party animal with a mild alcohol problem, which she turned into an advantage by becoming a drunken munk. She is known for her wild parties and her ability to drink anyone under the table. Looking like a shorter and darker Fay Wildhagen, she joined the guild after they killed the rest of her party and giving her the option to either join or die.",
+		"age": 21,
+		"imageUrl": "https://www.dndbeyond.com/avatars/10/85/636339381754406274.png?width=150&height=150&fit=crop&quality=95&auto=webp",
+		"class": "Monk",
+		"race": "Halfling",
+		"experience": 80,
+		"abilityScores": {
+			"strength": 21,
+			"dexterity": 20,
+			"constitution": 16,
+			"intelligence": 14,
+			"wisdom": 18,
+			"charisma": 14
+		},
+		"armorClass": 19,
+		"hitPoints": 94,
+		"speed": 30,
+		"savingThrows": ["Dexterity", "Strength"],
+		"languages": ["Common", "Halfling"],
+		"features": ["Extra Attack", "Unarmored Defense"],
+		"isAlive": true,
+		"hasBonus": true,
+		"bonusDescription": "Gauntlets of Ogre Power",
+		"debt": "0",
+		"activeMission": 1,
+		"completedMissions": []
+	},
+	{
+		"id": 11,
+		"name": "Nortak Ironfist",
+		"description": "As an experienced monk from Piltover, Nortak has honed his skills in the fighting pits of the city. Lanky and wiry, he looks faster than he is strong, with short unkempt hair and a beard that looks like it hasn't been trimmed in weeks. He joined the guild after being saved from hanging by a couple of female drow, who hunted him down after he refused to fight in the pits.",
+		"age": 87,
+		"imageUrl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4853b74f-10fa-425e-aece-5e12472bdc70/dbmdhxl-b84334f9-dd4b-41d8-9b9c-92757ec0d1e2.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQ4NTNiNzRmLTEwZmEtNDI1ZS1hZWNlLTVlMTI0NzJiZGM3MFwvZGJtZGh4bC1iODQzMzRmOS1kZDRiLTQxZDgtOWI5Yy05Mjc1N2VjMGQxZTIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.U2x759ukkMoDsnPCwxOfEsImwjze35Q9cNMXskleoJc",
+		"class": "Monk",
+		"race": "Elf",
+		"experience": 30,
+		"abilityScores": {
+			"strength": 13,
+			"dexterity": 20,
+			"constitution": 14,
+			"intelligence": 14,
+			"wisdom": 17,
+			"charisma": 15
+		},
+		"armorClass": 17,
+		"hitPoints": 57,
+		"speed": 30,
+		"savingThrows": ["Dexterity", "Charisma"],
+		"languages": ["Common", "Elvish"],
+		"features": ["Extra Attack", "Unarmored Defense"],
+		"isAlive": true,
+		"hasBonus": false,
+		"bonusDescription": "",
+		"debt": "20",
+		"activeMission": null,
+		"completedMissions": []
+	}
 ]
