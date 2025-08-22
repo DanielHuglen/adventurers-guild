@@ -140,6 +140,13 @@ app.get('/api/missions/:id/dispatched-members', (req, res) => {
 	return res.status(200).json(dispatchedMembers);
 });
 
+// Meta API
+app.get('/api/date', (req, res) => {
+	const meta = require(resolve('data', 'meta.json'));
+	const currentDate = new Date(meta.currentDate);
+	res.status(200).json(currentDate);
+});
+
 /**
  * Serve static files from /browser
  */

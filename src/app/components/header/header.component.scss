@@ -5,6 +5,11 @@
 	background-color: var(--secondary);
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-style: italic;
+	color: var(--primary);
+
+	.date {
+		font-size: 1.25rem;
+	}
 
 	a {
 		display: inline-flex;

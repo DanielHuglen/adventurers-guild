@@ -1,3 +1,6 @@
+<span class="date">
+	{{ metaService.getCurrentDate() | async | date : "shortDate" }}
+</span>
 <a [routerLink]="['']">
 	<img src="img/logo.jpeg" alt="Eventyrerlauget logo" />
 	<div>
