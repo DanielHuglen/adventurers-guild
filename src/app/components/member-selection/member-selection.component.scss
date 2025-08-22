@@ -1,0 +1,11 @@
+.members-deck {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 16px;
+	width: 100%;
+
+	app-character-card {
+		width: 180px;
+	}
+}

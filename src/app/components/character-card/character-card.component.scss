@@ -1,48 +1,52 @@
 @use "styles.scss" as *;
 
 button {
-  border: 2px solid var(--secondary);
-  border-radius: 16px;
-  padding: 16px;
-  text-align: center;
-  width: 100%;
-  cursor: pointer;
+	border: 2px solid var(--secondary);
+	border-radius: 16px;
+	padding: 16px;
+	text-align: center;
+	width: 100%;
+	cursor: pointer;
 
-  background-repeat: no-repeat;
-  background-size: 100% 75px;
-  background-image: linear-gradient(var(--secondary), var(--secondary));
-  background-position: 100% 0%;
+	background-repeat: no-repeat;
+	background-size: 100% 75px;
+	background-image: linear-gradient(var(--secondary), var(--secondary));
+	background-position: 100% 0%;
 
-  transition: background-size 0.2s;
+	transition: background-size 0.2s;
 
-  &:hover {
-    background-size: 100% 85px;
+	&:hover {
+		background-size: 100% 85px;
 
-    img {
-      width: 120px;
-      margin-bottom: 0;
-    }
-  }
+		img {
+			width: 120px;
+			margin-bottom: 0;
+		}
+	}
 }
 
 img {
-  display: block;
-  width: 100px;
-  margin: 0 auto 20px;
-  border: 6px solid var(--secondary);
-  object-fit: cover;
-  object-position: top;
-  aspect-ratio: 1 / 1;
-  border-radius: 100%;
-  transition: width 0.2s, margin-bottom 0.2s;
+	display: block;
+	width: 100px;
+	margin: 0 auto 20px;
+	border: 6px solid var(--secondary);
+	object-fit: cover;
+	object-position: top;
+	aspect-ratio: 1 / 1;
+	border-radius: 100%;
+	transition: width 0.2s, margin-bottom 0.2s, border 0.2s;
+
+	&.is-selected {
+		border-color: var(--success);
+	}
 }
 
 .name {
-  font-size: 1.5em;
-  font-weight: 700;
-  margin: 8px 0;
+	font-size: 1.5em;
+	font-weight: 700;
+	margin: 8px 0;
 }
 
 .availability {
-  @include color-circle;
+	@include color-circle;
 }

@@ -8,46 +8,46 @@ import { missionsResolver } from './services/mission.service';
 import { MissionOverviewComponent } from './components/mission-page/mission-overview/mission-overview.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    component: LandingPageComponent,
-  },
-  {
-    path: 'members',
-    component: MembersDeckComponent,
-    resolve: {
-      members: charactersResolver,
-    },
-  },
-  {
-    path: 'members/:id',
-    component: MemberDetailsComponent,
-  },
-  {
-    path: 'missions',
-    component: MissionsDeckComponent,
-    resolve: {
-      missions: missionsResolver,
-    },
-  },
-  {
-    path: 'missions/:id',
-    component: MissionOverviewComponent
-  },
-  {
-    path: 'employees',
-    redirectTo: '',
-  },
-  {
-    path: 'economy',
-    redirectTo: '',
-  },
-  {
-    path: 'reputation',
-    redirectTo: '',
-  },
-  {
-    path: 'founders',
-    redirectTo: '',
-  },
+	{
+		path: '',
+		component: LandingPageComponent,
+	},
+	{
+		path: 'members',
+		component: MembersDeckComponent,
+		resolve: {
+			members: charactersResolver,
+		},
+	},
+	{
+		path: 'members/:id',
+		component: MemberDetailsComponent,
+	},
+	{
+		path: 'missions',
+		component: MissionsDeckComponent,
+		resolve: {
+			missions: missionsResolver,
+		},
+	},
+	{
+		path: 'missions/:id',
+		component: MissionOverviewComponent,
+	},
+	{
+		path: 'employees',
+		redirectTo: '',
+	},
+	{
+		path: 'economy',
+		redirectTo: '',
+	},
+	{
+		path: 'reputation',
+		redirectTo: '',
+	},
+	{
+		path: 'founders',
+		redirectTo: '',
+	},
 ];

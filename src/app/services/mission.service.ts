@@ -4,6 +4,7 @@ import { Mission } from '../shared/mission-model';
 import { first, Observable } from 'rxjs';
 import { ResolveFn } from '@angular/router';
 import { Character } from 'app/shared/character-models';
+import { DispatchMissionRequest, DispatchMissionResponse } from 'app/shared/api-models';
 
 @Injectable({
 	providedIn: 'root',
@@ -21,6 +22,19 @@ export class MissionService {
 
 	getDispatchedMembers(id: number): Observable<Character[]> {
 		return this.http.get<Character[]>(`/api/missions/${id}/dispatched-members`);
+	}
+
+	dispatchMission(
+		missionId: number,
+		dispatchMissionRequst: DispatchMissionRequest
+	): Observable<DispatchMissionResponse> {
+		const { dispatchedMemberIds, diceRoll, dispatchDate } = dispatchMissionRequst;
+
+		return this.http.put<DispatchMissionResponse>(`/api/missions/${missionId}/dispatch-mission`, {
+			dispatchedMemberIds,
+			diceRoll,
+			dispatchDate,
+		});
 	}
 }
 

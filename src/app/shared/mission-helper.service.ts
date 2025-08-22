@@ -1,5 +1,28 @@
-import { ClassGroup } from './character-models';
+import { Character, ClassGroup, classGroups } from './character-models';
 import { Mission, MissionAvailability } from './mission-model';
+
+export function getMembersMatchingReccommendationsCount(
+	members: Character[],
+	reccommendedComposition: ClassGroup[]
+): number {
+	const selectedTanks = members.filter((member) => classGroups[member.class] === 'Tank').length;
+	const selectedMartials = members.filter((member) => classGroups[member.class] === 'Martial').length;
+	const selectedMagics = members.filter((member) => classGroups[member.class] === 'Magic').length;
+	const selectedHealers = members.filter((member) => classGroups[member.class] === 'Healer').length;
+
+	const reccommendedTanks = reccommendedComposition?.filter((role) => role === 'Tank').length || 0;
+	const reccommendedMartials = reccommendedComposition?.filter((role) => role === 'Martial').length || 0;
+	const reccommendedMagics = reccommendedComposition?.filter((role) => role === 'Magic').length || 0;
+	const reccommendedHealers = reccommendedComposition?.filter((role) => role === 'Healer').length || 0;
+
+	const totalSelectedCountingTowardsReccommendations =
+		Math.min(selectedTanks, reccommendedTanks) +
+		Math.min(selectedMartials, reccommendedMartials) +
+		Math.min(selectedMagics, reccommendedMagics) +
+		Math.min(selectedHealers, reccommendedHealers);
+
+	return Math.max(totalSelectedCountingTowardsReccommendations, 0);
+}
 
 export function getMissionAvailability(mission: Mission): MissionAvailability {
 	const { finalOutcome, diceRoll } = mission;
@@ -23,7 +46,7 @@ export function getCompositionText(composition: ClassGroup[]): string[] {
 		.filter((text) => !!text);
 }
 
-function getRoleText(roles: ClassGroup[], role: string) {
+function getRoleText(roles: ClassGroup[], role: string): string {
 	if (!roles?.length) {
 		return '';
 	}

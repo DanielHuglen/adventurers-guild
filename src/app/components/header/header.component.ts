@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LoginService } from 'app/services/login.service';
 import { MetaService } from 'app/services/meta.service';
+import { take } from 'rxjs';
 
 @Component({
 	selector: 'app-header',
@@ -20,5 +21,12 @@ export class HeaderComponent {
 		this.loginService.openPasswordPrompt();
 	}
 
-	constructor(public metaService: MetaService) {}
+	constructor(public metaService: MetaService) {
+		this.metaService
+			.getCurrentDate()
+			.pipe(take(1))
+			.subscribe((date) => {
+				this.currentDate = date;
+			});
+	}
 }

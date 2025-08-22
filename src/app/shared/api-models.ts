@@ -1,4 +1,5 @@
 import { Character } from './character-models';
+import { Mission } from './mission-model';
 
 export interface CharacterBonusUpdateRequest {
 	hasBonus: boolean;
@@ -9,6 +10,18 @@ export interface CharacterBonusUpdateRequest {
 export interface CharacterBonusUpdateResponse {
 	message: string;
 	character: Character;
+}
+
+export interface DispatchMissionRequest {
+	dispatchedMemberIds: number[];
+	diceRoll: number;
+	dispatchDate: string;
+}
+
+export interface DispatchMissionResponse {
+	message: string;
+	mission: Mission;
+	dispatchedMembers: Character[];
 }
 
 export interface LoginResponse {

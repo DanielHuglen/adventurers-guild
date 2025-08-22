@@ -1,12 +1,91 @@
+@use "styles.scss" as *;
+
 :host {
 	display: flex;
 	gap: 32px;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 app-mission-details {
-	display: block;
+	display: inline;
 }
 
 app-members-deck {
 	height: min-content;
+	width: fit-content;
+}
+
+app-member-selection {
+	display: inline;
+	max-width: 575px;
+}
+
+.dispatch-container {
+	width: 490px;
+	border: 2px solid var(--secondary);
+	border-radius: 16px;
+	padding: 16px;
+	height: fit-content;
+
+	h2 {
+		margin-bottom: 16px;
+		border-bottom: 2px dotted var(--secondary);
+		padding-bottom: 8px;
+		font-size: 2rem;
+		color: var(--secondary);
+	}
+
+	.dispatch-subtitle {
+		display: inline-block;
+		font-size: 1.2rem;
+		margin-bottom: 8px;
+	}
+
+	.dispatch-members {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-bottom: 16px;
+
+		span {
+			padding: 6px 12px;
+			border-radius: 9999px;
+			color: var(--white);
+			background-color: var(--secondary);
+			font-weight: 700;
+		}
+	}
+
+	.dispatch-value {
+		font-size: 1.25rem;
+		font-weight: 700;
+	}
+
+	form {
+		margin-top: 16px;
+
+		label {
+			margin-right: 8px;
+			font-size: 1.25rem;
+			font-weight: 500;
+
+			&:last-of-type {
+				margin-left: 16px;
+			}
+		}
+
+		input {
+			width: 160px;
+			height: 1.75rem;
+			font-size: 1.25rem;
+		}
+
+		button {
+			@include button-style(var(--secondary), var(--secondary-light), var(--secondary-dark));
+			display: block;
+			margin-top: 16px;
+			padding: 8px 12px;
+		}
+	}
 }

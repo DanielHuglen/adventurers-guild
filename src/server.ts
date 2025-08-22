@@ -15,7 +15,7 @@ declare module 'express-serve-static-core' {
 
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { Character } from './app/shared/character-models';
+import { Character, classGroups } from './app/shared/character-models';
 import { CharacterBonusUpdateResponse } from './app/shared/api-models';
 import { Mission } from 'app/shared/mission-model';
 import cookieParser from 'cookie-parser';
@@ -78,8 +78,11 @@ app.use((req, res, next) => {
  * ```
  */
 // Members API
-app.get('/api/members', (req, res) => {
-	res.sendFile(resolve('data', 'adventurers.json'));
+
+app.get('/api/members/available', (req, res) => {
+	const adventurers = require(resolve('data', 'adventurers.json')) as Character[];
+	const availableMembers = adventurers.filter((member: Character) => !member.activeMission && member.isAlive);
+	res.status(200).json(availableMembers);
 });
 
 app.get('/api/members/ids', (req, res) => {
@@ -91,6 +94,10 @@ app.get('/api/members/:id', (req, res) => {
 	const id = +req.params.id;
 	const adventurers = require(resolve('data', 'adventurers.json'));
 	res.json(adventurers.find((a: Character) => a.id === id));
+});
+
+app.get('/api/members', (req, res) => {
+	res.sendFile(resolve('data', 'adventurers.json'));
 });
 
 app.put('/api/members/:id/bonus', express.json(), (req, res) => {
@@ -138,6 +145,62 @@ app.get('/api/missions/:id/dispatched-members', (req, res) => {
 	);
 
 	return res.status(200).json(dispatchedMembers);
+});
+
+app.put('/api/missions/:id/dispatch-mission', express.json(), (req, res) => {
+	const id = +req.params.id;
+	const missions = require(resolve('data', 'missions.json')) as Mission[];
+	const mission = missions.find((m: Mission) => m.id === id);
+
+	if (!mission) {
+		return res.status(404).json({ error: 'Mission not found' });
+	}
+
+	if (mission.finalComposition?.length) {
+		return res.status(400).json({ error: 'Mission has already begun' });
+	}
+
+	const members = require(resolve('data', 'adventurers.json')) as Character[];
+	const dispatchedMemberIds = req.body.dispatchedMemberIds as number[];
+	const dispatchedMembers = members.filter((member: Character) => dispatchedMemberIds.includes(member.id));
+
+	if (dispatchedMemberIds.length === 0) {
+		return res.status(400).json({ error: 'No members dispatched' });
+	}
+
+	const availableMembers = members.filter((member: Character) => !member.activeMission && member.isAlive);
+	if (!dispatchedMemberIds.every((id) => availableMembers.some((member) => member.id === id))) {
+		return res.status(400).json({ error: 'Some members are not available for dispatch' });
+	}
+
+	if (req.body.diceRoll < 1 || req.body.diceRoll > 100) {
+		return res.status(400).json({ error: 'Dice roll must be between 1 and 100' });
+	}
+
+	const currentDate = require(resolve('data', 'meta.json')).currentDate;
+	if (!req.body.dispatchDate || new Date(req.body.dispatchDate).getTime() < new Date(currentDate).getTime()) {
+		return res.status(400).json({ error: 'Dispatch date cannot be in the past' });
+	}
+
+	mission.finalComposition = dispatchedMembers.map((member: Character) => classGroups[member.class]);
+	mission.diceRoll = req.body.diceRoll;
+	mission.dispatchDate = req.body.dispatchDate;
+
+	dispatchedMembers.forEach((member: Character) => {
+		member.activeMission = id;
+	});
+
+	// Write updated members and missions back to the JSON files and return the updated mission
+	fs.writeFileSync(resolve('data', 'adventurers.json'), JSON.stringify(members, null, 2));
+	fs.writeFileSync(resolve('data', 'missions.json'), JSON.stringify(missions, null, 2));
+	return res.status(200).json({
+		message: 'Mission dispatched successfully',
+		mission: {
+			...mission,
+			dispatchedMembers: dispatchedMembers.map((member: Character) => member.id),
+		},
+		dispatchedMembers: dispatchedMembers,
+	});
 });
 
 // Meta API
