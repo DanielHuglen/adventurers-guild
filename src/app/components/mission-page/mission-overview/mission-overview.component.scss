@@ -47,6 +47,11 @@ app-member-selection {
 		flex-wrap: wrap;
 		gap: 8px;
 		margin-bottom: 16px;
+		overflow: hidden;
+
+		.member-spaceholder {
+			height: 30px;
+		}
 
 		span {
 			padding: 6px 12px;
@@ -54,6 +59,12 @@ app-member-selection {
 			color: var(--white);
 			background-color: var(--secondary);
 			font-weight: 700;
+
+			@starting-style {
+				transform: translateX(-100%);
+			}
+			transform: translateX(0);
+			transition: transform 0.2s ease-out;
 		}
 	}
 

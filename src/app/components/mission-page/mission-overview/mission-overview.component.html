@@ -3,12 +3,13 @@
 @if (getMissionAvailability(mission) === 'Available') {
 <app-member-selection [members]="availableMembers()" (updateSelectedMembers)="selectedMemberIds = $event" />
 <!-- TODO: This should be its own component maybe probably -->
-<!-- TODO: Add current date to database, changable by admin. Add as validator to date input -->
 <div class="dispatch-container">
 	<h2>Dispatch on mission</h2>
 	<p class="dispatch-subtitle">Selected members ({{ selectedMemberIds.length }})</p>
 	<div class="dispatch-members">
-		@for (member of selectedMembers; track member.id) {
+		@if (selectedMemberIds.length < 1) {
+		<div class="member-spaceholder"></div>
+		} @for (member of selectedMembers; track member.id) {
 		<span>
 			{{ member.name }}
 		</span>
