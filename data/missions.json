@@ -35,8 +35,13 @@
 		],
 		"diceRoll": 84,
 		"finalComposition": ["Martial"],
-		"finalOutcome": null,
-		"dispatchDate": "1497-03-08"
+		"finalOutcome": {
+			"tier": "Critical Success",
+			"description": "A bond is formed between the mimic and the lead agent. Your guild now has a young mimic.",
+			"reward": { "gold": 300, "reputation": 5 }
+		},
+		"dispatchDate": "1497-03-08",
+		"completionDate": "1497-03-14"
 	},
 	{
 		"id": 2,
@@ -74,8 +79,13 @@
 		],
 		"diceRoll": 35,
 		"finalComposition": ["Martial", "Healer", "Healer"],
-		"finalOutcome": null,
-		"dispatchDate": "1497-03-01"
+		"finalOutcome": {
+			"tier": "Mixed",
+			"description": "The Kraken is found and defeated, but the guild's ship is damaged in the process. It will take an extra week and 200 gold to repair.",
+			"reward": { "gold": 1650, "reputation": 2 }
+		},
+		"dispatchDate": "1497-03-01",
+		"completionDate": "1497-03-10"
 	},
 	{
 		"id": 3,
@@ -113,8 +123,13 @@
 		],
 		"diceRoll": 35,
 		"finalComposition": ["Tank", "Healer"],
-		"finalOutcome": null,
-		"dispatchDate": "1497-03-08"
+		"finalOutcome": {
+			"tier": "Critical Success",
+			"description": "Jon's daughter, Robyn Blythe, was so impressed that she takes the opportunity to apply with your guild as a level 2 sorcerer.",
+			"reward": { "gold": 400, "reputation": 7 }
+		},
+		"dispatchDate": "1497-03-08",
+		"completionDate": "1497-03-11"
 	},
 	{
 		"id": 4,
