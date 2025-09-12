@@ -645,5 +645,170 @@
 		"finalOutcome": null,
 		"dispatchDate": null,
 		"completionDate": null
+	},
+	{
+		"id": 12,
+		"title": "Escort the Traveling Herbalist",
+		"description": "An elderly herbalist named Maelis needs protection as she travels from Waterdeep to Red Larch. Bandits and wolves have been seen on the road, and she carries rare herbs that could fetch a high price.",
+		"location": "Waterdeep",
+		"level": 1,
+		"recommendedComposition": ["Tank", "Martial"],
+		"potentialOutcomes": [
+			{
+				"tier": "Critical Success",
+				"description": "Maelis arrives safely, and she gifts the guild a set of rare healing potions she brewed on the road.",
+				"reward": {
+					"gold": 400,
+					"reputation": 6
+				}
+			},
+			{
+				"tier": "Success",
+				"description": "The trip goes smoothly, and Maelis spreads kind words about the guild in Red Larch.",
+				"reward": {
+					"gold": 300,
+					"reputation": 3
+				}
+			},
+			{
+				"tier": "Mixed",
+				"description": "Maelis arrives, but some of her herbs were stolen during the journey.",
+				"reward": {
+					"gold": 150,
+					"reputation": 0
+				}
+			},
+			{
+				"tier": "Failure",
+				"description": "The group was ambushed and Maelis lost most of her supplies.",
+				"reward": {
+					"gold": 0,
+					"reputation": -3
+				}
+			},
+			{
+				"tier": "Critical Failure",
+				"description": "Maelis is injured during the trip, blaming the guild for their negligence.",
+				"reward": {
+					"gold": -200,
+					"reputation": -7
+				}
+			}
+		],
+		"diceRoll": null,
+		"finalComposition": [],
+		"finalOutcome": null,
+		"dispatchDate": null,
+		"completionDate": null
+	},
+	{
+		"id": 13,
+		"title": "Break Up a Street Brawl",
+		"description": "Two rival gangs, the Rust Rats and the Black Knives, have begun fighting in the slums of Neverwinter. The city guard is stretched thin, and the guild is asked to intervene before the violence escalates.",
+		"location": "Neverwinter",
+		"level": 1,
+		"recommendedComposition": ["Tank", "Healer"],
+		"potentialOutcomes": [
+			{
+				"tier": "Critical Success",
+				"description": "The guild not only ends the fight but negotiates a temporary truce, impressing the city guard.",
+				"reward": {
+					"gold": 500,
+					"reputation": 7
+				}
+			},
+			{
+				"tier": "Success",
+				"description": "The fight is broken up without casualties, restoring peace to the chasm district.",
+				"reward": {
+					"gold": 350,
+					"reputation": 4
+				}
+			},
+			{
+				"tier": "Mixed",
+				"description": "The fight ends, but both gangs blame the guild for meddling.",
+				"reward": {
+					"gold": 200,
+					"reputation": 0
+				}
+			},
+			{
+				"tier": "Failure",
+				"description": "The brawl continues, spreading into nearby streets and damaging homes.",
+				"reward": {
+					"gold": 0,
+					"reputation": -4
+				}
+			},
+			{
+				"tier": "Critical Failure",
+				"description": "The guild's attempt to stop the fight causes chaos, and members of both gangs unite briefly to attack the agents.",
+				"reward": {
+					"gold": -250,
+					"reputation": -8
+				}
+			}
+		],
+		"diceRoll": null,
+		"finalComposition": [],
+		"finalOutcome": null,
+		"dispatchDate": null,
+		"completionDate": null
+	},
+	{
+		"id": 14,
+		"title": "Recover Stolen Guild Records",
+		"description": "Important guild documents have been stolen by a band of thieves in Baldur's Gate. The guild must recover them before rival groups gain sensitive information.",
+		"location": "Baldur's Gate",
+		"level": 2,
+		"recommendedComposition": ["Martial", "Magic", "Tank"],
+		"potentialOutcomes": [
+			{
+				"tier": "Critical Success",
+				"description": "The records are recovered intact, along with a stash of gold the thieves had hidden away.",
+				"reward": {
+					"gold": 1200,
+					"reputation": 6
+				}
+			},
+			{
+				"tier": "Success",
+				"description": "The records are safely recovered before any damage is done.",
+				"reward": {
+					"gold": 1000,
+					"reputation": 4
+				}
+			},
+			{
+				"tier": "Mixed",
+				"description": "The records are recovered, but some sensitive information was already sold to a rival.",
+				"reward": {
+					"gold": 600,
+					"reputation": 0
+				}
+			},
+			{
+				"tier": "Failure",
+				"description": "The thieves scatter, and only fragments of the records are retrieved.",
+				"reward": {
+					"gold": 0,
+					"reputation": -5
+				}
+			},
+			{
+				"tier": "Critical Failure",
+				"description": "The thieves use the information against the guild, blackmailing allies and spreading distrust.",
+				"reward": {
+					"gold": -300,
+					"reputation": -12
+				}
+			}
+		],
+		"diceRoll": null,
+		"finalComposition": [],
+		"finalOutcome": null,
+		"dispatchDate": null,
+		"completionDate": null
 	}
 ]
