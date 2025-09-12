@@ -1,0 +1,5 @@
+<form (submit)="setNewDate()">
+	<label for="new-date">New date</label>
+	<input type="date" [min]="currentDate()" id="new-date" [formControl]="newDate" />
+	<button type="submit">Set date</button>
+</form>

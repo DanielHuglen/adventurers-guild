@@ -1,5 +1,11 @@
 <span class="date">
 	{{ currentDate | date : "shortDate" }}
+	@if ((role | async) === 'admin') {
+	<button (click)="openAdjustDate()">Change</button>
+	<dialog #dialog>
+		<app-adjust-date-form [currentDate]="currentDate" (adjustedDate)="handleAdjustedDate($event)" />
+	</dialog>
+	}
 </span>
 <a [routerLink]="['']">
 	<img src="img/logo.jpeg" alt="Eventyrerlauget logo" />

@@ -10,27 +10,42 @@
 			{
 				"tier": "Critical Success",
 				"description": "A bond is formed between the mimic and the lead agent. Your guild now has a young mimic.",
-				"reward": { "gold": 300, "reputation": 5 }
+				"reward": {
+					"gold": 300,
+					"reputation": 5
+				}
 			},
 			{
 				"tier": "Success",
 				"description": "The beast is found and dispatched. Odsel will happily perform cheap appraisals of antiques for the guild.",
-				"reward": { "gold": 300, "reputation": 3 }
+				"reward": {
+					"gold": 300,
+					"reputation": 3
+				}
 			},
 			{
 				"tier": "Mixed",
 				"description": "The mimic is killed but many rare teapots are shattered in the fight.",
-				"reward": { "gold": 50, "reputation": -2 }
+				"reward": {
+					"gold": 50,
+					"reputation": -2
+				}
 			},
 			{
 				"tier": "Failure",
 				"description": "Lots of rare items were broken, but no mimic was found.",
-				"reward": { "gold": -400, "reputation": -8 }
+				"reward": {
+					"gold": -400,
+					"reputation": -8
+				}
 			},
 			{
 				"tier": "Critical Failure",
 				"description": "As Failure, the mimic got away. A week later people start disappearing in the shop.",
-				"reward": { "gold": -400, "reputation": -10 }
+				"reward": {
+					"gold": -400,
+					"reputation": -10
+				}
 			}
 		],
 		"diceRoll": 84,
@@ -38,7 +53,10 @@
 		"finalOutcome": {
 			"tier": "Critical Success",
 			"description": "A bond is formed between the mimic and the lead agent. Your guild now has a young mimic.",
-			"reward": { "gold": 300, "reputation": 5 }
+			"reward": {
+				"gold": 300,
+				"reputation": 5
+			}
 		},
 		"dispatchDate": "1497-03-08",
 		"completionDate": "1497-03-14"
@@ -54,27 +72,42 @@
 			{
 				"tier": "Critical Success",
 				"description": "The Kraken is found and defeated. The guild is now known for its prowess in the sea.",
-				"reward": { "gold": 2000, "reputation": 10 }
+				"reward": {
+					"gold": 2000,
+					"reputation": 10
+				}
 			},
 			{
 				"tier": "Success",
 				"description": "The Kraken is found and defeated, but its remains are too damaged to be useful, even as proof it was a kraken.",
-				"reward": { "gold": 1850, "reputation": 7 }
+				"reward": {
+					"gold": 1850,
+					"reputation": 7
+				}
 			},
 			{
 				"tier": "Mixed",
 				"description": "The Kraken is found and defeated, but the guild's ship is damaged in the process. It will take an extra week and 200 gold to repair.",
-				"reward": { "gold": 1000, "reputation": 2 }
+				"reward": {
+					"gold": 1000,
+					"reputation": 2
+				}
 			},
 			{
 				"tier": "Failure",
 				"description": "The Kraken is found, but the guild's ship is damaged and the kraken escapes. It will take an extra week and 200 gold to repair.",
-				"reward": { "gold": -200, "reputation": -2 }
+				"reward": {
+					"gold": -200,
+					"reputation": -2
+				}
 			},
 			{
 				"tier": "Critical Failure",
 				"description": "The Kraken is found, but the guild's ship is sunk and the crew must be rescued or take two weeks to return. The guild will lose 700 gold for the ship and 10 reputation.",
-				"reward": { "gold": -700, "reputation": -10 }
+				"reward": {
+					"gold": -700,
+					"reputation": -10
+				}
 			}
 		],
 		"diceRoll": 35,
@@ -82,7 +115,10 @@
 		"finalOutcome": {
 			"tier": "Mixed",
 			"description": "The Kraken is found and defeated, but the guild's ship is damaged in the process. It will take an extra week and 200 gold to repair.",
-			"reward": { "gold": 1650, "reputation": 2 }
+			"reward": {
+				"gold": 1650,
+				"reputation": 2
+			}
 		},
 		"dispatchDate": "1497-03-01",
 		"completionDate": "1497-03-10"
@@ -98,27 +134,42 @@
 			{
 				"tier": "Critical Success",
 				"description": "Jon's daughter, Robyn Blythe, was so impressed that she takes the opportunity to apply with your guild as a level 2 sorcerer.",
-				"reward": { "gold": 400, "reputation": 7 }
+				"reward": {
+					"gold": 400,
+					"reputation": 7
+				}
 			},
 			{
 				"tier": "Success",
 				"description": "The pub has turned itself around.",
-				"reward": { "gold": 325, "reputation": 5 }
+				"reward": {
+					"gold": 325,
+					"reputation": 5
+				}
 			},
 			{
 				"tier": "Mixed",
 				"description": "The rowdiest of the clientele now drink elsewhere, but sales have taken a hit.",
-				"reward": { "gold": 150, "reputation": 1 }
+				"reward": {
+					"gold": 150,
+					"reputation": 1
+				}
 			},
 			{
 				"tier": "Failure",
 				"description": "The atmosphere in the pub has not improved, and Jon has decided to sell up",
-				"reward": { "gold": -250, "reputation": -4 }
+				"reward": {
+					"gold": -250,
+					"reputation": -4
+				}
 			},
 			{
 				"tier": "Critical Failure",
 				"description": "Your agents have managed to offend Pebbles, a huge dwarven criminal. He vows to return to the pub with his boys to demolish it, before heading to the guild to take revenge.",
-				"reward": { "gold": -300, "reputation": -7 }
+				"reward": {
+					"gold": -300,
+					"reputation": -7
+				}
 			}
 		],
 		"diceRoll": 35,
@@ -126,7 +177,10 @@
 		"finalOutcome": {
 			"tier": "Critical Success",
 			"description": "Jon's daughter, Robyn Blythe, was so impressed that she takes the opportunity to apply with your guild as a level 2 sorcerer.",
-			"reward": { "gold": 400, "reputation": 7 }
+			"reward": {
+				"gold": 400,
+				"reputation": 7
+			}
 		},
 		"dispatchDate": "1497-03-08",
 		"completionDate": "1497-03-11"
@@ -142,27 +196,42 @@
 			{
 				"tier": "Critical Success",
 				"description": "Sharius is scared off permanently, and Rieta spreads word of your guild's effectiveness.",
-				"reward": { "gold": 800, "reputation": 5 }
+				"reward": {
+					"gold": 800,
+					"reputation": 5
+				}
 			},
 			{
 				"tier": "Success",
 				"description": "Sharius is scared off, but Rieta remains cautious.",
-				"reward": { "gold": 750, "reputation": 3 }
+				"reward": {
+					"gold": 750,
+					"reputation": 3
+				}
 			},
 			{
 				"tier": "Mixed",
 				"description": "Sharius leaves but vows revenge.",
-				"reward": { "gold": 500, "reputation": 0 }
+				"reward": {
+					"gold": 500,
+					"reputation": 0
+				}
 			},
 			{
 				"tier": "Failure",
 				"description": "Sharius refuses to leave and escalates the situation.",
-				"reward": { "gold": 0, "reputation": -2 }
+				"reward": {
+					"gold": 0,
+					"reputation": -2
+				}
 			},
 			{
 				"tier": "Critical Failure",
 				"description": "Sharius retaliates violently, causing damage to the guild's reputation and agents.",
-				"reward": { "gold": 0, "reputation": -5 }
+				"reward": {
+					"gold": 0,
+					"reputation": -5
+				}
 			}
 		],
 		"diceRoll": 75,
@@ -170,7 +239,10 @@
 		"finalOutcome": {
 			"tier": "Success",
 			"description": "Sharius is scared off, but Rieta remains cautious.",
-			"reward": { "gold": 750, "reputation": 3 }
+			"reward": {
+				"gold": 750,
+				"reputation": 3
+			}
 		},
 		"dispatchDate": "1497-03-01",
 		"completionDate": "1497-03-04"
@@ -186,27 +258,42 @@
 			{
 				"tier": "Critical Success",
 				"description": "Clanky is retrieved unharmed, and Rufus rewards you handsomely.",
-				"reward": { "gold": 1000, "reputation": 5 }
+				"reward": {
+					"gold": 1000,
+					"reputation": 5
+				}
 			},
 			{
 				"tier": "Success",
 				"description": "Clanky is retrieved, but with minor damage.",
-				"reward": { "gold": 850, "reputation": 3 }
+				"reward": {
+					"gold": 850,
+					"reputation": 3
+				}
 			},
 			{
 				"tier": "Mixed",
 				"description": "Clanky is retrieved, but the rival artificer placed a scrying device on it.",
-				"reward": { "gold": 600, "reputation": 1 }
+				"reward": {
+					"gold": 600,
+					"reputation": 1
+				}
 			},
 			{
 				"tier": "Failure",
 				"description": "Clanky is not retrieved, and Rufus is furious.",
-				"reward": { "gold": 0, "reputation": -5 }
+				"reward": {
+					"gold": 0,
+					"reputation": -5
+				}
 			},
 			{
 				"tier": "Critical Failure",
 				"description": "Clanky is destroyed, and Rufus spreads word of your failure while demaning you pay for parts to replace him.",
-				"reward": { "gold": -500, "reputation": -10 }
+				"reward": {
+					"gold": -500,
+					"reputation": -10
+				}
 			}
 		],
 		"diceRoll": 65,
@@ -214,7 +301,10 @@
 		"finalOutcome": {
 			"tier": "Success",
 			"description": "Clanky is retrieved, but with minor damage.",
-			"reward": { "gold": 765, "reputation": 3 }
+			"reward": {
+				"gold": 765,
+				"reputation": 3
+			}
 		},
 		"dispatchDate": "1497-03-01",
 		"completionDate": "1497-03-07"
@@ -230,27 +320,42 @@
 			{
 				"tier": "Critical Success",
 				"description": "A ring worth 500gp is gifted to you by the drunkard + 5RP + The drunkard shares the scheduled stops for a supply caravan belonging to an enemy of the party.",
-				"reward": { "gold": 750, "reputation": 5 }
+				"reward": {
+					"gold": 750,
+					"reputation": 5
+				}
 			},
 			{
 				"tier": "Success",
 				"description": "Your agents have successfully convinced the drunkard to keep quiet. You are gifted a silver trinket worth 250g.",
-				"reward": { "gold": 250, "reputation": 3 }
+				"reward": {
+					"gold": 250,
+					"reputation": 3
+				}
 			},
 			{
 				"tier": "Mixed",
 				"description": "50gp is taken from the drunkard.",
-				"reward": { "gold": 50, "reputation": -2 }
+				"reward": {
+					"gold": 50,
+					"reputation": -2
+				}
 			},
 			{
 				"tier": "Failure",
 				"description": "Your agents have lost their temper, publicly thrashing the drunkard.",
-				"reward": { "gold": 0, "reputation": -4 }
+				"reward": {
+					"gold": 0,
+					"reputation": -4
+				}
 			},
 			{
 				"tier": "Critical Failure",
 				"description": "The Duke is so offended at the way his nephew was treated that he's demanding a meeting with guild leadership!",
-				"reward": { "gold": -150, "reputation": -10 }
+				"reward": {
+					"gold": -150,
+					"reputation": -10
+				}
 			}
 		],
 		"diceRoll": 43,
@@ -258,7 +363,10 @@
 		"finalOutcome": {
 			"tier": "Success",
 			"description": "Your agents have successfully convinced the drunkard to keep quiet. You are gifted a silver trinket worth 250g",
-			"reward": { "gold": 240, "reputation": 3 }
+			"reward": {
+				"gold": 240,
+				"reputation": 3
+			}
 		},
 		"dispatchDate": "1497-03-04",
 		"completionDate": "1497-03-07"
@@ -274,27 +382,42 @@
 			{
 				"tier": "Critical Success",
 				"description": "Ogilvie offers you a favour in return, to be called in whenever.",
-				"reward": { "gold": 5000, "reputation": 10 }
+				"reward": {
+					"gold": 5000,
+					"reputation": 10
+				}
 			},
 			{
 				"tier": "Success",
 				"description": "The Understone robbery goes off without a hitch. Ogilvie is impressed. No reputation loss is suffered.",
-				"reward": { "gold": 2500, "reputation": 5 }
+				"reward": {
+					"gold": 2500,
+					"reputation": 5
+				}
 			},
 			{
 				"tier": "Mixed",
 				"description": "The Understone robbery goes off with minor trouble from the watch, but one of your Rogues is arrested! Bail will take a week and cost 500gp. Ogilvie pays you 1500gp. -8 RP",
-				"reward": { "gold": 1500, "reputation": -8 }
+				"reward": {
+					"gold": 1500,
+					"reputation": -8
+				}
 			},
 			{
 				"tier": "Failure",
 				"description": "There are arrests made at the Understone robbery. 2 Rogues arrested, bail as above per Rogue, -12 RP.",
-				"reward": { "gold": 0, "reputation": -12 }
+				"reward": {
+					"gold": 0,
+					"reputation": -12
+				}
 			},
 			{
 				"tier": "Critical Failure",
 				"description": "Ogilvie holds you personally responsible, and swears to run you out of town unless your party performs the robbery as planned and delivers the money.",
-				"reward": { "gold": 0, "reputation": -20 }
+				"reward": {
+					"gold": 0,
+					"reputation": -20
+				}
 			}
 		],
 		"diceRoll": null,
@@ -314,27 +437,42 @@
 			{
 				"tier": "Critical Success",
 				"description": "The king is mighty impressed with your work, granting you an extra 20 reputation in the kingdom! He also provides tickets for Billy Jigglepike's live show.",
-				"reward": { "gold": 2500, "reputation": 30 }
+				"reward": {
+					"gold": 2500,
+					"reputation": 30
+				}
 			},
 			{
 				"tier": "Success",
 				"description": "The sun is shining once again and the druids have been driven out of the city. 2500g + 10 reputation.",
-				"reward": { "gold": 2500, "reputation": 10 }
+				"reward": {
+					"gold": 2500,
+					"reputation": 10
+				}
 			},
 			{
 				"tier": "Mixed",
 				"description": "The druids are gone, but their spell still lingers. 1250g + 2 reputation.",
-				"reward": { "gold": 1250, "reputation": 2 }
+				"reward": {
+					"gold": 1250,
+					"reputation": 2
+				}
 			},
 			{
 				"tier": "Failure",
 				"description": "Some of the druids managed to complete the ritual before being slain, and the king blames you for it. -10 reputation and expenses equal to 10% of initial reward.",
-				"reward": { "gold": -250, "reputation": -10 }
+				"reward": {
+					"gold": -250,
+					"reputation": -10
+				}
 			},
 			{
 				"tier": "Critical Failure",
 				"description": "One of your agents was turned into a sheep! Find a way to lift the curse.",
-				"reward": { "gold": 0, "reputation": -15 }
+				"reward": {
+					"gold": 0,
+					"reputation": -15
+				}
 			}
 		],
 		"diceRoll": null,
@@ -354,27 +492,42 @@
 			{
 				"tier": "Critical Success",
 				"description": "During interrogation, the cultists reveal the location of the talisman of Ultimate Evil.",
-				"reward": { "gold": 2500, "reputation": 20 }
+				"reward": {
+					"gold": 2500,
+					"reputation": 20
+				}
 			},
 			{
 				"tier": "Success",
 				"description": "The cultists are slain and scattered. A magic item from Table D is brought back.",
-				"reward": { "gold": 2500, "reputation": 10 }
+				"reward": {
+					"gold": 2500,
+					"reputation": 10
+				}
 			},
 			{
 				"tier": "Mixed",
 				"description": "The cultists are scattered, but cells are still active. A magic item from Table B is brought back.",
-				"reward": { "gold": 1250, "reputation": 2 }
+				"reward": {
+					"gold": 1250,
+					"reputation": 2
+				}
 			},
 			{
 				"tier": "Failure",
 				"description": "The cultists captured your agents and 1000g expenses must be paid to get them back. Word of the cultists is spreading, damaging the guild's reputation.",
-				"reward": { "gold": -1000, "reputation": -10 }
+				"reward": {
+					"gold": -1000,
+					"reputation": -10
+				}
 			},
 			{
 				"tier": "Critical Failure",
 				"description": "The cultists have managed to summon Tremchuur, threatening to wreak havoc on the region. Four agents are held hostage as bait.",
-				"reward": { "gold": 0, "reputation": -15 }
+				"reward": {
+					"gold": 0,
+					"reputation": -15
+				}
 			}
 		],
 		"diceRoll": null,
@@ -394,27 +547,42 @@
 			{
 				"tier": "Critical Success",
 				"description": "The soldiers are being baaaadly affected by the mutagen, and Frumagem is pleased. He offers you a magic item for your great success. Roll on the table!.",
-				"reward": { "gold": 1800, "reputation": 10 }
+				"reward": {
+					"gold": 1800,
+					"reputation": 10
+				}
 			},
 			{
 				"tier": "Success",
 				"description": "The soldiers are being baaaadly affected by the mutagen, and Frumagem is pleased. He will consider you for future endevours.",
-				"reward": { "gold": 1500, "reputation": 5 }
+				"reward": {
+					"gold": 1500,
+					"reputation": 5
+				}
 			},
 			{
 				"tier": "Mixed",
 				"description": "The mutagem is applied, but it seems your agents took 'a few drops' too literally. The dose was too small, and the soldiers only started growing wool.",
-				"reward": { "gold": 300, "reputation": -2 }
+				"reward": {
+					"gold": 300,
+					"reputation": -2
+				}
 			},
 			{
 				"tier": "Failure",
 				"description": "The agents had to flee the scene, and the mutagen was lost. Rufus traced the mutagen back to Frumagem, and demands justice.",
-				"reward": { "gold": 0, "reputation": -8 }
+				"reward": {
+					"gold": 0,
+					"reputation": -8
+				}
 			},
 			{
 				"tier": "Critical Failure",
 				"description": "It seems the mutagen was looking far too tasty, and the agents drank it all. They are now sheep for the next week, and Rufus will not be asking for your services again.",
-				"reward": { "gold": 0, "reputation": -20 }
+				"reward": {
+					"gold": 0,
+					"reputation": -20
+				}
 			}
 		],
 		"diceRoll": null,
@@ -434,27 +602,42 @@
 			{
 				"tier": "Critical Success",
 				"description": "The new priestess remembers those who helped her rise to power, and rewards you with a set of web walker boots, in addition to a huge boost to your reputation.",
-				"reward": { "gold": 4000, "reputation": 40 }
+				"reward": {
+					"gold": 4000,
+					"reputation": 40
+				}
 			},
 			{
 				"tier": "Success",
 				"description": "The new priestess remembers those who helped her rise to power, and promises to attack Neverwinter last of all the cities in the region.",
-				"reward": { "gold": 2700, "reputation": 15 }
+				"reward": {
+					"gold": 2700,
+					"reputation": 15
+				}
 			},
 			{
 				"tier": "Mixed",
 				"description": "Whilst the current champion of Lolth is defeated, no new priestess is crowned. It seems the god of the drow is not ready to give out her blessing again just yet.",
-				"reward": { "gold": 500, "reputation": -5 }
+				"reward": {
+					"gold": 500,
+					"reputation": -5
+				}
 			},
 			{
 				"tier": "Failure",
 				"description": "The coup is a failure, and the drow are executed. The grand priestess is impressed with your efforts, and dares you to try again.",
-				"reward": { "gold": 0, "reputation": -8 }
+				"reward": {
+					"gold": 0,
+					"reputation": -8
+				}
 			},
 			{
 				"tier": "Critical Failure",
 				"description": "The coup is a failure, and the drow are executed. The grand priestess is furious with your guild, and signals her soldiers to march towards Neverwinter.",
-				"reward": { "gold": 0, "reputation": -20 }
+				"reward": {
+					"gold": 0,
+					"reputation": -20
+				}
 			}
 		],
 		"diceRoll": null,

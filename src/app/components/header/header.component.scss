@@ -9,6 +9,15 @@
 
 	.date {
 		font-size: 1.25rem;
+
+		button {
+			margin-left: 1rem;
+		}
+
+		// Hide date on small screens
+		@media screen and (max-width: 768px) {
+			display: none;
+		}
 	}
 
 	a {

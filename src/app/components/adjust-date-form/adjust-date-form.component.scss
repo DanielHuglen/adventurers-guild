@@ -1,0 +1,32 @@
+:host {
+	font-style: normal;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+label {
+	margin-right: 16px;
+}
+
+input {
+	width: 160px;
+	height: 1.75rem;
+	font-size: 1.25rem;
+}
+
+button {
+	display: block;
+	width: fit-content;
+	margin: 16px auto 0 auto;
+	background-color: unset;
+	border: 2px solid black;
+	border-radius: 8px;
+	padding: 8px 16px;
+	font-size: 1.25rem;
+
+	&:hover {
+		background-color: var(--grey-light);
+	}
+	&:active {
+		background-color: var(--grey-dark);
+	}
+}

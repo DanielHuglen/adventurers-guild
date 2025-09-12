@@ -29,3 +29,12 @@ export interface LoginResponse {
 }
 
 export type Role = 'guest' | 'editor' | 'admin';
+
+export interface AdjustDateRequest {
+	newDate: string;
+}
+
+export interface AdjustDateResponse {
+	message: string;
+	newDate: string;
+}

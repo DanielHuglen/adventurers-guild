@@ -47,7 +47,7 @@ export interface Character {
 	hasBonus: boolean;
 	bonusDescription?: string;
 	debt?: number;
-	activeMission?: number;
+	activeMission?: number | null;
 	completedMissions: number[];
 }
 

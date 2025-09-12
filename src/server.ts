@@ -19,6 +19,8 @@ import { Character, classGroups } from './app/shared/character-models';
 import { CharacterBonusUpdateResponse } from './app/shared/api-models';
 import { Mission } from 'app/shared/mission-model';
 import cookieParser from 'cookie-parser';
+import { MissionCalculationInputs } from 'utils/mission-calculation';
+import { getMembersMatchingReccommendationsCount } from 'app/shared/mission-helper.service';
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
@@ -184,7 +186,12 @@ app.put('/api/missions/:id/dispatch-mission', express.json(), (req, res) => {
 
 	mission.finalComposition = dispatchedMembers.map((member: Character) => classGroups[member.class]);
 	mission.diceRoll = req.body.diceRoll;
-	mission.dispatchDate = req.body.dispatchDate;
+	mission.dispatchDate = new Date(req.body.dispatchDate);
+	// Duration = level * 3 days
+	const dispatchDate = new Date(mission.dispatchDate);
+	const completionDate = new Date(dispatchDate);
+	completionDate.setDate(completionDate.getDate() + mission.level * 3);
+	mission.completionDate = completionDate;
 
 	dispatchedMembers.forEach((member: Character) => {
 		member.activeMission = id;
@@ -214,13 +221,85 @@ app.get('/api/date', (req, res) => {
 // Adjusting the current date should be an admin-only operation
 // It should automatically complete any missions that ended before the new date
 // Completing a mission should update the members accordingly (alive/dead, activeMission, completedMissions), as well as grant them experience and remove any debt if the reward is higher than the cost
-// A single experience point is awarded for each of the following criteria:
-// - Agent level is two below or lower below mission level
-// - Agent level is one below or lower mission level
-// - Agent level is equal to or lower than mission level
-// - Mission was a mixed result or better
-// - Mission was a success or better
-// - Mission was a critical success
+// Should make use of "calculateExperienceGain" from utils/experience.ts
+app.post('/api/date', express.json(), (req, res) => {
+	if (req.userRole !== 'admin') {
+		return res.status(403).json({ error: 'Forbidden' });
+	}
+
+	const newDate = req.body.newDate;
+	if (!newDate || isNaN(new Date(newDate).getTime())) {
+		return res.status(400).json({ error: 'Invalid date' });
+	}
+	const meta = require(resolve('data', 'meta.json'));
+	const currentDate = new Date(meta.currentDate);
+	const adjustedDate = new Date(newDate);
+	if (adjustedDate.getTime() < currentDate.getTime()) {
+		return res.status(400).json({ error: 'New date cannot be in the past' });
+	}
+
+	const missions = require(resolve('data', 'missions.json')) as Mission[];
+	const members = require(resolve('data', 'adventurers.json')) as Character[];
+	const { calculateExperienceGain } = require('./utils/experience');
+	const { evaluateMissionRoll } = require('./utils/mission-calculation');
+
+	// Complete any missions that ended before the new date
+	missions.forEach((mission: Mission) => {
+		if (mission.dispatchDate && !mission.finalOutcome) {
+			const missionEndDate = new Date(mission.completionDate);
+			if (missionEndDate.getTime() <= adjustedDate.getTime()) {
+				// Complete the mission
+				const { level, recommendedComposition, finalComposition, diceRoll } = mission;
+				const totalReputationInCity = missions
+					.filter((m) => m.location === mission.location && m.finalOutcome)
+					.reduce((sum, m) => sum + (m.finalOutcome?.reward.reputation || 0), 0);
+				const dispatchedMembers = members.filter((member: Character) => member.activeMission === mission.id);
+				const totalPartyLevel = dispatchedMembers.reduce((sum, member) => sum + Math.floor(member.experience / 10), 0);
+				const averagePartyLevel = Math.floor(totalPartyLevel / dispatchedMembers.length);
+				const totalBonus = dispatchedMembers.reduce((sum, member) => sum + (member.hasBonus ? 1 : 0), 0);
+				const missionCalculationInputs = {
+					LM: level,
+					NM: recommendedComposition.length,
+					Np: finalComposition?.length ?? 0,
+					Lp: averagePartyLevel,
+					Pp: getMembersMatchingReccommendationsCount(dispatchedMembers, recommendedComposition),
+					R: totalReputationInCity,
+					O: totalBonus,
+				} as MissionCalculationInputs;
+
+				const { outcome } = evaluateMissionRoll(diceRoll || 0, missionCalculationInputs);
+				mission.finalOutcome = mission.potentialOutcomes.find((o) => o.tier === outcome) || null;
+
+				// Update members accordingly, as well as grant them experience and remove any debt if the reward is higher than the cost
+				dispatchedMembers.forEach((member: Character) => {
+					// For simplicity, let's assume all members survive and gain experience based on mission outcome
+					member.activeMission = null;
+					member.completedMissions.push(mission.id);
+					const experienceGained = calculateExperienceGain(member, mission);
+					member.experience += experienceGained;
+
+					// Remove debt if reward is higher than cost
+					const goldReward = mission.finalOutcome?.reward.gold || 0;
+					const memberDebt = member.debt || 0;
+					if (goldReward > 0 && memberDebt > 0) {
+						// Remove as much debt as possible, and add it to the gold reward
+						const debtPaid = Math.min(goldReward, memberDebt);
+						member.debt = memberDebt - debtPaid;
+						mission.finalOutcome!.reward.gold = goldReward + debtPaid;
+					}
+				});
+			}
+		}
+	});
+	// TODO: Write updated members and missions back to the JSON files
+	fs.writeFileSync(resolve('data', 'adventurers.json'), JSON.stringify(members, null, 2));
+	fs.writeFileSync(resolve('data', 'missions.json'), JSON.stringify(missions, null, 2));
+
+	// Update the current date in meta.json
+	meta.currentDate = adjustedDate.toISOString().slice(0, 10);
+	fs.writeFileSync(resolve('data', 'meta.json'), JSON.stringify(meta, null, 2));
+	return res.status(200).json({ message: 'Date updated successfully', newDate: meta.currentDate });
+});
 
 /**
  * Serve static files from /browser

@@ -10,7 +10,7 @@ export interface Mission {
 	potentialOutcomes: PotentialOutcomes<Outcome>;
 	diceRoll: number; // 1d100
 	finalComposition: ClassGroup[];
-	finalOutcome: Outcome;
+	finalOutcome: Outcome | null;
 	dispatchDate: Date;
 	completionDate: Date;
 }

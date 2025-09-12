@@ -52,7 +52,7 @@
 	<div class="outcome-status">
 		<b>{{ mission().diceRoll }}/100&nbsp;</b>
 		<b [ngStyle]="{ color: finalOutcomeStatus }">
-			{{ mission().finalOutcome.tier.toUpperCase() }}
+			{{ mission().finalOutcome?.tier?.toUpperCase() }}
 		</b>
 	</div>
 	<div
@@ -61,7 +61,7 @@
 		<span>{{ adjustedGoldReward }} GOLD</span>
 		<span>{{ finalOutcomeReward.reputation }} REP</span>
 	</div>
-	<p class="reward-description">{{ mission().finalOutcome.description }}</p>
+	<p class="reward-description">{{ mission().finalOutcome?.description }}</p>
 </div>
 }
 <!-- TODO: Could we remove the section titles if we only ever show either final or other? -->
