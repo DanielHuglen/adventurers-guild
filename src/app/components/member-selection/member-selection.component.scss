@@ -1,3 +1,50 @@
+.sorting-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 16px 0;
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	button {
+		--sorting-border-radius: 12px;
+
+		padding: 6px 12px;
+		border-color: none;
+		background-color: unset;
+		font-size: 1.5rem;
+		color: var(--secondary-dark);
+		transition: background-color 0.2s, color 0.2s, transform 0.3s, border-radius 0.3s;
+
+		&:first-child {
+			border-radius: var(--sorting-border-radius) 0 0 var(--sorting-border-radius);
+		}
+		&:last-child {
+			border-radius: 0 var(--sorting-border-radius) var(--sorting-border-radius) 0;
+		}
+		& + button {
+			border-left: none;
+		}
+
+		&.active {
+			background-color: var(--secondary);
+			color: var(--white);
+		}
+		&.reverse {
+			transform: rotate(180deg);
+
+			&:first-child {
+				border-radius: 0 var(--sorting-border-radius) var(--sorting-border-radius) 0;
+			}
+			&:last-child {
+				border-radius: var(--sorting-border-radius) 0 0 var(--sorting-border-radius);
+			}
+		}
+	}
+}
+
 .members-deck {
 	display: flex;
 	flex-wrap: wrap;

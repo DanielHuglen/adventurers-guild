@@ -61,11 +61,11 @@ app-member-selection {
 			background-color: var(--secondary);
 			font-weight: 700;
 
+			transform: translateX(0);
+			transition: transform 0.2s ease-out;
 			@starting-style {
 				transform: translateX(-100%);
 			}
-			transform: translateX(0);
-			transition: transform 0.2s ease-out;
 		}
 	}
 

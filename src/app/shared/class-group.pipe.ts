@@ -1,37 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { CharacterClass, ClassGroup } from './character-models';
+import { getClassGroupFromCharacterClass } from './character-helper.service';
 
 @Pipe({
-  name: 'classGroup',
+	name: 'classGroup',
 })
 export class ClassGroupPipe implements PipeTransform {
-  transform(
-    characterClass: CharacterClass | undefined
-  ): ClassGroup | 'Unknown' {
-    if (!characterClass) {
-      return 'Unknown';
-    }
+	transform(characterClass: CharacterClass | undefined): ClassGroup | 'Unknown' {
+		if (!characterClass) {
+			return 'Unknown';
+		}
 
-    switch (characterClass) {
-      case 'Ranger':
-      case 'Fighter':
-      case 'Monk':
-      case 'Rogue':
-        return 'Martial';
-      case 'Bard':
-      case 'Druid':
-      case 'Cleric':
-        return 'Healer';
-      case 'Sorcerer':
-      case 'Wizard':
-      case 'Warlock':
-      case 'Artificer':
-        return 'Magic';
-      case 'Paladin':
-      case 'Barbarian':
-        return 'Tank';
-      default:
-        throw new Error(`Unknown class: ${characterClass}`);
-    }
-  }
+		return getClassGroupFromCharacterClass(characterClass);
+	}
 }
