@@ -1,5 +1,5 @@
 @if (!!mission) {
-<app-mission-details [mission]="mission" />
+<app-mission-details [mission]="mission" [dispatchedMembers]="dispatchedMembers()" />
 @if (getMissionAvailability(mission) === 'Available') {
 <app-member-selection [members]="availableMembers()" (updateSelectedMembers)="selectedMemberIds = $event" />
 <!-- TODO: This should be its own component maybe probably -->

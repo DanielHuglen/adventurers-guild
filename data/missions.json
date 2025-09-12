@@ -64,7 +64,7 @@
 			{
 				"tier": "Mixed",
 				"description": "The Kraken is found and defeated, but the guild's ship is damaged in the process. It will take an extra week and 200 gold to repair.",
-				"reward": { "gold": 1650, "reputation": 2 }
+				"reward": { "gold": 1000, "reputation": 2 }
 			},
 			{
 				"tier": "Failure",

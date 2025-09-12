@@ -1,5 +1,6 @@
 import { NgStyle } from '@angular/common';
 import { Component, input } from '@angular/core';
+import { Character } from 'app/shared/character-models';
 import { getCompositionText, getMissionAvailability } from 'app/shared/mission-helper.service';
 import { Mission, OutcomeTier, Reward } from 'app/shared/mission-model';
 
@@ -11,6 +12,7 @@ import { Mission, OutcomeTier, Reward } from 'app/shared/mission-model';
 })
 export class MissionDetailsComponent {
 	mission = input.required<Mission>();
+	dispatchedMembers = input<Character[]>([]);
 
 	getMissionAvailability = getMissionAvailability;
 	getCompositionText = getCompositionText;
@@ -54,6 +56,20 @@ export class MissionDetailsComponent {
 	}
 	get finalOutcomeReward(): Reward | undefined {
 		return this.mission().finalOutcome?.reward;
+	}
+	get adjustedGoldReward(): number {
+		const goldReward = this.finalOutcomeReward?.gold;
+
+		if (goldReward && goldReward >= 0) {
+			const totalDispatchedMemberLevels = this.dispatchedMembers().reduce(
+				(sum, member) => sum + Math.floor(member.experience / 10),
+				0
+			);
+
+			return goldReward - Math.floor(goldReward * totalDispatchedMemberLevels * 0.01);
+		}
+
+		return goldReward || 0;
 	}
 
 	getNumberOfClassInGroup(classGroup: string): number {

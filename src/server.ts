@@ -210,6 +210,18 @@ app.get('/api/date', (req, res) => {
 	res.status(200).json(currentDate);
 });
 
+// TODO: Implement endpoint to adjust the current date
+// Adjusting the current date should be an admin-only operation
+// It should automatically complete any missions that ended before the new date
+// Completing a mission should update the members accordingly (alive/dead, activeMission, completedMissions), as well as grant them experience and remove any debt if the reward is higher than the cost
+// A single experience point is awarded for each of the following criteria:
+// - Agent level is two below or lower below mission level
+// - Agent level is one below or lower mission level
+// - Agent level is equal to or lower than mission level
+// - Mission was a mixed result or better
+// - Mission was a success or better
+// - Mission was a critical success
+
 /**
  * Serve static files from /browser
  */
