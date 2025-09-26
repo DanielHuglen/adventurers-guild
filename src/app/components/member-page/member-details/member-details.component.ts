@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Subscription, take } from 'rxjs';
@@ -9,6 +9,7 @@ import { ClassGroupPipe } from '../../../shared/class-group.pipe';
 import { LevelPipe } from '../../../shared/level.pipe';
 import { AbilityModifierPipe } from '../../../shared/ability-modifier.pipe';
 import { DisableIfGuestDirective } from 'app/directives/disable-if-guest.directive';
+import { ToastService } from 'app/services/toast.service';
 
 @Component({
 	selector: 'app-member-details',
@@ -17,6 +18,8 @@ import { DisableIfGuestDirective } from 'app/directives/disable-if-guest.directi
 	styleUrl: './member-details.component.scss',
 })
 export class MemberDetailsComponent implements OnInit, OnDestroy {
+	toastService = inject(ToastService);
+
 	member: Character | undefined;
 	memberId = 0;
 	isEditing = false;
@@ -108,6 +111,7 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 				this.member = response.character;
 				this.isEditing = false;
 				this.isLoading = false;
+				this.toastService.createToast('Member bonus updated successfully', 'success');
 			});
 	}
 

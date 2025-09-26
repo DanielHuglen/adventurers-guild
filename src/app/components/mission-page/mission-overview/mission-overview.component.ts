@@ -14,6 +14,7 @@ import { MetaService } from 'app/services/meta.service';
 import { DispatchMissionRequest } from 'app/shared/api-models';
 import { LoginService } from 'app/services/login.service';
 import { AsyncPipe } from '@angular/common';
+import { ToastService } from 'app/services/toast.service';
 
 @Component({
 	selector: 'app-mission-overview',
@@ -23,6 +24,7 @@ import { AsyncPipe } from '@angular/common';
 })
 export class MissionOverviewComponent implements OnInit {
 	loginService = inject(LoginService);
+	toastService = inject(ToastService);
 
 	getMissionAvailability = getMissionAvailability;
 
@@ -116,9 +118,11 @@ export class MissionOverviewComponent implements OnInit {
 					this.selectedMemberIds = [];
 					this.diceRoll.reset();
 					this.dispatchDate.reset();
+					this.toastService.createToast('Mission dispatched successfully!', 'success');
 				},
 				error: (error) => {
 					console.error('Error dispatching mission:', error);
+					this.toastService.createToast('Failed to dispatch mission, see console for errors.', 'error');
 				},
 				complete: () => {
 					this.isSubmitting.set(false);

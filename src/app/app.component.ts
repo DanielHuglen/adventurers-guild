@@ -4,10 +4,11 @@ import { RouterOutlet } from '@angular/router';
 import { PasswordDialogComponent } from './components/password-dialog/password-dialog.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginService } from './services/login.service';
+import { ToastComponent } from './components/toast/toast.component';
 
 @Component({
 	selector: 'app-root',
-	imports: [RouterOutlet, HeaderComponent, PasswordDialogComponent],
+	imports: [RouterOutlet, HeaderComponent, PasswordDialogComponent, ToastComponent],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',
 })

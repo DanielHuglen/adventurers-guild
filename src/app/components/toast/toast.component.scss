@@ -1,0 +1,44 @@
+:host {
+	position: absolute;
+	bottom: 16px;
+	right: 16px;
+	display: flex;
+	flex-direction: column-reverse;
+	gap: 8px;
+	overflow: hidden;
+}
+
+.toast {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 200px;
+	padding: 12px 16px;
+	border: 2px solid black;
+	border-radius: 8px;
+	color: var(--white);
+
+	transform: translateX(0);
+	transition: transform 0.5s ease-out;
+	@starting-style {
+		transform: translateY(calc(100% + 8px));
+	}
+
+	&.success {
+		background-color: var(--success);
+		border-color: hsl(from var(--success) h 20% l / 1);
+	}
+	&.error {
+		background-color: var(--error);
+		border-color: hsl(from var(--error) h 20% l / 1);
+	}
+	&.info {
+		background-color: var(--info);
+		border-color: hsl(from var(--info) h 20% l / 1);
+	}
+
+	button {
+		background: none;
+		border: none;
+	}
+}

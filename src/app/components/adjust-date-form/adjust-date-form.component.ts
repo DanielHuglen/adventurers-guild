@@ -1,6 +1,7 @@
 import { Component, inject, input, output } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MetaService } from 'app/services/meta.service';
+import { ToastService } from 'app/services/toast.service';
 import { take } from 'rxjs';
 
 @Component({
@@ -11,6 +12,8 @@ import { take } from 'rxjs';
 })
 export class AdjustDateFormComponent {
 	metaService = inject(MetaService);
+	toastService = inject(ToastService);
+
 	adjustedDate = output<Date>();
 
 	currentDate = input.required<Date>();
@@ -21,7 +24,7 @@ export class AdjustDateFormComponent {
 		this.newDate.setValue(new Date(this.currentDate()).toISOString().slice(0, 10));
 	}
 
-	setNewDate(): void {
+	setNewDate(): boolean {
 		if (this.newDate.valid) {
 			const dateValue = new Date(this.newDate.value as string);
 			this.metaService
@@ -30,7 +33,13 @@ export class AdjustDateFormComponent {
 				.subscribe((response) => {
 					console.log('Date updated successfully:', response);
 					this.adjustedDate.emit(dateValue);
+					response.completedMissionIds.forEach((missionId) => {
+						this.toastService.createToast(`Mission ${missionId} has been completed`, 'info');
+						window.open(`/missions/${missionId}`, '_blank');
+					});
 				});
 		}
+
+		return false;
 	}
 }

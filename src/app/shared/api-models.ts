@@ -37,4 +37,5 @@ export interface AdjustDateRequest {
 export interface AdjustDateResponse {
 	message: string;
 	newDate: string;
+	completedMissionIds: number[];
 }

@@ -242,12 +242,15 @@ app.post('/api/date', express.json(), (req, res) => {
 	const members = require(resolve('data', 'adventurers.json')) as Character[];
 	const { calculateExperienceGain } = require('./utils/experience');
 	const { evaluateMissionRoll } = require('./utils/mission-calculation');
+	let completedMissionIds: number[] = [];
 
 	// Complete any missions that ended before the new date
 	missions.forEach((mission: Mission) => {
 		if (mission.dispatchDate && !mission.finalOutcome) {
 			const missionEndDate = new Date(mission.completionDate);
 			if (missionEndDate.getTime() <= adjustedDate.getTime()) {
+				completedMissionIds.push(mission.id);
+
 				// Complete the mission
 				const { level, recommendedComposition, finalComposition, diceRoll } = mission;
 				const totalReputationInCity = missions
@@ -291,6 +294,7 @@ app.post('/api/date', express.json(), (req, res) => {
 			}
 		}
 	});
+
 	// TODO: Write updated members and missions back to the JSON files
 	fs.writeFileSync(resolve('data', 'adventurers.json'), JSON.stringify(members, null, 2));
 	fs.writeFileSync(resolve('data', 'missions.json'), JSON.stringify(missions, null, 2));
@@ -298,7 +302,7 @@ app.post('/api/date', express.json(), (req, res) => {
 	// Update the current date in meta.json
 	meta.currentDate = adjustedDate.toISOString().slice(0, 10);
 	fs.writeFileSync(resolve('data', 'meta.json'), JSON.stringify(meta, null, 2));
-	return res.status(200).json({ message: 'Date updated successfully', newDate: meta.currentDate });
+	return res.status(200).json({ message: 'Date updated successfully', newDate: meta.currentDate, completedMissionIds });
 });
 
 /**
