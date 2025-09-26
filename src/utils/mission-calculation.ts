@@ -78,7 +78,7 @@ export function getMissionThresholds(inputs: MissionCalculationInputs, factors: 
 		return desmosRound(raw);
 	}
 
-	let fA = boundary(boundaryParams.A.k, boundaryParams.A.off);
+	const fA = boundary(boundaryParams.A.k, boundaryParams.A.off);
 	let fB = boundary(boundaryParams.B.k, boundaryParams.B.off) + (factors.biasB ?? 0);
 	let fC = boundary(boundaryParams.C.k, boundaryParams.C.off) + (factors.biasC ?? 0);
 	let fD = boundary(boundaryParams.D.k, boundaryParams.D.off);

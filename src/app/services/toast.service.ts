@@ -6,8 +6,6 @@ import { BehaviorSubject } from 'rxjs';
 export class ToastService {
 	public toastList = new BehaviorSubject<Toast[]>([]);
 
-	constructor() {}
-
 	createToast(toastMessage: string, toastType: ToastType = 'info'): void {
 		const newToast = {
 			id: Math.floor(Math.random() * 10000),
