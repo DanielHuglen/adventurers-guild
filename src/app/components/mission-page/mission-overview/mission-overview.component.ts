@@ -1,4 +1,4 @@
-import { Component, signal, OnInit } from '@angular/core';
+import { Component, signal, OnInit, inject } from '@angular/core';
 import { MissionDetailsComponent } from './mission-details/mission-details.component';
 import { Mission } from 'app/shared/mission-model';
 import { ActivatedRoute } from '@angular/router';
@@ -12,14 +12,18 @@ import { take } from 'rxjs';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MetaService } from 'app/services/meta.service';
 import { DispatchMissionRequest } from 'app/shared/api-models';
+import { LoginService } from 'app/services/login.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
 	selector: 'app-mission-overview',
-	imports: [MissionDetailsComponent, MembersDeckComponent, MemberSelectionComponent, ReactiveFormsModule],
+	imports: [MissionDetailsComponent, MembersDeckComponent, MemberSelectionComponent, ReactiveFormsModule, AsyncPipe],
 	templateUrl: './mission-overview.component.html',
 	styleUrl: './mission-overview.component.scss',
 })
 export class MissionOverviewComponent implements OnInit {
+	loginService = inject(LoginService);
+
 	getMissionAvailability = getMissionAvailability;
 
 	mission: Mission | null = null;

@@ -2,6 +2,9 @@
 <app-mission-details [mission]="mission" [dispatchedMembers]="dispatchedMembers()" />
 @if (getMissionAvailability(mission) === 'Available') {
 <app-member-selection [members]="availableMembers()" (updateSelectedMembers)="selectedMemberIds = $event" />
+@if ((loginService.role | async) === 'guest') {
+<h2 class="login-title">Log in to dispatch</h2>
+} @else {
 <!-- TODO: This should be its own component maybe probably -->
 <div class="dispatch-container">
 	<h2>Dispatch on mission</h2>
@@ -20,13 +23,17 @@
 		{{ selectedMembersMatchingReccommendationsCount }} / {{ mission.recommendedComposition.length }}
 	</span>
 	<form (submit)="submit()">
-		<label for="dice-roll">d100</label>
-		<input type="number" id="dice-roll" [formControl]="diceRoll" />
-		<label for="dispatch-date">Date</label>
-		<input type="date" [min]="currentDate" id="dispatch-date" [formControl]="dispatchDate" />
+		<span>
+			<label for="dice-roll">d100</label>
+			<input type="number" id="dice-roll" [formControl]="diceRoll" />
+		</span>
+		<span>
+			<label for="dispatch-date">Date</label>
+			<input type="date" [min]="currentDate" id="dispatch-date" [formControl]="dispatchDate" />
+		</span>
 		<button [disabled]="!canSubmit">DISPATCH</button>
 	</form>
 </div>
-} } @if (dispatchedMembers().length) {
+} } } @if (dispatchedMembers().length) {
 <app-members-deck [members]="dispatchedMembers()" />
 }
