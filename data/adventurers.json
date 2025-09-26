@@ -174,7 +174,7 @@
 		"features": ["Sneak Attack", "Evasion", "Improved Critical"],
 		"isAlive": true,
 		"hasBonus": true,
-		"bonusDescription": "Feather Cloak",
+		"bonusDescription": "+2 Rapier",
 		"debt": "0",
 		"activeMission": 10,
 		"completedMissions": [5]
@@ -353,8 +353,8 @@
 		"languages": ["Common", "Elvish"],
 		"features": ["Spellcasting", "Wild Magic"],
 		"isAlive": true,
-		"hasBonus": false,
-		"bonusDescription": "",
+		"hasBonus": true,
+		"bonusDescription": "Dagger of Warning",
 		"debt": "0",
 		"activeMission": 14,
 		"completedMissions": []
