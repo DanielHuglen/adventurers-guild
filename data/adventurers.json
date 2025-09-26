@@ -26,7 +26,7 @@
 		"hasBonus": false,
 		"bonusDescription": "",
 		"debt": "0",
-		"activeMission": null,
+		"activeMission": 7,
 		"completedMissions": [2]
 	},
 	{
@@ -56,7 +56,7 @@
 		"hasBonus": false,
 		"bonusDescription": "",
 		"debt": "2",
-		"activeMission": null,
+		"activeMission": 14,
 		"completedMissions": [2]
 	},
 	{
@@ -86,7 +86,7 @@
 		"hasBonus": false,
 		"bonusDescription": "",
 		"debt": "0",
-		"activeMission": null,
+		"activeMission": 7,
 		"completedMissions": [2]
 	},
 	{
@@ -116,7 +116,7 @@
 		"hasBonus": false,
 		"bonusDescription": "",
 		"debt": "0",
-		"activeMission": null,
+		"activeMission": 13,
 		"completedMissions": [5, 3]
 	},
 	{
@@ -146,7 +146,7 @@
 		"hasBonus": true,
 		"bonusDescription": "",
 		"debt": "0",
-		"activeMission": null,
+		"activeMission": 14,
 		"completedMissions": [5, 3]
 	},
 	{
@@ -176,7 +176,7 @@
 		"hasBonus": true,
 		"bonusDescription": "Feather Cloak",
 		"debt": "0",
-		"activeMission": null,
+		"activeMission": 10,
 		"completedMissions": [5]
 	},
 	{
@@ -206,7 +206,7 @@
 		"hasBonus": false,
 		"bonusDescription": "",
 		"debt": "0",
-		"activeMission": null,
+		"activeMission": 10,
 		"completedMissions": [5]
 	},
 	{
@@ -236,7 +236,7 @@
 		"hasBonus": false,
 		"bonusDescription": "",
 		"debt": "0",
-		"activeMission": null,
+		"activeMission": 13,
 		"completedMissions": [4, 6]
 	},
 	{
@@ -266,7 +266,7 @@
 		"hasBonus": true,
 		"bonusDescription": "Deer",
 		"debt": "400",
-		"activeMission": null,
+		"activeMission": 7,
 		"completedMissions": [6]
 	},
 	{
@@ -296,7 +296,7 @@
 		"hasBonus": true,
 		"bonusDescription": "Gauntlets of Ogre Power",
 		"debt": "0",
-		"activeMission": null,
+		"activeMission": 7,
 		"completedMissions": [1]
 	},
 	{
@@ -326,7 +326,7 @@
 		"hasBonus": false,
 		"bonusDescription": "",
 		"debt": "20",
-		"activeMission": null,
+		"activeMission": 7,
 		"completedMissions": []
 	},
 	{
@@ -356,7 +356,7 @@
 		"hasBonus": false,
 		"bonusDescription": "",
 		"debt": "0",
-		"activeMission": null,
+		"activeMission": 14,
 		"completedMissions": []
 	}
 ]

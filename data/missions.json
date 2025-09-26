@@ -420,11 +420,11 @@
 				}
 			}
 		],
-		"diceRoll": null,
-		"finalComposition": [],
+		"diceRoll": 7,
+		"finalComposition": ["Healer", "Healer", "Martial", "Martial", "Martial"],
 		"finalOutcome": null,
-		"dispatchDate": null,
-		"completionDate": null
+		"dispatchDate": "1497-03-14T00:00:00.000Z",
+		"completionDate": "1497-03-23T00:00:00.000Z"
 	},
 	{
 		"id": 8,
@@ -585,11 +585,11 @@
 				}
 			}
 		],
-		"diceRoll": null,
-		"finalComposition": [],
+		"diceRoll": 97,
+		"finalComposition": ["Martial", "Magic"],
 		"finalOutcome": null,
-		"dispatchDate": null,
-		"completionDate": null
+		"dispatchDate": "1497-03-14T00:00:00.000Z",
+		"completionDate": "1497-03-20T00:00:00.000Z"
 	},
 	{
 		"id": 11,
@@ -750,11 +750,11 @@
 				}
 			}
 		],
-		"diceRoll": null,
-		"finalComposition": [],
+		"diceRoll": 27,
+		"finalComposition": ["Healer", "Tank"],
 		"finalOutcome": null,
-		"dispatchDate": null,
-		"completionDate": null
+		"dispatchDate": "1497-03-14T00:00:00.000Z",
+		"completionDate": "1497-03-17T00:00:00.000Z"
 	},
 	{
 		"id": 14,
@@ -805,10 +805,10 @@
 				}
 			}
 		],
-		"diceRoll": null,
-		"finalComposition": [],
+		"diceRoll": 18,
+		"finalComposition": ["Martial", "Tank", "Magic"],
 		"finalOutcome": null,
-		"dispatchDate": null,
-		"completionDate": null
+		"dispatchDate": "1497-03-14T00:00:00.000Z",
+		"completionDate": "1497-03-20T00:00:00.000Z"
 	}
 ]
