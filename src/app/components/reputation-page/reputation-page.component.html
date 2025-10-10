@@ -1,0 +1,58 @@
+<div class="header">
+	<h2>Reputation</h2>
+	<button (click)="showColours = !showColours">{{ showColours ? "🕶️" : "🎨" }}</button>
+</div>
+<p>
+	As agents complete missions, the guild's reputation may change in the region the quest was completed. This affects the
+	odds of success of future missions in that Region, as well as how NPCs treat your PCs as they do their own adventuring
+</p>
+<div class="reputation-list">
+	@for (cityRep of cityReputations; track cityRep.city) {
+	<div class="reputation-container" [ngClass]="getReputationAttitude(cityRep.reputation)">
+		<p class="city-name">{{ cityRep.city }}</p>
+		<p class="reputation-value">{{ cityRep.reputation }}</p>
+	</div>
+	}
+</div>
+<table>
+	<thead>
+		<tr>
+			<th>Reputation</th>
+			<th>Attitude</th>
+			<th>Means</th>
+			<th>Possible Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>40 ― 50</td>
+			<td>Helpful</td>
+			<td>Will take risks to help you</td>
+			<td>Protect, heal, aid, ask to join guild</td>
+		</tr>
+		<tr>
+			<td>10 ― 39</td>
+			<td>Friendly</td>
+			<td>Wishes you well</td>
+			<td>Chat, advise, advocate</td>
+		</tr>
+		<tr>
+			<td>-9 ― 9</td>
+			<td>Indifferent</td>
+			<td>Doesn't much care</td>
+			<td>Socially expected interaction</td>
+		</tr>
+		<tr>
+			<td>-39 ― -10</td>
+			<td>Unfriendly</td>
+			<td>Treats you with suspicion</td>
+			<td>Gossip, avoid, watch, insult</td>
+		</tr>
+		<tr>
+			<td>-50 ― -40</td>
+			<td>Hostile</td>
+			<td>Wishes you ill</td>
+			<td>Attack, interfere, berate, flee</td>
+		</tr>
+	</tbody>
+</table>

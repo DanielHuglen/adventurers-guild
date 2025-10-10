@@ -6,6 +6,7 @@ import { charactersResolver } from './services/character.service';
 import { MissionsDeckComponent } from './components/mission-page/missions-deck/missions-deck.component';
 import { missionsResolver } from './services/mission.service';
 import { MissionOverviewComponent } from './components/mission-page/mission-overview/mission-overview.component';
+import { ReputationPageComponent } from './components/reputation-page/reputation-page.component';
 
 export const routes: Routes = [
 	{
@@ -44,7 +45,7 @@ export const routes: Routes = [
 	},
 	{
 		path: 'reputation',
-		redirectTo: '',
+		component: ReputationPageComponent,
 	},
 	{
 		path: 'founders',

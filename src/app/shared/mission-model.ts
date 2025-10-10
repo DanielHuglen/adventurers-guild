@@ -30,6 +30,23 @@ export interface Reward {
 
 export type OutcomeTier = 'Critical Success' | 'Success' | 'Mixed' | 'Failure' | 'Critical Failure';
 
-export type City = 'Waterdeep' | 'Neverwinter' | "Baldur's Gate" | 'Luskan' | 'Mirabar' | 'Silverymoon' | 'Piltover';
+export type City =
+	| 'Waterdeep'
+	| 'Neverwinter'
+	| "Baldur's Gate"
+	| 'Luskan'
+	| 'Mirabar'
+	| 'Silverymoon'
+	| 'Piltover'
+	| 'Moonshae Isles';
+export type CityVar =
+	| 'waterdeep'
+	| 'neverwinter'
+	| 'baldursGate'
+	| 'luskan'
+	| 'mirabar'
+	| 'silverymoon'
+	| 'piltover'
+	| 'moonsheaIsles';
 
 export type MissionAvailability = 'Available' | 'Active' | 'Completed';

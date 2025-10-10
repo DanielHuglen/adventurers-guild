@@ -16,7 +16,7 @@ declare module 'express-serve-static-core' {
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Character, classGroups } from './app/shared/character-models';
-import { CharacterBonusUpdateResponse } from './app/shared/api-models';
+import { CharacterBonusUpdateResponse, CityReputation, CityReputationResponse } from './app/shared/api-models';
 import { Mission } from 'app/shared/mission-model';
 import cookieParser from 'cookie-parser';
 import { MissionCalculationInputs } from 'utils/mission-calculation';
@@ -211,17 +211,38 @@ app.put('/api/missions/:id/dispatch-mission', express.json(), (req, res) => {
 });
 
 // Meta API
+app.get('/api/reputation', (req, res) => {
+	let cityReputation: CityReputation[] = [];
+
+	const meta = require(resolve('data', 'meta.json'));
+	Object.keys(meta.cityReputations).forEach((city) => {
+		cityReputation.push({ city, reputation: meta.cityReputations[city] });
+	});
+
+	const missions = require(resolve('data', 'missions.json')) as Mission[];
+	missions.forEach((mission) => {
+		if (mission.finalOutcome) {
+			const location = mission.location;
+			const reputationChange = mission.finalOutcome.reward.reputation;
+			const existingCityRep = cityReputation.find((cr) => cr.city.toLowerCase() === location.toLowerCase());
+
+			if (existingCityRep) {
+				existingCityRep.reputation += reputationChange;
+			} else {
+				cityReputation.push({ city: location, reputation: reputationChange });
+			}
+		}
+	});
+
+	return res.status(200).json({ cityReputations: cityReputation } as CityReputationResponse);
+});
+
 app.get('/api/date', (req, res) => {
 	const meta = require(resolve('data', 'meta.json'));
 	const currentDate = new Date(meta.currentDate);
 	res.status(200).json(currentDate);
 });
 
-// TODO: Implement endpoint to adjust the current date
-// Adjusting the current date should be an admin-only operation
-// It should automatically complete any missions that ended before the new date
-// Completing a mission should update the members accordingly (alive/dead, activeMission, completedMissions), as well as grant them experience and remove any debt if the reward is higher than the cost
-// Should make use of "calculateExperienceGain" from utils/experience.ts
 app.post('/api/date', express.json(), (req, res) => {
 	if (req.userRole !== 'admin') {
 		return res.status(403).json({ error: 'Forbidden' });

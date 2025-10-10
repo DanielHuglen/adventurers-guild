@@ -30,6 +30,15 @@ export interface LoginResponse {
 
 export type Role = 'guest' | 'editor' | 'admin';
 
+export interface CityReputation {
+	city: string;
+	reputation: number;
+}
+
+export interface CityReputationResponse {
+	cityReputations: CityReputation[];
+}
+
 export interface AdjustDateRequest {
 	newDate: string;
 }

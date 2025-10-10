@@ -1,3 +1,13 @@
 {
-	"currentDate": "1497-03-14T00:00:00Z"
+	"currentDate": "1497-03-14T00:00:00Z",
+	"cityReputations": {
+		"luskan": 0,
+		"neverwinter": 40,
+		"waterdeep": 0,
+		"baldursGate": 0,
+		"silverymoon": 0,
+		"mirabar": 0,
+		"moonsheaIsles": 0,
+		"piltover": 15
+	}
 }
