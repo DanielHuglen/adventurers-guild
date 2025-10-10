@@ -11,4 +11,4 @@ jobs:
       - name: Push image to docker hub
         run: |
           docker login -u danielhuglen -p ${{ secrets.DOCKER_HUB_TOKEN }}
-          docker push docker push danielhuglen/adventurers-guild:latest
+          docker push danielhuglen/adventurers-guild:latest
