@@ -7,8 +7,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build image
-        run: docker build . -t DanielHuglen/adventurers-guild:latest
+        run: docker build . -t danielhuglen/adventurers-guild:latest
       - name: Push image to docker hub
         run: |
           docker login -u danielhuglen -p ${{ secrets.DOCKER_HUB_TOKEN }}
-          docker push DanielHuglen/adventurers-guild:latest
+          docker push docker push danielhuglen/adventurers-guild:latest
