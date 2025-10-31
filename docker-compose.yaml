@@ -6,7 +6,7 @@ services:
     container_name: adventurers-guild
     restart: always
     ports:
-      - "8081:4000"
+      - "4000:8081"
     volumes:
       - app_data:/app/data
 
