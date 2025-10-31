@@ -1,8 +1,14 @@
 version: "3.8"
+
 services:
   adventurers-guild:
     image: danielhuglen/adventurers-guild:latest
     container_name: adventurers-guild
     restart: always
     ports:
-      - "8081:8081"
+      - "8081:4000"
+    volumes:
+      - app_data:/app/data
+
+volumes:
+  app_data:

@@ -1,0 +1,7 @@
+# .dockerignore
+data/
+db/
+*.log
+dist/
+node_modules/
+.git
