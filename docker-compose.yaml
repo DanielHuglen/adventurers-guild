@@ -5,4 +5,4 @@ services:
     container_name: adventurers-guild
     restart: always
     ports:
-      - "80:80"
+      - "8081:8081"
