@@ -13,7 +13,6 @@ RUN npm install
 # Copy the rest of your code (including src/, public/, etc.)
 COPY src/ ./src/
 COPY public/ ./public/
-COPY dist/ ./dist/
 COPY tsconfig.json ./
 
 # Build Angular SSR app
