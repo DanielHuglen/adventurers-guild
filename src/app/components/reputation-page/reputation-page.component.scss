@@ -44,9 +44,9 @@ h2 {
 	padding: 16px 12px;
 	border: 4px solid var(--secondary);
 	width: 200px;
+	transition: border-color 0.3s;
 
 	&.helpful {
-		border-color: var(--success);
 		&::before {
 			border-bottom-color: var(--success);
 		}
@@ -55,7 +55,6 @@ h2 {
 		}
 	}
 	&.friendly {
-		border-color: var(--info);
 		&::before {
 			border-bottom-color: var(--info);
 		}
@@ -64,7 +63,6 @@ h2 {
 		}
 	}
 	&.unfriendly {
-		border-color: var(--warning);
 		&::before {
 			border-bottom-color: var(--warning);
 		}
@@ -73,7 +71,6 @@ h2 {
 		}
 	}
 	&.hostile {
-		border-color: var(--danger);
 		&::before {
 			border-bottom-color: var(--danger);
 		}
@@ -91,6 +88,8 @@ h2 {
 		height: 0;
 		border-bottom: 40px solid;
 		border-right: 40px solid transparent;
+
+		transition: border-color 0.3s;
 	}
 
 	&::after {
@@ -102,6 +101,8 @@ h2 {
 		height: 0;
 		border-bottom: 40px solid;
 		border-left: 40px solid transparent;
+
+		transition: border-color 0.3s;
 	}
 
 	.city-name {
