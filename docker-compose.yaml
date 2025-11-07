@@ -3,9 +3,8 @@ version: "3.8"
 services:
   adventurers-guild:
     image: danielhuglen/adventurers-guild:latest
-    environment:
-      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
-      - EDITOR_PASSWORD=${EDITOR_PASSWORD}
+    env_file:
+      - stack.env
     container_name: adventurers-guild
     restart: always
     ports:
