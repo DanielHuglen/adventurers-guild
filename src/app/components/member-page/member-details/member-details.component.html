@@ -1,19 +1,19 @@
 <div class="member-details-container">
 	<div class="member-header">
-		<img [src]="member?.imageUrl" alt="Member image" [style.view-transition-name]="'character-image-' + memberId" />
+		<img [src]="member()?.imageUrl" alt="Member image" [style.view-transition-name]="'character-image-' + memberId" />
 		<span class="member-header-info">
 			<div class="class-level">
-				<span>{{ member?.class | classGroup }}</span>
+				<span>{{ member()?.class | classGroup }}</span>
 				|
-				<span>Level&nbsp;{{ member?.experience ?? 0 | level }}</span>
+				<span>Level&nbsp;{{ member()?.experience ?? 0 | level }}</span>
 			</div>
-			<h2>{{ member?.name ?? "Adventurer" }}</h2>
-			<p>{{ member?.description ?? "" }}</p>
+			<h2>{{ member()?.name ?? "Adventurer" }}</h2>
+			<p>{{ member()?.description ?? "" }}</p>
 		</span>
 	</div>
 
 	<div class="member-stats">
-		@if (member?.abilityScores; as scores) {
+		@if (member()?.abilityScores; as scores) {
 		<span class="ability-scores">
 			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
 				<div>{{ isModPreferred() ? (scores.strength | abilityModifier) : scores.strength }}</div>
@@ -44,19 +44,19 @@
 
 		<span class="stats">
 			<span class="stat">
-				<span>{{ member?.hitPoints ?? 0 }}</span>
+				<span>{{ member()?.hitPoints ?? 0 }}</span>
 				<span>HP</span>
 			</span>
 			<span class="stat">
-				<span>{{ member?.armorClass ?? 0 }}</span>
+				<span>{{ member()?.armorClass ?? 0 }}</span>
 				<span>AC</span>
 			</span>
 			<span class="stat">
-				<span>{{ member?.experience ?? 0 }}</span>
+				<span>{{ member()?.experience ?? 0 }}</span>
 				<span>XP</span>
 			</span>
 			<span class="stat">
-				<span>{{ member?.speed ?? 0 }}</span>
+				<span>{{ member()?.speed ?? 0 }}</span>
 				<span>Speed</span>
 			</span>
 		</span>
@@ -78,15 +78,15 @@
 <!-- TODO: This should be its own component -->
 @if (!isEditing) {
 <div class="controls">
-	@if (member?.hasBonus) {
+	@if (member()?.hasBonus) {
 	<span>
 		<span class="control-title">Equipment:</span>
-		<span class="control-value">{{ member?.bonusDescription }}</span>
+		<span class="control-value">{{ member()?.bonusDescription }}</span>
 	</span>
 	}
 	<span>
 		<span class="control-title">Debt:</span>
-		<span class="control-value">{{ member?.debt }}g</span>
+		<span class="control-value">{{ member()?.debt }}g</span>
 	</span>
 	<button (click)="isEditing = !isEditing" appDisableIfGuest>Edit</button>
 </div>

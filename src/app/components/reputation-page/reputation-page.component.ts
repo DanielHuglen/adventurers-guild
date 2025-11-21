@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { MetaService } from 'app/services/meta.service';
 import { CityReputation } from 'app/shared/api-models';
 import { getCityName } from 'app/shared/meta-helper.service';
@@ -11,12 +11,13 @@ import { take } from 'rxjs';
 	imports: [NgClass],
 	templateUrl: './reputation-page.component.html',
 	styleUrl: './reputation-page.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReputationPageComponent {
 	metaService = inject(MetaService);
 
-	cityReputations: CityReputation[] = [];
-	showColours = true;
+	cityReputations = signal<CityReputation[]>([]);
+	showColours = signal<boolean>(true);
 
 	constructor() {
 		this.metaService
@@ -28,15 +29,17 @@ export class ReputationPageComponent {
 				}
 
 				// TODO: Should this be a pipe?
-				this.cityReputations = data.cityReputations.map((cr) => {
-					const { city, reputation } = cr;
-					return { city: getCityName(city as CityVar), reputation: reputation };
-				});
+				this.cityReputations.set(
+					data.cityReputations.map((cr) => {
+						const { city, reputation } = cr;
+						return { city: getCityName(city as CityVar), reputation: reputation };
+					})
+				);
 			});
 	}
 
 	getReputationAttitude(reputation: number): string {
-		if (!this.showColours) return 'indifferent';
+		if (!this.showColours()) return 'indifferent';
 
 		if (reputation >= 40) {
 			return 'helpful';

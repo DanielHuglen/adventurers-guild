@@ -1,5 +1,5 @@
 import { NgStyle } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Character } from 'app/shared/character-models';
 import { getCompositionText, getMissionAvailability } from 'app/shared/mission-helper.service';
 import { Mission, OutcomeTier, Reward } from 'app/shared/mission-model';
@@ -9,6 +9,7 @@ import { Mission, OutcomeTier, Reward } from 'app/shared/mission-model';
 	imports: [NgStyle],
 	templateUrl: './mission-details.component.html',
 	styleUrl: './mission-details.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MissionDetailsComponent {
 	mission = input.required<Mission>();

@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Subscription, take } from 'rxjs';
@@ -16,11 +16,12 @@ import { ToastService } from 'app/services/toast.service';
 	imports: [ClassGroupPipe, LevelPipe, ReactiveFormsModule, AbilityModifierPipe, DisableIfGuestDirective],
 	templateUrl: './member-details.component.html',
 	styleUrl: './member-details.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MemberDetailsComponent implements OnInit, OnDestroy {
 	toastService = inject(ToastService);
 
-	member: Character | undefined;
+	member = signal<Character | undefined>(undefined);
 	memberId = 0;
 	isEditing = false;
 	isLoading = false;
@@ -50,7 +51,7 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 			this.memberId = +queryParameter;
 
 			this.characterService.getMember(this.memberId).subscribe((member) => {
-				this.member = member;
+				this.member.set(member);
 				this.prefillForm();
 			});
 		}
@@ -64,11 +65,11 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 	}
 
 	private prefillForm(): void {
-		if (!this.member) {
+		if (!this.member()) {
 			return;
 		}
 
-		const { hasBonus, bonusDescription, debt } = this.member;
+		const { hasBonus, bonusDescription, debt } = this.member() as Character;
 		this.hasBonusControl.setValue(hasBonus);
 		if (hasBonus) this.bonusDescriptionControl.enable();
 		this.bonusDescriptionControl.setValue(bonusDescription);
@@ -76,19 +77,21 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 	}
 
 	get separatedLanguages(): string {
-		if (!this.member?.languages?.length) {
+		if (!this.member()?.languages?.length) {
 			return 'None';
 		}
 
-		return [...this.member.languages].join(', ');
+		const { languages } = this.member() as Character;
+		return [...languages].join(', ');
 	}
 
 	get separatedFeatures(): string {
-		if (!this.member?.features?.length) {
+		if (!this.member()?.features?.length) {
 			return 'None';
 		}
 
-		return this.member.features.join(', ');
+		const { features } = this.member() as Character;
+		return features.join(', ');
 	}
 
 	get hasBonus(): boolean {
@@ -108,7 +111,7 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 			.updateMemberBonus(this.memberId, updateRequest)
 			.pipe(take(1))
 			.subscribe((response) => {
-				this.member = response.character;
+				this.member.set(response.character);
 				this.isEditing = false;
 				this.isLoading = false;
 				this.toastService.createToast('Member bonus updated successfully', 'success');

@@ -2,5 +2,13 @@
   "htmlWhitespaceSensitivity": "ignore",
   "bracketSameLine": true,
   "printWidth": 120,
-  "useTabs": true
+  "useTabs": true,
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "parser": "angular"
+      }
+    }
+  ]
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, OnDestroy } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from 'app/services/login.service';
 import { LoginResponse } from 'app/shared/api-models';
@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 	imports: [ReactiveFormsModule, FormsModule],
 	templateUrl: './password-dialog.component.html',
 	styleUrl: './password-dialog.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PasswordDialogComponent implements OnDestroy {
 	@ViewChild('dialog') dialog: ElementRef<HTMLDialogElement> | undefined;

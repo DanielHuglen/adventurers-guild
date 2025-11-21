@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ToastService } from 'app/services/toast.service';
 import { Toast } from 'app/shared/meta-models';
 import { Subscription } from 'rxjs';
@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 	imports: [NgClass],
 	templateUrl: './toast.component.html',
 	styleUrl: './toast.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToastComponent implements OnInit, OnDestroy {
 	toastService = inject(ToastService);

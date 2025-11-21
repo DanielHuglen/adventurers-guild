@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CharacterCardComponent } from '../../character-card/character-card.component';
 import { CharacterService } from '../../../services/character.service';
 import { Character } from '../../../shared/character-models';
@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 	providers: [CharacterService],
 	templateUrl: './members-deck.component.html',
 	styleUrl: './members-deck.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MembersDeckComponent {
 	@Input() members: Character[] = [];

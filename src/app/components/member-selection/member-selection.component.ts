@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { Character } from 'app/shared/character-models';
 import { CharacterCardComponent } from '../character-card/character-card.component';
 import { getClassGroupFromCharacterClass } from 'app/shared/character-helper.service';
@@ -11,6 +11,7 @@ type SortingType = 'NameAsc' | 'NameDesc' | 'LevelAsc' | 'LevelDesc' | 'ClassAsc
 	imports: [CharacterCardComponent, NgClass],
 	templateUrl: './member-selection.component.html',
 	styleUrl: './member-selection.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MemberSelectionComponent {
 	members = input<Character[]>([]);

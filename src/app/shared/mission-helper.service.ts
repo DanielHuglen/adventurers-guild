@@ -3,7 +3,7 @@ import { Mission, MissionAvailability } from './mission-model';
 
 export function getMembersMatchingReccommendationsCount(
 	members: Character[],
-	reccommendedComposition: ClassGroup[]
+	reccommendedComposition: ClassGroup[],
 ): number {
 	const selectedTanks = members.filter((member) => classGroups[member.class] === 'Tank').length;
 	const selectedMartials = members.filter((member) => classGroups[member.class] === 'Martial').length;
@@ -25,6 +25,10 @@ export function getMembersMatchingReccommendationsCount(
 }
 
 export function getMissionAvailability(mission: Mission): MissionAvailability {
+	if (!mission) {
+		return 'Unavailable';
+	}
+
 	const { finalOutcome, diceRoll } = mission;
 
 	if (finalOutcome) {

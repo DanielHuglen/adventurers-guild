@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-system-page',
-  imports: [],
-  templateUrl: './system-page.component.html',
-  styleUrl: './system-page.component.scss'
+	selector: 'app-system-page',
+	imports: [],
+	templateUrl: './system-page.component.html',
+	styleUrl: './system-page.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SystemPageComponent {
-
-}
+export class SystemPageComponent {}

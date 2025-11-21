@@ -49,4 +49,4 @@ export type CityVar =
 	| 'piltover'
 	| 'moonsheaIsles';
 
-export type MissionAvailability = 'Available' | 'Active' | 'Completed';
+export type MissionAvailability = 'Available' | 'Active' | 'Completed' | 'Unavailable';

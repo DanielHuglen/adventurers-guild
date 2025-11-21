@@ -1,13 +1,13 @@
 <div class="header">
 	<h2>Reputation</h2>
-	<button (click)="showColours = !showColours">{{ showColours ? "🕶️" : "🎨" }}</button>
+	<button (click)="showColours.set(!showColours())">{{ showColours() ? "🕶️" : "🎨" }}</button>
 </div>
 <p>
 	As agents complete missions, the guild's reputation may change in the region the quest was completed. This affects the
 	odds of success of future missions in that Region, as well as how NPCs treat your PCs as they do their own adventuring
 </p>
 <div class="reputation-list">
-	@for (cityRep of cityReputations; track cityRep.city) {
+	@for (cityRep of cityReputations(); track cityRep.city) {
 	<div class="reputation-container" [ngClass]="getReputationAttitude(cityRep.reputation)">
 		<p class="city-name">{{ cityRep.city }}</p>
 		<p class="reputation-value">{{ cityRep.reputation }}</p>

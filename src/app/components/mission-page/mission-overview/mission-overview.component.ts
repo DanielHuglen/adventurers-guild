@@ -28,7 +28,7 @@ export class MissionOverviewComponent implements OnInit {
 
 	getMissionAvailability = getMissionAvailability;
 
-	mission: Mission | null = null;
+	mission = signal<Mission | null>(null);
 	dispatchedMembers = signal<Character[]>([]);
 	availableMembers = signal<Character[]>([]);
 	selectedMemberIds: number[] = [];
@@ -49,11 +49,11 @@ export class MissionOverviewComponent implements OnInit {
 				.getMission(+queryParameter)
 				.pipe(take(1))
 				.subscribe((mission) => {
-					this.mission = mission;
+					this.mission.set(mission);
 
-					if (this.mission?.finalComposition?.length) {
+					if (this.mission()?.finalComposition?.length) {
 						this.missionService
-							.getDispatchedMembers(this.mission.id)
+							.getDispatchedMembers(this.mission()!.id)
 							.pipe(take(1))
 							.subscribe((members) => {
 								this.dispatchedMembers.set(members);
@@ -90,7 +90,7 @@ export class MissionOverviewComponent implements OnInit {
 	}
 
 	get selectedMembersMatchingReccommendationsCount(): number {
-		return getMembersMatchingReccommendationsCount(this.selectedMembers, this.mission?.recommendedComposition || []);
+		return getMembersMatchingReccommendationsCount(this.selectedMembers, this.mission()?.recommendedComposition || []);
 	}
 
 	get canSubmit(): boolean {
@@ -98,7 +98,7 @@ export class MissionOverviewComponent implements OnInit {
 	}
 
 	submit(): boolean {
-		if (!this.canSubmit || !this.mission?.id) return false;
+		if (!this.canSubmit || !this.mission()?.id) return false;
 
 		this.isSubmitting.set(true);
 
@@ -109,11 +109,11 @@ export class MissionOverviewComponent implements OnInit {
 		} as DispatchMissionRequest;
 
 		this.missionService
-			.dispatchMission(this.mission.id, dispatchMissionRequest)
+			.dispatchMission(this.mission()!.id, dispatchMissionRequest)
 			.pipe(take(1))
 			.subscribe({
 				next: (response) => {
-					this.mission = response.mission;
+					this.mission.set(response.mission);
 					this.dispatchedMembers.set(response.dispatchedMembers);
 					this.selectedMemberIds = [];
 					this.diceRoll.reset();

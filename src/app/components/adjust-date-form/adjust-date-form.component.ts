@@ -1,4 +1,4 @@
-import { Component, inject, input, output, OnInit } from '@angular/core';
+import { Component, inject, input, output, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MetaService } from 'app/services/meta.service';
 import { ToastService } from 'app/services/toast.service';
@@ -9,6 +9,7 @@ import { take } from 'rxjs';
 	imports: [ReactiveFormsModule],
 	templateUrl: './adjust-date-form.component.html',
 	styleUrl: './adjust-date-form.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdjustDateFormComponent implements OnInit {
 	metaService = inject(MetaService);

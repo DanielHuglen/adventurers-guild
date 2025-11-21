@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Mission } from '../../../shared/mission-model';
 import { NgStyle } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -9,6 +9,7 @@ import { getCompositionText, getMissionAvailability } from 'app/shared/mission-h
 	imports: [NgStyle, RouterModule],
 	templateUrl: './mission-card.component.html',
 	styleUrl: './mission-card.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MissionCardComponent {
 	mission = input.required<Mission>();

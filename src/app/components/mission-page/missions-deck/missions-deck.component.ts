@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { Mission } from '../../../shared/mission-model';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs';
@@ -10,9 +10,10 @@ import { getMissionAvailability } from 'app/shared/mission-helper.service';
 	imports: [MissionCardComponent],
 	templateUrl: './missions-deck.component.html',
 	styleUrl: './missions-deck.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MissionsDeckComponent {
-	missions: Mission[] = [];
+	missions = signal<Mission[]>([]);
 
 	constructor(private route: ActivatedRoute) {
 		this.route.data.pipe(take(1)).subscribe((data) => {
@@ -35,12 +36,13 @@ export class MissionsDeckComponent {
 					Available: 0,
 					Active: 1,
 					Completed: 2,
+					Unavailable: 3,
 				};
 
 				return availabilityOrder[aAvailability] - availabilityOrder[bAvailability];
 			});
 
-			this.missions = sortedMissions;
+			this.missions.set(sortedMissions);
 		});
 	}
 }
