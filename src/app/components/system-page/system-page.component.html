@@ -140,6 +140,59 @@
 		The maximum level (lvl) an agent can reach is 8, reflecting a level 16 player character. The owners of the guild is
 		at any moment in time able to recruit new members to the guild, creating their own NPCs, starting at level 0. They
 		are also able to ask any other NPC they meet out on adventures if they'd like to join. They'll either join or refuse
-		at the DMs discretion.
+		at the DMs discretion. Below is a calculator for exact experience gain.
 	</p>
+	<div class="level-calculator">
+		<form>
+			<label for="is-within-two-level">
+				<input
+					id="is-within-two-level"
+					type="checkbox"
+					[checked]="isWithinTwoLevels()"
+					(change)="setLevelDifference($any($event.target).checked, 2)" />
+				Is agent level at least 2 below mission level?
+			</label>
+			<label for="is-within-one-level">
+				<input
+					id="is-within-one-level"
+					type="checkbox"
+					[checked]="isWithinOneLevel()"
+					(change)="setLevelDifference($any($event.target).checked, 1)" />
+				Is agent level at least 1 below mission level?
+			</label>
+			<label for="is-same-level-or-higher">
+				<input
+					id="is-same-level-or-higher"
+					type="checkbox"
+					[checked]="isSameLevelOrHigher()"
+					(change)="setLevelDifference($any($event.target).checked, 0)" />
+				Is agent level the same as or below mission level?
+			</label>
+			<label for="was-mission-critical-success">
+				<input
+					id="was-mission-critical-success"
+					type="checkbox"
+					[checked]="wasMissionCriticalSuccess()"
+					(change)="setMissionResult($any($event.target).checked, 2)" />
+				Was the mission a critical success?
+			</label>
+			<label for="was-mission-success-or-better">
+				<input
+					id="was-mission-success-or-better"
+					type="checkbox"
+					[checked]="wasMissionSuccessOrBetter()"
+					(change)="setMissionResult($any($event.target).checked, 1)" />
+				Did the mission have a successful result or better?
+			</label>
+			<label for="was-mission-mixed-or-better">
+				<input
+					id="was-mission-mixed-or-better"
+					type="checkbox"
+					[checked]="wasMissionMixedOrBetter()"
+					(change)="setMissionResult($any($event.target).checked, 0)" />
+				Did the mission have a mixed result or better?
+			</label>
+		</form>
+		<h3>Total experience earned: {{ totalExperience() }}XP</h3>
+	</div>
 </section>

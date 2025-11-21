@@ -151,3 +151,76 @@ details {
 		margin-top: 8px;
 	}
 }
+
+.level-calculator {
+	max-width: 480px;
+	margin: 0 auto;
+
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		margin-top: 16px;
+
+		label {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			border: 2px solid var(--secondary);
+			border-radius: 4px;
+			padding: 8px;
+			font-size: 1rem;
+			font-weight: 600;
+			line-height: 100%;
+			transition: width 0.2s ease-in-out;
+
+			cursor: pointer;
+			& > * {
+				cursor: pointer;
+			}
+
+			&:nth-child(3) {
+				margin-bottom: 16px;
+			}
+
+			&:hover input[type="checkbox"] {
+				border-width: 4px;
+			}
+
+			input[type="checkbox"] {
+				display: grid;
+				place-content: center;
+				appearance: none;
+				margin: 0;
+				font: inherit;
+				color: currentColor;
+				width: 18px;
+				height: 18px;
+				border: 2px solid currentColor;
+				border-radius: 2px;
+				transition: border-width 0.1s ease-in-out;
+			}
+
+			input[type="checkbox"]::before {
+				content: "";
+				width: 10px;
+				height: 10px;
+				transform: scale(0);
+				transition: 120ms transform ease-in-out;
+				box-shadow: inset 16px 16px currentColor;
+			}
+
+			input[type="checkbox"]:checked::before {
+				transform: scale(1);
+			}
+		}
+	}
+
+	h3 {
+		text-align: center;
+		margin: 16px 0;
+		text-decoration: underline;
+		text-underline-offset: 2px;
+		text-decoration-thickness: 2px;
+	}
+}
