@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnDestroy, ChangeDetectionStrategy, inject } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from 'app/services/login.service';
 import { LoginResponse } from 'app/shared/api-models';
@@ -12,13 +12,15 @@ import { Subscription } from 'rxjs';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PasswordDialogComponent implements OnDestroy {
+	private loginService = inject(LoginService);
+
 	@ViewChild('dialog') dialog: ElementRef<HTMLDialogElement> | undefined;
 
 	password: FormControl = new FormControl('');
 
 	subscription: Subscription | undefined;
 
-	constructor(private loginService: LoginService) {
+	constructor() {
 		this.loginService.onPasswordPrompted().subscribe(() => {
 			this.open();
 		});

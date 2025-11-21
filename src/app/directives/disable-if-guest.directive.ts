@@ -1,4 +1,4 @@
-import { Directive, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, OnDestroy, Renderer2, inject } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { Subscription } from 'rxjs';
 
@@ -6,9 +6,13 @@ import { Subscription } from 'rxjs';
 	selector: '[appDisableIfGuest]',
 })
 export class DisableIfGuestDirective implements OnDestroy {
+	private el = inject(ElementRef);
+	private renderer = inject(Renderer2);
+	private loginService = inject(LoginService);
+
 	private sub: Subscription;
 
-	constructor(private el: ElementRef, private renderer: Renderer2, private loginService: LoginService) {
+	constructor() {
 		this.sub = this.loginService.role.subscribe((role) => {
 			const isGuest = !role || role === 'guest';
 			this.renderer.setProperty(this.el.nativeElement, 'disabled', isGuest);

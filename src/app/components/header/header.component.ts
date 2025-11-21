@@ -14,6 +14,7 @@ import { AdjustDateFormComponent } from '../adjust-date-form/adjust-date-form.co
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
+	metaService = inject(MetaService);
 	loginService = inject(LoginService);
 
 	@ViewChild('dialog') dialog: ElementRef<HTMLDialogElement> | undefined;
@@ -34,7 +35,7 @@ export class HeaderComponent {
 		this.dialog?.nativeElement.close();
 	}
 
-	constructor(public metaService: MetaService) {
+	constructor() {
 		this.metaService
 			.getCurrentDate()
 			.pipe(take(1))

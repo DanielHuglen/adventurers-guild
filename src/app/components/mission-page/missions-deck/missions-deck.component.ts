@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal, inject } from '@angular/core';
 import { Mission } from '../../../shared/mission-model';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs';
@@ -13,9 +13,11 @@ import { getMissionAvailability } from 'app/shared/mission-helper.service';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MissionsDeckComponent {
+	private route = inject(ActivatedRoute);
+
 	missions = signal<Mission[]>([]);
 
-	constructor(private route: ActivatedRoute) {
+	constructor() {
 		this.route.data.pipe(take(1)).subscribe((data) => {
 			const missions = data['missions'] as Mission[];
 			if (!missions) {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { CharacterCardComponent } from '../../character-card/character-card.component';
 import { CharacterService } from '../../../services/character.service';
 import { Character } from '../../../shared/character-models';
@@ -14,9 +14,11 @@ import { ActivatedRoute } from '@angular/router';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MembersDeckComponent {
+	private route = inject(ActivatedRoute);
+
 	@Input() members: Character[] = [];
 
-	constructor(private route: ActivatedRoute) {
+	constructor() {
 		this.route.data.pipe(take(1)).subscribe((data) => {
 			this.members = data['members'] as Character[];
 		});

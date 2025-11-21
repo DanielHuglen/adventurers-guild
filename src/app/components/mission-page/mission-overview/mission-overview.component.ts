@@ -23,6 +23,11 @@ import { ToastService } from 'app/services/toast.service';
 	styleUrl: './mission-overview.component.scss',
 })
 export class MissionOverviewComponent implements OnInit {
+	private route = inject(ActivatedRoute);
+	private missionService = inject(MissionService);
+	private characterService = inject(CharacterService);
+	private metaService = inject(MetaService);
+
 	loginService = inject(LoginService);
 	toastService = inject(ToastService);
 
@@ -37,12 +42,7 @@ export class MissionOverviewComponent implements OnInit {
 	currentDate = new Date('1497-03-13T12:00:00Z').toISOString().slice(0, 10);
 	isSubmitting = signal<boolean>(false);
 
-	constructor(
-		private route: ActivatedRoute,
-		private missionService: MissionService,
-		private characterService: CharacterService,
-		private metaService: MetaService
-	) {
+	constructor() {
 		const queryParameter = this.route.snapshot.paramMap.get('id');
 		if (!!queryParameter && !isNaN(+queryParameter)) {
 			this.missionService

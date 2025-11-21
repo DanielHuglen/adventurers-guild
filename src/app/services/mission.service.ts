@@ -10,7 +10,8 @@ import { DispatchMissionRequest, DispatchMissionResponse } from 'app/shared/api-
 	providedIn: 'root',
 })
 export class MissionService {
-	constructor(private http: HttpClient) {}
+	private http = inject(HttpClient);
+
 
 	getMissions(): Observable<Mission[]> {
 		return this.http.get<Mission[]>('/api/missions');

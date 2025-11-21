@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { AdjustDateResponse, CityReputationResponse } from 'app/shared/api-models';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class MetaService {
-	constructor(private http: HttpClient) {}
+	private http = inject(HttpClient);
+
 
 	getReputation(): Observable<CityReputationResponse> {
 		return this.http.get<CityReputationResponse>('/api/reputation');

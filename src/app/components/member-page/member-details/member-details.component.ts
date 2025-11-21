@@ -19,6 +19,9 @@ import { ToastService } from 'app/services/toast.service';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MemberDetailsComponent implements OnInit, OnDestroy {
+	private route = inject(ActivatedRoute);
+	private characterService = inject(CharacterService);
+
 	toastService = inject(ToastService);
 
 	member = signal<Character | undefined>(undefined);
@@ -45,7 +48,7 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 
 	subscription: Subscription = new Subscription();
 
-	constructor(private route: ActivatedRoute, private characterService: CharacterService) {
+	constructor() {
 		const queryParameter = this.route.snapshot.paramMap.get('id');
 		if (!!queryParameter && !isNaN(+queryParameter)) {
 			this.memberId = +queryParameter;
