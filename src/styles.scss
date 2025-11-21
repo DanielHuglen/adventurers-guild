@@ -25,7 +25,7 @@ button {
 
 button,
 a {
-	&:focus {
+	&:focus:not(:hover) {
 		outline: 2px solid rebeccapurple;
 	}
 }
