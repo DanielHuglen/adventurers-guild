@@ -33,7 +33,7 @@ export class ReputationPageComponent {
 					data.cityReputations.map((cr) => {
 						const { city, reputation } = cr;
 						return { city: getCityName(city as CityVar), reputation: reputation };
-					})
+					}),
 				);
 			});
 	}

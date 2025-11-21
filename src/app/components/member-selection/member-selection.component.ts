@@ -70,11 +70,11 @@ export class MemberSelectionComponent {
 				return [...this.members()].sort((a, b) => b.experience - a.experience);
 			case 'ClassAsc':
 				return [...this.members()].sort((a, b) =>
-					getClassGroupFromCharacterClass(a.class).localeCompare(getClassGroupFromCharacterClass(b.class))
+					getClassGroupFromCharacterClass(a.class).localeCompare(getClassGroupFromCharacterClass(b.class)),
 				);
 			case 'ClassDesc':
 				return [...this.members()].sort((a, b) =>
-					getClassGroupFromCharacterClass(b.class).localeCompare(getClassGroupFromCharacterClass(a.class))
+					getClassGroupFromCharacterClass(b.class).localeCompare(getClassGroupFromCharacterClass(a.class)),
 				);
 			case 'None':
 				return this.members();

@@ -14,6 +14,6 @@ export const authHeaderInterceptor: HttpInterceptorFn = (req, next) => {
 				loginService.openPasswordPrompt();
 			}
 			return throwError(() => error);
-		})
+		}),
 	);
 };

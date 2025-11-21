@@ -1,6 +1,6 @@
 @for (toast of currentToasts; track toast.id) {
-<div class="toast" [ngClass]="toast.type">
-	<span>{{ toast.message }}</span>
-	<button (click)="toastService.closeToast(toast.id)">✖️</button>
-</div>
+	<div class="toast" [ngClass]="toast.type">
+		<span>{{ toast.message }}</span>
+		<button (click)="toastService.closeToast(toast.id)">✖️</button>
+	</div>
 }

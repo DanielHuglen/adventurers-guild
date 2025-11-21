@@ -64,7 +64,7 @@ export class MissionDetailsComponent {
 		if (goldReward && goldReward >= 0) {
 			const totalDispatchedMemberLevels = this.dispatchedMembers().reduce(
 				(sum, member) => sum + Math.floor(member.experience / 10),
-				0
+				0,
 			);
 
 			return goldReward - Math.floor(goldReward * totalDispatchedMemberLevels * 0.01);

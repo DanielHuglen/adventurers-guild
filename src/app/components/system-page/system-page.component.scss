@@ -86,7 +86,10 @@ details {
 	max-width: 480px;
 	overflow: hidden;
 	margin: 0 auto;
-	transition: box-shadow 0.15s ease-in-out, background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+	transition:
+		box-shadow 0.15s ease-in-out,
+		background-color 0.15s ease-in-out,
+		color 0.15s ease-in-out;
 
 	&:hover {
 		box-shadow: 4px 4px 4px 2px #e6e6e6;
@@ -128,7 +131,9 @@ details {
 	}
 
 	&::details-content {
-		transition: height 0.5s ease, content-visibility 0.5s ease allow-discrete;
+		transition:
+			height 0.5s ease,
+			content-visibility 0.5s ease allow-discrete;
 		height: 0;
 		overflow: clip;
 	}

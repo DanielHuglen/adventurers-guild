@@ -8,10 +8,10 @@
 </p>
 <div class="reputation-list">
 	@for (cityRep of cityReputations(); track cityRep.city) {
-	<div class="reputation-container" [ngClass]="getReputationAttitude(cityRep.reputation)">
-		<p class="city-name">{{ cityRep.city }}</p>
-		<p class="reputation-value">{{ cityRep.reputation }}</p>
-	</div>
+		<div class="reputation-container" [ngClass]="getReputationAttitude(cityRep.reputation)">
+			<p class="city-name">{{ cityRep.city }}</p>
+			<p class="reputation-value">{{ cityRep.reputation }}</p>
+		</div>
 	}
 </div>
 <table>

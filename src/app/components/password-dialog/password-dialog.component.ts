@@ -53,7 +53,7 @@ export class PasswordDialogComponent implements OnDestroy {
 
 	private setPasswordCookie(password: string, role = 'guest'): void {
 		document.cookie = `authInfo=${encodeURIComponent(
-			JSON.stringify({ apiPassword: password, role })
+			JSON.stringify({ apiPassword: password, role }),
 		)}; path=/; max-age=21600;`;
 	}
 

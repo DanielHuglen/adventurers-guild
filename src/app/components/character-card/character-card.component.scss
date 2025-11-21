@@ -34,7 +34,10 @@ img {
 	object-position: top;
 	aspect-ratio: 1 / 1;
 	border-radius: 100%;
-	transition: width 0.2s, margin-bottom 0.2s, border 0.2s;
+	transition:
+		width 0.2s,
+		margin-bottom 0.2s,
+		border 0.2s;
 
 	&.is-selected {
 		border-color: var(--success);

@@ -39,7 +39,7 @@ export function calculateExperienceGain(member: Character, mission: Mission): nu
 	}
 
 	console.log(
-		`Member ${member.name} (Level ${memberLevel}) gained ${experience} experience from mission "${mission.id}" (Level ${missionLevel}) with outcome "${mission.finalOutcome?.tier}"`
+		`Member ${member.name} (Level ${memberLevel}) gained ${experience} experience from mission "${mission.id}" (Level ${missionLevel}) with outcome "${mission.finalOutcome?.tier}"`,
 	);
 
 	return experience;

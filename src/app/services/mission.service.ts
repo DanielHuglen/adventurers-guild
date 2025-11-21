@@ -12,7 +12,6 @@ import { DispatchMissionRequest, DispatchMissionResponse } from 'app/shared/api-
 export class MissionService {
 	private http = inject(HttpClient);
 
-
 	getMissions(): Observable<Mission[]> {
 		return this.http.get<Mission[]>('/api/missions');
 	}
@@ -27,7 +26,7 @@ export class MissionService {
 
 	dispatchMission(
 		missionId: number,
-		dispatchMissionRequst: DispatchMissionRequest
+		dispatchMissionRequst: DispatchMissionRequest,
 	): Observable<DispatchMissionResponse> {
 		const { dispatchedMemberIds, diceRoll, dispatchDate } = dispatchMissionRequst;
 

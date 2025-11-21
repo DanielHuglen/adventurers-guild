@@ -38,7 +38,9 @@
 			cursor: pointer;
 			text-decoration: none;
 			color: inherit;
-			transition: background-color 0.1s, border-color 0.1s;
+			transition:
+				background-color 0.1s,
+				border-color 0.1s;
 
 			&:hover {
 				background-color: var(--grey-light);

@@ -14,32 +14,32 @@
 
 	<div class="member-stats">
 		@if (member()?.abilityScores; as scores) {
-		<span class="ability-scores">
-			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
-				<div>{{ isModPreferred() ? (scores.strength | abilityModifier) : scores.strength }}</div>
-				<div>STR</div>
-			</button>
-			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
-				<div>{{ isModPreferred() ? (scores.dexterity | abilityModifier) : scores.dexterity }}</div>
-				<div>DEX</div>
-			</button>
-			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
-				<div>{{ isModPreferred() ? (scores.constitution | abilityModifier) : scores.constitution }}</div>
-				<div>CON</div>
-			</button>
-			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
-				<div>{{ isModPreferred() ? (scores.intelligence | abilityModifier) : scores.intelligence }}</div>
-				<div>INT</div>
-			</button>
-			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
-				<div>{{ isModPreferred() ? (scores.wisdom | abilityModifier) : scores.wisdom }}</div>
-				<div>WIS</div>
-			</button>
-			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
-				<div>{{ isModPreferred() ? (scores.charisma | abilityModifier) : scores.charisma }}</div>
-				<div>CHA</div>
-			</button>
-		</span>
+			<span class="ability-scores">
+				<button class="score" (click)="isModPreferred.set(!isModPreferred())">
+					<div>{{ isModPreferred() ? (scores.strength | abilityModifier) : scores.strength }}</div>
+					<div>STR</div>
+				</button>
+				<button class="score" (click)="isModPreferred.set(!isModPreferred())">
+					<div>{{ isModPreferred() ? (scores.dexterity | abilityModifier) : scores.dexterity }}</div>
+					<div>DEX</div>
+				</button>
+				<button class="score" (click)="isModPreferred.set(!isModPreferred())">
+					<div>{{ isModPreferred() ? (scores.constitution | abilityModifier) : scores.constitution }}</div>
+					<div>CON</div>
+				</button>
+				<button class="score" (click)="isModPreferred.set(!isModPreferred())">
+					<div>{{ isModPreferred() ? (scores.intelligence | abilityModifier) : scores.intelligence }}</div>
+					<div>INT</div>
+				</button>
+				<button class="score" (click)="isModPreferred.set(!isModPreferred())">
+					<div>{{ isModPreferred() ? (scores.wisdom | abilityModifier) : scores.wisdom }}</div>
+					<div>WIS</div>
+				</button>
+				<button class="score" (click)="isModPreferred.set(!isModPreferred())">
+					<div>{{ isModPreferred() ? (scores.charisma | abilityModifier) : scores.charisma }}</div>
+					<div>CHA</div>
+				</button>
+			</span>
 		}
 
 		<span class="stats">
@@ -77,33 +77,33 @@
 
 <!-- TODO: This should be its own component -->
 @if (!isEditing) {
-<div class="controls">
-	@if (member()?.hasBonus) {
-	<span>
-		<span class="control-title">Equipment:</span>
-		<span class="control-value">{{ member()?.bonusDescription }}</span>
-	</span>
-	}
-	<span>
-		<span class="control-title">Debt:</span>
-		<span class="control-value">{{ member()?.debt }}g</span>
-	</span>
-	<button (click)="isEditing = !isEditing" appDisableIfGuest>Edit</button>
-</div>
+	<div class="controls">
+		@if (member()?.hasBonus) {
+			<span>
+				<span class="control-title">Equipment:</span>
+				<span class="control-value">{{ member()?.bonusDescription }}</span>
+			</span>
+		}
+		<span>
+			<span class="control-title">Debt:</span>
+			<span class="control-value">{{ member()?.debt }}g</span>
+		</span>
+		<button (click)="isEditing = !isEditing" appDisableIfGuest>Edit</button>
+	</div>
 } @else {
-<form class="controls" [formGroup]="memberForm" (ngSubmit)="submit()">
-	<span>
-		<label for="bonus">Has equipment</label>
-		<input type="checkbox" id="bonus" formControlName="hasBonusControl" />
-	</span>
-	<span>
-		<label for="description">Equipment description</label>
-		<input id="description" maxlength="32" formControlName="bonusDescriptionControl" />
-	</span>
-	<span>
-		<label for="debt">Debt</label>
-		<input type="text" id="debt" maxlength="4" formControlName="debtControl" />
-	</span>
-	<button type="submit" [disabled]="isLoading">Submit</button>
-</form>
+	<form class="controls" [formGroup]="memberForm" (ngSubmit)="submit()">
+		<span>
+			<label for="bonus">Has equipment</label>
+			<input type="checkbox" id="bonus" formControlName="hasBonusControl" />
+		</span>
+		<span>
+			<label for="description">Equipment description</label>
+			<input id="description" maxlength="32" formControlName="bonusDescriptionControl" />
+		</span>
+		<span>
+			<label for="debt">Debt</label>
+			<input type="text" id="debt" maxlength="4" formControlName="debtControl" />
+		</span>
+		<button type="submit" [disabled]="isLoading">Submit</button>
+	</form>
 }

@@ -1,19 +1,19 @@
 <button [routerLink]="['/missions/' + mission().id]">
-  <div class="mission-header">
-    <h2>{{ mission().title }}</h2>
-    <span class="status" [ngStyle]="{ 'background-color': status }"></span>
-  </div>
-  <div>
-    <div class="roles">
-      @if (!!finalCompositionText) {
-      <div>{{ finalCompositionText }}</div>
-      } @else {
-      <div>{{ recommendationText }}</div>
-      }
-    </div>
-    <div class="mission-footer">
-      <span>{{ gold }}</span>
-      <span>{{ level }}</span>
-    </div>
-  </div>
+	<div class="mission-header">
+		<h2>{{ mission().title }}</h2>
+		<span class="status" [ngStyle]="{ 'background-color': status }"></span>
+	</div>
+	<div>
+		<div class="roles">
+			@if (!!finalCompositionText) {
+				<div>{{ finalCompositionText }}</div>
+			} @else {
+				<div>{{ recommendationText }}</div>
+			}
+		</div>
+		<div class="mission-footer">
+			<span>{{ gold }}</span>
+			<span>{{ level }}</span>
+		</div>
+	</div>
 </button>

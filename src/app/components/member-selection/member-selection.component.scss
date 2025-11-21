@@ -26,7 +26,11 @@
 		background-color: unset;
 		font-size: 1.5rem;
 		color: var(--secondary-dark);
-		transition: background-color 0.2s, color 0.2s, transform 0.3s, border-radius 0.3s;
+		transition:
+			background-color 0.2s,
+			color 0.2s,
+			transform 0.3s,
+			border-radius 0.3s;
 
 		&:first-child {
 			border-radius: var(--sorting-border-radius) 0 0 var(--sorting-border-radius);

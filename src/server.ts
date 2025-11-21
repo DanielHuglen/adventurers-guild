@@ -143,7 +143,7 @@ app.get('/api/missions/:id/dispatched-members', (req, res) => {
 
 	const members = require(resolve('data', 'adventurers.json')) as Character[];
 	const dispatchedMembers = members.filter(
-		(member: Character) => member.activeMission === id || member.completedMissions.includes(id)
+		(member: Character) => member.activeMission === id || member.completedMissions.includes(id),
 	);
 
 	return res.status(200).json(dispatchedMembers);
@@ -334,7 +334,7 @@ app.use(
 		maxAge: '1y',
 		index: false,
 		redirect: false,
-	})
+	}),
 );
 
 /**

@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 export class MetaService {
 	private http = inject(HttpClient);
 
-
 	getReputation(): Observable<CityReputationResponse> {
 		return this.http.get<CityReputationResponse>('/api/reputation');
 	}

@@ -8,7 +8,11 @@ import { Subscription } from 'rxjs';
 export class DisableIfEditorDirective implements OnDestroy {
 	private sub: Subscription;
 
-	constructor(private el: ElementRef, private renderer: Renderer2, private loginService: LoginService) {
+	constructor(
+		private el: ElementRef,
+		private renderer: Renderer2,
+		private loginService: LoginService,
+	) {
 		this.sub = this.loginService.role.subscribe((role) => {
 			const isEditor = role === 'editor';
 			this.renderer.setProperty(this.el.nativeElement, 'disabled', isEditor);

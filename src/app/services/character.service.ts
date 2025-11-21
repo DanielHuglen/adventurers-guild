@@ -11,7 +11,6 @@ import { ResolveFn } from '@angular/router';
 export class CharacterService {
 	private http = inject(HttpClient);
 
-
 	getMembers(): Observable<Character[]> {
 		return this.http.get<Character[]>('/api/members');
 	}

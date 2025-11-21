@@ -1,33 +1,33 @@
 @if (!members().length) {
-<h2 class="no-members">No available members</h2>
+	<h2 class="no-members">No available members</h2>
 } @else {
-<div class="sorting-header">
-	<h2>Available members</h2>
-	<span class="sorting-controls">
-		<button
-			[ngClass]="{ active: isActiveSort('Level'), reverse: isReverseActiveSort('Level') }"
-			(click)="sortMembers('Level')">
-			Level
-		</button>
-		<button
-			[ngClass]="{ active: isActiveSort('Name'), reverse: isReverseActiveSort('Name') }"
-			(click)="sortMembers('Name')">
-			<span>Name</span>
-		</button>
-		<button
-			[ngClass]="{ active: isActiveSort('Class'), reverse: isReverseActiveSort('Class') }"
-			(click)="sortMembers('Class')">
-			Class
-		</button>
-	</span>
-</div>
-<div class="members-deck">
-	@for (member of sortedMembers; track member.id) {
-	<app-character-card
-		[character]="member"
-		[isNavigationEnabled]="false"
-		[isSelected]="isSelected(member.id)"
-		(characterClicked)="toggleSelect($event)" />
-	}
-</div>
+	<div class="sorting-header">
+		<h2>Available members</h2>
+		<span class="sorting-controls">
+			<button
+				[ngClass]="{ active: isActiveSort('Level'), reverse: isReverseActiveSort('Level') }"
+				(click)="sortMembers('Level')">
+				Level
+			</button>
+			<button
+				[ngClass]="{ active: isActiveSort('Name'), reverse: isReverseActiveSort('Name') }"
+				(click)="sortMembers('Name')">
+				<span>Name</span>
+			</button>
+			<button
+				[ngClass]="{ active: isActiveSort('Class'), reverse: isReverseActiveSort('Class') }"
+				(click)="sortMembers('Class')">
+				Class
+			</button>
+		</span>
+	</div>
+	<div class="members-deck">
+		@for (member of sortedMembers; track member.id) {
+			<app-character-card
+				[character]="member"
+				[isNavigationEnabled]="false"
+				[isSelected]="isSelected(member.id)"
+				(characterClicked)="toggleSelect($event)" />
+		}
+	</div>
 }
