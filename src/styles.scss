@@ -23,6 +23,13 @@ button {
 	cursor: pointer;
 }
 
+button,
+a {
+	&:focus {
+		outline: 2px solid rebeccapurple;
+	}
+}
+
 :root {
 	// Colors
 	--white: #f5f5f5ff;
@@ -48,6 +55,9 @@ button {
 	--complimentary: #833d3b;
 	--complimentary-dark: #6a3331;
 	--complimentary-light: #9e4b48;
+
+	// Transitions
+	interpolate-size: allow-keywords;
 }
 
 // Mixins

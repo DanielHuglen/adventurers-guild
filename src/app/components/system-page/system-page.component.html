@@ -1,0 +1,145 @@
+<!-- 
+    Explain agents, start with a text paragraph:
+        always able to recruit lvl 0 agents
+        levels 1 - 8, where 10xp is 1lvl
+        sorted into four groups - make a graphic perhaps?
+            - Text above icon "Martial, Tank, Magic, Healer"
+            - Emoji placeholder icon for each underneath "⚔️, 🛡️, 🪄, ⚕️"
+            - Each class grouped together with their respective emoji
+
+    Explain missions:
+        levels, location (use map? image map??), promised rewards, and the reccomended composition
+    
+    Explain input variables:
+        Use an accordion, with the <details> and <summary> elements!! https://developer.mozilla.org/en-US/blog/html-details-exclusive-accordions/
+        Mission level / Avarage party level, Suggested number of agents / agents sent, team suitability, guild reputation, agent equipment
+    
+    Explain outputs:
+        Buttons to switch from title to explanation? Staggered animation dropdown?
+        Critical success, success, mixed outcome, failure, critical failure
+
+    Explain experience:
+        Checkbox form with calculation at the bottom?
+        Is the mission's level within 2 of the agent's level?	1XP
+        Is the mission's level within 1 of the agent's level?	1XP
+        Is the mission's level higher than the agent's level?	1XP
+        Did the mission have a mixed result or better?	1XP
+        Did the mission have a successful result or better?	1XP
+        Was the mission a critical success?	1XP
+
+    Explain payment:
+        Reward from mission will be subtracted by a percentage equal to every agent's level added together.
+        Any debt from an agent will be paid back upon completing a mission.
+    
+    Taxes? Only actual profit will count towards taxes. This means any investment in the guild itself, agent payment, and employee payroll will be subtracted from the taxable value.
+    Any gold the party earns on non-guild missions does not count as profit.
+
+    Link to reputation
+ -->
+
+<section>
+	<h2>System overview</h2>
+	<p>
+		Eventyrerlauget is a guild for adventurers, created by adventurers! Any adventurer is able to apply for a position
+		in the guild, adding them to a growing list of "agents". If hired, the managers will find suitable missions for
+		them, taking only a modest fee based on the reward in return. The level of success on any mission depends mainly on
+		a roll of the dice, but the success-tiers are based on a multitude of factors explained below.
+	</p>
+</section>
+<section>
+	<h2>Agents</h2>
+	<p>
+		Every member of the guild has a single class, which can be any of the 12 classic DnD classes, or Artificer. These
+		classes are sorted into four more generic groups, representing an archetype suited for specific missions. All agents
+		have their own stats and features in case they are used outside missions, while their equipment has an impact on
+		missions. Agents only have a single attunement slot for equipment purposes.
+	</p>
+	<div class="class-group-container">
+		<div class="class-group-box">
+			<h3>Martial</h3>
+			<div class="class-group-icon">⚔️</div>
+			<p>Ranger, Fighter, Monk, Rogue</p>
+		</div>
+		<div class="class-group-box">
+			<h3>Tank</h3>
+			<div class="class-group-icon">🛡️</div>
+			<p>Paladin, Barbarian</p>
+		</div>
+		<div class="class-group-box">
+			<h3>Magic</h3>
+			<div class="class-group-icon">🪄</div>
+			<p>Sorcerer, Wizard, Warlock, Artificer</p>
+		</div>
+		<div class="class-group-box">
+			<h3>Healer</h3>
+			<div class="class-group-icon">⚕️</div>
+			<p>Bard, Druid, Cleric</p>
+		</div>
+	</div>
+</section>
+<section>
+	<h2>Missions</h2>
+	<p>
+		Like agents, each mission has a level, which indicates its difficulty. There is also a recommended composition of
+		agent class groups, reflecting which agents are suitable for the mission. No mission should be accepted without the
+		promise of a reward of course, shown on every mission given a Successful outcome. The guild might have accrued some
+		Reputation wherever the mission transpires, which will affect how the citizens treat the agents. There are eight
+		cities where missions are gathered from, shown on the map below.
+	</p>
+</section>
+<section>
+	<h2>Dispatching</h2>
+	<p>
+		When dispatching agents on a mission, there are a number of differnt input variables affecting the outcome of the
+		task. Expand a topic for a more detailed explanation of each input. A positive effect will decrease all outcome tier
+		values, giving the d100 roll a higher chance of success.
+	</p>
+	<details name="dispatching">
+		<summary>Mission level</summary>
+		<p>
+			The avarage party level will be compared to the mission level. Higher avarage than mission level will positively
+			affect the outcome, while lower will negatively affect it.
+		</p>
+	</details>
+	<details name="dispatching">
+		<summary>Agent amount</summary>
+		<p>
+			The suggested amount of dispatched agents will be compared to the actual dispatched amount. A higher amount than
+			the suggestion will positively affect the outcome, while a lower amount will negatively affect it.
+		</p>
+	</details>
+	<details name="dispatching">
+		<summary>Team suitability</summary>
+		<p>
+			A suggested amount of each class group must be dispatched, or it will negatively affect the outcome of the
+			mission. The fewer matching roles upon dispatch, the larger the detriment to the outcome.
+		</p>
+	</details>
+	<details name="dispatching">
+		<summary>Guild reputation</summary>
+		<p>
+			The citizens of wherever the mission takes place might interact with the agents, either aiding or hindering them
+			depnding on the guild's reputation in the region. Upon completing a mission, this reputation will change depending
+			on the outcome. See the
+			<a href="/reputation">Reputation page</a>
+			for an overview of the guild's reputation in different regions.
+		</p>
+	</details>
+	<details name="dispatching">
+		<summary>Agent equipment</summary>
+		<p>
+			Every agent has an equipment slot. This can be filled with a magical item the owners decide to give them, a reward
+			for Critically Succeeding a mission, or if the players decide to spend time helping them achieve something
+			personal. Agents with an equipped slot will have a flat positive bonus added to the mission outcome.
+		</p>
+	</details>
+</section>
+<section>
+	<h2>Experience points</h2>
+	<p>
+		The maximum level (lvl) an agent can reach is 8, reflecting a level 16 player character. The owners of the guild is
+		at any moment in time able to recruit new members to the guild, creating their own NPCs, starting at level 0. They
+		are also able to ask any other NPC they meet out on adventures if they'd like to join. They'll either join or refuse
+		at the DMs discretion.
+	</p>
+</section>
