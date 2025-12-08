@@ -152,6 +152,117 @@ details {
 	}
 }
 
+.outcome-options-container {
+	display: flex;
+	justify-content: center;
+	gap: 9px;
+	flex-wrap: wrap;
+	margin-top: 16px;
+
+	.outcome-option {
+		width: 19%;
+		border: 2px solid var(--secondary);
+		border-radius: 8px;
+		padding: 8px;
+		text-wrap: nowrap;
+		text-align: center;
+
+		transition:
+			filter 0.2s ease-in-out,
+			transform 0.05s ease-in-out;
+
+		&:hover {
+			filter: brightness(110%);
+		}
+
+		&:active {
+			transform: scale(97%);
+			filter: brightness(95%);
+		}
+
+		&:nth-child(1) {
+			background-color: var(--success);
+		}
+		&:nth-child(2) {
+			background-color: color-mix(in srgb, var(--success) 90%, var(--warning) 50%);
+		}
+		&:nth-child(3) {
+			background-color: var(--warning);
+		}
+		&:nth-child(4) {
+			background-color: color-mix(in srgb, var(--warning) 50%, var(--error) 90%);
+		}
+		&:nth-child(5) {
+			background-color: var(--error);
+		}
+
+		&.selected {
+			overflow: hidden;
+			outline: 2px solid var(--secondary);
+			border-radius: 0;
+			background-color: var(--white);
+
+			width: 480px;
+			transition:
+				width 0.5s 1.2s ease-in-out,
+				background-color 0.5s 1.2s ease-in-out,
+				border-radius 0.5s 1.2s ease-in-out,
+				outline 0.3s ease-in-out;
+
+			h3 {
+				animation: fade 0.5s ease-in-out;
+			}
+
+			code {
+				display: block;
+				margin-top: 12px;
+				transition:
+					height 0.5s ease-in-out 1.2s,
+					margin-top 0.5s ease-in-out 1.2s,
+					transform 0.5s ease-in-out 1.2s;
+				height: auto;
+				white-space: break-spaces;
+
+				@starting-style {
+					height: 0;
+					margin-top: 0;
+					transform: translateY(16px);
+				}
+			}
+		}
+	}
+
+	&:has(.selected) {
+		.outcome-option:not(.selected) {
+			// Selector for non-selected options when one is selected
+			opacity: 0;
+			width: 0;
+			display: none;
+			transition: 0.3s calc(var(--n) * 0.2s) all;
+			transition-behavior: allow-discrete;
+
+			&:not(.selected ~ .outcome-option) {
+				// selector for the left side of the selected option
+				--n: calc(sibling-count() - sibling-index() + 1);
+			}
+		}
+
+		.selected ~ .outcome-option {
+			// selector for the right side of the selected option
+			--n: sibling-index();
+		}
+	}
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
 .level-calculator {
 	max-width: 480px;
 	margin: 0 auto;

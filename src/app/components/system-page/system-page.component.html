@@ -134,6 +134,79 @@
 		</p>
 	</details>
 </section>
+
+<section>
+	<h2>Outcomes</h2>
+	<p>
+		Depending on all the factors explained in the Dispatching section, and a roll of the die, an outcome is decided upon
+		the agents arrival. In most cases, the time it takes to complete a mission is a number of days equal to three times
+		the mission level. A failed, mixed, or successful outcome usually only affects the rewards, while going critical
+		either way might have in-game consequences! See below for more details about each potential outcome.
+	</p>
+	<div class="outcome-options-container">
+		<button
+			class="outcome-option"
+			[disabled]="isButtonDisabled('criticalSuccess')"
+			[ngClass]="{ selected: isCriticalSuccessSelected() }"
+			(click)="isCriticalSuccessSelected.set(!isCriticalSuccessSelected())">
+			@if (isCriticalSuccessSelected()) {
+				<h3>Critical Success</h3>
+				<code>{{ outcomeText }}</code>
+			} @else {
+				<h3>CS</h3>
+			}
+		</button>
+		<button
+			class="outcome-option"
+			[disabled]="isButtonDisabled('success')"
+			[ngClass]="{ selected: isSuccessSelected() }"
+			(click)="isSuccessSelected.set(!isSuccessSelected())">
+			@if (isSuccessSelected()) {
+				<h3>Success</h3>
+				<code>{{ outcomeText }}</code>
+			} @else {
+				<h3>S</h3>
+			}
+		</button>
+		<button
+			class="outcome-option"
+			[disabled]="isButtonDisabled('mixed')"
+			[ngClass]="{ selected: isMixedSelected() }"
+			(click)="isMixedSelected.set(!isMixedSelected())">
+			@if (isMixedSelected()) {
+				<h3>Mixed</h3>
+				<code>{{ outcomeText }}</code>
+			} @else {
+				<h3>M</h3>
+			}
+		</button>
+		<button
+			class="outcome-option"
+			[disabled]="isButtonDisabled('failure')"
+			[ngClass]="{ selected: isFailureSelected() }"
+			(click)="isFailureSelected.set(!isFailureSelected())">
+			@if (isFailureSelected()) {
+				<h3>Failure</h3>
+				<code>{{ outcomeText }}</code>
+			} @else {
+				<h3>F</h3>
+			}
+		</button>
+		<button
+			class="outcome-option"
+			[disabled]="isButtonDisabled('criticalFailure')"
+			[ngClass]="{ selected: isCriticalFailureSelected() }"
+			(click)="isCriticalFailureSelected.set(!isCriticalFailureSelected())">
+			@if (isCriticalFailureSelected()) {
+				<h3>Critical Failure</h3>
+				<code>{{ outcomeText }}</code>
+			} @else {
+				<h3>CF</h3>
+			}
+		</button>
+	</div>
+</section>
+
 <section>
 	<h2>Experience points</h2>
 	<p>
