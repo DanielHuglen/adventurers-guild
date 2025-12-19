@@ -2,7 +2,7 @@
 	{{ currentDate | date: "shortDate" }}
 	@if ((role | async) === "admin") {
 		<button (click)="openAdjustDate()">Change</button>
-		<dialog #dialog>
+		<dialog #dialog closedby="any">
 			<app-adjust-date-form [currentDate]="currentDate" (adjustedDate)="handleAdjustedDate($event)" />
 		</dialog>
 	}
