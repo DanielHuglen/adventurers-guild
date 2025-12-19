@@ -1,6 +1,5 @@
 section {
 	max-width: 760px;
-	// text-align: center;
 
 	h2 {
 		font-size: 2rem;
@@ -15,6 +14,10 @@ section {
 
 	& + section {
 		margin-top: 48px;
+	}
+
+	&:last-child {
+		margin-bottom: 48px;
 	}
 }
 
@@ -76,6 +79,121 @@ section {
 
 		&:hover::before {
 			left: 0;
+		}
+	}
+}
+
+.missions {
+	span {
+		inset: auto;
+		bottom: calc(anchor(top) + 10px);
+		justify-self: anchor-center;
+		background-color: var(--secondary-dark);
+		color: var(--white);
+		padding: 12px;
+		border: none;
+		border-radius: 16px;
+		corner-shape: scoop;
+		max-width: 240px;
+
+		h3 {
+			margin: 0;
+			font-size: 1.2rem;
+			text-align: center;
+		}
+		p {
+			margin-top: 4px;
+			font-size: 1rem;
+			text-align: center;
+		}
+	}
+
+	[popover] {
+		opacity: 0;
+		transform: translateY(10px);
+		transition:
+			opacity 0.2s ease-in-out,
+			transform 0.2s ease-in-out;
+	}
+	[popover]:popover-open {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	@starting-style {
+		[popover]:popover-open {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+	}
+
+	div {
+		margin-top: 16px;
+		position: relative;
+		outline: 8px solid var(--secondary-light);
+
+		@media screen and (max-width: 768px) {
+			display: none;
+		}
+
+		img {
+			display: block;
+		}
+
+		button {
+			position: absolute;
+			translate: -50% -50%;
+			border: 1px solid var(--black);
+			background-color: var(--primary-light);
+			opacity: 0.5;
+			width: 70px;
+			height: 70px;
+			border-radius: 9999px;
+			color: var(--secondary-dark);
+
+			transition:
+				opacity 0.2s ease-in-out,
+				transform 0.2s ease-in-out;
+
+			&:hover,
+			&:focus {
+				opacity: 0.8;
+				cursor: pointer;
+				transform: scale(1.1);
+			}
+		}
+
+		/* Position buttons by id based on map area coordinates */
+		button[id="Luskan"] {
+			left: 324px;
+			top: 127px;
+		}
+		button[id="Mirabar"] {
+			left: 431px;
+			top: 78px;
+		}
+		button[id="Neverwinter"] {
+			left: 351px;
+			top: 223px;
+		}
+		button[id="Moonshae Isles"] {
+			left: 245px;
+			top: 734px;
+		}
+		button[id="Waterdeep"] {
+			left: 469px;
+			top: 455px;
+		}
+		button[id="Silverymoon"] {
+			left: 695px;
+			top: 155px;
+		}
+		button[id="Baldur's Gate"] {
+			left: 627px;
+			top: 846px;
+		}
+		button[id="Piltover"] {
+			left: 192px;
+			top: 350px;
 		}
 	}
 }
@@ -202,7 +320,7 @@ details {
 			border-radius: 0;
 			background-color: var(--white);
 
-			width: 480px;
+			width: min(480px, 100%);
 			transition:
 				width 0.5s 1.2s ease-in-out,
 				background-color 0.5s 1.2s ease-in-out,

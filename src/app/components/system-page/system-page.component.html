@@ -1,42 +1,3 @@
-<!-- 
-    Explain agents, start with a text paragraph:
-        always able to recruit lvl 0 agents
-        levels 1 - 8, where 10xp is 1lvl
-        sorted into four groups - make a graphic perhaps?
-            - Text above icon "Martial, Tank, Magic, Healer"
-            - Emoji placeholder icon for each underneath "⚔️, 🛡️, 🪄, ⚕️"
-            - Each class grouped together with their respective emoji
-
-    Explain missions:
-        levels, location (use map? image map??), promised rewards, and the reccomended composition
-    
-    Explain input variables:
-        Use an accordion, with the <details> and <summary> elements!! https://developer.mozilla.org/en-US/blog/html-details-exclusive-accordions/
-        Mission level / Avarage party level, Suggested number of agents / agents sent, team suitability, guild reputation, agent equipment
-    
-    Explain outputs:
-        Buttons to switch from title to explanation? Staggered animation dropdown?
-        Critical success, success, mixed outcome, failure, critical failure
-
-    Explain experience:
-        Checkbox form with calculation at the bottom?
-        Is the mission's level within 2 of the agent's level?	1XP
-        Is the mission's level within 1 of the agent's level?	1XP
-        Is the mission's level higher than the agent's level?	1XP
-        Did the mission have a mixed result or better?	1XP
-        Did the mission have a successful result or better?	1XP
-        Was the mission a critical success?	1XP
-
-    Explain payment:
-        Reward from mission will be subtracted by a percentage equal to every agent's level added together.
-        Any debt from an agent will be paid back upon completing a mission.
-    
-    Taxes? Only actual profit will count towards taxes. This means any investment in the guild itself, agent payment, and employee payroll will be subtracted from the taxable value.
-    Any gold the party earns on non-guild missions does not count as profit.
-
-    Link to reputation
- -->
-
 <section>
 	<h2>System overview</h2>
 	<p>
@@ -77,16 +38,39 @@
 		</div>
 	</div>
 </section>
-<section>
+
+<section class="missions">
 	<h2>Missions</h2>
 	<p>
 		Like agents, each mission has a level, which indicates its difficulty. There is also a recommended composition of
 		agent class groups, reflecting which agents are suitable for the mission. No mission should be accepted without the
 		promise of a reward of course, shown on every mission given a Successful outcome. The guild might have accrued some
 		Reputation wherever the mission transpires, which will affect how the citizens treat the agents. There are eight
-		cities where missions are gathered from, shown on the map below.
+		cities where missions are gathered from, shown on the map below (desktop and tablet only).
 	</p>
+
+	<div>
+		<img
+			#swordCoastMap
+			src="img/sword_coast_map.jpg"
+			alt="Map of the Sword Coast, highlighting the eight major cities" />
+		@for (city of cities; track city) {
+			<button
+				(mousedown)="closePopover()"
+				popovertarget="city-popover"
+				[id]="city"
+				(click)="selectedCity.set(city)"
+				[aria-label]="city">
+				●
+			</button>
+		}
+	</div>
+	<span popover #cityPopover id="city-popover">
+		<h3>{{ selectedCity() }}</h3>
+		<p>{{ cityDescription }}</p>
+	</span>
 </section>
+
 <section>
 	<h2>Dispatching</h2>
 	<p>
@@ -210,10 +194,11 @@
 <section>
 	<h2>Experience points</h2>
 	<p>
-		The maximum level (lvl) an agent can reach is 8, reflecting a level 16 player character. The owners of the guild is
-		at any moment in time able to recruit new members to the guild, creating their own NPCs, starting at level 0. They
-		are also able to ask any other NPC they meet out on adventures if they'd like to join. They'll either join or refuse
-		at the DMs discretion. Below is a calculator for exact experience gain.
+		10 experience points equals a single level for an agent. The maximum level (lvl) an agent can reach is 8, reflecting
+		a level 16 player character. The owners of the guild is at any moment in time able to recruit new members to the
+		guild, creating their own NPCs, starting at level 0. They are also able to ask any other NPC they meet out on
+		adventures if they'd like to join. They'll either join or refuse at the DMs discretion. Below is a calculator for
+		exact experience gain.
 	</p>
 	<div class="level-calculator">
 		<form>
@@ -268,4 +253,22 @@
 		</form>
 		<h3>Total experience earned: {{ totalExperience() }}XP</h3>
 	</div>
+</section>
+
+<section>
+	<h2>Payment</h2>
+	<p>
+		Upon completing a mission, the guild will be given a percentage of the gold earned (or owed) by the agents. All
+		values displayed are what the guild earns, it is never stated what the agents earn. The agent's cut is a percentage
+		of the reward based on the combined levels of all dispatched agents. This fee can be considered upkeep, as it is
+		used by the agents out in the field to pay for provisions, lodging, and equipment. Any debt an agent has towards the
+		guild will be paid back upon completing a mission.
+	</p>
+	<br />
+	<p>
+		Only actual profit will count towards taxes. This means any investment in the guild itself, agent payment, and
+		employee payroll will be subtracted from the taxable value. Any gold the party earns on non-guild missions does not
+		count as profit. Everything earned above 10 000 gold is taxed at 20%, while anything above 50 000 gold is taxed at
+		40%.
+	</p>
 </section>

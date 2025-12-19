@@ -1,6 +1,7 @@
-import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, effect, signal } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, ElementRef, signal, ViewChild } from '@angular/core';
 import { form } from '@angular/forms/signals';
+import { City } from 'app/shared/mission-model';
 
 interface ExperienceFormData {
 	level: 0 | 1 | 2 | null;
@@ -12,7 +13,7 @@ interface ExperienceFormData {
 	templateUrl: './system-page.component.html',
 	styleUrl: './system-page.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [NgClass, NgTemplateOutlet],
+	imports: [NgClass],
 })
 export class SystemPageComponent {
 	protected isCriticalSuccessSelected = signal(false);
@@ -20,6 +21,24 @@ export class SystemPageComponent {
 	protected isMixedSelected = signal(false);
 	protected isFailureSelected = signal(false);
 	protected isCriticalFailureSelected = signal(false);
+
+	protected cities: City[] = [
+		'Waterdeep',
+		'Neverwinter',
+		"Baldur's Gate",
+		'Luskan',
+		'Mirabar',
+		'Silverymoon',
+		'Piltover',
+		'Moonshae Isles',
+	];
+	protected selectedCity = signal<City | null>(null);
+
+	@ViewChild('cityPopover') cityPopover: ElementRef<HTMLSpanElement> | undefined;
+
+	closePopover(): void {
+		this.cityPopover?.nativeElement.hidePopover();
+	}
 
 	isButtonDisabled(selectedButton: string): boolean {
 		switch (selectedButton) {
@@ -60,6 +79,29 @@ export class SystemPageComponent {
 				);
 			default:
 				return false;
+		}
+	}
+
+	get cityDescription(): string {
+		switch (this.selectedCity()) {
+			case 'Waterdeep':
+				return 'The City of Splendors, a bustling metropolis known for its wealth, diversity, and political intrigue.';
+			case 'Neverwinter':
+				return 'The Jewel of the North, a city renowned for its resilience and beauty, recovering from past calamities.';
+			case "Baldur's Gate":
+				return 'A major port city on the Sword Coast, famous for its commerce, adventurers, and complex politics.';
+			case 'Luskan':
+				return 'A rough-and-tumble city known for its pirates, mercenaries, and lawlessness, situated at the mouth of the River Mirar.';
+			case 'Mirabar':
+				return 'A wealthy mining city located in the northern region, known for its strong defenses and industrious populace.';
+			case 'Silverymoon':
+				return 'The Gem of the North, a city celebrated for its magical academies, culture, and harmony between nature and civilization.';
+			case 'Piltover':
+				return 'A notorious drow city located deep underground, known for its matriarchal society and ruthless politics.';
+			case 'Moonshae Isles':
+				return 'A group of islands rich in druidic tradition and natural beauty, home to various clans and mystical creatures.';
+			default:
+				return '';
 		}
 	}
 
