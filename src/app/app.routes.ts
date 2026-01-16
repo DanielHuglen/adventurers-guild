@@ -8,6 +8,7 @@ import { missionsResolver } from './services/mission.service';
 import { MissionOverviewComponent } from './components/mission-page/mission-overview/mission-overview.component';
 import { ReputationPageComponent } from './components/reputation-page/reputation-page.component';
 import { SystemPageComponent } from './components/system-page/system-page.component';
+import { EmployeePageComponent } from './components/employee-page/employee-page.component';
 
 export const routes: Routes = [
 	{
@@ -38,7 +39,7 @@ export const routes: Routes = [
 	},
 	{
 		path: 'employees',
-		redirectTo: '',
+		component: EmployeePageComponent,
 	},
 	{
 		path: 'economy',

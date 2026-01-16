@@ -41,4 +41,8 @@ export const serverRoutes: ServerRoute[] = [
 		path: 'system',
 		renderMode: RenderMode.Server,
 	},
+	{
+		path: 'employees',
+		renderMode: RenderMode.Server,
+	},
 ];
