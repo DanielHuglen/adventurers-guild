@@ -326,6 +326,38 @@ app.post('/api/date', express.json(), (req, res) => {
 	return res.status(200).json({ message: 'Date updated successfully', newDate: meta.currentDate, completedMissionIds });
 });
 
+// DnDBeyond proxy (avoids browser CORS by calling upstream from the server)
+app.get('/api/dndbeyond/character/:id', async (req, res) => {
+	const rawId = req.params.id;
+	const characterId = Number(rawId);
+
+	if (!Number.isFinite(characterId) || !Number.isInteger(characterId) || characterId <= 0) {
+		return res.status(400).json({ error: 'Invalid character id' });
+	}
+
+	const url = `https://character-service.dndbeyond.com/character/v5/character/${characterId}`;
+
+	try {
+		const upstream = await fetch(url, {
+			headers: {
+				Accept: 'application/json',
+			},
+		});
+
+		const contentType = upstream.headers.get('content-type') ?? 'application/json';
+		res.status(upstream.status);
+		res.setHeader('Content-Type', contentType);
+
+		const bodyText = await upstream.text();
+		return res.send(bodyText);
+	} catch (error) {
+		return res.status(502).json({
+			error: 'Failed to fetch DnDBeyond character',
+			details: error instanceof Error ? error.message : String(error),
+		});
+	}
+});
+
 /**
  * Serve static files from /browser
  */

@@ -9,6 +9,7 @@ import { MissionOverviewComponent } from './components/mission-page/mission-over
 import { ReputationPageComponent } from './components/reputation-page/reputation-page.component';
 import { SystemPageComponent } from './components/system-page/system-page.component';
 import { EmployeePageComponent } from './components/employee-page/employee-page.component';
+import { FoundersPageComponent } from './components/founders-page/founders-page.component';
 
 export const routes: Routes = [
 	{
@@ -51,7 +52,7 @@ export const routes: Routes = [
 	},
 	{
 		path: 'founders',
-		redirectTo: '',
+		component: FoundersPageComponent,
 	},
 	{
 		path: 'system',

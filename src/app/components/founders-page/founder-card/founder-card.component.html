@@ -1,0 +1,73 @@
+<div class="card-header">
+	<img src="img/logo.jpeg" alt="logo" />
+	<h3>Founder of Eventyrerlauget</h3>
+</div>
+<div class="card-body">
+	@if (founder() === null) {
+		<!-- TODO: Pretty loader! Skeleton? -->
+		<p>Loading data...</p>
+	} @else {
+		<img
+			[src]="
+				founder()?.avatarUrl ??
+				'https://www.dndbeyond.com/content/skins/waterdeep/images/characters/default-avatar-builder.png'
+			"
+			width="300"
+			alt="founding member" />
+		<span class="basic-info">
+			<h4>{{ founder()?.name }}</h4>
+			<dl>
+				<dt>Class</dt>
+				<dd>{{ founder()?.class }}</dd>
+
+				<dt>Lvl</dt>
+				<dd>{{ founder()?.level }}</dd>
+
+				<dt>Race</dt>
+				<dd>{{ founder()?.race }}</dd>
+
+				<dt>Background</dt>
+				<dd>{{ founder()?.background }}</dd>
+			</dl>
+			<dl>
+				<dt>Sex</dt>
+				<dd>{{ founder()?.sex }}</dd>
+
+				<dt>Eyes</dt>
+				<dd>{{ founder()?.eyes }}</dd>
+
+				<dt>Age</dt>
+				<dd>{{ founder()?.age }}</dd>
+
+				<dt>Height</dt>
+				<dd>{{ founder()?.height }}</dd>
+			</dl>
+		</span>
+		<span class="ability-scores">
+			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
+				<div>{{ isModPreferred() ? (scores!.strength | abilityModifier) : scores!.strength }}</div>
+				<div>STR</div>
+			</button>
+			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
+				<div>{{ isModPreferred() ? (scores!.dexterity | abilityModifier) : scores!.dexterity }}</div>
+				<div>DEX</div>
+			</button>
+			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
+				<div>{{ isModPreferred() ? (scores!.constitution | abilityModifier) : scores!.constitution }}</div>
+				<div>CON</div>
+			</button>
+			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
+				<div>{{ isModPreferred() ? (scores!.intelligence | abilityModifier) : scores!.intelligence }}</div>
+				<div>INT</div>
+			</button>
+			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
+				<div>{{ isModPreferred() ? (scores!.wisdom | abilityModifier) : scores!.wisdom }}</div>
+				<div>WIS</div>
+			</button>
+			<button class="score" (click)="isModPreferred.set(!isModPreferred())">
+				<div>{{ isModPreferred() ? (scores!.charisma | abilityModifier) : scores!.charisma }}</div>
+				<div>CHA</div>
+			</button>
+		</span>
+	}
+</div>

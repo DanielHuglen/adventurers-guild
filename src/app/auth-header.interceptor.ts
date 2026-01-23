@@ -9,9 +9,11 @@ export const authHeaderInterceptor: HttpInterceptorFn = (req, next) => {
 	return next(req).pipe(
 		catchError((error: HttpErrorResponse) => {
 			if (error.status === 403) {
-				console.log('Forbidden request, triggering password prompt');
-
-				loginService.openPasswordPrompt();
+				if (error.url?.includes('dndbeyond')) {
+					window.alert('The DnD Beyond character must be set to public to be accessed.');
+				} else {
+					loginService.openPasswordPrompt();
+				}
 			}
 			return throwError(() => error);
 		}),

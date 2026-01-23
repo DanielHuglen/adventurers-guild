@@ -1,0 +1,46 @@
+<span>
+	<h2>History</h2>
+	<p>
+		In the city of Neverwinter, four entrepreneurs sought to purchase a plot of land from the then-ruling queen of the
+		Kingdom, Iselyn Neverember Colidar Drusar Sultanis De La Bouquè. They could but afford a humble abode in the least
+		sought-after functioning district, but purchase it they did, flaws and all! Gathering up the rest of their funds,
+		the adventurers-turned-capitalists bought the services of a handy dwarf named Glemrir Soots, whom together with
+		their team renovated what was left of the house on the property.
+		<br />
+		<br />
+		After a brief séance with an evil wizard, the founding members found themselves saviours of the city, and were
+		hailed as heroes of Neverwinter, complete with a statue in a square and everything! Using this newfound fame to
+		market their new business venture, the group managed to snag several members right out of the gate. As soon as the
+		new guildhouse was finished and opened, Eventyrerlauget was born!
+		<br />
+		<br />
+		From these humble and extremely relatable beginnings, Eventyrerlauget has grown to become a thriving guild of
+		adventurers. Ever-growing, they seem to attract more and more adventurers into their fold. Most often by
+		slaughtering their previous colleagues and offering a new steady income, but once in a while they actually save
+		someone and convince them to join as well.
+		<br />
+		<br />
+		Today, Eventyrerlauget can boast a membership in the double digits, making them the largest adventuring guild in
+		Neverwinter. Having run their competing guilds out of business, they now stand unchallenged as the premier choice
+		for adventurers seeking work in the region. Some might say this monopoly is unhealthy for the local economy, but the
+		founders of this glorious guild cannot hear those voices over all the gold they're making. Who knows what the future
+		holds for these heroes? Probably more gold.
+	</p>
+</span>
+<span>
+	<div class="founders-controls-wrapper">
+		<h2>Founders</h2>
+		<span class="controls">
+			<button (click)="selectedFounderId.set(107965371)">Luc</button>
+			<button (click)="selectedFounderId.set(87814920)">Rakarth</button>
+			<button (click)="selectedFounderId.set(89790515)">Håkon</button>
+			<button (click)="selectedFounderId.set(93720519)">Ruffler</button>
+			<button (click)="selectedFounderId.set(119296915)">Baelin</button>
+		</span>
+	</div>
+	@if (selectedFounderId()) {
+		<app-founder-card [founderId]="selectedFounderId()!" />
+	} @else {
+		<p class="missing-selection">Select a founder to see details</p>
+	}
+</span>
