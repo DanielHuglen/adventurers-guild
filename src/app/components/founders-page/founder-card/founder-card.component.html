@@ -1,10 +1,9 @@
 <div class="card-header">
-	<img src="img/logo.jpeg" alt="logo" />
+	<img src="img/logo.jpeg" alt="logo" [ngClass]="isLoading() ? 'loading' : 'loaded'" />
 	<h3>Founder of Eventyrerlauget</h3>
 </div>
-<div class="card-body">
+<div [ngClass]="isLoading() ? 'loading' : 'loaded'" class="card-body">
 	@if (founder() === null) {
-		<!-- TODO: Pretty loader! Skeleton? -->
 		<p>Loading data...</p>
 	} @else {
 		<img

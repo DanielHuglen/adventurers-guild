@@ -30,14 +30,29 @@ export interface DndBeyondCharacterResponse {
 			id: number;
 			value: number;
 		}[];
+		bonusStats?: {
+			id: number;
+			value: number | null;
+		}[];
+		overrideStats?: {
+			id: number;
+			value: number | null;
+		}[];
 		modifiers?: {
-			race?: {
-				type?: string;
-				subType?: string;
-				value?: number;
-			}[];
+			race?: DndBeyondModifier[];
+			class?: DndBeyondModifier[];
+			feat?: DndBeyondModifier[];
+			item?: DndBeyondModifier[];
+			background?: DndBeyondModifier[];
+			condition?: DndBeyondModifier[];
 		};
 	};
+}
+
+export interface DndBeyondModifier {
+	type?: string;
+	subType?: string;
+	value?: number;
 }
 
 export enum StatId {

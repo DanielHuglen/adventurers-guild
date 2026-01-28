@@ -1,17 +1,14 @@
 import { Component, effect, inject, input, signal } from '@angular/core';
 import { AbilityModifierPipe } from '../../../shared/ability-modifier.pipe';
-import { DndBeyondCharacterResponse, FoundersService, StatId } from 'app/services/founders.service';
+import { DndBeyondCharacterResponse, FoundersService } from 'app/services/founders.service';
 import { take } from 'rxjs';
-import { CharacterClass } from 'app/shared/character-models';
-
-interface AbilityScores {
-	strength: number;
-	dexterity: number;
-	constitution: number;
-	intelligence: number;
-	wisdom: number;
-	charisma: number;
-}
+import {
+	AbilityScores,
+	getHighestLevelClass,
+	getTotalLevel,
+	mapAbilityScores,
+} from 'app/shared/founders-helper.service';
+import { NgClass } from '@angular/common';
 
 interface Founder {
 	id: number;
@@ -30,7 +27,7 @@ interface Founder {
 
 @Component({
 	selector: 'app-founder-card',
-	imports: [AbilityModifierPipe],
+	imports: [AbilityModifierPipe, NgClass],
 	templateUrl: './founder-card.component.html',
 	styleUrl: './founder-card.component.scss',
 })
@@ -41,60 +38,31 @@ export class FounderCardComponent {
 
 	founder = signal<Founder | null>(null);
 	isModPreferred = signal(false);
+	isLoading = signal(false);
 
 	get scores(): AbilityScores | null {
 		return this.founder()?.abilityScores || null;
 	}
 
-	getHighestLevelClass(classes: { definition: { name: string }; level: number }[]): CharacterClass {
-		return classes.reduce((prev, current) => (current.level > prev.level ? current : prev), {
-			definition: { name: '' },
-			level: 0,
-		}).definition.name as CharacterClass;
-	}
-
-	getTotalLevel(classes: { definition: { name: string }; level: number }[]): number {
-		return classes.reduce((total, current) => total + current.level, 0);
-	}
-
-	mapAbilityScores(
-		stats: { id: number; value: number }[],
-		raceModifiers: { type?: string; subType?: string; value?: number }[] = [],
-	): AbilityScores {
-		const getBase = (statId: StatId): number => stats.find((s) => s.id === statId)?.value ?? 0;
-
-		const getRaceBonus = (abilityName: string): number => {
-			const needle = abilityName.toLowerCase();
-			return raceModifiers
-				.filter(
-					(mod) =>
-						mod?.type === 'bonus' && typeof mod.subType === 'string' && mod.subType.toLowerCase().includes(needle),
-				)
-				.reduce((sum, mod) => sum + (mod.value ?? 0), 0);
-		};
-
-		const abilityScores: AbilityScores = {
-			strength: getBase(StatId.Strength) + getRaceBonus('strength'),
-			dexterity: getBase(StatId.Dexterity) + getRaceBonus('dexterity'),
-			constitution: getBase(StatId.Constitution) + getRaceBonus('constitution'),
-			intelligence: getBase(StatId.Intelligence) + getRaceBonus('intelligence'),
-			wisdom: getBase(StatId.Wisdom) + getRaceBonus('wisdom'),
-			charisma: getBase(StatId.Charisma) + getRaceBonus('charisma'),
-		};
-		return abilityScores;
-	}
-
 	constructor() {
 		effect(() => {
+			this.isLoading.set(true);
+
 			this.foundersService
 				.fetchDndBeyondCharacter(this.founderId())
 				.pipe(take(1))
 				.subscribe((character: DndBeyondCharacterResponse) => {
+					this.isLoading.set(false);
+
 					const { classes, name, race, background, gender, eyes, age, height, decorations } = character.data;
 
-					const mainClass = this.getHighestLevelClass(classes || []);
-					const totalLevel = this.getTotalLevel(classes || []);
-					const abilityScores = this.mapAbilityScores(character.data.stats || [], character.data.modifiers?.race || []);
+					const mainClass = getHighestLevelClass(classes || []);
+					const totalLevel = getTotalLevel(classes || []);
+					const abilityScores = mapAbilityScores(character.data.stats || [], {
+						bonusStats: character.data.bonusStats,
+						overrideStats: character.data.overrideStats,
+						modifiers: character.data.modifiers,
+					});
 
 					const founderData: Founder = {
 						id: this.founderId(),
