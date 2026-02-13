@@ -19,8 +19,8 @@ import { Character, classGroups } from './app/shared/character-models';
 import { CharacterBonusUpdateResponse, CityReputation, CityReputationResponse } from './app/shared/api-models';
 import { Mission } from 'app/shared/mission-model';
 import cookieParser from 'cookie-parser';
-import { MissionCalculationInputs } from 'utils/mission-calculation';
-import { getMembersMatchingReccommendationsCount } from 'app/shared/mission-helper.service';
+import { completeMissionsUpToDate, getCityReputationKey } from './utils/mission-completion';
+import { computeCityReputations } from 'utils/reputation';
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
@@ -379,29 +379,11 @@ app.put('/api/missions/:id/dispatch-mission', express.json(), (req, res) => {
 
 // Meta API
 app.get('/api/reputation', (req, res) => {
-	let cityReputation: CityReputation[] = [];
+	const meta = readJsonFile<{ cityReputations: Record<string, number> }>(META_FILE_PATH);
+	const missions = readJsonFile<Mission[]>(MISSIONS_FILE_PATH);
 
-	const meta = require(resolve('data', 'meta.json'));
-	Object.keys(meta.cityReputations).forEach((city) => {
-		cityReputation.push({ city, reputation: meta.cityReputations[city] });
-	});
-
-	const missions = require(resolve('data', 'missions.json')) as Mission[];
-	missions.forEach((mission) => {
-		if (mission.finalOutcome) {
-			const location = mission.location;
-			const reputationChange = mission.finalOutcome.reward.reputation;
-			const existingCityRep = cityReputation.find((cr) => cr.city.toLowerCase() === location.toLowerCase());
-
-			if (existingCityRep) {
-				existingCityRep.reputation += reputationChange;
-			} else {
-				cityReputation.push({ city: location, reputation: reputationChange });
-			}
-		}
-	});
-
-	return res.status(200).json({ cityReputations: cityReputation } as CityReputationResponse);
+	const cityReputations = computeCityReputations(meta.cityReputations ?? {}, missions, getCityReputationKey);
+	return res.status(200).json({ cityReputations } as CityReputationResponse);
 });
 
 app.get('/api/date', (req, res) => {
@@ -419,80 +401,34 @@ app.post('/api/date', express.json(), (req, res) => {
 	if (!newDate || isNaN(new Date(newDate).getTime())) {
 		return res.status(400).json({ error: 'Invalid date' });
 	}
-	const meta = require(resolve('data', 'meta.json'));
+	const meta = readJsonFile<{ currentDate: string; cityReputations?: Record<string, number> }>(META_FILE_PATH);
 	const currentDate = new Date(meta.currentDate);
 	const adjustedDate = new Date(newDate);
 	if (adjustedDate.getTime() < currentDate.getTime()) {
 		return res.status(400).json({ error: 'New date cannot be in the past' });
 	}
 
-	const missions = require(resolve('data', 'missions.json')) as Mission[];
-	const members = require(resolve('data', 'adventurers.json')) as Character[];
+	const missions = readJsonFile<Mission[]>(MISSIONS_FILE_PATH);
+	const members = readJsonFile<Character[]>(ADVENTURERS_FILE_PATH);
 	const { calculateExperienceGain } = require('./utils/experience');
 	const { evaluateMissionRoll } = require('./utils/mission-calculation');
-	let completedMissionIds: number[] = [];
+	const { completedMissionIds } = completeMissionsUpToDate(
+		{
+			missions,
+			members,
+			adjustedDate,
+			metaCityReputations: meta.cityReputations,
+		},
+		{ evaluateMissionRoll, calculateExperienceGain },
+	);
 
-	// Complete any missions that ended before the new date
-	missions.forEach((mission: Mission) => {
-		if (mission.dispatchDate && !mission.finalOutcome) {
-			if (!mission.completionDate) {
-				return;
-			}
-			const missionEndDate = new Date(mission.completionDate);
-			if (missionEndDate.getTime() <= adjustedDate.getTime()) {
-				completedMissionIds.push(mission.id);
-
-				// Complete the mission
-				const { level, recommendedComposition, finalComposition, diceRoll } = mission;
-				const totalReputationInCity = missions
-					.filter((m) => m.location === mission.location && m.finalOutcome)
-					.reduce((sum, m) => sum + (m.finalOutcome?.reward.reputation || 0), 0);
-				const dispatchedMembers = members.filter((member: Character) => member.activeMission === mission.id);
-				const totalPartyLevel = dispatchedMembers.reduce((sum, member) => sum + Math.floor(member.experience / 10), 0);
-				const averagePartyLevel = Math.floor(totalPartyLevel / dispatchedMembers.length);
-				const totalBonus = dispatchedMembers.reduce((sum, member) => sum + (member.hasBonus ? 1 : 0), 0);
-				const missionCalculationInputs = {
-					LM: level,
-					NM: recommendedComposition.length,
-					Np: finalComposition?.length ?? 0,
-					Lp: averagePartyLevel,
-					Pp: getMembersMatchingReccommendationsCount(dispatchedMembers, recommendedComposition),
-					R: totalReputationInCity,
-					O: totalBonus,
-				} as MissionCalculationInputs;
-
-				const { outcome } = evaluateMissionRoll(diceRoll || 0, missionCalculationInputs);
-				mission.finalOutcome = mission.potentialOutcomes.find((o) => o.tier === outcome) || null;
-
-				// Update members accordingly, as well as grant them experience and remove any debt if the reward is higher than the cost
-				dispatchedMembers.forEach((member: Character) => {
-					// For simplicity, let's assume all members survive and gain experience based on mission outcome
-					member.activeMission = null;
-					member.completedMissions.push(mission.id);
-					const experienceGained = calculateExperienceGain(member, mission);
-					member.experience += experienceGained;
-
-					// Remove debt if reward is higher than cost
-					const goldReward = mission.finalOutcome?.reward.gold || 0;
-					const memberDebt = member.debt || 0;
-					if (goldReward > 0 && memberDebt > 0) {
-						// Remove as much debt as possible, and add it to the gold reward
-						const debtPaid = Math.min(goldReward, memberDebt);
-						member.debt = memberDebt - debtPaid;
-						mission.finalOutcome!.reward.gold = goldReward + debtPaid;
-					}
-				});
-			}
-		}
-	});
-
-	// TODO: Write updated members and missions back to the JSON files
-	fs.writeFileSync(resolve('data', 'adventurers.json'), JSON.stringify(members, null, 2));
-	fs.writeFileSync(resolve('data', 'missions.json'), JSON.stringify(missions, null, 2));
+	// Write updated members and missions back to the JSON files
+	writeJsonFile(ADVENTURERS_FILE_PATH, members);
+	writeJsonFile(MISSIONS_FILE_PATH, missions);
 
 	// Update the current date in meta.json
 	meta.currentDate = adjustedDate.toISOString().slice(0, 10);
-	fs.writeFileSync(resolve('data', 'meta.json'), JSON.stringify(meta, null, 2));
+	writeJsonFile(META_FILE_PATH, meta);
 	return res.status(200).json({ message: 'Date updated successfully', newDate: meta.currentDate, completedMissionIds });
 });
 
