@@ -387,7 +387,7 @@ app.get('/api/reputation', (req, res) => {
 });
 
 app.get('/api/date', (req, res) => {
-	const meta = require(resolve('data', 'meta.json'));
+	const meta = readJsonFile<{ currentDate: string }>(META_FILE_PATH);
 	const currentDate = new Date(meta.currentDate);
 	res.status(200).json(currentDate);
 });
