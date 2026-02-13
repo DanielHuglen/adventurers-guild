@@ -209,3 +209,18 @@
 		@include button-style(var(--complimentary), var(--complimentary-light), var(--complimentary-dark));
 	}
 }
+
+.delete-action {
+	margin-left: 16px;
+	background-color: var(--error);
+	border-radius: 8px;
+	border: none;
+	padding: 10px 20px;
+	color: var(--white);
+	font-weight: 600;
+
+	&:disabled {
+		background-color: var(--grey);
+		cursor: not-allowed;
+	}
+}

@@ -1,3 +1,6 @@
 @for (member of members; track member.id) {
 	<app-character-card [character]="member" />
 }
+@if ((role | async) === "admin") {
+	<app-member-form />
+}

@@ -62,20 +62,23 @@ export interface AbilityScores {
 
 export type Ability = keyof AbilityScores;
 
-export type CharacterClass =
-	| 'Artificer'
-	| 'Barbarian'
-	| 'Bard'
-	| 'Cleric'
-	| 'Druid'
-	| 'Fighter'
-	| 'Monk'
-	| 'Paladin'
-	| 'Ranger'
-	| 'Rogue'
-	| 'Sorcerer'
-	| 'Warlock'
-	| 'Wizard';
+export const characterClasses = [
+	'Artificer',
+	'Barbarian',
+	'Bard',
+	'Cleric',
+	'Druid',
+	'Fighter',
+	'Monk',
+	'Paladin',
+	'Ranger',
+	'Rogue',
+	'Sorcerer',
+	'Warlock',
+	'Wizard',
+];
+
+export type CharacterClass = (typeof characterClasses)[number];
 
 export type ClassGroup = 'Tank' | 'Martial' | 'Magic' | 'Healer';
 
@@ -95,35 +98,41 @@ export const classGroups: Record<CharacterClass, ClassGroup> = {
 	Wizard: 'Magic',
 };
 
-export type Languages =
-	| 'Common'
-	| 'Dwarvish'
-	| 'Elvish'
-	| 'Giant'
-	| 'Gnomish'
-	| 'Goblin'
-	| 'Halfling'
-	| 'Orc'
-	| 'Abyssal'
-	| 'Celestial'
-	| 'Draconic'
-	| 'Deep Speech'
-	| 'Infernal'
-	| 'Primordial'
-	| 'Sylvan'
-	| 'Undercommon';
+export const languages = [
+	'Common',
+	'Dwarvish',
+	'Elvish',
+	'Giant',
+	'Gnomish',
+	'Goblin',
+	'Halfling',
+	'Orc',
+	'Abyssal',
+	'Celestial',
+	'Draconic',
+	'Deep Speech',
+	'Infernal',
+	'Primordial',
+	'Sylvan',
+	'Undercommon',
+];
 
-export type Feature =
-	| 'Spellcasting'
-	| 'Sneak Attack'
-	| 'Lay on Hands'
-	| 'Rage'
-	| 'Unarmored Defense'
-	| 'Wild Shape'
-	| 'Extra Attack'
-	| 'Divine Smite'
-	| 'Channel Divinity'
-	| 'Bardic Inspiration'
-	| 'Action Surge'
-	| 'Improved Critical'
-	| 'Evasion';
+export type Languages = (typeof languages)[number];
+
+export const features = [
+	'Spellcasting',
+	'Sneak Attack',
+	'Lay on Hands',
+	'Rage',
+	'Unarmored Defense',
+	'Wild Shape',
+	'Extra Attack',
+	'Divine Smite',
+	'Channel Divinity',
+	'Bardic Inspiration',
+	'Action Surge',
+	'Improved Critical',
+	'Evasion',
+];
+
+export type Feature = (typeof features)[number];

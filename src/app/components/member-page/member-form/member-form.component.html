@@ -1,0 +1,148 @@
+<button (click)="handleOpenForm()">Open form</button>
+
+<dialog #memberFormDialog>
+	<button (click)="handleCloseForm()">X</button>
+	@if (!!memberForm) {
+		<form [formGroup]="memberForm" (ngSubmit)="onSubmit()">
+			<div class="input-row">
+				<div>
+					<label for="name">Name:</label>
+					<input id="name" formControlName="name" type="text" />
+				</div>
+
+				<div>
+					<label for="imageUrl">Image URL:</label>
+					<input id="imageUrl" formControlName="imageUrl" type="text" />
+				</div>
+
+				<div>
+					<label for="class">Class:</label>
+					<select id="class" formControlName="class">
+						<option [ngValue]="null" disabled>Select a class</option>
+						@for (class of characterClasses; track class) {
+							<option [ngValue]="class">{{ class }}</option>
+						}
+					</select>
+				</div>
+			</div>
+
+			<div>
+				<label for="description">Description:</label>
+				<textarea id="description" formControlName="description"></textarea>
+			</div>
+
+			<div class="input-row">
+				<div>
+					<label for="race">Race:</label>
+					<input id="race" formControlName="race" type="text" />
+				</div>
+				<div>
+					<label for="age">Age:</label>
+					<input id="age" formControlName="age" type="number" />
+				</div>
+				<div>
+					<label for="experience">Experience:</label>
+					<input id="experience" formControlName="experience" type="number" />
+				</div>
+			</div>
+
+			<div class="abilities">
+				<label for="strength">Strength:</label>
+				<input id="strength" formControlName="strength" type="number" />
+				<label for="dexterity">Dexterity:</label>
+				<input id="dexterity" formControlName="dexterity" type="number" />
+				<label for="constitution">Constitution:</label>
+				<input id="constitution" formControlName="constitution" type="number" />
+				<label for="intelligence">Intelligence:</label>
+				<input id="intelligence" formControlName="intelligence" type="number" />
+				<label for="wisdom">Wisdom:</label>
+				<input id="wisdom" formControlName="wisdom" type="number" />
+				<label for="charisma">Charisma:</label>
+				<input id="charisma" formControlName="charisma" type="number" />
+			</div>
+
+			<div class="input-row">
+				<div>
+					<label for="armorClass">Armor Class:</label>
+					<input id="armorClass" formControlName="armorClass" type="number" />
+				</div>
+				<div>
+					<label for="hitPoints">Hit Points:</label>
+					<input id="hitPoints" formControlName="hitPoints" type="number" />
+				</div>
+				<div>
+					<label for="speed">Speed:</label>
+					<input id="speed" formControlName="speed" type="number" />
+				</div>
+			</div>
+
+			<div class="saving-throws">
+				<p>Saving Throws</p>
+				<div>
+					<input id="strengthCheckbox" formControlName="strengthSave" name="strengthCheckbox" type="checkbox" />
+					<label for="strengthCheckbox">Strength</label>
+				</div>
+				<div>
+					<input id="dexterityCheckbox" formControlName="dexteritySave" name="dexterityCheckbox" type="checkbox" />
+					<label for="dexterityCheckbox">Dexterity</label>
+				</div>
+				<div>
+					<input
+						id="constitutionCheckbox"
+						formControlName="constitutionSave"
+						name="constitutionCheckbox"
+						type="checkbox" />
+					<label for="constitutionCheckbox">Constitution</label>
+				</div>
+				<div>
+					<input
+						id="intelligenceCheckbox"
+						formControlName="intelligenceSave"
+						name="intelligenceCheckbox"
+						type="checkbox" />
+					<label for="intelligenceCheckbox">Intelligence</label>
+				</div>
+				<div>
+					<input id="wisdomCheckbox" formControlName="wisdomSave" name="wisdomCheckbox" type="checkbox" />
+					<label for="wisdomCheckbox">Wisdom</label>
+				</div>
+				<div>
+					<input id="charismaCheckbox" formControlName="charismaSave" name="charismaCheckbox" type="checkbox" />
+					<label for="charismaCheckbox">Charisma</label>
+				</div>
+			</div>
+
+			<div class="input-row">
+				<div>
+					<label for="languages">Languages:</label>
+					<select id="languages" formControlName="languages" multiple>
+						<option [ngValue]="null" disabled>Select languages</option>
+						@for (language of languages; track language) {
+							<option [ngValue]="language">{{ language }}</option>
+						}
+					</select>
+				</div>
+				<div>
+					<label for="features">Features:</label>
+					<select id="features" formControlName="features" multiple>
+						<option [ngValue]="null" disabled>Select features</option>
+						@for (feature of features; track feature) {
+							<option [ngValue]="feature">{{ feature }}</option>
+						}
+					</select>
+				</div>
+			</div>
+
+			<div>
+				<label for="isAlive">Is Alive:</label>
+				<input id="isAlive" formControlName="isAlive" type="checkbox" />
+			</div>
+			<div>
+				<label for="debt">Debt:</label>
+				<input id="debt" formControlName="debt" type="number" />
+			</div>
+
+			<button [disabled]="memberForm.invalid" type="submit">Submit {{ isEditMode() ? "update" : "creation" }}</button>
+		</form>
+	}
+</dialog>

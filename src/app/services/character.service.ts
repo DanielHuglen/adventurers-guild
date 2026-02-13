@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { first, Observable } from 'rxjs';
 import { Character } from '../shared/character-models';
-import { CharacterBonusUpdateRequest, CharacterBonusUpdateResponse } from '../shared/api-models';
+import { CharacterBonusUpdateRequest, CharacterBonusUpdateResponse, CharacterDto } from '../shared/api-models';
 import { ResolveFn } from '@angular/router';
 
 @Injectable({
@@ -29,6 +29,18 @@ export class CharacterService {
 
 	updateMemberBonus(id: number, updateRequest: CharacterBonusUpdateRequest): Observable<CharacterBonusUpdateResponse> {
 		return this.http.put<CharacterBonusUpdateResponse>(`/api/members/${id}/bonus`, updateRequest);
+	}
+
+	createMember(newMember: CharacterDto): Observable<Character> {
+		return this.http.post<Character>('/api/members', newMember);
+	}
+
+	updateMember(id: number, updatedMember: CharacterDto): Observable<Character> {
+		return this.http.put<Character>(`/api/members/${id}`, updatedMember);
+	}
+
+	deleteMember(id: number): Observable<void> {
+		return this.http.delete<void>(`/api/members/${id}`);
 	}
 }
 

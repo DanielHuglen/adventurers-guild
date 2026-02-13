@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Subscription, take } from 'rxjs';
 import { CharacterService } from '../../../services/character.service';
@@ -10,17 +10,31 @@ import { LevelPipe } from '../../../shared/level.pipe';
 import { AbilityModifierPipe } from '../../../shared/ability-modifier.pipe';
 import { DisableIfGuestDirective } from 'app/directives/disable-if-guest.directive';
 import { ToastService } from 'app/services/toast.service';
+import { LoginService } from 'app/services/login.service';
+import { MemberFormComponent } from '../member-form/member-form.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
 	selector: 'app-member-details',
-	imports: [ClassGroupPipe, LevelPipe, ReactiveFormsModule, AbilityModifierPipe, DisableIfGuestDirective],
+	imports: [
+		ClassGroupPipe,
+		LevelPipe,
+		AsyncPipe,
+		ReactiveFormsModule,
+		AbilityModifierPipe,
+		DisableIfGuestDirective,
+		MemberFormComponent,
+	],
 	templateUrl: './member-details.component.html',
 	styleUrl: './member-details.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MemberDetailsComponent implements OnInit, OnDestroy {
 	private route = inject(ActivatedRoute);
+	private router = inject(Router);
 	private characterService = inject(CharacterService);
+	private loginService = inject(LoginService);
+	role = this.loginService.role;
 
 	toastService = inject(ToastService);
 
@@ -119,6 +133,18 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 				this.isLoading = false;
 				this.toastService.createToast('Member bonus updated successfully', 'success');
 			});
+	}
+
+	deleteMember(): void {
+		if (confirm('Are you sure you want to delete this member?')) {
+			this.characterService
+				.deleteMember(this.memberId)
+				.pipe(take(1))
+				.subscribe(() => {
+					this.toastService.createToast('Member deleted successfully', 'success');
+					this.router.navigate(['/members']);
+				});
+		}
 	}
 
 	ngOnDestroy(): void {

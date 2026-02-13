@@ -107,3 +107,7 @@
 		<button type="submit" [disabled]="isLoading">Submit</button>
 	</form>
 }
+@if ((role | async) === "admin") {
+	<app-member-form [existingMember]="member()" />
+	<button class="delete-action" (click)="deleteMember()" [disabled]="isLoading">Delete Member</button>
+}

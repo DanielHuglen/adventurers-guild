@@ -30,7 +30,19 @@ const angularApp = new AngularNodeAppEngine();
 
 app.use(cookieParser());
 
-const fs = require('fs');
+const fs = require('fs') as typeof import('node:fs');
+
+function readJsonFile<T>(filePath: string): T {
+	return JSON.parse(fs.readFileSync(filePath, 'utf-8')) as T;
+}
+
+function writeJsonFile(filePath: string, data: unknown): void {
+	fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+}
+
+const ADVENTURERS_FILE_PATH = resolve('data', 'adventurers.json');
+const MISSIONS_FILE_PATH = resolve('data', 'missions.json');
+const META_FILE_PATH = resolve('data', 'meta.json');
 
 require('dotenv').config();
 const ADMIN_PASSWORD = process.env['ADMIN_PASSWORD'] || 'your_admin_password';
@@ -82,24 +94,24 @@ app.use((req, res, next) => {
 // Members API
 
 app.get('/api/members/available', (req, res) => {
-	const adventurers = require(resolve('data', 'adventurers.json')) as Character[];
+	const adventurers = readJsonFile<Character[]>(ADVENTURERS_FILE_PATH);
 	const availableMembers = adventurers.filter((member: Character) => !member.activeMission && member.isAlive);
 	res.status(200).json(availableMembers);
 });
 
 app.get('/api/members/ids', (req, res) => {
-	const adventurers = require(resolve('data', 'adventurers.json'));
+	const adventurers = readJsonFile<Character[]>(ADVENTURERS_FILE_PATH);
 	res.json(adventurers.map((a: Character) => a.id));
 });
 
 app.get('/api/members/:id', (req, res) => {
 	const id = +req.params.id;
-	const adventurers = require(resolve('data', 'adventurers.json'));
+	const adventurers = readJsonFile<Character[]>(ADVENTURERS_FILE_PATH);
 	res.json(adventurers.find((a: Character) => a.id === id));
 });
 
 app.get('/api/members', (req, res) => {
-	res.sendFile(resolve('data', 'adventurers.json'));
+	res.sendFile(ADVENTURERS_FILE_PATH);
 });
 
 app.put('/api/members/:id/bonus', express.json(), (req, res) => {
@@ -108,40 +120,90 @@ app.put('/api/members/:id/bonus', express.json(), (req, res) => {
 	const bonusDescription = req.body.bonusDescription;
 	const debt = req.body.debt;
 
-	const adventurers = require(resolve('data', 'adventurers.json'));
+	const adventurers = readJsonFile<Character[]>(ADVENTURERS_FILE_PATH);
 	const member = adventurers.find((a: Character) => a.id === id);
+	if (!member) {
+		return res.status(404).json({ error: 'Member not found' });
+	}
 	member.hasBonus = hasBonus;
 	member.bonusDescription = bonusDescription;
 	member.debt = debt;
-	fs.writeFileSync(resolve('data', 'adventurers.json'), JSON.stringify(adventurers, null, 2));
+	writeJsonFile(ADVENTURERS_FILE_PATH, adventurers);
 
-	res.status(200).json({
+	return res.status(200).json({
 		message: 'Member updated successfully',
 		character: member,
 	} as CharacterBonusUpdateResponse);
 });
 
+app.post('/api/members', express.json(), (req, res) => {
+	if (req.userRole !== 'admin') {
+		return res.status(403).json({ error: 'Forbidden' });
+	}
+
+	const newMemberData = req.body as Omit<Character, 'id'>;
+	const adventurers = readJsonFile<Character[]>(ADVENTURERS_FILE_PATH);
+	const newId = Math.max(...adventurers.map((a: Character) => a.id)) + 1;
+	const newMember: Character = { id: newId, ...newMemberData };
+	adventurers.push(newMember);
+	writeJsonFile(ADVENTURERS_FILE_PATH, adventurers);
+	return res.status(201).json(newMember);
+});
+
+app.put('/api/members/:id', express.json(), (req, res) => {
+	if (req.userRole !== 'admin') {
+		return res.status(403).json({ error: 'Forbidden' });
+	}
+
+	const id = +req.params.id;
+	const updatedMemberData = req.body as Omit<Character, 'id'>;
+
+	const adventurers = readJsonFile<Character[]>(ADVENTURERS_FILE_PATH);
+	const memberIndex = adventurers.findIndex((a: Character) => a.id === id);
+	if (memberIndex === -1) {
+		return res.status(404).json({ error: 'Member not found' });
+	}
+
+	const { hasBonus, activeMission, completedMissions } = adventurers[memberIndex];
+	const updatedMember: Character = { id, ...updatedMemberData, hasBonus, activeMission, completedMissions };
+	adventurers[memberIndex] = updatedMember;
+	writeJsonFile(ADVENTURERS_FILE_PATH, adventurers);
+	return res.status(200).json(updatedMember);
+});
+
+app.delete('/api/members/:id', (req, res) => {
+	if (req.userRole !== 'admin') {
+		return res.status(403).json({ error: 'Forbidden' });
+	}
+
+	const id = +req.params.id;
+	const adventurers = readJsonFile<Character[]>(ADVENTURERS_FILE_PATH);
+	const updatedAdventurers = adventurers.filter((a: Character) => a.id !== id);
+	writeJsonFile(ADVENTURERS_FILE_PATH, updatedAdventurers);
+	return res.status(204).send();
+});
+
 // Missions API
 app.get('/api/missions', (req, res) => {
-	return res.sendFile(resolve('data', 'missions.json'));
+	return res.sendFile(MISSIONS_FILE_PATH);
 });
 
 app.get('/api/missions/:id', (req, res) => {
 	const id = +req.params.id;
-	const missions = require(resolve('data', 'missions.json'));
+	const missions = readJsonFile<Mission[]>(MISSIONS_FILE_PATH);
 	res.json(missions.find((m: Mission) => m.id === id));
 });
 
 app.get('/api/missions/:id/dispatched-members', (req, res) => {
 	const id = +req.params.id;
-	const missions = require(resolve('data', 'missions.json'));
+	const missions = readJsonFile<Mission[]>(MISSIONS_FILE_PATH);
 
 	const mission = missions.find((m: Mission) => m.id === id);
 	if (!mission) {
 		return res.status(404).json({ error: 'Mission not found' });
 	}
 
-	const members = require(resolve('data', 'adventurers.json')) as Character[];
+	const members = readJsonFile<Character[]>(ADVENTURERS_FILE_PATH);
 	const dispatchedMembers = members.filter(
 		(member: Character) => member.activeMission === id || member.completedMissions.includes(id),
 	);
@@ -151,7 +213,7 @@ app.get('/api/missions/:id/dispatched-members', (req, res) => {
 
 app.put('/api/missions/:id/dispatch-mission', express.json(), (req, res) => {
 	const id = +req.params.id;
-	const missions = require(resolve('data', 'missions.json')) as Mission[];
+	const missions = readJsonFile<Mission[]>(MISSIONS_FILE_PATH);
 	const mission = missions.find((m: Mission) => m.id === id);
 
 	if (!mission) {
@@ -162,7 +224,7 @@ app.put('/api/missions/:id/dispatch-mission', express.json(), (req, res) => {
 		return res.status(400).json({ error: 'Mission has already begun' });
 	}
 
-	const members = require(resolve('data', 'adventurers.json')) as Character[];
+	const members = readJsonFile<Character[]>(ADVENTURERS_FILE_PATH);
 	const dispatchedMemberIds = req.body.dispatchedMemberIds as number[];
 	const dispatchedMembers = members.filter((member: Character) => dispatchedMemberIds.includes(member.id));
 
@@ -179,7 +241,7 @@ app.put('/api/missions/:id/dispatch-mission', express.json(), (req, res) => {
 		return res.status(400).json({ error: 'Dice roll must be between 1 and 100' });
 	}
 
-	const currentDate = require(resolve('data', 'meta.json')).currentDate;
+	const currentDate = readJsonFile<{ currentDate: string }>(META_FILE_PATH).currentDate;
 	if (!req.body.dispatchDate || new Date(req.body.dispatchDate).getTime() < new Date(currentDate).getTime()) {
 		return res.status(400).json({ error: 'Dispatch date cannot be in the past' });
 	}
@@ -198,8 +260,8 @@ app.put('/api/missions/:id/dispatch-mission', express.json(), (req, res) => {
 	});
 
 	// Write updated members and missions back to the JSON files and return the updated mission
-	fs.writeFileSync(resolve('data', 'adventurers.json'), JSON.stringify(members, null, 2));
-	fs.writeFileSync(resolve('data', 'missions.json'), JSON.stringify(missions, null, 2));
+	writeJsonFile(ADVENTURERS_FILE_PATH, members);
+	writeJsonFile(MISSIONS_FILE_PATH, missions);
 	return res.status(200).json({
 		message: 'Mission dispatched successfully',
 		mission: {
