@@ -34,6 +34,10 @@ export class MissionFormComponent {
 	readonly outcomeTiers = outcomeTiers;
 	readonly classGroups = classGroups;
 
+	protected reloadPage(): void {
+		window.location.reload();
+	}
+
 	private buildForm(): void {
 		const mission = this.existingMission();
 		this.isEditMode.set(!!mission);
@@ -125,7 +129,7 @@ export class MissionFormComponent {
 					next: () => {
 						this.toastService.createToast('Mission updated successfully');
 						this.handleCloseForm();
-						window.location.reload();
+						this.reloadPage();
 					},
 				});
 		} else {
@@ -136,7 +140,7 @@ export class MissionFormComponent {
 					next: () => {
 						this.toastService.createToast('Mission created successfully');
 						this.handleCloseForm();
-						window.location.reload();
+						this.reloadPage();
 					},
 				});
 		}

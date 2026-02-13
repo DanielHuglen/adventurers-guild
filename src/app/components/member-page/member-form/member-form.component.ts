@@ -36,6 +36,10 @@ export class MemberFormComponent {
 	readonly languages = languages;
 	readonly features = features;
 
+	protected reloadPage(): void {
+		window.location.reload();
+	}
+
 	private buildForm(): void {
 		this.isEditMode.set(!!this.existingMember());
 
@@ -101,7 +105,7 @@ export class MemberFormComponent {
 						next: (_) => {
 							this.toastService.createToast('Member updated successfully');
 							this.handleCloseForm();
-							window.location.reload(); // Lazy solution because I'm the only one who will submit this
+							this.reloadPage(); // Lazy solution because I'm the only one who will submit this
 						},
 					});
 			} else {
@@ -112,7 +116,7 @@ export class MemberFormComponent {
 						next: (_) => {
 							this.toastService.createToast('Member created successfully');
 							this.handleCloseForm();
-							window.location.reload(); // Lazy solution because I'm the only one who will submit this
+							this.reloadPage(); // Lazy solution because I'm the only one who will submit this
 						},
 					});
 			}
@@ -162,7 +166,7 @@ export class MemberFormComponent {
 			languages: formValue.languages!,
 			features: formValue.features!,
 			isAlive: formValue.isAlive!,
-			debt: formValue.debt!,
+			debt: +formValue.debt!,
 		};
 	}
 }
