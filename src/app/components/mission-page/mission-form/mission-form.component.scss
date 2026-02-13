@@ -1,0 +1,102 @@
+button {
+	background-color: var(--secondary-light);
+	border-radius: 8px;
+	border: none;
+	padding: 10px 20px;
+	color: var(--white);
+	font-weight: 600;
+
+	&:disabled {
+		background-color: var(--grey);
+		cursor: not-allowed;
+	}
+}
+
+dialog {
+	min-width: 1000px;
+	max-height: 90vh;
+	border: 2px solid var(--secondary-light);
+
+	button {
+		float: right;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+
+		label {
+			display: block;
+			margin-bottom: 6px;
+		}
+
+		input {
+			max-width: 200px;
+			border: 2px solid var(--secondary-light);
+			border-radius: 9999px;
+			padding: 6px 12px;
+		}
+
+		textarea {
+			width: 700px;
+			border: 2px solid var(--secondary-light);
+			border-radius: 8px;
+			padding: 8px;
+		}
+
+		.input-row {
+			display: flex;
+			gap: 16px;
+			flex-wrap: wrap;
+		}
+
+		.composition,
+		.outcomes {
+			border: 1px solid var(--secondary-light);
+			padding: 12px;
+			border-radius: 8px;
+
+			p {
+				margin-bottom: 8px;
+				font-size: 1.1rem;
+				font-weight: 600;
+			}
+		}
+
+		.outcome {
+			border-top: 1px solid var(--secondary-light);
+			padding: 12px 0;
+
+			b {
+				display: block;
+				margin-bottom: 8px;
+			}
+		}
+
+		select,
+		::picker(select) {
+			appearance: base-select;
+		}
+		select {
+			max-width: 200px;
+			max-height: 2rem;
+			border: 2px solid var(--secondary-light);
+			border-radius: 9999px;
+			padding: 6px 12px;
+			font-size: 0.8rem;
+		}
+		select::picker-icon {
+			color: var(--secondary-light);
+			height: 0.5rem;
+		}
+
+		button[type="submit"] {
+			font-weight: 600;
+			padding: 16px 20px;
+			border-radius: 99999px;
+			width: 200px;
+			align-self: end;
+		}
+	}
+}

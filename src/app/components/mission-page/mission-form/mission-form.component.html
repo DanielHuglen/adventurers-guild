@@ -1,0 +1,143 @@
+<button (click)="handleOpenForm()">Open form</button>
+
+<dialog #missionFormDialog>
+	<button (click)="handleCloseForm()">X</button>
+	@if (!!missionForm) {
+		<form [formGroup]="missionForm" (ngSubmit)="onSubmit()">
+			<div class="input-row">
+				<div>
+					<label for="title">Title:</label>
+					<input id="title" formControlName="title" type="text" />
+				</div>
+
+				<div>
+					<label for="location">Location:</label>
+					<select id="location" formControlName="location">
+						<option [ngValue]="null" disabled>Select a location</option>
+						@for (city of cities; track city) {
+							<option [ngValue]="city">{{ city }}</option>
+						}
+					</select>
+				</div>
+
+				<div>
+					<label for="level">Level:</label>
+					<input id="level" formControlName="level" type="number" min="1" />
+				</div>
+			</div>
+
+			<div>
+				<label for="description">Description:</label>
+				<textarea id="description" formControlName="description"></textarea>
+			</div>
+
+			<div class="composition">
+				<p>Recommended composition</p>
+				<div class="input-row">
+					<div>
+						<label for="tankCount">Tanks:</label>
+						<input id="tankCount" formControlName="tankCount" type="number" min="0" />
+					</div>
+					<div>
+						<label for="martialCount">Martials:</label>
+						<input id="martialCount" formControlName="martialCount" type="number" min="0" />
+					</div>
+					<div>
+						<label for="magicCount">Magics:</label>
+						<input id="magicCount" formControlName="magicCount" type="number" min="0" />
+					</div>
+					<div>
+						<label for="healerCount">Healers:</label>
+						<input id="healerCount" formControlName="healerCount" type="number" min="0" />
+					</div>
+				</div>
+			</div>
+
+			<div class="outcomes">
+				<p>Potential outcomes</p>
+
+				<div class="outcome">
+					<b>Critical Success</b>
+					<label for="criticalSuccessDescription">Description:</label>
+					<textarea id="criticalSuccessDescription" formControlName="criticalSuccessDescription"></textarea>
+					<div class="input-row">
+						<div>
+							<label for="criticalSuccessGold">Gold:</label>
+							<input id="criticalSuccessGold" formControlName="criticalSuccessGold" type="number" />
+						</div>
+						<div>
+							<label for="criticalSuccessReputation">Reputation:</label>
+							<input id="criticalSuccessReputation" formControlName="criticalSuccessReputation" type="number" />
+						</div>
+					</div>
+				</div>
+
+				<div class="outcome">
+					<b>Success</b>
+					<label for="successDescription">Description:</label>
+					<textarea id="successDescription" formControlName="successDescription"></textarea>
+					<div class="input-row">
+						<div>
+							<label for="successGold">Gold:</label>
+							<input id="successGold" formControlName="successGold" type="number" />
+						</div>
+						<div>
+							<label for="successReputation">Reputation:</label>
+							<input id="successReputation" formControlName="successReputation" type="number" />
+						</div>
+					</div>
+				</div>
+
+				<div class="outcome">
+					<b>Mixed</b>
+					<label for="mixedDescription">Description:</label>
+					<textarea id="mixedDescription" formControlName="mixedDescription"></textarea>
+					<div class="input-row">
+						<div>
+							<label for="mixedGold">Gold:</label>
+							<input id="mixedGold" formControlName="mixedGold" type="number" />
+						</div>
+						<div>
+							<label for="mixedReputation">Reputation:</label>
+							<input id="mixedReputation" formControlName="mixedReputation" type="number" />
+						</div>
+					</div>
+				</div>
+
+				<div class="outcome">
+					<b>Failure</b>
+					<label for="failureDescription">Description:</label>
+					<textarea id="failureDescription" formControlName="failureDescription"></textarea>
+					<div class="input-row">
+						<div>
+							<label for="failureGold">Gold:</label>
+							<input id="failureGold" formControlName="failureGold" type="number" />
+						</div>
+						<div>
+							<label for="failureReputation">Reputation:</label>
+							<input id="failureReputation" formControlName="failureReputation" type="number" />
+						</div>
+					</div>
+				</div>
+
+				<div class="outcome">
+					<b>Critical Failure</b>
+					<label for="criticalFailureDescription">Description:</label>
+					<textarea id="criticalFailureDescription" formControlName="criticalFailureDescription"></textarea>
+					<div class="input-row">
+						<div>
+							<label for="criticalFailureGold">Gold:</label>
+							<input id="criticalFailureGold" formControlName="criticalFailureGold" type="number" />
+						</div>
+						<div>
+							<label for="criticalFailureReputation">Reputation:</label>
+							<input id="criticalFailureReputation" formControlName="criticalFailureReputation" type="number" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<button [disabled]="missionForm.invalid" type="submit">Submit {{ isEditMode() ? "update" : "creation" }}</button>
+		</form>
+	}
+</dialog>

@@ -1,17 +1,29 @@
-import { NgStyle } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { AsyncPipe, NgStyle } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Character } from 'app/shared/character-models';
 import { getCompositionText, getMissionAvailability } from 'app/shared/mission-helper.service';
 import { Mission, OutcomeTier, Reward } from 'app/shared/mission-model';
+import { LoginService } from 'app/services/login.service';
+import { MissionFormComponent } from '../../mission-form/mission-form.component';
+import { MissionService } from 'app/services/mission.service';
+import { take } from 'rxjs';
+import { ToastService } from 'app/services/toast.service';
 
 @Component({
 	selector: 'app-mission-details',
-	imports: [NgStyle],
+	imports: [NgStyle, AsyncPipe, MissionFormComponent],
 	templateUrl: './mission-details.component.html',
 	styleUrl: './mission-details.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MissionDetailsComponent {
+	private loginService = inject(LoginService);
+	private missionService = inject(MissionService);
+	private toastService = inject(ToastService);
+	private router = inject(Router);
+	role = this.loginService.role;
+
 	mission = input.required<Mission>();
 	dispatchedMembers = input<Character[]>([]);
 
@@ -78,5 +90,26 @@ export class MissionDetailsComponent {
 	}
 	getClassName(classGroup: string): string {
 		return classGroup.split(' ')[1];
+	}
+
+	get canAdminEditOrDelete(): boolean {
+		return getMissionAvailability(this.mission()) === 'Available';
+	}
+
+	deleteMission(): void {
+		if (!this.canAdminEditOrDelete) {
+			this.toastService.createToast('Mission has started/completed and cannot be deleted', 'error');
+			return;
+		}
+
+		if (confirm('Are you sure you want to delete this mission?')) {
+			this.missionService
+				.deleteMission(this.mission().id)
+				.pipe(take(1))
+				.subscribe(() => {
+					this.toastService.createToast('Mission deleted successfully', 'success');
+					this.router.navigate(['/missions']);
+				});
+		}
 	}
 }

@@ -14,6 +14,11 @@ export interface CharacterBonusUpdateResponse {
 
 export interface CharacterDto extends Omit<Character, 'id' | 'hasBonus' | 'activeMission' | 'completedMissions'> {}
 
+export type MissionDto = Pick<
+	Mission,
+	'title' | 'description' | 'location' | 'level' | 'recommendedComposition' | 'potentialOutcomes'
+>;
+
 export interface DispatchMissionRequest {
 	dispatchedMemberIds: number[];
 	diceRoll: number;

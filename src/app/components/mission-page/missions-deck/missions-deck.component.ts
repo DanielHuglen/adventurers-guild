@@ -4,16 +4,21 @@ import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs';
 import { MissionCardComponent } from '../mission-card/mission-card.component';
 import { getMissionAvailability } from 'app/shared/mission-helper.service';
+import { LoginService } from 'app/services/login.service';
+import { AsyncPipe } from '@angular/common';
+import { MissionFormComponent } from '../mission-form/mission-form.component';
 
 @Component({
 	selector: 'app-missions-deck',
-	imports: [MissionCardComponent],
+	imports: [MissionCardComponent, MissionFormComponent, AsyncPipe],
 	templateUrl: './missions-deck.component.html',
 	styleUrl: './missions-deck.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MissionsDeckComponent {
 	private route = inject(ActivatedRoute);
+	private loginService = inject(LoginService);
+	role = this.loginService.role;
 
 	missions = signal<Mission[]>([]);
 

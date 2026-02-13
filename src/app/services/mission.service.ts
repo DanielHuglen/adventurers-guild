@@ -4,7 +4,7 @@ import { Mission } from '../shared/mission-model';
 import { first, Observable } from 'rxjs';
 import { ResolveFn } from '@angular/router';
 import { Character } from 'app/shared/character-models';
-import { DispatchMissionRequest, DispatchMissionResponse } from 'app/shared/api-models';
+import { DispatchMissionRequest, DispatchMissionResponse, MissionDto } from 'app/shared/api-models';
 
 @Injectable({
 	providedIn: 'root',
@@ -35,6 +35,18 @@ export class MissionService {
 			diceRoll,
 			dispatchDate,
 		});
+	}
+
+	createMission(newMission: MissionDto): Observable<Mission> {
+		return this.http.post<Mission>('/api/missions', newMission);
+	}
+
+	updateMission(id: number, updatedMission: MissionDto): Observable<Mission> {
+		return this.http.put<Mission>(`/api/missions/${id}`, updatedMission);
+	}
+
+	deleteMission(id: number): Observable<void> {
+		return this.http.delete<void>(`/api/missions/${id}`);
 	}
 }
 

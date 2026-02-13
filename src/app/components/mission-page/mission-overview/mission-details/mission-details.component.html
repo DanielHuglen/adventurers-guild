@@ -65,3 +65,8 @@
 	</div>
 }
 <!-- TODO: Could we remove the section titles if we only ever show either final or other? -->
+
+@if ((role | async) === "admin" && canAdminEditOrDelete) {
+	<app-mission-form [existingMission]="mission()" />
+	<button class="delete-action" (click)="deleteMission()">Delete Mission</button>
+}

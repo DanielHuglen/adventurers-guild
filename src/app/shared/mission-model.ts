@@ -8,16 +8,16 @@ export interface Mission {
 	level: number; // Duration = level * 3 days
 	recommendedComposition: ClassGroup[];
 	potentialOutcomes: PotentialOutcomes<Outcome>;
-	diceRoll: number; // 1d100
+	diceRoll: number | null; // 1d100
 	finalComposition: ClassGroup[];
 	finalOutcome: Outcome | null;
-	dispatchDate: Date;
-	completionDate: Date;
+	dispatchDate: Date | null;
+	completionDate: Date | null;
 }
 
-type PotentialOutcomes<Outcome> = [Outcome, Outcome, Outcome, Outcome, Outcome];
+export type PotentialOutcomes<T> = [T, T, T, T, T];
 
-interface Outcome {
+export interface Outcome {
 	tier: OutcomeTier;
 	description: string;
 	reward: Reward;
@@ -30,15 +30,19 @@ export interface Reward {
 
 export type OutcomeTier = 'Critical Success' | 'Success' | 'Mixed' | 'Failure' | 'Critical Failure';
 
-export type City =
-	| 'Waterdeep'
-	| 'Neverwinter'
-	| "Baldur's Gate"
-	| 'Luskan'
-	| 'Mirabar'
-	| 'Silverymoon'
-	| 'Piltover'
-	| 'Moonshae Isles';
+export const cities = [
+	'Waterdeep',
+	'Neverwinter',
+	"Baldur's Gate",
+	'Luskan',
+	'Mirabar',
+	'Silverymoon',
+	'Piltover',
+	'Moonshae Isles',
+] as const;
+
+export type City = (typeof cities)[number];
+
 export type CityVar =
 	| 'waterdeep'
 	| 'neverwinter'

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, ElementRef, inject, input, output, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, input, signal, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import {
@@ -7,7 +7,6 @@ import {
 	type CharacterClass,
 	characterClasses,
 	features,
-	Languages,
 	languages,
 } from '../../../shared/character-models';
 import { CharacterService } from 'app/services/character.service';

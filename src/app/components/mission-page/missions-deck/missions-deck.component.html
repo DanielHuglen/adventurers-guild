@@ -1,3 +1,7 @@
 @for (mission of missions(); track mission.id) {
 	<app-mission-card [mission]="mission" />
 }
+
+@if ((role | async) === "admin") {
+	<app-mission-form />
+}

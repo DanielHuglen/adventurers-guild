@@ -211,6 +211,111 @@ app.get('/api/missions/:id/dispatched-members', (req, res) => {
 	return res.status(200).json(dispatchedMembers);
 });
 
+app.post('/api/missions', express.json(), (req, res) => {
+	if (req.userRole !== 'admin') {
+		return res.status(403).json({ error: 'Forbidden' });
+	}
+
+	const missions = readJsonFile<Mission[]>(MISSIONS_FILE_PATH);
+	const newId = missions.length ? Math.max(...missions.map((m: Mission) => m.id)) + 1 : 1;
+
+	const body = req.body as Partial<Mission>;
+	if (
+		!body.title ||
+		!body.description ||
+		!body.location ||
+		!body.level ||
+		!body.recommendedComposition ||
+		!body.potentialOutcomes
+	) {
+		return res.status(400).json({ error: 'Invalid mission data' });
+	}
+
+	const newMission: Mission = {
+		id: newId,
+		title: body.title,
+		description: body.description,
+		location: body.location,
+		level: body.level,
+		recommendedComposition: body.recommendedComposition,
+		potentialOutcomes: body.potentialOutcomes,
+		diceRoll: null,
+		finalComposition: [],
+		finalOutcome: null,
+		dispatchDate: null,
+		completionDate: null,
+	};
+
+	missions.push(newMission);
+	writeJsonFile(MISSIONS_FILE_PATH, missions);
+	return res.status(201).json(newMission);
+});
+
+app.put('/api/missions/:id', express.json(), (req, res) => {
+	if (req.userRole !== 'admin') {
+		return res.status(403).json({ error: 'Forbidden' });
+	}
+
+	const id = +req.params.id;
+	const missions = readJsonFile<Mission[]>(MISSIONS_FILE_PATH);
+	const missionIndex = missions.findIndex((m: Mission) => m.id === id);
+	if (missionIndex === -1) {
+		return res.status(404).json({ error: 'Mission not found' });
+	}
+
+	const existingMission = missions[missionIndex];
+	if (existingMission.finalOutcome || existingMission.diceRoll) {
+		return res.status(400).json({ error: 'Mission has started or completed and cannot be edited' });
+	}
+
+	const body = req.body as Partial<Mission>;
+	if (
+		!body.title ||
+		!body.description ||
+		!body.location ||
+		!body.level ||
+		!body.recommendedComposition ||
+		!body.potentialOutcomes
+	) {
+		return res.status(400).json({ error: 'Invalid mission data' });
+	}
+
+	const updatedMission: Mission = {
+		...existingMission,
+		title: body.title,
+		description: body.description,
+		location: body.location,
+		level: body.level,
+		recommendedComposition: body.recommendedComposition,
+		potentialOutcomes: body.potentialOutcomes,
+	};
+
+	missions[missionIndex] = updatedMission;
+	writeJsonFile(MISSIONS_FILE_PATH, missions);
+	return res.status(200).json(updatedMission);
+});
+
+app.delete('/api/missions/:id', (req, res) => {
+	if (req.userRole !== 'admin') {
+		return res.status(403).json({ error: 'Forbidden' });
+	}
+
+	const id = +req.params.id;
+	const missions = readJsonFile<Mission[]>(MISSIONS_FILE_PATH);
+	const mission = missions.find((m: Mission) => m.id === id);
+	if (!mission) {
+		return res.status(404).json({ error: 'Mission not found' });
+	}
+
+	if (mission.finalOutcome || mission.diceRoll) {
+		return res.status(400).json({ error: 'Mission has started or completed and cannot be deleted' });
+	}
+
+	const updatedMissions = missions.filter((m: Mission) => m.id !== id);
+	writeJsonFile(MISSIONS_FILE_PATH, updatedMissions);
+	return res.status(204).send();
+});
+
 app.put('/api/missions/:id/dispatch-mission', express.json(), (req, res) => {
 	const id = +req.params.id;
 	const missions = readJsonFile<Mission[]>(MISSIONS_FILE_PATH);
@@ -250,7 +355,7 @@ app.put('/api/missions/:id/dispatch-mission', express.json(), (req, res) => {
 	mission.diceRoll = req.body.diceRoll;
 	mission.dispatchDate = new Date(req.body.dispatchDate);
 	// Duration = level * 3 days
-	const dispatchDate = new Date(mission.dispatchDate);
+	const dispatchDate = new Date(req.body.dispatchDate);
 	const completionDate = new Date(dispatchDate);
 	completionDate.setDate(completionDate.getDate() + mission.level * 3);
 	mission.completionDate = completionDate;
@@ -330,6 +435,9 @@ app.post('/api/date', express.json(), (req, res) => {
 	// Complete any missions that ended before the new date
 	missions.forEach((mission: Mission) => {
 		if (mission.dispatchDate && !mission.finalOutcome) {
+			if (!mission.completionDate) {
+				return;
+			}
 			const missionEndDate = new Date(mission.completionDate);
 			if (missionEndDate.getTime() <= adjustedDate.getTime()) {
 				completedMissionIds.push(mission.id);
