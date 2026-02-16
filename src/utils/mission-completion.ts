@@ -90,6 +90,9 @@ export function completeMissionsUpToDate(
 				// Update members accordingly, as well as grant them experience and remove any debt if the reward is higher than the cost
 				dispatchedMembers.forEach((member: Character) => {
 					member.activeMission = null;
+					if (!Array.isArray(member.completedMissions)) {
+						member.completedMissions = [];
+					}
 					member.completedMissions.push(mission.id);
 					const experienceGained = calculateExperienceGain(member, mission);
 					member.experience = Math.min(member.experience + experienceGained, MAX_MEMBER_EXPERIENCE);

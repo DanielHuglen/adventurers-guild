@@ -16,11 +16,22 @@ declare module 'express-serve-static-core' {
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Character, classGroups } from './app/shared/character-models';
-import { CharacterBonusUpdateResponse, CityReputation, CityReputationResponse } from './app/shared/api-models';
+import {
+	CharacterBonusUpdateResponse,
+	CharacterDto,
+	CityReputationResponse,
+	MissionDto,
+} from './app/shared/api-models';
 import { Mission } from 'app/shared/mission-model';
 import cookieParser from 'cookie-parser';
 import { completeMissionsUpToDate, getCityReputationKey } from './utils/mission-completion';
 import { computeCityReputations } from 'utils/reputation';
+import {
+	createMemberFromDto,
+	createMissionFromDto,
+	updateMemberFromDto,
+	updateMissionFromDto,
+} from './utils/server-normalizers';
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
@@ -141,10 +152,10 @@ app.post('/api/members', express.json(), (req, res) => {
 		return res.status(403).json({ error: 'Forbidden' });
 	}
 
-	const newMemberData = req.body as Omit<Character, 'id'>;
+	const newMemberData = req.body as CharacterDto;
 	const adventurers = readJsonFile<Character[]>(ADVENTURERS_FILE_PATH);
 	const newId = Math.max(...adventurers.map((a: Character) => a.id)) + 1;
-	const newMember: Character = { id: newId, ...newMemberData };
+	const newMember: Character = createMemberFromDto(newId, newMemberData);
 	adventurers.push(newMember);
 	writeJsonFile(ADVENTURERS_FILE_PATH, adventurers);
 	return res.status(201).json(newMember);
@@ -156,7 +167,7 @@ app.put('/api/members/:id', express.json(), (req, res) => {
 	}
 
 	const id = +req.params.id;
-	const updatedMemberData = req.body as Omit<Character, 'id'>;
+	const updatedMemberData = req.body as CharacterDto;
 
 	const adventurers = readJsonFile<Character[]>(ADVENTURERS_FILE_PATH);
 	const memberIndex = adventurers.findIndex((a: Character) => a.id === id);
@@ -164,8 +175,8 @@ app.put('/api/members/:id', express.json(), (req, res) => {
 		return res.status(404).json({ error: 'Member not found' });
 	}
 
-	const { hasBonus, activeMission, completedMissions } = adventurers[memberIndex];
-	const updatedMember: Character = { id, ...updatedMemberData, hasBonus, activeMission, completedMissions };
+	const existingMember = adventurers[memberIndex];
+	const updatedMember: Character = updateMemberFromDto(id, updatedMemberData, existingMember);
 	adventurers[memberIndex] = updatedMember;
 	writeJsonFile(ADVENTURERS_FILE_PATH, adventurers);
 	return res.status(200).json(updatedMember);
@@ -219,7 +230,7 @@ app.post('/api/missions', express.json(), (req, res) => {
 	const missions = readJsonFile<Mission[]>(MISSIONS_FILE_PATH);
 	const newId = missions.length ? Math.max(...missions.map((m: Mission) => m.id)) + 1 : 1;
 
-	const body = req.body as Partial<Mission>;
+	const body = req.body as MissionDto;
 	if (
 		!body.title ||
 		!body.description ||
@@ -231,20 +242,7 @@ app.post('/api/missions', express.json(), (req, res) => {
 		return res.status(400).json({ error: 'Invalid mission data' });
 	}
 
-	const newMission: Mission = {
-		id: newId,
-		title: body.title,
-		description: body.description,
-		location: body.location,
-		level: body.level,
-		recommendedComposition: body.recommendedComposition,
-		potentialOutcomes: body.potentialOutcomes,
-		diceRoll: null,
-		finalComposition: [],
-		finalOutcome: null,
-		dispatchDate: null,
-		completionDate: null,
-	};
+	const newMission: Mission = createMissionFromDto(newId, body);
 
 	missions.push(newMission);
 	writeJsonFile(MISSIONS_FILE_PATH, missions);
@@ -268,7 +266,7 @@ app.put('/api/missions/:id', express.json(), (req, res) => {
 		return res.status(400).json({ error: 'Mission has started or completed and cannot be edited' });
 	}
 
-	const body = req.body as Partial<Mission>;
+	const body = req.body as MissionDto;
 	if (
 		!body.title ||
 		!body.description ||
@@ -280,15 +278,7 @@ app.put('/api/missions/:id', express.json(), (req, res) => {
 		return res.status(400).json({ error: 'Invalid mission data' });
 	}
 
-	const updatedMission: Mission = {
-		...existingMission,
-		title: body.title,
-		description: body.description,
-		location: body.location,
-		level: body.level,
-		recommendedComposition: body.recommendedComposition,
-		potentialOutcomes: body.potentialOutcomes,
-	};
+	const updatedMission: Mission = updateMissionFromDto(body, existingMission);
 
 	missions[missionIndex] = updatedMission;
 	writeJsonFile(MISSIONS_FILE_PATH, missions);
