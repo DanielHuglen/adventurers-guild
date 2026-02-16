@@ -1,4 +1,5 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ElementRef } from '@angular/core';
 import { of } from 'rxjs';
 
 import { MemberFormComponent } from './member-form.component';
@@ -12,6 +13,7 @@ describe('MemberFormComponent', () => {
 	let component: MemberFormComponent;
 	let characterService: jasmine.SpyObj<CharacterService>;
 	let toastService: jasmine.SpyObj<ToastService>;
+	let reloadPageSpy: jasmine.Spy;
 
 	const createDialogStub = () => {
 		return {
@@ -35,8 +37,8 @@ describe('MemberFormComponent', () => {
 		fixture = TestBed.createComponent(MemberFormComponent);
 		component = fixture.componentInstance;
 
-		component.memberFormDialog = { nativeElement: createDialogStub() } as any;
-		spyOn(component as any, 'reloadPage').and.stub();
+		component.memberFormDialog = { nativeElement: createDialogStub() } as unknown as ElementRef<HTMLDialogElement>;
+		reloadPageSpy = spyOn(component as unknown as { reloadPage: () => void }, 'reloadPage').and.stub();
 	});
 
 	it('opens the form dialog and builds a create form by default', () => {
@@ -94,7 +96,7 @@ describe('MemberFormComponent', () => {
 		let capturedDto: CharacterDto | undefined;
 		characterService.createMember.and.callFake((dto) => {
 			capturedDto = dto;
-			return of({} as any);
+			return of({} as unknown as Character);
 		});
 
 		component.handleOpenForm();
@@ -145,7 +147,7 @@ describe('MemberFormComponent', () => {
 		);
 		expect(toastService.createToast).toHaveBeenCalledWith('Member created successfully');
 		expect(component.memberFormDialog?.nativeElement.close).toHaveBeenCalled();
-		expect((component as any).reloadPage).toHaveBeenCalled();
+		expect(reloadPageSpy).toHaveBeenCalled();
 	});
 
 	it('submits a valid edit form and calls CharacterService.updateMember with the existing id', () => {
@@ -179,7 +181,7 @@ describe('MemberFormComponent', () => {
 			debt: 0,
 		};
 
-		characterService.updateMember.and.returnValue(of({} as any));
+		characterService.updateMember.and.returnValue(of({} as unknown as Character));
 
 		fixture.componentRef.setInput('existingMember', existingMember);
 
@@ -198,7 +200,7 @@ describe('MemberFormComponent', () => {
 		);
 		expect(toastService.createToast).toHaveBeenCalledWith('Member updated successfully');
 		expect(component.memberFormDialog?.nativeElement.close).toHaveBeenCalled();
-		expect((component as any).reloadPage).toHaveBeenCalled();
+		expect(reloadPageSpy).toHaveBeenCalled();
 	});
 
 	it('does not submit if the form is invalid', () => {

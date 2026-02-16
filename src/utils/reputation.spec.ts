@@ -1,4 +1,4 @@
-import { Mission } from 'app/shared/mission-model';
+import type { Mission, Outcome, PotentialOutcomes } from 'app/shared/mission-model';
 import { computeCityReputations } from './reputation';
 
 describe('computeCityReputations', () => {
@@ -12,7 +12,7 @@ describe('computeCityReputations', () => {
 				location: "Baldur's Gate",
 				level: 1,
 				recommendedComposition: [],
-				potentialOutcomes: [] as any,
+				potentialOutcomes: [] as unknown as PotentialOutcomes<Outcome>,
 				diceRoll: 10,
 				finalComposition: [],
 				finalOutcome: { tier: 'Failure', description: '', reward: { gold: 0, reputation: -15 } },

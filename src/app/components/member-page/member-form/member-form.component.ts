@@ -102,7 +102,7 @@ export class MemberFormComponent {
 					.updateMember(this.existingMember()!.id, requestData)
 					.pipe(take(1))
 					.subscribe({
-						next: (_) => {
+						next: () => {
 							this.toastService.createToast('Member updated successfully');
 							this.handleCloseForm();
 							this.reloadPage(); // Lazy solution because I'm the only one who will submit this
@@ -113,7 +113,7 @@ export class MemberFormComponent {
 					.createMember(requestData)
 					.pipe(take(1))
 					.subscribe({
-						next: (_) => {
+						next: () => {
 							this.toastService.createToast('Member created successfully');
 							this.handleCloseForm();
 							this.reloadPage(); // Lazy solution because I'm the only one who will submit this

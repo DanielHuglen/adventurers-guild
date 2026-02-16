@@ -1,4 +1,4 @@
-import { Directive, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, inject, OnDestroy, Renderer2 } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { Subscription } from 'rxjs';
 
@@ -6,13 +6,13 @@ import { Subscription } from 'rxjs';
 	selector: '[appDisableIfEditor]',
 })
 export class DisableIfEditorDirective implements OnDestroy {
+	el = inject(ElementRef);
+	renderer = inject(Renderer2);
+	loginService = inject(LoginService);
+
 	private sub: Subscription;
 
-	constructor(
-		private el: ElementRef,
-		private renderer: Renderer2,
-		private loginService: LoginService,
-	) {
+	constructor() {
 		this.sub = this.loginService.role.subscribe((role) => {
 			const isEditor = role === 'editor';
 			this.renderer.setProperty(this.el.nativeElement, 'disabled', isEditor);

@@ -16,14 +16,16 @@ type Equals<A, B> = (<T>() => T extends A ? 1 : 2) extends <T>() => T extends B 
 type Assert<T extends true> = T;
 
 type MemberServerManagedKeys = Exclude<keyof Character, keyof CharacterDto | 'id'>;
-type _MemberServerManagedKeysAreExpected = Assert<
+type MemberServerManagedKeysAreExpected = Assert<
 	Equals<MemberServerManagedKeys, 'hasBonus' | 'activeMission' | 'completedMissions'>
 >;
+void (null as unknown as MemberServerManagedKeysAreExpected);
 
 type MissionServerManagedKeys = Exclude<keyof Mission, keyof MissionDto | 'id'>;
-type _MissionServerManagedKeysAreExpected = Assert<
+type MissionServerManagedKeysAreExpected = Assert<
 	Equals<MissionServerManagedKeys, 'diceRoll' | 'finalComposition' | 'finalOutcome' | 'dispatchDate' | 'completionDate'>
 >;
+void (null as unknown as MissionServerManagedKeysAreExpected);
 
 function makeCharacter(overrides: Partial<Character> = {}): Character {
 	return {
@@ -61,14 +63,12 @@ function makeCharacter(overrides: Partial<Character> = {}): Character {
 
 function makeCharacterDto(overrides: Partial<CharacterDto> = {}): CharacterDto {
 	const full = makeCharacter();
-	const {
-		id: _id,
-		hasBonus: _hasBonus,
-		activeMission: _activeMission,
-		completedMissions: _completedMissions,
-		...dto
-	} = full;
-	return { ...(dto as CharacterDto), ...overrides };
+	const dto = { ...full } as Record<string, unknown>;
+	delete dto['id'];
+	delete dto['hasBonus'];
+	delete dto['activeMission'];
+	delete dto['completedMissions'];
+	return { ...(dto as unknown as CharacterDto), ...overrides };
 }
 
 function makeOutcomes(overrides?: Partial<Record<Outcome['tier'], Partial<Outcome>>>): PotentialOutcomes<Outcome> {
@@ -146,8 +146,8 @@ describe('server-normalizers', () => {
 		it('updateMemberFromDto defaults malformed existing UI-omitted fields', () => {
 			const existing = makeCharacter({ hasBonus: false }) as unknown as Record<string, unknown>;
 			delete existing['completedMissions'];
-			(existing as any).activeMission = undefined;
-			(existing as any).hasBonus = undefined;
+			existing['activeMission'] = undefined;
+			existing['hasBonus'] = undefined;
 
 			const dto = makeCharacterDto({ name: 'Updated name' });
 			const updated = updateMemberFromDto(1, dto, existing as unknown as Character);
@@ -190,10 +190,10 @@ describe('server-normalizers', () => {
 		});
 
 		it('updateMissionFromDto defaults malformed existing finalComposition', () => {
-			const existing = makeMission() as any;
-			existing.finalComposition = undefined;
+			const existing = makeMission() as unknown as Record<string, unknown>;
+			existing['finalComposition'] = undefined;
 
-			const updated = updateMissionFromDto(makeMissionDto(), existing as Mission);
+			const updated = updateMissionFromDto(makeMissionDto(), existing as unknown as Mission);
 			expect(updated.finalComposition).toEqual([]);
 		});
 	});

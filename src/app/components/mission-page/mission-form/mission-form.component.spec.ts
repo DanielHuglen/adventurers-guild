@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ElementRef } from '@angular/core';
 import { of } from 'rxjs';
 
 import { MissionFormComponent } from './mission-form.component';
@@ -12,6 +13,7 @@ describe('MissionFormComponent', () => {
 	let component: MissionFormComponent;
 	let missionService: jasmine.SpyObj<MissionService>;
 	let toastService: jasmine.SpyObj<ToastService>;
+	let reloadPageSpy: jasmine.Spy;
 
 	const createDialogStub = () => {
 		return {
@@ -34,8 +36,8 @@ describe('MissionFormComponent', () => {
 
 		fixture = TestBed.createComponent(MissionFormComponent);
 		component = fixture.componentInstance;
-		component.missionFormDialog = { nativeElement: createDialogStub() } as any;
-		spyOn(component as any, 'reloadPage').and.stub();
+		component.missionFormDialog = { nativeElement: createDialogStub() } as unknown as ElementRef<HTMLDialogElement>;
+		reloadPageSpy = spyOn(component as unknown as { reloadPage: () => void }, 'reloadPage').and.stub();
 	});
 
 	it('opens the form dialog and builds a create form by default', () => {
@@ -50,7 +52,7 @@ describe('MissionFormComponent', () => {
 		let capturedDto: MissionDto | undefined;
 		missionService.createMission.and.callFake((dto) => {
 			capturedDto = dto;
-			return of({} as any);
+			return of({} as unknown as Mission);
 		});
 
 		component.handleOpenForm();
@@ -94,7 +96,7 @@ describe('MissionFormComponent', () => {
 		);
 		expect(toastService.createToast).toHaveBeenCalledWith('Mission created successfully');
 		expect(component.missionFormDialog?.nativeElement.close).toHaveBeenCalled();
-		expect((component as any).reloadPage).toHaveBeenCalled();
+		expect(reloadPageSpy).toHaveBeenCalled();
 	});
 
 	it('submits a valid edit form and calls MissionService.updateMission when the mission has not started', () => {
@@ -122,7 +124,7 @@ describe('MissionFormComponent', () => {
 		let capturedDto: MissionDto | undefined;
 		missionService.updateMission.and.callFake((_id, dto) => {
 			capturedDto = dto;
-			return of({} as any);
+			return of({} as unknown as Mission);
 		});
 
 		fixture.componentRef.setInput('existingMission', existingMission);
@@ -139,7 +141,7 @@ describe('MissionFormComponent', () => {
 		expect(capturedDto).toEqual(jasmine.objectContaining({ title: 'Updated title', level: 4 }));
 		expect(toastService.createToast).toHaveBeenCalledWith('Mission updated successfully');
 		expect(component.missionFormDialog?.nativeElement.close).toHaveBeenCalled();
-		expect((component as any).reloadPage).toHaveBeenCalled();
+		expect(reloadPageSpy).toHaveBeenCalled();
 	});
 
 	it('does not allow editing a started/completed mission', () => {

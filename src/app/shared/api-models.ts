@@ -12,7 +12,7 @@ export interface CharacterBonusUpdateResponse {
 	character: Character;
 }
 
-export interface CharacterDto extends Omit<Character, 'id' | 'hasBonus' | 'activeMission' | 'completedMissions'> {}
+export type CharacterDto = Omit<Character, 'id' | 'hasBonus' | 'activeMission' | 'completedMissions'>;
 
 export type MissionDto = Pick<
 	Mission,
