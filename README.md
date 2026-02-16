@@ -1,59 +1,129 @@
-# AdventurersGuild
+# Adventurers Guild (Eventyrerlauget)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+A small campaign companion app for managing an adventurers’ guild: members (agents), missions, dispatching, and the in‑game calendar.
 
-## Development server
+The UI is an Angular app, and the backend is an Express server (Angular SSR) that serves the app and exposes a simple JSON-file REST API.
 
-To start a local development server, run:
+## What it does
+
+### For users
+
+- Member overview: browse all guild members (agents) and open a member’s details.
+- Mission overview: browse missions and open a mission’s full description and status.
+- Adjust member debt and bonus: update a member’s debt (gold) and “equipment/bonus” flag + short description (requires login).
+- Dispatch members on missions: pick available members, choose dispatch date and a d100 roll, and dispatch the party (requires login).
+- See current employees: view the guild’s current employees and their effects.
+- See founders and history: read the guild’s origin story and view founder details.
+- See current reputation: view guild reputation by region/city and what different reputation bands mean.
+- See system explanation: read the “System” page explaining classes/groups, dispatching modifiers, outcomes, XP, etc.
+
+### For admins
+
+- CRUD for members and missions.
+- Adjust in-game date: change the guild’s current date; when the date moves forward, missions that should have completed are completed and the UI will surface the completed mission(s).
+
+## Roles & login
+
+The app has three roles:
+
+- **guest**: can browse members/missions/pages.
+- **editor**: can do “in-game operations” like dispatching missions and updating member debt/bonus.
+- **admin**: everything above, plus CRUD and date adjustment.
+
+When you attempt an action that requires permissions, the app prompts for a password and stores it in a cookie used for API requests.
+
+Configure passwords via environment variables:
+
+- `ADMIN_PASSWORD`
+- `EDITOR_PASSWORD`
+
+See [stack.env](stack.env) for an example.
+
+## Pages (routes)
+
+- `/members` and `/members/:id`
+- `/missions` and `/missions/:id`
+- `/employees`
+- `/founders`
+- `/reputation`
+- `/system`
+
+## Data storage
+
+Data is stored as JSON files in [data/](data/):
+
+- `data/adventurers.json` (members)
+- `data/missions.json` (missions)
+- `data/meta.json` (current date, reputation meta)
+
+## Running locally
+
+Prereqs: Node.js 20+.
+
+Install deps:
 
 ```bash
-ng serve
+npm install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Start dev server:
 
 ```bash
-ng generate component component-name
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Production-like SSR server (serves the app + API on port 4000 by default):
 
 ```bash
-ng generate --help
+npm run build
+npm run server
 ```
 
-## Building
+## Docker
 
-To build the project run:
+Run with docker compose (maps container port 4000 to host 8081, and persists JSON data in a volume):
 
 ```bash
-ng build
+docker compose up -d
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Passwords are provided via [stack.env](stack.env).
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Tests
 
 ```bash
-ng test
+npm test
 ```
 
-## Running end-to-end tests
+## Disclaimer (Generative AI)
 
-For end-to-end (e2e) testing, run:
+This project was created with heavy use of generative AI for everything **except** frontend development. Treat non-frontend code and content (server/API logic, system rules text, data modeling, calculations, etc.) as AI-assisted and review it accordingly.
 
-```bash
-ng e2e
-```
+## API endpoints
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+The backend is implemented in [src/server.ts](src/server.ts) and stores data in JSON files under [data/](data/).
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- `POST /api/login` → returns `{ role: 'admin' | 'editor' }` on success
+- Members
+  - `GET /api/members` → all members (JSON file)
+  - `GET /api/members/available` → members not on an active mission and alive
+  - `GET /api/members/ids` → list of member ids
+  - `GET /api/members/:id` → member details
+  - `PUT /api/members/:id/bonus` → update `debt` and bonus/equipment fields (editor or admin)
+  - `POST /api/members` → create member (admin)
+  - `PUT /api/members/:id` → update member (admin)
+  - `DELETE /api/members/:id` → delete member (admin)
+- Missions
+  - `GET /api/missions` → all missions (JSON file)
+  - `GET /api/missions/:id` → mission details
+  - `GET /api/missions/:id/dispatched-members` → members dispatched on / completed this mission
+  - `PUT /api/missions/:id/dispatch-mission` → dispatch members with `dispatchedMemberIds`, `diceRoll`, `dispatchDate` (editor or admin)
+  - `POST /api/missions` → create mission (admin)
+  - `PUT /api/missions/:id` → update mission (admin)
+  - `DELETE /api/missions/:id` → delete mission (admin, only if not started)
+- Meta / progression
+  - `GET /api/date` → current in-game date
+  - `POST /api/date` → set in-game date and complete missions up to that date (admin)
+  - `GET /api/reputation` → computed city reputations
+- Utility
+  - `GET /api/dndbeyond/character/:id` → server-side proxy to D&D Beyond character JSON (avoids browser CORS)
