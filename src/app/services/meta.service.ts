@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { AdjustDateResponse, CityReputationResponse } from 'app/shared/api-models';
+import { AdjustDateResponse, CityReputationResponse, EconomyStatistics } from 'app/shared/api-models';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -17,5 +17,9 @@ export class MetaService {
 
 	setCurrentDate(newDate: Date): Observable<AdjustDateResponse> {
 		return this.http.post<AdjustDateResponse>('/api/date', { newDate });
+	}
+
+	getEconomyStatistics(): Observable<EconomyStatistics> {
+		return this.http.get<EconomyStatistics>('/api/economy-statistics');
 	}
 }

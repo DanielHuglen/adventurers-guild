@@ -10,6 +10,7 @@ import { ReputationPageComponent } from './components/reputation-page/reputation
 import { SystemPageComponent } from './components/system-page/system-page.component';
 import { EmployeePageComponent } from './components/employee-page/employee-page.component';
 import { FoundersPageComponent } from './components/founders-page/founders-page.component';
+import { EconomyPageComponent } from './components/economy-page/economy-page.component';
 
 export const routes: Routes = [
 	{
@@ -44,7 +45,7 @@ export const routes: Routes = [
 	},
 	{
 		path: 'economy',
-		redirectTo: '',
+		component: EconomyPageComponent,
 	},
 	{
 		path: 'reputation',

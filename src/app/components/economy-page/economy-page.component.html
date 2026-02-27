@@ -1,0 +1,248 @@
+@if (stats()) {
+	<!-- All of this should be on a per-month-basis -->
+	<section class="economy">
+		<h2>Economy</h2>
+		<div class="gold-container">
+			<span class="gold">
+				<div>{{ netGold }}</div>
+				<div>net gold earned</div>
+			</span>
+			<span class="gold">
+				<div>{{ avgGold }}</div>
+				<div>avarage gold per mission</div>
+			</span>
+			<span class="gold">
+				<div>{{ medianGold }}</div>
+				<div>median gold per mission</div>
+			</span>
+			<span class="gold">
+				<div>{{ maxGold }}</div>
+				<div>highest paying mission</div>
+			</span>
+			<span class="gold">
+				<div>{{ minGold }}</div>
+				<div>worst paying mission</div>
+			</span>
+		</div>
+	</section>
+
+	<section class="tax">
+		<div class="tax-header">
+			<h2>Tax</h2>
+			<p>
+				Current owed tax in gold:
+				<b>{{ stats()?.taxOwed }}</b>
+			</p>
+		</div>
+		<div class="tax-brackets-container">
+			<span class="tax-bracket">
+				<div class="bar-container" [title]="`${currentTaxFreeGoldPercentage}%`">
+					<div class="bar" id="free" style="--fill-free: {{ currentTaxFreeGoldPercentage }}%">
+						@if (currentTaxFreeGoldPercentage > 8) {
+							<p>{{ roundedCurrentTaxFreeGoldPercentage }}%</p>
+						}
+					</div>
+				</div>
+				<p>TAX FREE</p>
+			</span>
+
+			<span class="tax-bracket">
+				<div class="bar-container" [title]="`${currentLowerTaxBracketPercentage}%`">
+					<div class="bar" id="lower" style="--fill-lower: {{ currentLowerTaxBracketPercentage }}%">
+						@if (currentLowerTaxBracketPercentage > 8) {
+							<p>{{ roundedCurrentLowerTaxBracketPercentage }}%</p>
+						}
+					</div>
+				</div>
+				<p>
+					LOWER
+					<br />
+					BRACKET
+				</p>
+			</span>
+		</div>
+
+		<div class="upper-bracket">
+			<p>
+				<i>{{ currentUpperTaxBracketGold }} gold</i>
+				made in the
+				<br />
+				<b>UPPER BRACKET</b>
+			</p>
+		</div>
+	</section>
+
+	<section class="pipeline">
+		<h2>Active missions</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Mission</th>
+					<th>Minimum</th>
+					<th>Expected</th>
+					<th>Maximum</th>
+				</tr>
+			</thead>
+			<tbody>
+				@for (mission of pipeline.items; track mission.missionId) {
+					<tr>
+						<td>{{ mission.title }}</td>
+						<td>{{ mission.minGold }}</td>
+						<td>{{ mission.expectedGold }}</td>
+						<td>{{ mission.maxGold }}</td>
+					</tr>
+				}
+				<tr>
+					<td><b>Total</b></td>
+					<td>{{ pipeline.minGold }}</td>
+					<td>{{ pipeline.expectedGold }}</td>
+					<td>{{ pipeline.maxGold }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section class="backlog">
+		<h2>Available missions</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Mission</th>
+					<th>Minimum</th>
+					<th>Expected</th>
+					<th>Maximum</th>
+				</tr>
+			</thead>
+			<tbody>
+				@for (mission of backlog.items; track mission.missionId) {
+					<tr>
+						<td>{{ mission.title }}</td>
+						<td>{{ mission.minGold }}</td>
+						<td>{{ mission.expectedGold }}</td>
+						<td>{{ mission.maxGold }}</td>
+					</tr>
+				}
+				<tr>
+					<td><b>Total</b></td>
+					<td>{{ backlog.minGold }}</td>
+					<td>{{ backlog.expectedGold }}</td>
+					<td>{{ backlog.maxGold }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section class="missions">
+		<h2>Missions</h2>
+		<div class="stats">
+			<span class="stat">
+				<span>{{ totalMissionsCount }}</span>
+				<span>Total</span>
+			</span>
+			<span class="stat">
+				<span>{{ completedMissionsCount }}</span>
+				<span>Completed</span>
+			</span>
+			<span class="stat">
+				<span>{{ inFlightMissionsCount }}</span>
+				<span>In-flight</span>
+			</span>
+			<span class="stat">
+				<span>{{ backlogMissionsCount }}</span>
+				<span>Available</span>
+			</span>
+		</div>
+
+		<div class="stats">
+			@for (stat of tierMissionDistribution | keyvalue; track stat.key) {
+				<span class="stat">
+					<span>{{ stat.value.missions }}</span>
+					<span>{{ stat.key }}</span>
+				</span>
+			}
+		</div>
+		<div class="stats">
+			@for (stat of locationMissionDistribution | keyvalue; track stat.key) {
+				<span class="stat">
+					<span>{{ stat.value.missions }}</span>
+					<span>{{ stat.key }}</span>
+				</span>
+			}
+		</div>
+		<div class="stats">
+			@for (stat of levelMissionDistribution | keyvalue; track stat.key) {
+				<span class="stat">
+					<span>{{ stat.value.missions }}</span>
+					<span>lvl&nbsp;{{ stat.key }}</span>
+				</span>
+			}
+		</div>
+	</section>
+
+	<section class="distribution">
+		<h2>Distribution</h2>
+		<div class="distribution-container">
+			<div class="distribution-chart">
+				<h3>Tier</h3>
+				@for (tier of tierGoldDistribution | keyvalue; track tier.key) {
+					<div class="distribution-entry">
+						<p>{{ tier.value.gold }}</p>
+						<p>{{ tier.key }}</p>
+					</div>
+				}
+			</div>
+			<div class="distribution-chart">
+				<h3>Location</h3>
+				@for (location of locationGoldDistribution | keyvalue; track location.key) {
+					<div class="distribution-entry">
+						<p>{{ location.value.gold }}</p>
+						<p>{{ location.key }}</p>
+					</div>
+				}
+			</div>
+			<div class="distribution-chart">
+				<h3>Level</h3>
+				@for (level of levelGoldDistribution | keyvalue; track level.key) {
+					<div class="distribution-entry">
+						<p>{{ level.value.gold }}</p>
+						<p>lvl&nbsp;{{ level.key }}</p>
+					</div>
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="members">
+		<h2>Members</h2>
+		<div class="members-list">
+			<span class="member-container">
+				<p>Top earner</p>
+				@if (topEarnerCharacter()) {
+					<app-character-card [character]="topEarnerCharacter()!" />
+				}
+				<p>{{ topEarner?.earnings }} gold</p>
+			</span>
+			<span class="member-container">
+				<p>Bottom earner</p>
+				@if (bottomEarnerCharacter()) {
+					<app-character-card [character]="bottomEarnerCharacter()!" />
+				}
+				<p>{{ bottomEarner?.earnings }} gold</p>
+			</span>
+			<span class="member-container">
+				<p>Highest debtor</p>
+				@if (highestDebtorCharacter()) {
+					<app-character-card [character]="highestDebtorCharacter()!" />
+				}
+				<p>{{ highestDebtor?.debt }} gold</p>
+			</span>
+		</div>
+		<p class="total-debt">
+			Total debt:
+			<b>{{ totalDebt }}</b>
+			gold
+		</p>
+	</section>
+} @else {
+	<div>...Loading</div>
+}

@@ -25,6 +25,7 @@ import {
 import { Mission } from 'app/shared/mission-model';
 import cookieParser from 'cookie-parser';
 import { completeMissionsUpToDate, getCityReputationKey } from './utils/mission-completion';
+import { computeEconomyStatistics } from 'utils/economy-statistics';
 import { computeCityReputations } from 'utils/reputation';
 import {
 	createMemberFromDto,
@@ -380,6 +381,20 @@ app.get('/api/date', (req, res) => {
 	const meta = readJsonFile<{ currentDate: string }>(META_FILE_PATH);
 	const currentDate = new Date(meta.currentDate);
 	res.status(200).json(currentDate);
+});
+
+app.get('/api/economy-statistics', (req, res) => {
+	const meta = readJsonFile<{ currentDate: string }>(META_FILE_PATH);
+	const missions = readJsonFile<Mission[]>(MISSIONS_FILE_PATH);
+	const members = readJsonFile<Character[]>(ADVENTURERS_FILE_PATH);
+
+	const stats = computeEconomyStatistics({
+		currentDate: meta.currentDate,
+		missions,
+		members,
+	});
+
+	return res.status(200).json(stats);
 });
 
 app.post('/api/date', express.json(), (req, res) => {

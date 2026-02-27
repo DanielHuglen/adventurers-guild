@@ -1,0 +1,280 @@
+:host {
+	display: flex;
+	gap: 32px;
+	flex-wrap: wrap;
+	max-width: 1700px;
+	margin: 0 auto;
+
+	@media (min-width: 1700px) {
+		padding-left: 24px;
+	}
+	@media (max-width: 1699px) {
+		justify-content: center;
+	}
+}
+
+section {
+	border: 4px dotted var(--secondary);
+	padding: 16px;
+	height: fit-content;
+}
+
+h2 {
+	font-size: 2rem;
+	text-align: center;
+	margin-bottom: 8px;
+}
+
+.tax {
+	justify-items: center;
+
+	.tax-header {
+		margin-bottom: 32px;
+
+		b {
+			color: var(--white);
+			font-size: 1.1rem;
+			font-weight: 600;
+			background-color: var(--secondary-light);
+			padding: 4px 8px;
+			border-radius: 9999px;
+		}
+	}
+
+	.tax-brackets-container {
+		display: flex;
+		gap: 32px;
+		flex-wrap: wrap;
+
+		.tax-bracket {
+			text-align: center;
+
+			.bar-container {
+				display: flex;
+				flex-direction: column-reverse;
+				background-color: var(--secondary);
+				height: 200px;
+				border: 2px solid var(--secondary);
+				border-radius: 8px;
+				overflow: hidden;
+
+				.bar {
+					background-color: var(--primary);
+					width: 100px;
+					align-content: center;
+
+					&#free {
+						height: var(--fill-free);
+						@starting-style {
+							height: 0;
+						}
+					}
+					&#lower {
+						height: var(--fill-lower);
+						transition-delay: 1s;
+						@starting-style {
+							height: 0;
+						}
+					}
+
+					transition: height 1s ease-out;
+
+					p {
+						font-size: 1rem;
+						font-weight: 600;
+						margin-top: auto;
+					}
+				}
+			}
+
+			p {
+				margin-top: 8px;
+				font-size: 1.2rem;
+				font-weight: 600;
+			}
+		}
+	}
+
+	.upper-bracket {
+		margin-top: 32px;
+		text-align: center;
+
+		b {
+			font-size: 1.2rem;
+			font-weight: 600;
+		}
+	}
+}
+
+.missions {
+	text-align: center;
+
+	.stats {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 16px;
+		margin-top: 16px;
+
+		&:not(:last-child) {
+			border-bottom: 2px double var(--secondary);
+			padding-bottom: 16px;
+		}
+
+		.stat {
+			span:first-of-type {
+				font-size: 2rem;
+				color: var(--secondary);
+			}
+			span:last-of-type {
+				font-size: 0.8rem;
+				text-transform: uppercase;
+				margin-left: 0.5ch;
+			}
+		}
+	}
+}
+
+.economy {
+	text-align: center;
+
+	.gold-container {
+		display: flex;
+		justify-content: space-around;
+		gap: 16px;
+		flex-wrap: wrap;
+
+		.gold {
+			width: 215px;
+			padding: 16px;
+			border: 2px solid var(--secondary);
+			border-radius: 8px;
+			margin: 0 auto;
+
+			div:first-of-type {
+				font-size: 2rem;
+				color: var(--secondary);
+			}
+		}
+	}
+}
+
+.distribution-container {
+	display: flex;
+	gap: 16px;
+	text-align: center;
+	margin-top: 32px;
+
+	.distribution-chart {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+
+		.distribution-entry {
+			width: 170px;
+			height: 100px;
+			border-radius: 20px;
+			corner-shape: bevel;
+			align-content: center;
+			justify-items: center;
+			background-color: var(--secondary);
+			margin: 0 auto;
+
+			p {
+				color: var(--primary);
+			}
+			p:first-of-type {
+				font-size: 2.2rem;
+			}
+			p:last-of-type {
+				font-size: 0.8rem;
+				text-transform: uppercase;
+			}
+
+			@media (max-width: 600px) {
+				width: 120px;
+				height: 80px;
+				p:first-of-type {
+					font-size: 1.5rem;
+				}
+				p:last-of-type {
+					font-size: 0.7rem;
+				}
+			}
+		}
+	}
+}
+
+.members {
+	text-align: center;
+
+	.members-list {
+		display: flex;
+		justify-content: space-around;
+		gap: 32px;
+		margin-top: 32px;
+		flex-wrap: wrap;
+
+		.member-container {
+			display: inline-block;
+
+			p {
+				font-size: 1.2rem;
+
+				&:first-of-type {
+					margin-bottom: 8px;
+				}
+				&:last-of-type {
+					margin-top: 8px;
+				}
+			}
+		}
+	}
+
+	.total-debt {
+		margin-top: 32px;
+		font-size: 1.5rem;
+	}
+}
+
+.pipeline,
+.backlog {
+	@media (min-width: 1727px) {
+		margin-top: -287px;
+	}
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 32px 0 0;
+
+	th,
+	td {
+		border: 1px solid var(--secondary);
+		padding: 8px;
+		text-align: left;
+
+		@media (max-width: 600px) {
+			&:nth-child(2),
+			&:nth-child(4) {
+				display: none;
+				min-width: unset;
+			}
+		}
+	}
+	th {
+		background-color: var(--secondary);
+		color: var(--primary);
+		min-width: 114px;
+	}
+	tr {
+		transition: background-color 0.1s;
+	}
+	tr:nth-child(even) {
+		background-color: var(--grey-lighter);
+	}
+	tr:hover {
+		background-color: var(--grey-light);
+	}
+}
