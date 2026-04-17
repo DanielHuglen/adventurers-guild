@@ -36,7 +36,7 @@
 		</div>
 		<div class="tax-brackets-container">
 			<span class="tax-bracket">
-				<div class="bar-container" [title]="`${currentTaxFreeGoldPercentage}%`">
+				<div class="bar-container" [title]="`${currentTaxFreeGoldPercentage}%, ${netGold}/10.000 gold`">
 					<div class="bar" id="free" style="--fill-free: {{ currentTaxFreeGoldPercentage }}%">
 						@if (currentTaxFreeGoldPercentage > 8) {
 							<p>{{ roundedCurrentTaxFreeGoldPercentage }}%</p>
@@ -47,7 +47,7 @@
 			</span>
 
 			<span class="tax-bracket">
-				<div class="bar-container" [title]="`${currentLowerTaxBracketPercentage}%`">
+				<div class="bar-container" [title]="`${currentLowerTaxBracketPercentage}%, ${netGold}/50.000 gold`">
 					<div class="bar" id="lower" style="--fill-lower: {{ currentLowerTaxBracketPercentage }}%">
 						@if (currentLowerTaxBracketPercentage > 8) {
 							<p>{{ roundedCurrentLowerTaxBracketPercentage }}%</p>
