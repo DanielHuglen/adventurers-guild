@@ -85,6 +85,22 @@ export class MissionDetailsComponent {
 		return goldReward || 0;
 	}
 
+	get formattedReturnDate(): string {
+		const mission = this.mission();
+		const dispatchDate = mission?.dispatchDate;
+
+		if (!dispatchDate) {
+			return 'N/A';
+		}
+
+		const level = mission?.level ?? 0;
+
+		const estimatedReturnDate = new Date(dispatchDate);
+		estimatedReturnDate.setDate(estimatedReturnDate.getDate() + level * 3);
+
+		return estimatedReturnDate.toLocaleDateString();
+	}
+
 	getNumberOfClassInGroup(classGroup: string): number {
 		return parseInt(classGroup.split(' ')[0]);
 	}

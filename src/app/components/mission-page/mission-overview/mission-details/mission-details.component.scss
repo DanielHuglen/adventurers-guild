@@ -19,6 +19,15 @@ h2 {
 	margin-bottom: 20px;
 	border-bottom: 4px solid var(--complimentary);
 	padding-bottom: 20px;
+
+	&:has(.split-section) {
+		display: flex;
+		justify-content: space-around;
+	}
+}
+
+.split-section b {
+	font-size: 1.5rem;
 }
 
 .section-title {

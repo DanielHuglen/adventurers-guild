@@ -38,6 +38,20 @@
 			}
 		</div>
 	</div>
+	@if (!finalOutcomeReward) {
+		<div class="detail-section">
+			<span class="split-section">
+				<p class="section-title">Roll</p>
+				<b>{{ mission().diceRoll }}/100&nbsp;</b>
+			</span>
+			<span class="split-section">
+				<p class="section-title">Return</p>
+				<b>
+					{{ formattedReturnDate }}
+				</b>
+			</span>
+		</div>
+	}
 }
 <div class="detail-section">
 	<p class="section-title">Promised rewards</p>
