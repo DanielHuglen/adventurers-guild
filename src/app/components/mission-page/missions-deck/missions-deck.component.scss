@@ -12,3 +12,34 @@
 		width: var(--card-width);
 	}
 }
+
+.completed-missions {
+	grid-column: span 2;
+	width: 100%;
+
+	h2 {
+		padding-bottom: 8px;
+		border-bottom: 2px solid var(--secondary);
+	}
+
+	a {
+		color: inherit;
+		text-underline-offset: 4px;
+	}
+
+	button {
+		position: relative;
+		float: right;
+		border: 0;
+		padding: 0;
+		background-color: transparent;
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: -0.5rem;
+			left: -0.5rem;
+			padding: 17px;
+		}
+	}
+}

@@ -1,6 +1,40 @@
-@for (mission of missions(); track mission.id) {
+@for (mission of incompleteMissions(); track mission.id) {
 	<app-mission-card [mission]="mission" />
 }
+
+<section class="completed-missions">
+	<h2>Completed missions</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Mission</th>
+				<th>Result</th>
+				<th>Gold</th>
+			</tr>
+		</thead>
+		<tbody>
+			@for (mission of completedMissions(); track mission.id) {
+				<tr>
+					<td>
+						<a [routerLink]="['/missions/' + mission.id]">
+							{{ mission.title }}
+						</a>
+					</td>
+					<td>{{ mission.finalOutcome?.tier?.toUpperCase() }}</td>
+					<td>
+						{{ mission.finalOutcome?.reward?.gold }}
+						<button (click)="copyToClipboard(mission.finalOutcome?.reward?.gold?.toString())">📋</button>
+					</td>
+				</tr>
+			}
+			<tr>
+				<td><b>Total</b></td>
+				<td></td>
+				<td>{{ totalGoldEarned() }}</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
 
 @if ((role | async) === "admin") {
 	<app-mission-form />

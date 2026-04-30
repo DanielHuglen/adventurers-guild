@@ -1,4 +1,4 @@
-<button [routerLink]="['/missions/' + mission().id]">
+<a [routerLink]="['/missions/' + mission().id]">
 	<div class="mission-header">
 		<h2>{{ mission().title }}</h2>
 		<span class="status" [ngStyle]="{ 'background-color': status }"></span>
@@ -16,4 +16,4 @@
 			<span>{{ level }}</span>
 		</div>
 	</div>
-</button>
+</a>
