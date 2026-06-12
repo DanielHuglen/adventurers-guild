@@ -119,3 +119,7 @@
 	<app-member-form [existingMember]="member()" />
 	<button class="delete-action" (click)="deleteMember()" [disabled]="isLoading">Delete Member</button>
 }
+
+@if (completedMissions().length) {
+	<app-completed-missions-table [missions]="completedMissions()" />
+}

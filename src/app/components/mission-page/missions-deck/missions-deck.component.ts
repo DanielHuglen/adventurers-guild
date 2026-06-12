@@ -7,10 +7,11 @@ import { getMissionAvailability } from 'app/shared/mission-helper.service';
 import { LoginService } from 'app/services/login.service';
 import { AsyncPipe } from '@angular/common';
 import { MissionFormComponent } from '../mission-form/mission-form.component';
+import { CompletedMissionsTableComponent } from '../completed-missions-table/completed-missions-table.component';
 
 @Component({
 	selector: 'app-missions-deck',
-	imports: [MissionCardComponent, MissionFormComponent, AsyncPipe, RouterModule],
+	imports: [MissionCardComponent, MissionFormComponent, CompletedMissionsTableComponent, AsyncPipe, RouterModule],
 	templateUrl: './missions-deck.component.html',
 	styleUrl: './missions-deck.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,24 +28,6 @@ export class MissionsDeckComponent {
 	completedMissions = computed(() =>
 		this.missions().filter((mission) => getMissionAvailability(mission) === 'Completed'),
 	);
-
-	totalGoldEarned = computed(() =>
-		this.completedMissions().reduce((total, mission) => {
-			const outcome = mission.finalOutcome;
-			if (outcome) {
-				return total + outcome.reward.gold;
-			}
-			return total;
-		}, 0),
-	);
-
-	copyToClipboard(text: string | undefined): void {
-		if (!text) return;
-
-		navigator.clipboard.writeText(text).catch((err) => {
-			console.error('Failed to copy text: ', err);
-		});
-	}
 
 	constructor() {
 		this.route.data.pipe(take(1)).subscribe((data) => {

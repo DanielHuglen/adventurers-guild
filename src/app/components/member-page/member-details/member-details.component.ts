@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Subscription, take } from 'rxjs';
+import { forkJoin, Subscription, take } from 'rxjs';
 import { CharacterService } from '../../../services/character.service';
 import { CharacterBonusUpdateRequest } from '../../../shared/api-models';
 import { Character } from '../../../shared/character-models';
@@ -12,6 +12,7 @@ import { DisableIfGuestDirective } from 'app/directives/disable-if-guest.directi
 import { ToastService } from 'app/services/toast.service';
 import { LoginService } from 'app/services/login.service';
 import { MemberFormComponent } from '../member-form/member-form.component';
+import { CompletedMissionsTableComponent } from '../../mission-page/completed-missions-table/completed-missions-table.component';
 import { AsyncPipe } from '@angular/common';
 import { MissionService } from 'app/services/mission.service';
 import type { Mission } from 'app/shared/mission-model';
@@ -26,6 +27,7 @@ import type { Mission } from 'app/shared/mission-model';
 		AbilityModifierPipe,
 		DisableIfGuestDirective,
 		MemberFormComponent,
+		CompletedMissionsTableComponent,
 		RouterLink,
 	],
 	templateUrl: './member-details.component.html',
@@ -47,6 +49,7 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 	isEditing = false;
 	isLoading = false;
 	activeMission = signal<Mission | null>(null);
+	completedMissions = signal<Mission[]>([]);
 
 	isModPreferred = signal(false);
 
@@ -76,6 +79,7 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 				this.member.set(member);
 				this.prefillForm();
 				this.loadActiveMission();
+				this.loadCompletedMissions();
 			});
 		}
 	}
@@ -98,6 +102,19 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 			.pipe(take(1))
 			.subscribe((mission) => {
 				this.activeMission.set(mission);
+			});
+	}
+
+	private loadCompletedMissions(): void {
+		const completedMissionIds = this.member()?.completedMissions;
+		if (!completedMissionIds?.length) {
+			return;
+		}
+
+		forkJoin(completedMissionIds.map((id) => this.missionService.getMission(id).pipe(take(1))))
+			.pipe(take(1))
+			.subscribe((missions) => {
+				this.completedMissions.set(missions);
 			});
 	}
 
