@@ -1,5 +1,5 @@
 @for (mission of incompleteMissions(); track mission.id) {
-	<app-mission-card [mission]="mission" />
+	<app-mission-card [mission]="mission" [title]="mission.title" />
 }
 
 <section class="completed-missions">
