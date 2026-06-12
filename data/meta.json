@@ -1,37 +1,13 @@
 {
 	"currentDate": "1497-03-25T00:00:00Z",
-	"cityReputations": [
-		{
-			"city": "luskan",
-			"reputation": 0
-		},
-		{
-			"city": "neverwinter",
-			"reputation": 55
-		},
-		{
-			"city": "waterdeep",
-			"reputation": 11
-		},
-		{
-			"city": "baldursGate",
-			"reputation": -25
-		},
-		{
-			"city": "silverymoon",
-			"reputation": 0
-		},
-		{
-			"city": "mirabar",
-			"reputation": 7
-		},
-		{
-			"city": "moonsheaIsles",
-			"reputation": 0
-		},
-		{
-			"city": "piltover",
-			"reputation": 28
-		}
-	]
+	"cityReputations": {
+		"luskan": 0,
+		"neverwinter": 55,
+		"waterdeep": 11,
+		"baldursGate": -25,
+		"silverymoon": 0,
+		"mirabar": 7,
+		"moonsheaIsles": 0,
+		"piltover": 28
+	}
 }
