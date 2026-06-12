@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Subscription, take } from 'rxjs';
 import { CharacterService } from '../../../services/character.service';
@@ -13,6 +13,8 @@ import { ToastService } from 'app/services/toast.service';
 import { LoginService } from 'app/services/login.service';
 import { MemberFormComponent } from '../member-form/member-form.component';
 import { AsyncPipe } from '@angular/common';
+import { MissionService } from 'app/services/mission.service';
+import type { Mission } from 'app/shared/mission-model';
 
 @Component({
 	selector: 'app-member-details',
@@ -24,6 +26,7 @@ import { AsyncPipe } from '@angular/common';
 		AbilityModifierPipe,
 		DisableIfGuestDirective,
 		MemberFormComponent,
+		RouterLink,
 	],
 	templateUrl: './member-details.component.html',
 	styleUrl: './member-details.component.scss',
@@ -33,6 +36,7 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 	private route = inject(ActivatedRoute);
 	private router = inject(Router);
 	private characterService = inject(CharacterService);
+	protected missionService = inject(MissionService);
 	private loginService = inject(LoginService);
 	role = this.loginService.role;
 
@@ -42,6 +46,7 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 	memberId = 0;
 	isEditing = false;
 	isLoading = false;
+	activeMission = signal<Mission | null>(null);
 
 	isModPreferred = signal(false);
 
@@ -70,6 +75,7 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 			this.characterService.getMember(this.memberId).subscribe((member) => {
 				this.member.set(member);
 				this.prefillForm();
+				this.loadActiveMission();
 			});
 		}
 	}
@@ -79,6 +85,20 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 			if (hasBonus) this.bonusDescriptionControl.enable();
 			else this.bonusDescriptionControl.disable();
 		});
+	}
+
+	private loadActiveMission(): void {
+		const activeMissionId = this.member()?.activeMission;
+		if (!activeMissionId) {
+			return;
+		}
+
+		this.missionService
+			.getMission(activeMissionId)
+			.pipe(take(1))
+			.subscribe((mission) => {
+				this.activeMission.set(mission);
+			});
 	}
 
 	private prefillForm(): void {

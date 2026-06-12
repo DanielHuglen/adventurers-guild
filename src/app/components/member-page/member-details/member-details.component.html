@@ -42,23 +42,31 @@
 			</span>
 		}
 
-		<span class="stats">
-			<span class="stat">
-				<span>{{ member()?.hitPoints ?? 0 }}</span>
-				<span>HP</span>
-			</span>
-			<span class="stat">
-				<span>{{ member()?.armorClass ?? 0 }}</span>
-				<span>AC</span>
-			</span>
-			<span class="stat">
-				<span>{{ member()?.experience ?? 0 }}</span>
-				<span>XP</span>
-			</span>
-			<span class="stat">
-				<span>{{ member()?.speed ?? 0 }}</span>
-				<span>Speed</span>
-			</span>
+		<span>
+			<div class="stats">
+				<span class="stat">
+					<span>{{ member()?.hitPoints ?? 0 }}</span>
+					<span>HP</span>
+				</span>
+				<span class="stat">
+					<span>{{ member()?.armorClass ?? 0 }}</span>
+					<span>AC</span>
+				</span>
+				<span class="stat">
+					<span>{{ member()?.experience ?? 0 }}</span>
+					<span>XP</span>
+				</span>
+				<span class="stat">
+					<span>{{ member()?.speed ?? 0 }}</span>
+					<span>Speed</span>
+				</span>
+			</div>
+			@if (activeMission(); as mission) {
+				<a class="active-mission" [routerLink]="['/missions/' + mission.id]">
+					<p>MISSION</p>
+					<h3>{{ mission.title }}</h3>
+				</a>
+			}
 		</span>
 
 		<span class="knowledge">

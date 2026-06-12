@@ -118,7 +118,7 @@
 
 		.stats {
 			display: flex;
-			justify-content: space-evenly;
+			justify-content: space-between;
 			gap: 16px;
 			height: 100%;
 
@@ -132,6 +132,30 @@
 					text-transform: uppercase;
 					margin-left: 0.25ch;
 				}
+			}
+		}
+
+		.active-mission {
+			display: block;
+			margin-top: 16px;
+			border: 2px solid var(--primary);
+			border-radius: 8px;
+			padding: 16px 8px;
+			text-align: center;
+			text-decoration: none;
+			transition: background-color 0.2s;
+
+			&:hover {
+				background-color: var(--secondary-light);
+			}
+
+			p {
+				color: var(--white);
+				margin-bottom: 4px;
+			}
+
+			h3 {
+				color: var(--primary);
 			}
 		}
 
