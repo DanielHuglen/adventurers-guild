@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, ElementRef, inject, ViewChild } fro
 import { RouterModule } from '@angular/router';
 import { LoginService } from 'app/services/login.service';
 import { MetaService } from 'app/services/meta.service';
+import { ThemeService } from 'app/services/theme.service';
 import { take } from 'rxjs';
 import { AdjustDateFormComponent } from '../adjust-date-form/adjust-date-form.component';
 
@@ -16,6 +17,7 @@ import { AdjustDateFormComponent } from '../adjust-date-form/adjust-date-form.co
 export class HeaderComponent {
 	metaService = inject(MetaService);
 	loginService = inject(LoginService);
+	themeService = inject(ThemeService);
 
 	@ViewChild('dialog') dialog: ElementRef<HTMLDialogElement> | undefined;
 

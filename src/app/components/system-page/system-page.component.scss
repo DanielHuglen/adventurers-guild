@@ -210,7 +210,7 @@ details {
 		color 0.15s ease-in-out;
 
 	&:hover {
-		box-shadow: 4px 4px 4px 2px #e6e6e6;
+		box-shadow: 4px 4px 4px 2px var(--shadow);
 		background-color: var(--secondary-dark);
 		color: var(--white);
 	}
@@ -318,7 +318,7 @@ details {
 			overflow: hidden;
 			outline: 2px solid var(--secondary);
 			border-radius: 0;
-			background-color: var(--white);
+			background-color: var(--bg);
 
 			width: min(480px, 100%);
 			transition:

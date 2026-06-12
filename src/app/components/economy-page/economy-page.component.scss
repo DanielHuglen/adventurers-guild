@@ -83,6 +83,7 @@ h2 {
 						font-size: 1rem;
 						font-weight: 600;
 						margin-top: auto;
+						color: var(--secondary-dark);
 					}
 				}
 			}
@@ -124,7 +125,7 @@ h2 {
 		.stat {
 			span:first-of-type {
 				font-size: 2rem;
-				color: var(--secondary);
+				color: var(--text);
 			}
 			span:last-of-type {
 				font-size: 0.8rem;
@@ -153,7 +154,7 @@ h2 {
 
 			div:first-of-type {
 				font-size: 2rem;
-				color: var(--secondary);
+				color: var(--text);
 			}
 		}
 	}

@@ -13,7 +13,17 @@
 		<h1>Eventyrerlauget</h1>
 	</div>
 </a>
-<button (click)="openPasswordPrompt()">
-	{{ (role | async)?.toUpperCase() }}
-	👤
-</button>
+<div class="actions">
+	<button
+		type="button"
+		class="theme-toggle"
+		(click)="themeService.toggle()"
+		aria-label="Toggle theme"
+		title="Toggle theme">
+		{{ themeService.theme() === "dark" ? "☀️" : "🌙" }}
+	</button>
+	<button (click)="openPasswordPrompt()">
+		{{ (role | async)?.toUpperCase() }}
+		👤
+	</button>
+</div>

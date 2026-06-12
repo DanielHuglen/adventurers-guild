@@ -1,11 +1,14 @@
 body {
 	font-family: Arial, Helvetica, sans-serif;
-	background-color: var(--white);
+	background-color: var(--bg);
 	width: 100%;
 	min-width: 350px;
 	height: 100vh;
 	margin: 0;
-	color: var(--secondary-dark);
+	color: var(--text);
+	transition:
+		background-color 0.2s ease-in-out,
+		color 0.2s ease-in-out;
 }
 
 h1,
@@ -66,6 +69,8 @@ table {
 }
 
 :root {
+	color-scheme: light;
+
 	// Colors
 	--white: #f5f5f5ff;
 	--grey: #c0c0c0ff;
@@ -91,8 +96,35 @@ table {
 	--complimentary-dark: #6a3331;
 	--complimentary-light: #9e4b48;
 
+	--shadow: #e6e6e6;
+
+	// Adaptive role tokens — these are the ONLY colors that change with the theme.
+	// Everything else above is a fixed brand palette: --secondary* stays dark and
+	// --white stays light, so dark panels (dark bg + var(--white) text) render
+	// identically in both themes. Use --bg / --text for the page itself and for
+	// any element that should follow the page (paper-like surfaces, body copy).
+	--bg: var(--white); // page background
+	--text: var(--secondary-dark); // body / on-page ink
+
 	// Transitions
 	interpolate-size: allow-keywords;
+}
+
+// Dark theme — only re-maps the adaptive role tokens (and a few page-level
+// neutrals). The brand palette above stays fixed on purpose: --secondary* remain
+// dark and --white remains light, so every "branded" dark panel keeps its dark
+// background + light text in both themes with zero per-component work.
+:root[data-theme="dark"] {
+	color-scheme: dark;
+
+	--bg: #1b1718; // page background
+	--text: #ece3d6; // body / on-page ink
+
+	--grey-light: #2e2829; // table row hover
+	--grey-lighter: #241f20; // table even-row stripe
+	--black: #f5f0ec; // used as a thin contrast border — flip to light
+
+	--shadow: rgba(0, 0, 0, 0.6);
 }
 
 // Mixins

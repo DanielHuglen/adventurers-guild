@@ -6,6 +6,20 @@
 		<base href="/" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/x-icon" href="favicon.ico" />
+		<!-- Apply the saved/OS theme before first paint to avoid a flash of the wrong theme. -->
+		<script>
+			(function () {
+				try {
+					var saved = localStorage.getItem("theme");
+					var theme =
+						saved ||
+						(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+					document.documentElement.dataset.theme = theme;
+				} catch (e) {
+					document.documentElement.dataset.theme = "light";
+				}
+			})();
+		</script>
 	</head>
 	<body>
 		<app-root></app-root>
