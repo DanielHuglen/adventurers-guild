@@ -4,7 +4,10 @@ import { CharacterCardComponent } from '../character-card/character-card.compone
 import { getClassGroupFromCharacterClass } from 'app/shared/character-helper.service';
 import { NgClass } from '@angular/common';
 
-type SortingType = 'NameAsc' | 'NameDesc' | 'LevelAsc' | 'LevelDesc' | 'ClassAsc' | 'ClassDesc' | 'None';
+const SORTING_TYPES = ['NameAsc', 'NameDesc', 'LevelAsc', 'LevelDesc', 'ClassAsc', 'ClassDesc', 'None'] as const;
+type SortingType = (typeof SORTING_TYPES)[number];
+
+const SORTING_STORAGE_KEY = 'member-selection-sorting';
 
 @Component({
 	selector: 'app-member-selection',
@@ -18,9 +21,23 @@ export class MemberSelectionComponent {
 
 	updateSelectedMembers = output<number[]>();
 
-	sortingType: SortingType = 'ClassAsc';
+	private _sortingType: SortingType = this.loadSortingType();
+
+	get sortingType(): SortingType {
+		return this._sortingType;
+	}
+
+	set sortingType(sortingType: SortingType) {
+		this._sortingType = sortingType;
+		localStorage.setItem(SORTING_STORAGE_KEY, sortingType);
+	}
 
 	private selectedMembers: number[] = [];
+
+	private loadSortingType(): SortingType {
+		const stored = localStorage.getItem(SORTING_STORAGE_KEY);
+		return stored && (SORTING_TYPES as readonly string[]).includes(stored) ? (stored as SortingType) : 'ClassAsc';
+	}
 
 	toggleSelect(memberId: number): void {
 		if (this.selectedMembers.includes(memberId)) {
