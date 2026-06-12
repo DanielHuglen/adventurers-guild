@@ -422,7 +422,14 @@
 		],
 		"diceRoll": 7,
 		"finalComposition": ["Healer", "Healer", "Martial", "Martial", "Martial"],
-		"finalOutcome": null,
+		"finalOutcome": {
+			"tier": "Critical Failure",
+			"description": "Ogilvie holds you personally responsible, and swears to run you out of town unless your party performs the robbery as planned and delivers the money.",
+			"reward": {
+				"gold": 0,
+				"reputation": -20
+			}
+		},
 		"dispatchDate": "1497-03-14T00:00:00.000Z",
 		"completionDate": "1497-03-23T00:00:00.000Z"
 	},
@@ -475,11 +482,11 @@
 				}
 			}
 		],
-		"diceRoll": null,
-		"finalComposition": [],
+		"diceRoll": 75,
+		"finalComposition": ["Martial", "Healer", "Tank"],
 		"finalOutcome": null,
-		"dispatchDate": null,
-		"completionDate": null
+		"dispatchDate": "1497-03-21T00:00:00.000Z",
+		"completionDate": "1497-04-02T00:00:00.000Z"
 	},
 	{
 		"id": 9,
@@ -587,7 +594,14 @@
 		],
 		"diceRoll": 97,
 		"finalComposition": ["Martial", "Magic"],
-		"finalOutcome": null,
+		"finalOutcome": {
+			"tier": "Critical Success",
+			"description": "The soldiers are being baaaadly affected by the mutagen, and Frumagem is pleased. He offers you a magic item for your great success. Roll on the table!.",
+			"reward": {
+				"gold": 1800,
+				"reputation": 10
+			}
+		},
 		"dispatchDate": "1497-03-14T00:00:00.000Z",
 		"completionDate": "1497-03-20T00:00:00.000Z"
 	},
@@ -695,11 +709,18 @@
 				}
 			}
 		],
-		"diceRoll": null,
-		"finalComposition": [],
-		"finalOutcome": null,
-		"dispatchDate": null,
-		"completionDate": null
+		"diceRoll": 99,
+		"finalComposition": ["Martial", "Tank"],
+		"finalOutcome": {
+			"tier": "Critical Success",
+			"description": "Maelis arrives safely, and she gifts the guild a set of rare healing potions she brewed on the road.",
+			"reward": {
+				"gold": 400,
+				"reputation": 6
+			}
+		},
+		"dispatchDate": "1497-03-21T00:00:00.000Z",
+		"completionDate": "1497-03-24T00:00:00.000Z"
 	},
 	{
 		"id": 13,
@@ -752,7 +773,14 @@
 		],
 		"diceRoll": 27,
 		"finalComposition": ["Healer", "Tank"],
-		"finalOutcome": null,
+		"finalOutcome": {
+			"tier": "Critical Success",
+			"description": "The guild not only ends the fight but negotiates a temporary truce, impressing the city guard.",
+			"reward": {
+				"gold": 500,
+				"reputation": 7
+			}
+		},
 		"dispatchDate": "1497-03-14T00:00:00.000Z",
 		"completionDate": "1497-03-17T00:00:00.000Z"
 	},
@@ -807,8 +835,180 @@
 		],
 		"diceRoll": 18,
 		"finalComposition": ["Martial", "Tank", "Magic"],
-		"finalOutcome": null,
+		"finalOutcome": {
+			"tier": "Failure",
+			"description": "The thieves scatter, and only fragments of the records are retrieved.",
+			"reward": {
+				"gold": 0,
+				"reputation": -5
+			}
+		},
 		"dispatchDate": "1497-03-14T00:00:00.000Z",
 		"completionDate": "1497-03-20T00:00:00.000Z"
+	},
+	{
+		"id": 15,
+		"title": "Clear an Enchanted Garden",
+		"description": "The retired wizard Monsoir Bonne has let his garden in Silverymoon run wild. The plants have begun whispering half-remembered spells to passersby, and a neighbour's child was nearly pulled into a thicket. Calm or clear the garden before someone is seriously harmed, but make sure not to harm any of the garden gnomes (statues, not actual gnomes)!",
+		"location": "Silverymoon",
+		"level": 1,
+		"recommendedComposition": ["Magic", "Healer"],
+		"potentialOutcomes": [
+			{
+				"tier": "Critical Success",
+				"description": "The garden is gently coaxed back to dormancy. Monsoir gifts the guild a pouch of seeds that grow into rare healing herbs, meaning the next potion of healing ingredients are free!",
+				"reward": {
+					"gold": 600,
+					"reputation": 6
+				}
+			},
+			{
+				"tier": "Success",
+				"description": "The garden is cleared and the whispers stop. Monsoir pays in full.",
+				"reward": {
+					"gold": 400,
+					"reputation": 4
+				}
+			},
+			{
+				"tier": "Mixed",
+				"description": "The garden was hacked down rather than calmed. The neighbours grumble about the noise and the mess. Some gnomes were seriously injured (turns out they were actual gnomes).",
+				"reward": {
+					"gold": 175,
+					"reputation": 0
+				}
+			},
+			{
+				"tier": "Failure",
+				"description": "The plants spread into neighbouring yards, and Monsoir refuses to pay. Also, the gnomes are angered (turns out they were actual gnomes).",
+				"reward": {
+					"gold": 0,
+					"reputation": -3
+				}
+			},
+			{
+				"tier": "Critical Failure",
+				"description": "An agent triggered the garden's old wards, and a passing child was ensnared and is now reported lost. Monsoir demands the guild recover the child, and get the gnomes off his back (turns out they were actual gnomes).",
+				"reward": {
+					"gold": -250,
+					"reputation": -8
+				}
+			}
+		],
+		"diceRoll": 88,
+		"finalComposition": ["Magic", "Martial", "Martial", "Martial"],
+		"finalOutcome": null,
+		"dispatchDate": "1497-03-24T00:00:00.000Z",
+		"completionDate": "1497-03-27T00:00:00.000Z"
+	},
+	{
+		"id": 16,
+		"title": "Cleanse the Black Reef Lighthouse",
+		"description": "The keeper of Luskan's Black Reef Lighthouse has gone silent for two weeks, and ships have begun running aground in a fog that rolls in from nowhere. The harbourmaster, a rotund man named Bog Bongle, wants the lighthouse cleared of whatever has taken root there and the beacon relit before the spring trade ships arrive.",
+		"location": "Luskan",
+		"level": 2,
+		"recommendedComposition": ["Tank", "Magic", "Healer"],
+		"potentialOutcomes": [
+			{
+				"tier": "Critical Success",
+				"description": "The spirits are laid to rest, and the Bog Bongle's old logbook reveals a sea chart marking a smugglers' cove rich with abandoned cargo.",
+				"reward": {
+					"gold": 1300,
+					"reputation": 7
+				}
+			},
+			{
+				"tier": "Success",
+				"description": "The haunting is ended and the beacon is relit. The Bog Bongle pays the agreed sum.",
+				"reward": {
+					"gold": 1000,
+					"reputation": 4
+				}
+			},
+			{
+				"tier": "Mixed",
+				"description": "The spirits are gone, but the upper lighthouse was shattered in the fight. Shippers grumble about the delay in repairs.",
+				"reward": {
+					"gold": 500,
+					"reputation": 0
+				}
+			},
+			{
+				"tier": "Failure",
+				"description": "The lighthouse remains dark and another ship is lost on the reef. The Bog Bongle withholds payment.",
+				"reward": {
+					"gold": 0,
+					"reputation": -6
+				}
+			},
+			{
+				"tier": "Critical Failure",
+				"description": "One of your agents returns hosting a spirit, and the lighthouse burns to its foundations. Luskan blames the guild outright, and the guild member needs an excorcist!",
+				"reward": {
+					"gold": -350,
+					"reputation": -12
+				}
+			}
+		],
+		"diceRoll": 76,
+		"finalComposition": ["Healer", "Tank", "Magic"],
+		"finalOutcome": null,
+		"dispatchDate": "1497-03-24T00:00:00.000Z",
+		"completionDate": "1497-03-30T00:00:00.000Z"
+	},
+	{
+		"id": 17,
+		"title": "Uncover the Sewer Cabal",
+		"description": "Three Waterdhavian nobles have been poisoned in the last month, each by a toxin traced back to alchemists working out of the deep sewers beneath the Castle Ward. With the spring trade summit only weeks away, an absolute banger of an event, the Lords of Waterdeep want the cabal rooted out quietly and quickly.",
+		"location": "Waterdeep",
+		"level": 3,
+		"recommendedComposition": ["Tank", "Martial", "Magic", "Healer"],
+		"potentialOutcomes": [
+			{
+				"tier": "Critical Success",
+				"description": "The cabal is broken and a ledger is recovered naming a senior noble as their benefactor. The Lords reward the discretion handsomely.",
+				"reward": {
+					"gold": 3000,
+					"reputation": 12
+				}
+			},
+			{
+				"tier": "Success",
+				"description": "The cabal is rooted out and the poisonings stop in time for the summit.",
+				"reward": {
+					"gold": 2200,
+					"reputation": 6
+				}
+			},
+			{
+				"tier": "Mixed",
+				"description": "The cabal is scattered, but its leadership escapes through the sewers. The Lords pay a reduced fee.",
+				"reward": {
+					"gold": 1200,
+					"reputation": 0
+				}
+			},
+			{
+				"tier": "Failure",
+				"description": "The cabal goes silent before being caught, and another noble dies a week later. The Lords cover expenses but no more.",
+				"reward": {
+					"gold": 0,
+					"reputation": -6
+				}
+			},
+			{
+				"tier": "Critical Failure",
+				"description": "One of your agents is turned by the cabal and feeds them information from inside the guild. The trade summit is cancelled and Waterdhavian patrons grow wary.",
+				"reward": {
+					"gold": -600,
+					"reputation": -15
+				}
+			}
+		],
+		"diceRoll": 13,
+		"finalComposition": ["Healer", "Martial", "Tank", "Magic"],
+		"finalOutcome": null,
+		"dispatchDate": "1497-03-24T00:00:00.000Z",
+		"completionDate": "1497-04-02T00:00:00.000Z"
 	}
 ]

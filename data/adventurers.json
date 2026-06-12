@@ -26,8 +26,8 @@
 		"hasBonus": false,
 		"bonusDescription": "",
 		"debt": "0",
-		"activeMission": 7,
-		"completedMissions": [2]
+		"activeMission": 17,
+		"completedMissions": [2, 7]
 	},
 	{
 		"id": 2,
@@ -56,8 +56,8 @@
 		"hasBonus": false,
 		"bonusDescription": "",
 		"debt": "2",
-		"activeMission": 14,
-		"completedMissions": [2]
+		"activeMission": 8,
+		"completedMissions": [2, 14]
 	},
 	{
 		"id": 3,
@@ -86,8 +86,8 @@
 		"hasBonus": false,
 		"bonusDescription": "",
 		"debt": "0",
-		"activeMission": 7,
-		"completedMissions": [2]
+		"activeMission": 16,
+		"completedMissions": [2, 7]
 	},
 	{
 		"id": 4,
@@ -97,7 +97,7 @@
 		"imageUrl": "https://i.pinimg.com/736x/16/45/d4/1645d44b300868354a4540ab79a1b277.jpg",
 		"class": "Druid",
 		"race": "Human",
-		"experience": 46,
+		"experience": 49,
 		"abilityScores": {
 			"strength": 8,
 			"dexterity": 14,
@@ -113,11 +113,11 @@
 		"languages": ["Common", "Elvish"],
 		"features": ["Spellcasting", "Wild Shape"],
 		"isAlive": true,
-		"hasBonus": false,
-		"bonusDescription": "",
+		"hasBonus": true,
+		"bonusDescription": "Ring of Monstrosities",
 		"debt": "0",
-		"activeMission": 13,
-		"completedMissions": [5, 3]
+		"activeMission": 8,
+		"completedMissions": [5, 3, 13]
 	},
 	{
 		"id": 5,
@@ -127,7 +127,7 @@
 		"imageUrl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/83cb7597-d135-4881-97a1-252f448e6595/dgpcqxo-b98cc257-ed6e-4f6a-bb72-491fddab6b89.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzgzY2I3NTk3LWQxMzUtNDg4MS05N2ExLTI1MmY0NDhlNjU5NVwvZGdwY3F4by1iOThjYzI1Ny1lZDZlLTRmNmEtYmI3Mi00OTFmZGRhYjZiODkuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.0OiHo4YY0wRR2BSHC7mp2i1bOuThrqN2IL58fmgdoYU",
 		"class": "Paladin",
 		"race": "Human",
-		"experience": 27,
+		"experience": 28,
 		"abilityScores": {
 			"strength": 17,
 			"dexterity": 11,
@@ -146,8 +146,8 @@
 		"hasBonus": true,
 		"bonusDescription": "",
 		"debt": "0",
-		"activeMission": 14,
-		"completedMissions": [5, 3]
+		"activeMission": 16,
+		"completedMissions": [5, 3, 14]
 	},
 	{
 		"id": 6,
@@ -157,7 +157,7 @@
 		"imageUrl": "https://cdnb.artstation.com/p/assets/images/images/061/118/459/large/jackson-caspersz-381-vax.jpg?1680051407",
 		"class": "Rogue",
 		"race": "Elf",
-		"experience": 24,
+		"experience": 31,
 		"abilityScores": {
 			"strength": 11,
 			"dexterity": 19,
@@ -176,8 +176,8 @@
 		"hasBonus": true,
 		"bonusDescription": "+2 Rapier",
 		"debt": "0",
-		"activeMission": 10,
-		"completedMissions": [5]
+		"activeMission": 17,
+		"completedMissions": [5, 10, 12]
 	},
 	{
 		"id": 7,
@@ -187,7 +187,7 @@
 		"imageUrl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5f0a725a-f4cb-40da-8b5b-e68167c5d154/da2g8wi-c835319e-a0e7-48f7-bf4c-b6c7c0014c16.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVmMGE3MjVhLWY0Y2ItNDBkYS04YjViLWU2ODE2N2M1ZDE1NFwvZGEyZzh3aS1jODM1MzE5ZS1hMGU3LTQ4ZjctYmY0Yy1iNmM3YzAwMTRjMTYuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0._Tugmvazv3CG94YJMOX3KsxhzQWqP_17tJ0ztrtPjoA",
 		"class": "Wizard",
 		"race": "Dwarf",
-		"experience": 24,
+		"experience": 28,
 		"abilityScores": {
 			"strength": 10,
 			"dexterity": 15,
@@ -203,11 +203,11 @@
 		"languages": ["Common", "Dwarvish", "Gnomish"],
 		"features": ["Spellcasting", "Arcane Recovery"],
 		"isAlive": true,
-		"hasBonus": false,
-		"bonusDescription": "",
+		"hasBonus": true,
+		"bonusDescription": "Felix the Owlbear",
 		"debt": "0",
-		"activeMission": 10,
-		"completedMissions": [5]
+		"activeMission": 15,
+		"completedMissions": [5, 10]
 	},
 	{
 		"id": 8,
@@ -217,7 +217,7 @@
 		"imageUrl": "https://cdnb.artstation.com/p/assets/images/images/023/127/727/large/tommy-lee-9f5ec480-80a2-4921-96d5-603449f3ef25.jpg?1578195548",
 		"class": "Barbarian",
 		"race": "Goliath",
-		"experience": 24,
+		"experience": 30,
 		"abilityScores": {
 			"strength": 20,
 			"dexterity": 16,
@@ -236,8 +236,8 @@
 		"hasBonus": false,
 		"bonusDescription": "",
 		"debt": "0",
-		"activeMission": 13,
-		"completedMissions": [4, 6]
+		"activeMission": 17,
+		"completedMissions": [4, 6, 13, 12]
 	},
 	{
 		"id": 9,
@@ -266,8 +266,8 @@
 		"hasBonus": true,
 		"bonusDescription": "Deer",
 		"debt": "400",
-		"activeMission": 7,
-		"completedMissions": [6]
+		"activeMission": 15,
+		"completedMissions": [6, 7]
 	},
 	{
 		"id": 10,
@@ -296,8 +296,8 @@
 		"hasBonus": true,
 		"bonusDescription": "Gauntlets of Ogre Power",
 		"debt": "0",
-		"activeMission": 7,
-		"completedMissions": [1]
+		"activeMission": 15,
+		"completedMissions": [1, 7]
 	},
 	{
 		"id": 11,
@@ -307,7 +307,7 @@
 		"imageUrl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4853b74f-10fa-425e-aece-5e12472bdc70/dbmdhxl-b84334f9-dd4b-41d8-9b9c-92757ec0d1e2.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQ4NTNiNzRmLTEwZmEtNDI1ZS1hZWNlLTVlMTI0NzJiZGM3MFwvZGJtZGh4bC1iODQzMzRmOS1kZDRiLTQxZDgtOWI5Yy05Mjc1N2VjMGQxZTIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.U2x759ukkMoDsnPCwxOfEsImwjze35Q9cNMXskleoJc",
 		"class": "Monk",
 		"race": "Elf",
-		"experience": 30,
+		"experience": 31,
 		"abilityScores": {
 			"strength": 13,
 			"dexterity": 20,
@@ -326,8 +326,8 @@
 		"hasBonus": false,
 		"bonusDescription": "",
 		"debt": "20",
-		"activeMission": 7,
-		"completedMissions": []
+		"activeMission": 15,
+		"completedMissions": [7]
 	},
 	{
 		"id": 12,
@@ -337,7 +337,7 @@
 		"imageUrl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ecd743aa-b751-48c0-86bc-d33576fe5f20/d8ekoc5-6fb091a8-c2d1-4bb1-87dc-ea4beb53c8cc.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2VjZDc0M2FhLWI3NTEtNDhjMC04NmJjLWQzMzU3NmZlNWYyMFwvZDhla29jNS02ZmIwOTFhOC1jMmQxLTRiYjEtODdkYy1lYTRiZWI1M2M4Y2MuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.edL1uqyDmUlFF-ErVDKauI0FiZO66Xwt3BEQjJMBuck",
 		"class": "Sorcerer",
 		"race": "Human",
-		"experience": 18,
+		"experience": 20,
 		"abilityScores": {
 			"strength": 10,
 			"dexterity": 13,
@@ -356,7 +356,94 @@
 		"hasBonus": true,
 		"bonusDescription": "Dagger of Warning",
 		"debt": "0",
-		"activeMission": 14,
+		"activeMission": 16,
+		"completedMissions": [14]
+	},
+	{
+		"id": 13,
+		"name": "Elra Lionheart",
+		"description": "Elra is a member of the Knights Templar. She is tall (5'11\"), strong, and powerfully built, but still graceful. She has lightly tanned skin and warm brown eyes. Her hair is long, wavy, and blonde, so she often keeps it out of her face with braids.\nWhen the party first met her, she was but a disembodied floating head in the form of a lost soul. Lucky for her though, they managed to both find her body and put her soul where it belongs, resurrecting her in the process! It was too late for the rest of her party, having been killed by Markos Delphi, but after being offered a position at the guild, Elra was thankful for the opportunity for a new start.",
+		"imageUrl": "https://uploads.worldanvil.com/uploads/images/805eaca75e1e77e2ed0c48baa412baec.jpg",
+		"class": "Paladin",
+		"race": "Human",
+		"age": 27,
+		"experience": 36,
+		"abilityScores": {
+			"strength": 18,
+			"dexterity": 11,
+			"constitution": 17,
+			"intelligence": 13,
+			"wisdom": 14,
+			"charisma": 15
+		},
+		"armorClass": 20,
+		"hitPoints": 60,
+		"speed": 30,
+		"savingThrows": ["strength", "constitution", "wisdom"],
+		"languages": ["Common", "Dwarvish", "Elvish"],
+		"features": ["Spellcasting", "Lay on Hands", "Divine Smite"],
+		"isAlive": true,
+		"debt": 0,
+		"hasBonus": false,
+		"activeMission": 8,
+		"completedMissions": []
+	},
+	{
+		"id": 14,
+		"name": "Karlach Cliffgate",
+		"description": "Trapped in Avernus under Zariel's banner due to the machinations of those she trusted the most, Karlach has been fighting in the Blood War for a decade, away from all that she loved. One day, the Archdevil in control of her entire being ordered her to tag along on an invasion to the elemental plane of fire, with a goal to breach through to the material plane. After being foiled by Eventyrerlauget at Mount Hotenow, Zariel brought Karlach with her through the portal on a second try, but was once again defeated, leaving the red tiefling without a master. Now, with a malfunctioning engine for a heart, and a brand new contract in hand, she's ready for new adventures, on her own terms.",
+		"imageUrl": "https://bg3.wiki/w/images/b/b2/Portrait_Karlach.png",
+		"class": "Barbarian",
+		"race": "Tiefling",
+		"age": 30,
+		"experience": 62,
+		"abilityScores": {
+			"strength": 20,
+			"dexterity": 14,
+			"constitution": 16,
+			"intelligence": 8,
+			"wisdom": 12,
+			"charisma": 10
+		},
+		"armorClass": 14,
+		"hitPoints": 121,
+		"speed": 30,
+		"savingThrows": ["strength", "constitution"],
+		"languages": ["Common", "Infernal"],
+		"features": ["Rage", "Unarmored Defense", "Extra Attack", "Improved Critical"],
+		"isAlive": true,
+		"debt": 0,
+		"hasBonus": false,
+		"activeMission": null,
+		"completedMissions": []
+	},
+	{
+		"id": 15,
+		"name": "Kimmothy Ronathan",
+		"description": "Håkon's apprentice has been through time, and ended up at the Eventyrerlaug after serving Håkon in his quest to save his home town!",
+		"imageUrl": "https://cdnb.artstation.com/p/assets/images/images/046/111/603/large/rodrik-vandenenden-ardri.jpg?1644329828",
+		"class": "Wizard",
+		"race": "Human",
+		"age": 34,
+		"experience": 40,
+		"abilityScores": {
+			"strength": 8,
+			"dexterity": 11,
+			"constitution": 16,
+			"intelligence": 18,
+			"wisdom": 13,
+			"charisma": 14
+		},
+		"armorClass": 16,
+		"hitPoints": 87,
+		"speed": 30,
+		"savingThrows": ["intelligence", "charisma"],
+		"languages": ["Elvish", "Halfling"],
+		"features": ["Spellcasting"],
+		"isAlive": true,
+		"debt": 0,
+		"hasBonus": false,
+		"activeMission": 17,
 		"completedMissions": []
 	}
 ]
