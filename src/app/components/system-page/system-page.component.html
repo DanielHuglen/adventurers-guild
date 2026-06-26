@@ -59,13 +59,14 @@
 				(mousedown)="closePopover()"
 				popovertarget="city-popover"
 				[id]="city"
-				(click)="selectedCity.set(city)"
+				[style.anchor-name]="cityAnchor(city)"
+				(click)="selectCity(city)"
 				[aria-label]="city">
 				●
 			</button>
 		}
 	</div>
-	<span popover #cityPopover id="city-popover">
+	<span popover #cityPopover id="city-popover" [style.position-anchor]="positionAnchor()">
 		<h3>{{ selectedCity() }}</h3>
 		<p>{{ cityDescription }}</p>
 	</span>

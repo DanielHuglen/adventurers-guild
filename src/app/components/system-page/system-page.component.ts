@@ -33,8 +33,18 @@ export class SystemPageComponent {
 		'Moonshae Isles',
 	];
 	protected selectedCity = signal<City | null>(null);
+	protected positionAnchor = signal<string | null>(null);
 
 	@ViewChild('cityPopover') cityPopover: ElementRef<HTMLSpanElement> | undefined;
+
+	cityAnchor(city: City): string {
+		return `--${city.slice(0, 2)}`;
+	}
+
+	selectCity(city: City): void {
+		this.selectedCity.set(city);
+		this.positionAnchor.set(this.cityAnchor(city));
+	}
 
 	closePopover(): void {
 		this.cityPopover?.nativeElement.hidePopover();
