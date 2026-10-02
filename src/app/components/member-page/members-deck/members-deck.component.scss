@@ -10,5 +10,12 @@
 
 	app-character-card {
 		width: var(--card-width);
+		opacity: 1;
+		transition: opacity 0.3s;
+		transition-delay: calc(0.08s * round(down, (sibling-index() - 1) / 3, 1));
+
+		@starting-style {
+			opacity: 0;
+		}
 	}
 }
