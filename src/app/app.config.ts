@@ -1,5 +1,5 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter, withViewTransitions } from '@angular/router';
+import { provideRouter, withInMemoryScrolling, withViewTransitions } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
@@ -8,7 +8,11 @@ import { authHeaderInterceptor } from './auth-header.interceptor';
 
 export const appConfig: ApplicationConfig = {
 	providers: [
-		provideRouter(routes, withViewTransitions()),
+		provideRouter(
+			routes,
+			withViewTransitions(),
+			withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
+		),
 		provideClientHydration(),
 		provideHttpClient(withFetch(), withInterceptors([authHeaderInterceptor])),
 	],
