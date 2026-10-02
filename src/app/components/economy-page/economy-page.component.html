@@ -4,23 +4,28 @@
 		<h2>Economy</h2>
 		<div class="gold-container">
 			<span class="gold">
-				<div>{{ netGold }}</div>
+				<span class="visually-hidden">{{ netGold }}</span>
+				<div [style.--target]="netGold"></div>
 				<div>net gold earned</div>
 			</span>
-			<span class="gold">
-				<div>{{ avgGold }}</div>
+			<span class="gold" [title]="avgGoldTitle">
+				<span class="visually-hidden">{{ avgGold }}</span>
+				<div [style.--target]="avgGold"></div>
 				<div>avarage gold per mission</div>
 			</span>
 			<span class="gold">
-				<div>{{ medianGold }}</div>
+				<span class="visually-hidden">{{ medianGold }}</span>
+				<div [style.--target]="medianGold"></div>
 				<div>median gold per mission</div>
 			</span>
 			<span class="gold">
-				<div>{{ maxGold }}</div>
+				<span class="visually-hidden">{{ maxGold }}</span>
+				<div [style.--target]="maxGold"></div>
 				<div>highest paying mission</div>
 			</span>
 			<span class="gold">
-				<div>{{ minGold }}</div>
+				<span class="visually-hidden">{{ minGold }}</span>
+				<div [style.--target]="minGold"></div>
 				<div>worst paying mission</div>
 			</span>
 		</div>

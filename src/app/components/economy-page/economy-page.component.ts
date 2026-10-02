@@ -115,7 +115,10 @@ export class EconomyPageComponent {
 	get netGold(): number {
 		return this.stats()?.completedEconomy.netGold ?? 0;
 	}
-	get avgGold(): string {
+	get avgGold(): number {
+		return Math.round(this.stats()?.completedEconomy.avgGold ?? 0);
+	}
+	get avgGoldTitle(): string {
 		return this.stats()?.completedEconomy.avgGold.toFixed(2) ?? '0';
 	}
 	get medianGold(): number {
