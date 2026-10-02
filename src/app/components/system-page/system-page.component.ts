@@ -1,6 +1,7 @@
 import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, ElementRef, signal, ViewChild } from '@angular/core';
 import { form } from '@angular/forms/signals';
+import { RouterLink } from '@angular/router';
 import { City } from 'app/shared/mission-model';
 
 interface ExperienceFormData {
@@ -13,7 +14,7 @@ interface ExperienceFormData {
 	templateUrl: './system-page.component.html',
 	styleUrl: './system-page.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [NgClass],
+	imports: [NgClass, RouterLink],
 })
 export class SystemPageComponent {
 	protected isCriticalSuccessSelected = signal(false);
