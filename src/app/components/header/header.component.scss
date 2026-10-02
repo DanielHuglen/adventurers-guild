@@ -29,6 +29,10 @@
 		margin: 0 auto;
 		text-decoration: none;
 
+		@media screen and (max-width: 500px) {
+			margin: 0 auto 0 0;
+		}
+
 		img {
 			display: block;
 			width: 50px;
@@ -40,6 +44,10 @@
 
 			@media screen and (max-width: 768px) {
 				font-size: 1.5em;
+			}
+
+			@media screen and (max-width: 500px) {
+				display: none;
 			}
 		}
 	}
